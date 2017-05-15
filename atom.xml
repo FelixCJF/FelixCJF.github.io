@@ -1,0 +1,1474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Felix个人博客</title>
+  <subtitle>半途而废便是最大的失败</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-05-15T10:34:16.622Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Felix</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>多机部署hexo博客</title>
+    <link href="http://yoursite.com/2017/05/15/%E5%A4%9A%E6%9C%BA%E9%83%A8%E7%BD%B2hexo%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2017/05/15/多机部署hexo博客/</id>
+    <published>2017-05-15T10:34:16.000Z</published>
+    <updated>2017-05-15T10:34:16.622Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>欢迎来到Felix个人博客</title>
+    <link href="http://yoursite.com/2017/05/15/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0Felix%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2017/05/15/欢迎来到Felix博客/</id>
+    <published>2017-05-15T10:17:44.273Z</published>
+    <updated>2017-02-08T08:46:54.220Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="欢迎来到Felix个人博客"><a href="#欢迎来到Felix个人博客" class="headerlink" title="欢迎来到Felix个人博客"></a>欢迎来到Felix个人博客</h1><p>此博客主要是博主用来记录一些学习笔记和总结的，希望督促自己不断进步、不断提升。因为自己是刚入门不久的菜鸟，所以难免会有错误，欢迎大家指正！</p>
+<h1 id="加油！！！！！！！！"><a href="#加油！！！！！！！！" class="headerlink" title="加油！！！！！！！！"></a>加油！！！！！！！！</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;欢迎来到Felix个人博客&quot;&gt;&lt;a href=&quot;#欢迎来到Felix个人博客&quot; class=&quot;headerlink&quot; title=&quot;欢迎来到Felix个人博客&quot;&gt;&lt;/a&gt;欢迎来到Felix个人博客&lt;/h1&gt;&lt;p&gt;此博客主要是博主用来记录一些学习笔记和总结的，希望督
+    
+    </summary>
+    
+      <category term="博客相关" scheme="http://yoursite.com/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="博客说明" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2%E8%AF%B4%E6%98%8E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux上部署多个Tomcat</title>
+    <link href="http://yoursite.com/2017/04/30/Linux%E4%B8%8A%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AATomcat/"/>
+    <id>http://yoursite.com/2017/04/30/Linux上部署多个Tomcat/</id>
+    <published>2017-04-30T01:00:39.000Z</published>
+    <updated>2017-04-30T01:00:39.811Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>nginx负载均衡配置</title>
+    <link href="http://yoursite.com/2017/04/30/nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2017/04/30/nginx负载均衡配置/</id>
+    <published>2017-04-30T00:52:15.000Z</published>
+    <updated>2017-04-30T01:55:53.546Z</updated>
+    
+    <content type="html"><![CDATA[<p>自用学习笔记<br><a id="more"></a><br>Nginx是一款高性能的http 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器。由俄罗斯的程序设计师Igor Sysoev所开发，官方测试nginx能够支支撑5万并发链接，并且cpu、内存等资源消耗却非常低，运行非常稳定。</p>
+<h1 id="Nginx安装"><a href="#Nginx安装" class="headerlink" title="Nginx安装"></a>Nginx安装</h1><h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><ul>
+<li><p>gcc</p>
+<pre><code>yum install gcc-c++ 
+</code></pre></li>
+<li><p>PCRE    </p>
+<pre><code>yum install -y pcre pcre-devel
+</code></pre></li>
+<li><p>zlib</p>
+<pre><code>yum install -y zlib zlib-devel
+</code></pre></li>
+<li><p>openssl</p>
+<pre><code>yum install -y openssl openssl-devel
+</code></pre></li>
+</ul>
+<h3 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h3><ol>
+<li>解压</li>
+<li>配置</li>
+<li>编译安装<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><pre><code>cd /usr/local/nginx/sbin/
+./nginx
+</code></pre></li>
+</ol>
+<p>或者指定加载配置文件启动</p>
+<pre><code>./nginx -c /usr/local/nginx/conf/nginx.conf
+</code></pre><h3 id="停止"><a href="#停止" class="headerlink" title="停止"></a>停止</h3><p>方式一：快速停止，相当于kill进程</p>
+<pre><code>cd /usr/local/nginx/sbin
+./nginx -s stop
+</code></pre><p>方式二：待nginx进程处理完毕任务后停止（推荐）</p>
+<pre><code>cd /usr/local/nginx/sbin
+./nginx -s quit
+</code></pre><h3 id="重启nginx"><a href="#重启nginx" class="headerlink" title="重启nginx"></a>重启nginx</h3><p>方式一：先停止nginx，再启动</p>
+<pre><code>./nginx -s quit
+./nginx
+</code></pre><p>方式二：不用先停止nginx，重新加载配置文件</p>
+<pre><code>./nginx -s reload
+</code></pre><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>nginx安装成功，即可访问安装nginx的主机IP（图床麻烦，就不放图了）</p>
+<h1 id="nginx的主要运用场景"><a href="#nginx的主要运用场景" class="headerlink" title="nginx的主要运用场景"></a>nginx的主要运用场景</h1><p>1、http服务器。Nginx是一个http服务可以独立提供http服务。可以做网页静态服务器。<br>2、虚拟主机。可以实现在一台服务器虚拟出多个网站。例如个人网站使用的虚拟主机。<br>3、反向代理，负载均衡。当网站的访问量达到一定程度后，单台服务器不能满足用户的请求时，需要用多台服务器集群可以使用nginx做反向代理。并且多台服务器可以平均分担负载，不会因为某台服务器负载高宕机而某台服务器闲置的情况。</p>
+<h1 id="配置虚拟主机"><a href="#配置虚拟主机" class="headerlink" title="配置虚拟主机"></a>配置虚拟主机</h1><p>虚拟主机是一种特殊的软硬件技术，它可以将网络上的每一台计算机分成多个虚拟主机，每个虚拟主机可以独立对外提供www服务，这样就可以实现一台主机对外提供多个web服务，每个虚拟主机之间是独立的，互不影响的。</p>
+<p>三种类型的虚拟主机配置<br>1、基于ip的虚拟主机，<br>2、基于域名的虚拟主机<br>3、基于端口的虚拟主机 </p>
+<h1 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h1><p>而反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。</p>
+<h1 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h1><p>负载均衡，英文名称为Load Balance，其意思就是分摊到多个操作单元上进行执行，例如Web服务器、FTP服务器、企业关键应用服务器和其它关键任务服务器等，从而共同完成工作任务。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;自用学习笔记&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="nginx" scheme="http://yoursite.com/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BootStrap fileinput插件的使用</title>
+    <link href="http://yoursite.com/2017/04/28/BootStrap-fileinput%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2017/04/28/BootStrap-fileinput插件的使用/</id>
+    <published>2017-04-28T12:15:14.000Z</published>
+    <updated>2017-04-28T15:36:30.103Z</updated>
+    
+    <content type="html"><![CDATA[<p>BootStrap fileinput是一款基于bootstrap的上传组件<br><a id="more"></a><br>bootstrap fileinput这款插件使用简单方便，但还是有比较多的坑，因为官网的使用API真的好烂，描述的不够清楚<br><a href="http://plugins.krajee.com/file-input" target="_blank" rel="external">BootStrap fileinput官网</a></p>
+<h1 id="引入css和js"><a href="#引入css和js" class="headerlink" title="引入css和js"></a>引入css和js</h1><h3 id="css文件"><a href="#css文件" class="headerlink" title="css文件"></a>css文件</h3><pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;./resources/css/bootstrap.min.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;./resources/css/fileinput.min.css&quot;&gt;
+</code></pre><h3 id="js文件"><a href="#js文件" class="headerlink" title="js文件"></a>js文件</h3><pre><code>&lt;script type=&quot;text/JavaScript&quot; src=&quot;./resources/js/jQuery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;./resources/js/fileinput.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;./resources/js/zh.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;./resources/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><h1 id="定义上传标签"><a href="#定义上传标签" class="headerlink" title="定义上传标签"></a>定义上传标签</h1><pre><code>&lt;input type=&quot;file&quot; name=&quot;uploadPic&quot; id=&quot;uploadPic&quot; multiple class=&quot;file-loading&quot; /&gt;
+</code></pre><p>###这里有个大坑啊，官网里写的class=“file”,但是如果是这样，那么你自己定义的配置就不会覆盖默认配置，也就是中文化无效，所有你的配置都不会起作用。应该是class=”file-loading”###</p>
+<h1 id="初始化js"><a href="#初始化js" class="headerlink" title="初始化js"></a>初始化js</h1><pre><code>//初始化fileinput控件
+function initFileInput(ctrlName, uploadUrl) {    
+var control = $(&apos;#&apos; + ctrlName); 
+
+control.fileinput({
+    language: &apos;zh&apos;, //设置语言
+    uploadUrl: uploadUrl, //上传的地址
+    allowedFileExtensions: [&apos;jpg&apos;, &apos;gif&apos;, &apos;png&apos;],//接收的文件后缀
+    showUpload: true, //是否显示上传按钮
+    showCaption: false,//是否显示标题
+    browseClass: &quot;btn btn-primary&quot;, //按钮样式     
+    dropZoneEnabled: false,//是否显示拖拽区域
+    minImageWidth: 50, //图片的最小宽度
+    minImageHeight: 50,//图片的最小高度
+    maxImageWidth: 1000,//图片的最大宽度
+    maxImageHeight: 1000,//图片的最大高度
+    maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
+    minFileCount: 0,
+    maxFileCount: 10, //表示允许同时上传的最大文件个数
+    enctype: &apos;multipart/form-data&apos;,            
+});
+}
+
+
+$(document).ready(function(){
+    initFileInput(&quot;uploadPic&quot;, &quot;/upload/uploadPic&quot;).on(&quot;fileuploaded&quot;, function (event,data) {
+    var data = response.data; // 特别注意，返回的data不可直接使用，需要使用response获取.
+    //图片上传测试，这儿处理返回结果;后台返回的json数据
+});;
+</code></pre><h1 id="后台代码，可以直接用SpringMVC的MultipartFile"><a href="#后台代码，可以直接用SpringMVC的MultipartFile" class="headerlink" title="后台代码，可以直接用SpringMVC的MultipartFile"></a>后台代码，可以直接用SpringMVC的MultipartFile</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;BootStrap fileinput是一款基于bootstrap的上传组件&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
+    
+    
+      <category term="BootStrap-fileinput" scheme="http://yoursite.com/tags/BootStrap-fileinput/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DWR使用教程</title>
+    <link href="http://yoursite.com/2017/03/30/DWR%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    <id>http://yoursite.com/2017/03/30/DWR使用教程/</id>
+    <published>2017-03-30T13:23:24.000Z</published>
+    <updated>2017-03-30T14:09:22.191Z</updated>
+    
+    <content type="html"><![CDATA[<p>Dwr (Direct Web Remoting)主要用于WEB界面和Java远程交互，是一个ajax远程调用框架。<a id="more"></a></p>
+<h1 id="使用流程"><a href="#使用流程" class="headerlink" title="使用流程"></a>使用流程</h1><h3 id="下载dwr-jar"><a href="#下载dwr-jar" class="headerlink" title="下载dwr.jar"></a>下载dwr.jar</h3><h3 id="在web-xml中加入DwrServlet"><a href="#在web-xml中加入DwrServlet" class="headerlink" title="在web.xml中加入DwrServlet"></a>在web.xml中加入DwrServlet</h3><pre><code> &lt;!-- Ajax框架Dwr配置 --&gt;
+&lt;servlet&gt;
+    &lt;servlet-name&gt;dwr-invoker&lt;/servlet-name&gt;  
+    &lt;servlet-class&gt;org.directwebremoting.servlet.DwrServlet&lt;/servlet-class&gt;  
+    &lt;init-param&gt;
+        &lt;param-name&gt;debug&lt;/param-name&gt;  
+        &lt;param-value&gt;true&lt;/param-value&gt;  
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;crossDomainSessionSecurity&lt;/param-name&gt;
+        &lt;param-value&gt;false&lt;/param-value&gt;
+   &lt;/init-param&gt;
+
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;dwr-invoker&lt;/servlet-name&gt;  
+    &lt;url-pattern&gt;/dwr/*&lt;/url-pattern&gt;  
+&lt;/servlet-mapping&gt;
+</code></pre><h3 id="在WEB-INF下建立Dwr核心配置文件，dwr-xml"><a href="#在WEB-INF下建立Dwr核心配置文件，dwr-xml" class="headerlink" title="在WEB-INF下建立Dwr核心配置文件，dwr.xml"></a>在WEB-INF下建立Dwr核心配置文件，dwr.xml</h3><pre><code>    &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+    &lt;!DOCTYPE dwr PUBLIC &quot;-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN&quot; &quot;http://getahead.org/dwr//dwr30.dtd&quot;&gt; 
+&lt;dwr&gt;  
+&lt;allow&gt;  
+    &lt;!-- javascript配置的是在使用js代码访问bean时bean的别名  
+        也就是js代码中写userDWR.save();就如同userService所绑定的类UserServiceImpl  
+            调用save方法也就是UserServiceImpl.save();  
+    --&gt;
+
+    &lt;!-- 用户 --&gt;
+    &lt;create creator=&quot;spring&quot; javascript=&quot;userServiceDwr&quot; scope=&quot;application&quot;&gt;
+        &lt;!-- value是spring容器中配置的bean的ID --&gt;
+        &lt;param name=&quot;beanName&quot; value=&quot;userService&quot; /&gt;
+        &lt;include method=&quot;userLogin&quot; /&gt;    &lt;!-- 用户登录 --&gt;
+    &lt;/create&gt;
+       &lt;/allow&gt;  
+    &lt;/dwr&gt;
+</code></pre><h3 id="浏览器访问项目中的dwr文件夹下自动生成的js文件，查看是否含有该方法"><a href="#浏览器访问项目中的dwr文件夹下自动生成的js文件，查看是否含有该方法" class="headerlink" title="浏览器访问项目中的dwr文件夹下自动生成的js文件，查看是否含有该方法"></a>浏览器访问项目中的dwr文件夹下自动生成的js文件，查看是否含有该方法</h3><h3 id="在jsp中引入js文件"><a href="#在jsp中引入js文件" class="headerlink" title="在jsp中引入js文件"></a>在jsp中引入js文件</h3><pre><code>&lt;script type=&apos;text/javascript&apos; src=&apos;../dwr/engine.js&apos;&gt; &lt;/script&gt;
+&lt;script type=&apos;text/javascript&apos; src=&apos;../dwr/util.js&apos;&gt; &lt;/script&gt;
+&lt;script type=&apos;text/javascript&apos; src=&apos;../dwr/interface/User.js&apos;&gt; &lt;/script&gt;
+</code></pre><h3 id="javaScript中异步调用方法-需和Java代码中的方法一样，参数也一样"><a href="#javaScript中异步调用方法-需和Java代码中的方法一样，参数也一样" class="headerlink" title="javaScript中异步调用方法(需和Java代码中的方法一样，参数也一样)"></a>javaScript中异步调用方法(需和Java代码中的方法一样，参数也一样)</h3><pre><code> userServiceDwr.userLogin(name,password, function(data) {
+ //回调函数，设置回调值
+}
+</code></pre><h3 id="其他注意点"><a href="#其他注意点" class="headerlink" title="其他注意点"></a>其他注意点</h3><ul>
+<li>engine.js 它是Dwr客户端的核心，用来把动态的Javascript对象转换成服务器端的java对象，所以用到Dwr的地方就要用到它。</li>
+<li>util.js 这个是Dwr提供的工具类，里面提供了一些javascript的封装函数以及选择器</li>
+<li>和Spring可以完美结合</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Dwr (Direct Web Remoting)主要用于WEB界面和Java远程交互，是一个ajax远程调用框架。
+    
+    </summary>
+    
+      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
+    
+    
+      <category term="DWR" scheme="http://yoursite.com/tags/DWR/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>程序是怎么跑起来的读书笔记</title>
+    <link href="http://yoursite.com/2017/02/26/%E7%A8%8B%E5%BA%8F%E6%98%AF%E6%80%8E%E4%B9%88%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2017/02/26/程序是怎么跑起来的读书笔记/</id>
+    <published>2017-02-26T03:23:09.000Z</published>
+    <updated>2017-02-26T03:37:04.394Z</updated>
+    
+    <content type="html"><![CDATA[<p>《程序是怎么跑起来的》读书笔记，自用笔记……</p>
+<a id="more"></a>
+<h1 id="程序是怎样跑起来的"><a href="#程序是怎样跑起来的" class="headerlink" title="程序是怎样跑起来的"></a>程序是怎样跑起来的</h1><h2 id="CPU、内存、指令、硬盘是什么？"><a href="#CPU、内存、指令、硬盘是什么？" class="headerlink" title="CPU、内存、指令、硬盘是什么？"></a>CPU、内存、指令、硬盘是什么？</h2><p><strong>CPU:</strong> CPU是中央处理器，相当于计算机的大脑，主要负责计算机的运算和控制，内部由控制器，寄存器，运算器，时钟组成。各部分之间通过电流信号连通。其中跟程序运行关系最密切的一个部分就是寄存器，寄存器是用来暂存跟程序运行有关的指令和数据的。<strong>程序是吧寄存器作为对象来描述的。对程序员来说，cpu是具有各种功能寄存器的集合体</strong><br><strong>内存：</strong>就是一个存储器，通过控制芯片与cpu相连，主要用来存放指令和数据，cpu可以往内存里面存放数据和指令，也可以读取。<br><strong>指令：</strong>是机器语言中的一个语句，用来指挥计算机工作的命令。<br><strong>硬盘：</strong>用来长时间存储数据的设备，是外储存器的一种。</p>
+<h2 id="CPU如何处理程序流程"><a href="#CPU如何处理程序流程" class="headerlink" title="CPU如何处理程序流程"></a>CPU如何处理程序流程</h2><p>操作系统把硬盘中的程序复制到内存中，cpu通过指令和寄存器将程序编译后，将高级语言转换成计算机能够直接识别的机器语言文件，程序运行时，在内存中生成机器语言的文件的副本，cpu开始执行程序，根据时钟信号，控制器从内存中读取指令和数据，通过对这些指令解释和运行，运算器就会对数据进行运算，控制器会根据运算结果来控制计算机的输入输出和一些行为。</p>
+<h2 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h2><h2 id="未完待续。。。。。"><a href="#未完待续。。。。。" class="headerlink" title="未完待续。。。。。"></a>未完待续。。。。。</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;《程序是怎么跑起来的》读书笔记，自用笔记……&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://yoursite.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="程序是怎么跑起来的" scheme="http://yoursite.com/tags/%E7%A8%8B%E5%BA%8F%E6%98%AF%E6%80%8E%E4%B9%88%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql和Oracle实现分页</title>
+    <link href="http://yoursite.com/2017/02/08/mysql%E5%92%8COracle%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5/"/>
+    <id>http://yoursite.com/2017/02/08/mysql和Oracle实现分页/</id>
+    <published>2017-02-08T09:41:34.000Z</published>
+    <updated>2017-02-08T10:17:10.509Z</updated>
+    
+    <content type="html"><![CDATA[<p>mysql和Oracle实现分页<br><a id="more"></a></p>
+<h1 id="mysql实现分页的方式"><a href="#mysql实现分页的方式" class="headerlink" title="mysql实现分页的方式"></a>mysql实现分页的方式</h1><p>利用的limit函数，LIMIT [offset,rows]查询从offset记录开始查询rows条记录 </p>
+<pre><code>select * from limit offset,rows
+</code></pre><h1 id="Oracle数据库实现分页"><a href="#Oracle数据库实现分页" class="headerlink" title="Oracle数据库实现分页"></a>Oracle数据库实现分页</h1><p>标准的写法<br>SELECT t2.<em><br>FROM<br>(<br>SELECT<br>t1.</em>, rownum rn<br>FROM<br>(<br>SELECT *<br>FROM tb_courseinfo<br>) t1<br>WHERE rownum &lt;= 150<br>) t2<br>WHERE rn &gt; 100</p>
+<p>性能最好的写法：(rownum &lt;= 100 是固定的)<br>SELECT t1.<em><br>FROM<br>(<br>SELECT </em><br>FROM tb_courseinfo<br>WHERE id &gt; #maxId#<br>ORDER BY id<br>) t1<br>WHERE rownum &lt;= 100</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;mysql和Oracle实现分页&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
+    
+    
+      <category term="mysql和Oracle实现分页" scheme="http://yoursite.com/tags/mysql%E5%92%8COracle%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>有关异常捕获的一题面试题</title>
+    <link href="http://yoursite.com/2017/02/08/%E6%9C%89%E5%85%B3%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7%E7%9A%84%E4%B8%80%E9%A2%98%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>http://yoursite.com/2017/02/08/有关异常捕获的一题面试题/</id>
+    <published>2017-02-08T09:34:17.000Z</published>
+    <updated>2017-02-08T09:37:56.258Z</updated>
+    
+    <content type="html"><![CDATA[<p>一题做错的面试题<br><a id="more"></a><br>        package Test;<br>        public class Test {<br>        private static void test(int[]arr) {<br>        for (int i = 0; i &lt; arr.length; i++) {<br>            try {<br>                if (arr[i] % 2 == 0) {<br>                    throw new NullPointerException();<br>                } else {<br>                    System.out.print(i);<br>                }<br>            } finally {<br>                System.out.print(“e”);<br>            }<br>        }<br>        }</p>
+<pre><code>public static void main(String[]args) {
+try {
+    test(new int[] {0, 1, 2, 3, 4, 5});
+} catch (Exception e) {
+    System.out.print(&quot;E&quot;);
+}
+}
+}
+</code></pre><p>解答：输出eE<br>由于arr[0] =0,所以在进入 test()方法里面会在第一个if 上抛出一个 NullPointerException,接着会执行 finally 的语句, (finally语句先于 return 和 throw语句执行)，输出一个’e，然后回到 main方法中，由于捕捉到异常，所以进入到catch语句中，然后打印一个’E’,所以最终结果为”eE”</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一题做错的面试题&lt;br&gt;
+    
+    </summary>
+    
+      <category term="面试题" scheme="http://yoursite.com/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    
+      <category term="异常捕获" scheme="http://yoursite.com/tags/%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JQuery、EasyUI和Bootstrap区别</title>
+    <link href="http://yoursite.com/2017/02/08/JQuery%E3%80%81EasyUI%E5%92%8CBootstrap%E5%8C%BA%E5%88%AB/"/>
+    <id>http://yoursite.com/2017/02/08/JQuery、EasyUI和Bootstrap区别/</id>
+    <published>2017-02-08T08:50:30.000Z</published>
+    <updated>2017-02-08T09:28:57.756Z</updated>
+    
+    <content type="html"><![CDATA[<p>JQuery，EasyUI和Bootstrap之间有什么区别？</p>
+<a id="more"></a>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p><strong>jQuery:</strong> jQuery是一套跨浏览器的JavaScript库，简化HTML与JavaScript之间的操作。<br><strong>EasyUI:</strong> easyui是一种基于jQuery的用户界面插件集合。<br><strong>Bootstrap:</strong> Bootstrap是一组用于网站和网络应用程序开发的开源前端框架，包括HTML、CSS及JavaScript的框架 </p>
+<h1 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h1><p>JQuery是操作dom的js库而Bootstrap是css库。JQuery专注行为动作，EasyUI是插件偏重于界面显示，使用js实现；Bootstrap更关注样式结构，偏重于使用css实现，基于JQuery</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JQuery，EasyUI和Bootstrap之间有什么区别？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
+    
+    
+      <category term="Jquery" scheme="http://yoursite.com/tags/Jquery/"/>
+    
+      <category term="EasyUI" scheme="http://yoursite.com/tags/EasyUI/"/>
+    
+      <category term="Bootstrap" scheme="http://yoursite.com/tags/Bootstrap/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>过滤器filter</title>
+    <link href="http://yoursite.com/2017/02/05/%E8%BF%87%E6%BB%A4%E5%99%A8filter/"/>
+    <id>http://yoursite.com/2017/02/05/过滤器filter/</id>
+    <published>2017-02-05T14:41:33.000Z</published>
+    <updated>2017-02-05T15:17:49.651Z</updated>
+    
+    <content type="html"><![CDATA[<p>Filter 的基本功能是对 Servlet 容器调用 Servlet 的过程进行拦截，从而在 Servlet 进行响应处理的前后实现一些特殊的功能。<br><a id="more"></a></p>
+<h1 id="过滤器概述"><a href="#过滤器概述" class="headerlink" title="过滤器概述"></a>过滤器概述</h1><p>管理所有的web资源，不管出和进都要经过他。<br>过滤器就是一个保安，能对请求和响应进行拦截。<br>过滤器的执行顺序按照web.xml的标签顺序来执行<br>过滤器的初始化是在加载应用的时候，而不是用户第一次访问的时候。<br>过滤器的销毁是随服务器的关闭而销毁<br>过滤器，是一种职责链设计模式      </p>
+<h1 id="过滤器编写步骤"><a href="#过滤器编写步骤" class="headerlink" title="过滤器编写步骤"></a>过滤器编写步骤</h1><ol>
+<li><p>建立类实现接口  </p>
+<pre><code>//注意所有的包都是javax.servlet.*的
+public class FilterDemo1 implements Filter {
+private FilterConfig filterConfig;
+public FilterDemo1() {
+}
+public void destroy() {
+}
+//对于在拦截范围内的资源(web.xml配置），每次访问，该方法都会执行拦截
+public void doFilter(ServletRequest request, ServletResponse response,
+    FilterChain chain) throws IOException, ServletException {
+String value = filterConfig.getInitParameter(&quot;aaa&quot;);
+System.out.println(value);
+System.out.println(&quot;FilterDemo1 start&quot;);
+//放行，放行后的代码在目标资源执行完成后，再执行
+chain.doFilter(request, response);
+System.out.println(&quot;FilterDemo1 end&quot;);
+}
+public void init(FilterConfig filterConfig) throws ServletException {
+//在Tomcat启动的时候，就会运行初始化方法
+this.filterConfig=filterConfig;
+}
+}
+</code></pre></li>
+<li><p>配置web.xml  </p>
+<pre><code>&lt;filter&gt;&lt;!-- 按配置文件标签的顺序进行过滤 --&gt;
+    &lt;filter-name&gt;FilterDemo1&lt;/filter-name&gt;
+    &lt;filter-class&gt;com.felix.filter.FilterDemo1&lt;/filter-class&gt;
+&lt;init-param&gt;
+    &lt;param-name&gt;aaa&lt;/param-name&gt;
+    &lt;param-value&gt;bbb&lt;/param-value&gt;
+&lt;/init-param&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;FilterDemo1&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;&lt;!-- 拦截所有的web资源 --&gt;
+&lt;/filter-mapping&gt;
+</code></pre><h1 id="过滤器案例"><a href="#过滤器案例" class="headerlink" title="过滤器案例"></a>过滤器案例</h1></li>
+</ol>
+<h3 id="统一全站字符编码的过滤器"><a href="#统一全站字符编码的过滤器" class="headerlink" title="统一全站字符编码的过滤器"></a>统一全站字符编码的过滤器</h3><p>实现类</p>
+<pre><code>public class CharacterEncodingFilter implements Filter {
+private FilterConfig filterConfig;
+public CharacterEncodingFilter() {
+}
+public void destroy() {
+}
+public void doFilter(ServletRequest request, ServletResponse response,
+    FilterChain chain) throws IOException, ServletException {
+//得到配置的参数,配置的参数在web.xml中去配
+String encoding = filterConfig.getInitParameter(&quot;encoding&quot;);
+if(encoding==null){
+    //防止忘记配了
+    encoding = &quot;UTF-8&quot;;
+}
+//中文请求参数乱码的解决方法（post方式提交）
+request.setCharacterEncoding(encoding);
+//解决输出到页面的中文乱码
+response.setContentType(&quot;text/html;charset=&quot;+encoding);
+//不要忘记放行
+chain.doFilter(request, response);
+}
+public void init(FilterConfig filterConfig) throws ServletException {
+this.filterConfig = filterConfig;
+}
+} 
+</code></pre><p>web.xml配置</p>
+<pre><code>&lt;filter&gt;
+    &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;com.felix.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+    &lt;init-param&gt;
+    &lt;param-name&gt;encoding&lt;/param-name&gt;
+    &lt;param-value&gt;UTF-8&lt;/param-value&gt;
+    &lt;/init-param&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt; 
+</code></pre><h3 id="禁止浏览器缓存所有动态页面的过滤器"><a href="#禁止浏览器缓存所有动态页面的过滤器" class="headerlink" title="禁止浏览器缓存所有动态页面的过滤器"></a>禁止浏览器缓存所有动态页面的过滤器</h3><p>实现类</p>
+<pre><code>public class NoCacheFilter implements Filter {
+public NoCacheFilter() {
+}
+public void destroy() {
+}
+//不要缓存文件，只要设置3个头就可以了，然后在web.xml里面进行配置即可
+public void doFilter(ServletRequest req, ServletResponse resp,
+    FilterChain chain) throws IOException, ServletException {
+HttpServletRequest request = (HttpServletRequest) req;
+HttpServletResponse response = (HttpServletResponse) resp;
+response.setHeader(&quot;Expires&quot;, &quot;-1&quot;);//只要比当前时间小就行，一般设置为-1
+response.setHeader(&quot;Cache-Control&quot;, &quot;no-cache&quot;);//1.1
+response.setHeader(&quot;Pragma&quot;, &quot;no-cache&quot;);//1.0
+chain.doFilter(request, response);//别忘了放行
+}
+public void init(FilterConfig filterConfig) throws ServletException {
+}
+}
+</code></pre><p>web.xml配置</p>
+<pre><code>&lt;filter&gt;
+    &lt;filter-name&gt;NoCacheFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;com.felix.filter.NoCacheFilter&lt;/filter-class&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;NoCacheFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/servlet/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;NoCacheFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/servlet/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt; 
+</code></pre><h3 id="控制浏览器缓存页面中的静态资源的过滤器"><a href="#控制浏览器缓存页面中的静态资源的过滤器" class="headerlink" title="控制浏览器缓存页面中的静态资源的过滤器"></a>控制浏览器缓存页面中的静态资源的过滤器</h3><p>实现类</p>
+<pre><code>public class NeedCacheFilter implements Filter {
+FilterConfig filterConfig;
+public void init(FilterConfig filterConfig) throws ServletException {
+this.filterConfig = filterConfig;
+}
+public NeedCacheFilter() {
+}
+public void destroy() {
+}
+public void doFilter(ServletRequest args0, ServletResponse args1,
+    FilterChain chain) throws IOException, ServletException {
+    //浏览器每一次请求会得到一个文件，每个文件是单独下载的
+    //所以过滤器会对每个文件过滤一次。
+HttpServletRequest request = (HttpServletRequest) args0;
+HttpServletResponse response = (HttpServletResponse) args1;
+//根据不同的资源，设置缓存时间
+String htmlTime = filterConfig.getInitParameter(&quot;html&quot;);
+String cssTime = filterConfig.getInitParameter(&quot;css&quot;);
+String jsTime = filterConfig.getInitParameter(&quot;js&quot;);
+long time = 0;
+//根据访问的资源设定时间
+//得到/my_exercise_day15_2/1.html
+String uri = request.getRequestURI();
+//得到文件后缀.方法是从指定的索引开始，到结束
+String extendFileName = uri.substring(uri.lastIndexOf(&quot;.&quot;)+1);
+if(&quot;html&quot;.equals(extendFileName));{
+    time = Long.parseLong(htmlTime)*60*60*1000;
+}
+if(&quot;css&quot;.equals(extendFileName));{
+    time = Long.parseLong(cssTime)*60*60*1000;
+}
+if(&quot;js&quot;.equals(extendFileName));{
+    time = Long.parseLong(jsTime)*60*60*1000;
+}//设置头，时间头
+response.setDateHeader(&quot;Expires&quot;, System.currentTimeMillis()+time);
+chain.doFilter(request, response);
+}
+}
+</code></pre><p>web.xml配置</p>
+<pre><code>&lt;filter&gt;
+    &lt;filter-name&gt;NeedCacheFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;com.felix.filter.NeedCacheFilter&lt;/filter-class&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;html&lt;/param-name&gt;
+        &lt;param-value&gt;2&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;css&lt;/param-name&gt;
+        &lt;param-value&gt;3&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;js&lt;/param-name&gt;
+        &lt;param-value&gt;4&lt;/param-value&gt;
+    &lt;/init-param&gt;
+&lt;/filter&gt;
+</code></pre><h3 id="page指令的错误页面配置"><a href="#page指令的错误页面配置" class="headerlink" title="page指令的错误页面配置"></a>page指令的错误页面配置</h3><pre><code>&lt;filter&gt;
+    &lt;filter-name&gt;FilterDemo&lt;/filter-name&gt;
+    &lt;filter-class&gt;com.felix.filter.FilterDemo&lt;/filter-class&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+       &lt;filter-name&gt;FilterDemo&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+        &lt;!-- 所有错误都会被过滤 --&gt;
+    &lt;dispatcher&gt;ERROR&lt;/dispatcher&gt;
+    &lt;!-- 所有转发都会被过滤--&gt;
+    &lt;dispatcher&gt;FORWARD&lt;/dispatcher&gt;
+    &lt;!-- 所有动态包含都会被过滤 --&gt;
+    &lt;dispatcher&gt;INCLUDE&lt;/dispatcher&gt;
+    &lt;!-- 所有请求都会被过滤 --&gt;
+    &lt;dispatcher&gt;REQUEST&lt;/dispatcher&gt;
+&lt;/filter-mapping&gt;
+&lt;error-page&gt;&lt;!-- 配置错误页面 --&gt;
+    &lt;!-- 需要抓住的异常是什么类型 --&gt;
+    &lt;exception-type&gt;java.lang.Exception&lt;/exception-type&gt;
+    &lt;!-- 出现错误后,需要转发到哪个页面 --&gt;
+    &lt;location&gt;/error.jsp&lt;/location&gt;
+&lt;/error-page&gt; 
+</code></pre><h3 id="Struts2的web-xml配置"><a href="#Struts2的web-xml配置" class="headerlink" title="Struts2的web.xml配置"></a>Struts2的web.xml配置</h3><p>　项目中使用Struts2同样需要在web.xml配置过滤器，用来截取请求，转到Struts2的Action进行处理。</p>
+<pre><code>&lt;!-- struts 2.x filter --&gt;
+&lt;filter&gt;
+    &lt;filter-name&gt;struts2&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter&lt;/filter-class&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;struts2&lt;/filter-name&gt;
+    &lt;url-pattern&gt;*.do&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Filter 的基本功能是对 Servlet 容器调用 Servlet 的过程进行拦截，从而在 Servlet 进行响应处理的前后实现一些特殊的功能。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
+    
+    
+      <category term="过滤器filter" scheme="http://yoursite.com/tags/%E8%BF%87%E6%BB%A4%E5%99%A8filter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java中的网络编程</title>
+    <link href="http://yoursite.com/2017/02/04/Java%E4%B8%AD%E7%9A%84%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    <id>http://yoursite.com/2017/02/04/Java中的网络编程/</id>
+    <published>2017-02-04T11:55:25.000Z</published>
+    <updated>2017-02-04T13:01:54.675Z</updated>
+    
+    <content type="html"><![CDATA[<p>有关Java网络编程的笔记整理<br><a id="more"></a></p>
+<h1 id="网络通信三要素：IP地址，端口，还有传输协议"><a href="#网络通信三要素：IP地址，端口，还有传输协议" class="headerlink" title="网络通信三要素：IP地址，端口，还有传输协议"></a>网络通信三要素：IP地址，端口，还有传输协议</h1><h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><p>一个网络设备标识<br>Java中获取IP地址：</p>
+<pre><code>//导包
+import java.net.*;
+public class IPDemo{
+public static void main(String[] args)throws Exception{
+    //获取InetAddress对象
+    InetAddress ip = InetAddress.getByName(&quot;www.baidu.com&quot;);
+    //然后调用InetAddress对象中的getHostAddress()方法获得IP
+    //输出到控制台上看看结果吧：
+    System.out.println(&quot;www.baidu.com的IP地址是：&quot;+ip.getHostAddress());
+}
+}
+</code></pre><h3 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h3><p>用来标记进程的逻辑地址<br>1、端口的范围从0~65535（2的16次方减1）</p>
+<p>2、系统保留端口为：0~1024</p>
+<p>3、一些常用的端口，FTP：21，SMTP：25，HTTP：80</p>
+<h3 id="传输协议：TCP、UPD"><a href="#传输协议：TCP、UPD" class="headerlink" title="传输协议：TCP、UPD"></a>传输协议：TCP、UPD</h3><h4 id="UPD协议"><a href="#UPD协议" class="headerlink" title="UPD协议"></a>UPD协议</h4><p>UPD协议特点：   </p>
+<ol>
+<li>将数据封装为数据包，面向无连接  </li>
+<li>每个包大小限制在64kb   </li>
+<li>因为面向无连接，所以速度快，不可靠  </li>
+<li>有发送端与接收端  </li>
+</ol>
+<p>发送端的操作：<br>1、建立Socket服务，随便你指不指定端口，不指定系统分配。另外就是端口顺延，如果这次端口是1555，下次就是1556，因为当你运行完程序后，不能保证端口也释放了，为了防止出错。</p>
+<p>2、将要发送的数据封装到包中。</p>
+<p>3、发送数据，通过send方法发送出去，管它有没有收到呢。</p>
+<p>4、关闭资源。 </p>
+<pre><code>//发送端
+//导包
+import java.net.*;
+public class UPDDemo{
+public static void main(String[] args)throws Exception{
+
+//创建Socket服务
+DatagramSocket ds = new DatagramSocket();
+//不指定端口也行，稍后在数据里指定。
+//把数据打包
+String data = &quot;UPD传输演示&quot;;
+byte[] buf = data.getBytes();
+//把数据转换成字节数组
+DatagramPacket dp = new DatagramPacket(buf,
+                          buf.length,
+                          InetAddress.getByName(&quot;10.1.31.127&quot;),
+                          10000);//通过名字获取IP，并指定端口
+
+//发送数据
+ds.send(dp);
+//关闭资源
+ds.close();
+}
+}
+</code></pre><p>UPD接收端的操作：<br>1、建立服务</p>
+<p>2、定义一个缓冲区来接受数据</p>
+<p>3、调用DatagramPacket中的各种方法来达到我们的需求</p>
+<p>4、关闭资源</p>
+<pre><code>//接收端
+//导包
+import java.net.*;
+public class UPDServer{
+public static void main(String[] args)throws Exception{
+
+//建立服务监视这个端口
+DatagramSocket ds = new DatagramSocket(10000);
+
+//定义一个缓冲区用于接收数据
+byte[] buf = new byte[1024];//可以乘以64，因为一个包在64K以内。
+DatagramPacket dp = new DatagramPacket(buf,buf.length);
+ds.receive(dp);
+
+//获取IP，这是一个习惯，因为要知道这数据是从那里来的
+String ip = dp.getAddress().getHostAddress();
+System.out.println(&quot;来自&quot;+ip+&quot;的数据是&quot;);
+
+//把数据弄出来吧
+System.out.println(new String(buf,0,dp.getLength()));
+
+//关闭资源
+ds.close();        
+}
+}
+</code></pre><h4 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h4><p>tcp协议特点：  </p>
+<ol>
+<li>基于IO流进行数据传输的，面向连接  </li>
+<li>数据传输没有大小限制  </li>
+<li>面向连接通过三次握手，四次挥手机制保证数据的完整性和可靠性   </li>
+<li>面向连接，速度慢   </li>
+<li>分为服务端和客户端   </li>
+</ol>
+<p>客户端的操作步骤：   </p>
+<p>1、建立服务Socket</p>
+<p>2、获取输出流，把数据变成字节数组， 通过输出流发送给服务端。</p>
+<p>3、关闭输出流，获取输入流，获取反馈信息</p>
+<p>4、关闭资源</p>
+<pre><code>//导包
+import java.io.*;
+import java.net.*;
+
+public class TCPClient {
+
+public static void main(String[] args) {
+
+// 创建服务
+Socket s = null;
+try {
+    if (s == null)
+        s = new Socket(&quot;10.1.31.127&quot;, 13000);
+    //把数据转换成字节数组
+    byte[] buf = &quot;TCP传输演示&quot;.getBytes();
+
+    //获取输出流
+    OutputStream out = s.getOutputStream();
+    //发送数据
+    out.write(buf);
+
+    //关闭发送流
+    s.shutdownOutput();
+
+    //获取输入流，获取反馈信息
+    InputStream in = s.getInputStream();
+    byte[] buffer  = new byte[1024];
+    int len = in.read(buffer);
+
+    //打印反馈信息
+    System.out.println(new String(buffer,0,len));
+    } catch (Exception e) {
+    System.out.println(e.toString());
+    }finally{
+    if(s!=null){
+        try{
+            s.close();
+        }catch(Exception e)
+        {
+            System.out.println(e.toString());}
+        }
+    }
+
+}
+}
+</code></pre><p>服务端操作步骤：<br>1、建立服务ServerSocket服务，然后。用ServerSocket的accept（）方法得到Socket服务</p>
+<p>2、获取输入流，然后可以得到数据</p>
+<p>3、对读到的数据进行处理</p>
+<p>4、反馈信息给客户端</p>
+<p>5、各种关闭资源</p>
+<pre><code>    //导包
+import java.io.*;
+import java.net.*;
+
+public class TCPServer {
+
+public static void main(String[] args)throws Exception {
+
+    //创建服务
+    ServerSocket ss = new ServerSocket(13000);
+
+    Socket s = ss.accept();
+    //先搞到IP地址
+    String ip = s.getInetAddress().getHostAddress();
+
+    //输出链接上来的机器
+    System.out.println(ip+&quot;-----connected&quot;);
+
+    //获取输入流
+    InputStream in  = s.getInputStream();
+    //读取数据
+    byte[] buf = new byte[1024];
+
+    int len = 0;
+    while((len = in.read(buf))!=-1){
+        //打印到控制台上吧
+        System.out.println(new String(buf,0,len));
+    }
+    s.shutdownInput();
+
+    //发送反馈信息
+
+    OutputStream out = s.getOutputStream();
+
+    out.write(&quot;服务端收到啦&quot;.getBytes());
+
+    //关闭资源
+    s.close();
+    ss.close();
+}
+
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有关Java网络编程的笔记整理&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="Java中的网络编程" scheme="http://yoursite.com/tags/Java%E4%B8%AD%E7%9A%84%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MongoDB数据库</title>
+    <link href="http://yoursite.com/2017/02/03/MongoDB%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>http://yoursite.com/2017/02/03/MongoDB数据库/</id>
+    <published>2017-02-03T15:15:43.000Z</published>
+    <updated>2017-02-03T15:58:34.404Z</updated>
+    
+    <content type="html"><![CDATA[<p>MongoDB数据库学习笔记整理<br><a id="more"></a></p>
+<h1 id="NoSql数据库"><a href="#NoSql数据库" class="headerlink" title="NoSql数据库"></a>NoSql数据库</h1><p>非关系型数据库，CouchDB，<strong>Redis</strong>，BigTable（谷歌的，付费），Neo4j ，HBase （Hadoop经常用），<strong>MongoDB</strong></p>
+<h3 id="NoSql优缺点"><a href="#NoSql优缺点" class="headerlink" title="NoSql优缺点"></a>NoSql优缺点</h3><p>优点：<br>简单的扩展，快速的读写，低廉的成本，灵活的数据模型<br>缺点：<br>不提供对SQL的支持，支持的特性不够丰富，现有的产品不够成熟</p>
+<h1 id="MongoDB数据库"><a href="#MongoDB数据库" class="headerlink" title="MongoDB数据库"></a>MongoDB数据库</h1><p>MongoDB由数据库（database）、集合（collection）、文档对象（document）组成<br>MongoDB里的集合对应于关系型数据库里的表，但是集合中没有列、行和关系的概念，集合中只有文档，一个文档就相当于一条记录，这体现了模式自由的特点   </p>
+<h3 id="MongoDB数据类型"><a href="#MongoDB数据类型" class="headerlink" title="MongoDB数据类型"></a>MongoDB数据类型</h3><pre><code>数据类型                描述                            举例                                                          
+null                  表示空值或者未定义的对象           {&quot;x&quot;:null}                
+布尔值                  真或者假：true或者false           {&quot;x&quot;:true}
+32位整数             32位整数。shell是不支持该类型的，shell中默认会转换成64位浮点数      
+64位整数             64位整数。shell是不支持该类型的，shell中默认会转换成64位浮点数      
+64位浮点数           64位浮点数。shell中的数字就是这一种类型  {&quot;x&quot;：3.14，&quot;y&quot;：3}
+字符串                 UTF-8字符串                                          {&quot;foo&quot;:&quot;bar&quot;}
+符号                 shell不支持，shell会将数据库中的符号类型的数据自动转换成字符串      
+对象id                  文档的12字节的唯一id                                  {&quot;id&quot;: ObjectId()}（特有的，就这么写） 
+日期                 从标准纪元开始的毫秒数                                  {&quot;date&quot;:new Date()}
+正则表达式          文档中可以包含正则表达式，遵循JavaScript的语法  {&quot;foo&quot;:/foobar/i}
+代码                文档中可以包含JavaScript代码                          {&quot;x&quot;：function() {}}     
+未定义                undefined                                                  {&quot;x&quot;：undefined}
+数组               值的集合或者列表                                          {&quot;arr&quot;: [&quot;a&quot;,&quot;b&quot;]}
+内嵌文档          文档可以作为文档中某个key的value           {&quot;x&quot;:{&quot;foo&quot;:&quot;bar&quot;}}（可以无限内嵌）
+</code></pre><h3 id="三种方式启动数据库"><a href="#三种方式启动数据库" class="headerlink" title="三种方式启动数据库"></a>三种方式启动数据库</h3><ul>
+<li><p>第一种，命令行中输入：  </p>
+<pre><code>mongod --dbpath=C:\release\mongo_data
+</code></pre></li>
+<li><p>第二种，批处理：<br>建立批处理文件，并在文件中写  </p>
+<pre><code>mongod --dbpath=C:\release\mongo_data 
+</code></pre></li>
+<li><p>第三种，注册服务</p>
+<pre><code>D:\mongodb\bin\mongod.exe --logpath D:\mongo_log\mongodb.log --logappend --dbpath D:\mongo_data --directoryperdb --serviceName MongoDB --install
+</code></pre></li>
+</ul>
+<p>从系统服务中移除此服务：   </p>
+<pre><code>D:\mongodb\bin\mongod.exe --logpath D:\mongo_log\mongodb.log --logappend --dbpath D:\mongo_data --directoryperdb --serviceName MongoDB --remove
+</code></pre><ul>
+<li>mongo_data中的文件：<br>local.0：本地数据储存的地方<br>local.ns—namespace，名称空间<br>mongod.lock—锁    </li>
+</ul>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>show dbs ：查看所有数据库<br>use mydb1：创建数据库mydb1（有就使用，没有就创建）：<br>db.dropDatabase()：删除当前数据库：<br>db：查看当前所在数据库：<br>show collections 或使用show tables：查看当前数据库中所有的集合：<br>db.createCollection(“集合名称”)：显示方式创建集合<br>db.集合名称.insert({})：隐式方式创建集合，并同时向集合中插入数据,例如：db.customer.insert({name:”jack”})<br>db.集合名称.remove({删除条件})：删除集合中符合条件的记录，没有条件则删除全部：db.c1.remove({name:”user1”})   </p>
+<h3 id="查询集合中的文档"><a href="#查询集合中的文档" class="headerlink" title="查询集合中的文档"></a>查询集合中的文档</h3><p>db.集合名称.find({条件})：根据条件查询集合中的文档：db.c1.find({name:”name1”})<br>集合名称.findOne()：查询第一个文档<br>db.user.find({name:”name0”},{age:0})：投影查询，第一个参数，表示查询条件，第二个显示哪些字段（最好使用ture和false）             </p>
+<p>查询集合中的文档 ，使用条件表达式：<br>db.collection.find({field:{$gt:value}});//大于： field &gt; value<br>db.collection.find({field:{$lt:value}});//小于： field &lt; value<br>db.collection.find({field:{$gte:value}});//大于等于： field &gt;= value<br>db.collection.find({field:{$lte:value}});//小于等于： field &lt;= value<br>db.collection.find({field:{$ne:value}});//不等于：  field != value<br>查询集合中的文档 ，统计(count)、排序(sort)、分页(skip、limit)<br>db.customer.count()：查询集合中有多少个文档<br>db.customer.find({age:{$lt:5}}).count()：查询集合中符合条件的有多少个文档<br>db.customer.find().sort({age:1})：给查询出来的文档按age的值进行排序，1为正序，0为倒叙<br>db.customer.find().skip(2).limit(3)：<br>db.customer.find().sort({age:-1}).skip(2).limit(3);<br>db.customer.find().sort({age:-1}).skip(2).limit(3).count();<br>count()命令默认参数是0，意思是直接跟随find，参数为1，则表示跟随在自己所在的位置<br>count，sort，和分页命令位置随便放，但是执行的顺序不会变化，例如sort放在最后和放在前面是一样的结果   </p>
+<h3 id="更新集合中的文档"><a href="#更新集合中的文档" class="headerlink" title="更新集合中的文档"></a>更新集合中的文档</h3><p>db.collection.update(criteria,objNew,upsert,multi)<br>db.c2.update({name:”name0”},{name:”jack”})<br>参数说明：<br>criteria：用于设置查询条件的对象（相当于SQL里的where）<br>objNew：用于设置更新内容的对象（改成谁）<br>upsert：0（一般选择），如果存在则更新，不存在则什么都不做。1，如果没有找到，就插入（新增）这个记录。<br>multi：0，有多个符合条件的记录，只更新第一个。1，一般选择，有多个符合条件的记录，更新全部      </p>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>创建普通索引，使用命令 db.collection.ensureIndex({key:1})<br>给name增加了一个索引，在system.indexes里面可以看到<br>创建唯一索引，使用命令 db.collection.ensureIndex({key:1}，{unique:true})<br> 查看关于索引的相关信息，使用命令 db.collection.stats()<br> 查看查询使用索引的情况，使用命令   db.collection.find({key:value}).explain()<br> 删除索引，使用命令 db.collection.dropIndex({key:1})    </p>
+<h3 id="固定集合"><a href="#固定集合" class="headerlink" title="固定集合"></a>固定集合</h3><p>固定集合指的是事先创建而且大小固定的集合 。如果空间不足，最早的文档就会被删除，为新的文档腾出空间。<br>创建固定集合使用命令： </p>
+<pre><code>db.createCollection(“collectionName”{capped:true,size:100000,max:100});           
+</code></pre><p>size指定集合大小，单位为KB，max指定文档的数量。只要有一个参数超过，就开始删除旧文件腾空间。      </p>
+<h3 id="备份、恢复和导入、导出"><a href="#备份、恢复和导入、导出" class="headerlink" title="备份、恢复和导入、导出"></a>备份、恢复和导入、导出</h3><p>备份(mongodump)和恢复(mongorestore)导入(mongoimport)和导出(mongoexport)</p>
+<ul>
+<li><p>备份数据使用下面的命令：</p>
+<pre><code>操作系统&gt;mongodump -h dbhost -d dbname -o dbdirectory
+</code></pre><p>-h：MongDB所在服务器地址，例如：127.0.0.1，当然也可以指定端口号：127.0.0.1:27017<br>-d：需要备份的数据库实例，例如：test<br>-o：备份的数据存放位置，例如：c:\data\dump，当然该目录需要提前建立，在备份完成后，系统自动在dump目录下建立一个test目录，这个目录里面存放该数据库实例的备份数据    </p>
+</li>
+<li><p>恢复数据使用下面的命令：  </p>
+<pre><code>操作系统&gt;mongorestore -h dbhost -d dbname -directoryperdb dbdirectory
+</code></pre><p>-h：MongoDB所在服务器地址<br>-d：需要恢复的数据库实例，例如：test，当然这个名称也可以和备份时候的不一样，比如test2<br>-directoryperdb：备份数据所在位置，例如：c:\data\dump\test    </p>
+</li>
+<li><p>导出数据可以使用命令： </p>
+<pre><code>操作系统&gt;mongoexport -h dbhost -d dbname -c collectionName -o output
+</code></pre></li>
+</ul>
+<p>-h  数据库地址<br>-d 指明使用的库<br>-c 指明要导出的集合<br>-o 指明要导出的文件名（注意这里是文件，纯文本文件）      </p>
+<ul>
+<li><p>导入数据可以使用命令：</p>
+<pre><code>操作系统&gt;mongoimport -h dbhost -d dbname -c collectionname output 
+</code></pre></li>
+</ul>
+<p>-h  数据库地址<br>-d 指明使用的库<br>-c 指明要导入的集合   </p>
+<h3 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h3><h3 id="Java连接数据库"><a href="#Java连接数据库" class="headerlink" title="Java连接数据库"></a>Java连接数据库</h3><pre><code>public class MongoTest {
+/**
+ * 查询数据库中的集合
+ * @throws Exception 
+ */
+@Test
+public void test1() throws Exception{
+Mongo mongo = new Mongo(&quot;localhost&quot;,27017);//连接mongo服务器
+//连接数据库test
+DB db = mongo.getDB(&quot;test&quot;);
+//连接到集合c2
+DBCollection collection = db.getCollection(&quot;c2&quot;);
+//查询数据库并返回结果集
+DBCursor find = collection.find();
+//通过游标进行打印
+while(find.hasNext()){
+    DBObject object = find.next();
+    System.out.println(object);
+}
+mongo.close();
+}
+/**
+ * 删除数据
+ */
+@Test
+public void test2() throws Exception{
+Mongo mongo = new Mongo(&quot;localhost&quot;,27017);//连接mongo服务器
+DB db = mongo.getDB(&quot;test&quot;);
+DBCollection collection = db.getCollection(&quot;c2&quot;);
+//得到数据
+DBObject query = new BasicDBObject(&quot;name&quot;,&quot;name1&quot;);
+//删除数据，删除成功返回1，不成功返回0
+WriteResult result = collection.remove(query);
+System.out.println(result.getN());
+mongo.close();
+    }
+} 
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;MongoDB数据库学习笔记整理&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
+    
+    
+      <category term="MongoDB数据库" scheme="http://yoursite.com/tags/MongoDB%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RESTful架构</title>
+    <link href="http://yoursite.com/2017/02/01/RESTful%E6%9E%B6%E6%9E%84/"/>
+    <id>http://yoursite.com/2017/02/01/RESTful架构/</id>
+    <published>2017-02-01T13:14:41.000Z</published>
+    <updated>2017-02-01T13:38:25.831Z</updated>
+    
+    <content type="html"><![CDATA[<p>在慕课网学习高并发秒杀项目的时候，老师提到了RESTFul，所以就去学习了一下；</p>
+<a id="more"></a>
+<h1 id="什么是RESTFul"><a href="#什么是RESTFul" class="headerlink" title="什么是RESTFul"></a>什么是RESTFul</h1><p>REST全称是Representational State Transfer，中文意思是表现层状态转化。   </p>
+<ul>
+<li>是一组架构约束条件和原则</li>
+<li>兴起于Rails</li>
+<li>一种优雅的URI表达方式</li>
+<li>资源的状态和状态转移</li>
+</ul>
+<p>如果一个架构符合RESTFul约束条件和原则，则称其为RESTFul架构</p>
+<h1 id="RESTFul规范"><a href="#RESTFul规范" class="headerlink" title="RESTFul规范"></a>RESTFul规范</h1><p>RESTFul规范实现是通过HTTP协议里面四个表示操作方式的动词：<br>（1）GET – 查询操作<br>（2）POST – 添加、修改操作（非幂等操作）<br>（3）PUT – 修改操作（幂等操作）<br>（4）DELETE – 删除操作<br>GET用来获取资源，POST用来新建资源（也可以用于更新资源），PUT用来更新资源，DELETE用来删除资源。</p>
+<h1 id="示例–秒杀API的URL设计"><a href="#示例–秒杀API的URL设计" class="headerlink" title="示例–秒杀API的URL设计"></a>示例–秒杀API的URL设计</h1><p>/模块/资源/{标示}/集合1/….   </p>
+<pre><code>GET  /seckill/list    秒杀列表  
+GET  /seckill/{id}/detail    详情页
+GET  /seckill/time/now   系统时间
+POST   /seckill/{id}/exposer    暴露秒杀
+POST   /seckill/{id}/{md5}/execution   执行秒杀
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在慕课网学习高并发秒杀项目的时候，老师提到了RESTFul，所以就去学习了一下；&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
+    
+    
+      <category term="RESTFul架构" scheme="http://yoursite.com/tags/RESTFul%E6%9E%B6%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>四大域对象和JSP九大隐式对象</title>
+    <link href="http://yoursite.com/2017/01/30/%E5%9B%9B%E5%A4%A7%E5%9F%9F%E5%AF%B9%E8%B1%A1%E5%92%8CJSP%E4%B9%9D%E5%A4%A7%E9%9A%90%E5%BC%8F%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://yoursite.com/2017/01/30/四大域对象和JSP九大隐式对象/</id>
+    <published>2017-01-30T13:39:58.000Z</published>
+    <updated>2017-01-30T14:49:26.667Z</updated>
+    
+    <content type="html"><![CDATA[<p>Java四大域对象包含: PageContext，Request，Session，ServletContent<br><a id="more"></a></p>
+<h1 id="Java四大域对象"><a href="#Java四大域对象" class="headerlink" title="Java四大域对象"></a>Java四大域对象</h1><h3 id="页面范围对象pageConte（javax-servlet-jsp-PageContext）"><a href="#页面范围对象pageConte（javax-servlet-jsp-PageContext）" class="headerlink" title="页面范围对象pageConte（javax.servlet.jsp.PageContext）"></a>页面范围对象pageConte（javax.servlet.jsp.PageContext）</h3><p>存放在此处的数据，只能当前页面使用</p>
+<h3 id="请求范围域对象request（javax-servlet-ServletRequest）"><a href="#请求范围域对象request（javax-servlet-ServletRequest）" class="headerlink" title="请求范围域对象request（javax.servlet.ServletRequest）"></a>请求范围域对象request（javax.servlet.ServletRequest）</h3><p>存放在此处的数据，只有转发才能传递给别人，数据显示给用户后就没有用了</p>
+<h3 id="会话范围域对象sessio（javax-servlet-http-HttpSession"><a href="#会话范围域对象sessio（javax-servlet-http-HttpSession" class="headerlink" title="会话范围域对象sessio（javax.servlet.http.HttpSession)"></a>会话范围域对象sessio（javax.servlet.http.HttpSession)</h3><p>存放在此处的数据，只要是同一次会话就能取到<br>典型场景:登陆信息和购物车  </p>
+<h3 id="应用范围域对象application-javax-servlet-ServletContext"><a href="#应用范围域对象application-javax-servlet-ServletContext" class="headerlink" title="应用范围域对象application(javax.servlet.ServletContext)"></a>应用范围域对象application(javax.servlet.ServletContext)</h3><p>存放在此处的数据，整个应用都可以取到。主要用来存在全局数据，但一定要做好同步处理。</p>
+<h1 id="JSP九大隐式对象"><a href="#JSP九大隐式对象" class="headerlink" title="JSP九大隐式对象"></a>JSP九大隐式对象</h1><p>在JSP中Java脚本或表达式中可以直接使用的对象，如out<br>就是JSP中servlet中service方法中对应的局部变量    </p>
+<h3 id="九大隐式对象"><a href="#九大隐式对象" class="headerlink" title="九大隐式对象"></a>九大隐式对象</h3><ul>
+<li>request,请求对象</li>
+<li>response,响应对象</li>
+<li>pageContext,页面上下文对象(数据可用范围只在本页)</li>
+<li>session，会话对象</li>
+<li>application,应用程序对象</li>
+<li>out,输出对象(在JSP中尽量只输出字符，且尽量使用out内置对象)</li>
+<li>config,配置对象</li>
+<li>page,页面对象(相当于java中的this)</li>
+<li>exception,异常对象在errpage内才能用</li>
+</ul>
+<h1 id="javax-servlet-jsp-PageContext"><a href="#javax-servlet-jsp-PageContext" class="headerlink" title="javax.servlet.jsp.PageContext"></a>javax.servlet.jsp.PageContext</h1><h3 id="PageContext作为一个域对象"><a href="#PageContext作为一个域对象" class="headerlink" title="PageContext作为一个域对象"></a>PageContext作为一个域对象</h3><p>可以操作本身域对象数据</p>
+<pre><code>java.lang.Object getAttribute(java.lang.String name) 
+void removeAttribute(java.lang.String name)  
+void setAttribute(java.lang.String name, java.lang.Object value)  
+</code></pre><p>可以操作其他域对象数据</p>
+<pre><code>java.lang.Object getAttribute(java.lang.String name, int scope) 
+void removeAttribute(java.lang.String name, int scope)  
+void setAttribute(java.lang.String name, java.lang.Object value, int scope)  
+</code></pre><p>pageContext 中代表域的常量</p>
+<pre><code>PageContext.APPLICATION_SCOPE
+
+PageContext.SESSION_SCOPE
+
+PageContext.REQUEST_SCOPE
+
+PageContext.PAGE_SCOPE
+
+findAttribute方法,在四大域中搜寻属性，搜寻的顺序是page域、request域、session域、application域.
+</code></pre><h3 id="获取其他八个隐式对象"><a href="#获取其他八个隐式对象" class="headerlink" title="获取其他八个隐式对象"></a>获取其他八个隐式对象</h3><pre><code>java.lang.Exception getException()  
+java.lang.Object getPage()  
+javax.servlet.ServletRequest getRequest()  
+javax.servlet.ServletResponse getResponse()  
+javax.servlet.ServletConfig getServletConfig()  
+javax.servlet.ServletContext getServletContext()  
+javax.servlet.http.HttpSession getSession() 
+JspWriter getOut() 
+</code></pre><h3 id="提供了转发和包含方法"><a href="#提供了转发和包含方法" class="headerlink" title="提供了转发和包含方法"></a>提供了转发和包含方法</h3><pre><code>void forward(java.lang.String relativeUrlPath) 
+void include(java.lang.String relativeUrlPath)
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Java四大域对象包含: PageContext，Request，Session，ServletContent&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
+    
+    
+      <category term="java四大域对象" scheme="http://yoursite.com/tags/java%E5%9B%9B%E5%A4%A7%E5%9F%9F%E5%AF%B9%E8%B1%A1/"/>
+    
+      <category term="jsp九大隐式对象" scheme="http://yoursite.com/tags/jsp%E4%B9%9D%E5%A4%A7%E9%9A%90%E5%BC%8F%E5%AF%B9%E8%B1%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JDBC编码</title>
+    <link href="http://yoursite.com/2017/01/30/JDBC%E7%BC%96%E7%A0%81/"/>
+    <id>http://yoursite.com/2017/01/30/JDBC编码/</id>
+    <published>2017-01-30T10:18:51.000Z</published>
+    <updated>2017-01-30T13:32:42.237Z</updated>
+    
+    <content type="html"><![CDATA[<p>JDBC全称为：Java Data Base Connectivity（java数据库连接），它主要由接口组成。<a id="more"></a><br>JDBC属于JavaEE技术之一。它的API类在JDK中。是SUN公司制定的规范<br>数据库厂商就对JDBC进行了实现，所谓的驱动。  </p>
+<h1 id="JDBC编码步骤"><a href="#JDBC编码步骤" class="headerlink" title="JDBC编码步骤"></a>JDBC编码步骤</h1><h3 id="注册驱动"><a href="#注册驱动" class="headerlink" title="注册驱动"></a>注册驱动</h3><p>不能直接new一个com.mysql.jdbc.Driver<br>//DriverManager.registerDriver(new com.mysql.jdbc.Driver());<br>因为这样1、依赖具体的数据库驱动；2、会导致驱动被注册2遍.  </p>
+<pre><code>//mysql数据库   
+Class.forName(&quot;com.mysql.jdbc.Driver&quot;).newInstance();   
+//Oracle数据库
+Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;).newInstance();
+</code></pre><h3 id="获取与数据库的连接"><a href="#获取与数据库的连接" class="headerlink" title="获取与数据库的连接"></a>获取与数据库的连接</h3><p>mysql数据库   </p>
+<pre><code>//方式一： 
+Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/demo&quot;, &quot;root&quot;, &quot;12345&quot;);
+//方式二：
+Properties props = new Properties();
+props.put(&quot;user&quot;, &quot;root&quot;);//key看数据库的规定
+props.put(&quot;password&quot;, &quot;12345&quot;);
+props.put(&quot;useUnicode&quot;, &quot;true&quot;); 
+props.put(&quot;characterEncoding&quot;, &quot;utf8&quot;);
+Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/demo&quot;, props);
+//方式三：
+Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/demo?user=root&amp;password=12345&quot;); 
+</code></pre><p>Oracle数据库 </p>
+<pre><code>//方式一  
+String URL = &quot;jdbc:oracle:thin:@localhost:1521:demo&quot;;
+String USER = &quot;username&quot;;
+String PASS = &quot;password&quot;
+Connection conn = DriverManager.getConnection(URL, USER, PASS); 
+//方式二
+Properties props = new Properties();
+String URL = &quot;jdbc:oracle:thin:@localhost:1521:demo&quot;;
+props.put(&quot;user&quot;,&quot;username&quot;);
+props.put(&quot;password&quot;,&quot;password&quot;);
+Connection conn = DriverManager.getConnection(URL,props);
+//方式三
+String URL = &quot;jdbc:oracle:thin:username/password@localhost:1521:demo&quot;;
+Connection conn = DriverManager.getConnection(URL);
+</code></pre><h3 id="得到SQL语句的对象"><a href="#得到SQL语句的对象" class="headerlink" title="得到SQL语句的对象"></a>得到SQL语句的对象</h3><pre><code>Statement stmt = conn.createStatement();
+</code></pre><h3 id="发送SQL语句-得到返回的结果"><a href="#发送SQL语句-得到返回的结果" class="headerlink" title="发送SQL语句,得到返回的结果"></a>发送SQL语句,得到返回的结果</h3><pre><code>ResultSet rs = stmt.executeQuery(&quot;selcet chinese,english,math from student&quot;);
+//Statement常用方法
+//ResultSet executeQuery(String sql):sql一般是DQL语句
+//int executeUpdate(String sql):sql一般是没有返回结果集的语句，比如DML、DDL。返回值是影响到的行数
+//boolean execute(String sql):sql可以任何的语句。返回值：如果执行的sql语句有结果集，返回true，没有结果集，返回false
+</code></pre><h3 id="遍历结果集"><a href="#遍历结果集" class="headerlink" title="遍历结果集"></a>遍历结果集</h3><pre><code>while(rs.next()){
+System.out.println(&quot;---------------------------&quot;);
+System.out.print(rs.getObject(&quot;chinese&quot;)+&quot;\t&quot;);
+System.out.print(rs.getObject(&quot;english&quot;)+&quot;\t&quot;);
+System.out.println(rs.getObject(&quot;math&quot;));
+} 
+</code></pre><h3 id="释放占用的资源"><a href="#释放占用的资源" class="headerlink" title="释放占用的资源"></a>释放占用的资源</h3><pre><code>rs.close();
+stmt.close();
+conn.close();
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JDBC全称为：Java Data Base Connectivity（java数据库连接），它主要由接口组成。
+    
+    </summary>
+    
+      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
+    
+    
+      <category term="JDBC" scheme="http://yoursite.com/tags/JDBC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HTTP协议</title>
+    <link href="http://yoursite.com/2017/01/22/HTTP%E5%8D%8F%E8%AE%AE/"/>
+    <id>http://yoursite.com/2017/01/22/HTTP协议/</id>
+    <published>2017-01-22T12:59:16.000Z</published>
+    <updated>2017-01-23T02:04:30.205Z</updated>
+    
+    <content type="html"><![CDATA[<p> 超文本传输协议HTTP（Hyper Text Transport Protocol）W3C组织制定的。<br><a id="more"></a></p>
+<ul>
+<li>HTTP构建于TCP/IP协议之上，默认端口号是80  </li>
+<li>HTTP是无连接无状态的</li>
+<li>由请求和响应部分组成</li>
+</ul>
+<h1 id="请求部分-客户端向服务器发送的数据"><a href="#请求部分-客户端向服务器发送的数据" class="headerlink" title="请求部分 (客户端向服务器发送的数据)"></a>请求部分 (客户端向服务器发送的数据)</h1><h3 id="请求行-位于信息的第一行"><a href="#请求行-位于信息的第一行" class="headerlink" title="请求行(位于信息的第一行 )"></a>请求行(位于信息的第一行 )</h3><p> <strong>GET：</strong>请求方式(method)。是默认的请求方式。常用的还有POST（引入表单）等。<br> <strong>POST：</strong>通过html中的form标签中的属性method指定。</p>
+<h3 id="请求消息头-从第二行开始，至第一个空行结束"><a href="#请求消息头-从第二行开始，至第一个空行结束" class="headerlink" title="请求消息头(从第二行开始，至第一个空行结束)"></a>请求消息头(从第二行开始，至第一个空行结束)</h3><ul>
+<li>Accept： text/html, application/xhtml+xml,<br>浏览器可接受的MIME类型.(文件系统中采用扩展名区分不同的文件的。网络上是用MIME类型来区分不同的数据、有一定的对应关系（Tomcat\conf\web.xml有)<br>MIME类型：大类型/具体类型.例如jpg：image/jpeg或者bmp: image/bmp</li>
+<li>Accept-Charset：浏览器通过这个头告诉服务器，它支持哪种字符集</li>
+<li>Accept-Encoding：gzip, deflate<br>浏览器能够进行解码的数据编码方式，比如gzip </li>
+<li>Accept-Language:zh-Hans-CN,zh-Hans;q=0.5<br>浏览器所希望的语言种类，当服务器能够提供一种以上的语言版本时要用到。 可以在浏览器中进行设置。</li>
+<li>Host：localhost:8080<br>初始URL中的主机和端口 </li>
+<li>Referer：www.baidu.com<br>包含一个URL，取值为当前页面之前的那个页面地址<br>应用：1.看广告投放效果,  2.防盗链</li>
+<li>Content-Type：application/x-www-form-urlencoded; charset=UTF-8<br>请求正文内容类型。目前：只有通过表单提交数据，且请求方式是post时，才会出现请求正文内容，才会有该头。<br>默认值是：application/x-www-form-urlencoded<br>常用可选值：multipart/form-data       </li>
+<li>If-Modified-Since:<br>利用这个头与服务器的文件进行比对，如果一致，则从缓存中直接读取文件。    </li>
+<li>User-Agent:浏览器类型.   </li>
+<li>Content-Length：表示请求正文的长度 ,数据字节长度。   </li>
+<li>Connection：表示是否需要持久连接。如果服务器看到这里的值为“Keep -Alive”，            </li>
+<li>Cookie:这是最重要的请求头信息之一 （会话管理）  </li>
+<li>Date：GMT请求时间GMT</li>
+</ul>
+<h3 id="请求正文-第一个空行之后的所有内容"><a href="#请求正文-第一个空行之后的所有内容" class="headerlink" title="请求正文(第一个空行之后的所有内容)"></a>请求正文(第一个空行之后的所有内容)</h3><p>只有通过表单，且请求方式是POST时才能看到正文。<br>当Content-Type是：application/x-www-form-urlencoded，表单提交的数据表现形式为<br>username=felix&amp;password=321<br>username和password表单中输入域的name<br>felix和321就是用户输入的数据多个输入域用&amp;进行分割的 </p>
+<h1 id="响应部分-服务器向客服端发送的数据"><a href="#响应部分-服务器向客服端发送的数据" class="headerlink" title="响应部分 (服务器向客服端发送的数据)"></a>响应部分 (服务器向客服端发送的数据)</h1><h3 id="响应行-位于信息的第一行-HTTP-1-1-200-OK"><a href="#响应行-位于信息的第一行-HTTP-1-1-200-OK" class="headerlink" title="响应行(位于信息的第一行 HTTP/1.1 200 OK)"></a>响应行(位于信息的第一行 HTTP/1.1 200 OK)</h3><p>HTTP/1.1:服务器使用的协议<br>200：响应码。（预留了500个，目前真正有意义的也就30个左右）<br>常用响应码：<br>200：一切正常<br>302/307:临时重定向<br>304：未修改（缓存）<br>404：资源不存在<br>500：服务器内部错误(自己的程序出错了)。<br>OK：对错误的描述信息。(OK表示一切正常)   </p>
+<h3 id="响应消息头-从第二行开始，至第一个空行结束"><a href="#响应消息头-从第二行开始，至第一个空行结束" class="headerlink" title="响应消息头(从第二行开始，至第一个空行结束)"></a>响应消息头(从第二行开始，至第一个空行结束)</h3><ul>
+<li>Location: <a href="http://www.felix.com/index.jsp指示新的资源的位置" target="_blank" rel="external">http://www.felix.com/index.jsp指示新的资源的位置</a><br>302+该头：完成是请求的重定向。 </li>
+<li>Content-Encoding：告知客户端服务器发送的数据采用的编码类型gzip(压缩格式)</li>
+<li>Content-Length：80 告诉浏览器正文的长度</li>
+<li>Content-Language：zh-cn服务发送的文本的语言</li>
+<li>Content-Type：text/html默认的; 告知客户端请求正文的MIME类型</li>
+<li>Last-Modified：GMT文件的最后修改时间</li>
+<li>Refresh: 1;url=<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a><br>1：指示客户端刷新频率。单位是秒<br>1;url=<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a> ：指示客户端1秒后刷新到指定网址</li>
+<li>Content-Disposition: attachment; filename=aaa.zip<br>指示客户端下载文件，并制定文件的名称     </li>
+<li>Set-Cookie:SS=Q0=5Lb_nQ; path=/search<br>服务器端发送的Cookie（会话管理）<br>控制浏览器不要缓存<br>Expires: -1<br>Cache-Control: no-cache (1.1)<br>Pragma: no-cache   (1.0)     </li>
+</ul>
+<h3 id="响应正文-第一个空行之后的所有内容"><a href="#响应正文-第一个空行之后的所有内容" class="headerlink" title="响应正文(第一个空行之后的所有内容)"></a>响应正文(第一个空行之后的所有内容)</h3><p>浏览器要显示的数据。在未压缩的前提下，与右键   查看源码完全对应。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; 超文本传输协议HTTP（Hyper Text Transport Protocol）W3C组织制定的。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
+    
+    
+      <category term="http协议" scheme="http://yoursite.com/tags/http%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网络基础知识</title>
+    <link href="http://yoursite.com/2017/01/22/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    <id>http://yoursite.com/2017/01/22/网络基础知识/</id>
+    <published>2017-01-22T12:03:51.000Z</published>
+    <updated>2017-01-22T12:56:56.194Z</updated>
+    
+    <content type="html"><![CDATA[<p>网络是计算机或类似计算机的设备之间通过常用的传输介质进行通信的集合。<br><a id="more"></a><br>节点：网络中的每一台设备<br>地址：用户唯一标识节点的资格字节序列   </p>
+<h1 id="网络的分层"><a href="#网络的分层" class="headerlink" title="网络的分层"></a>网络的分层</h1><p>为了对应用程序开发人员和用户隐藏这种网络传输的复杂性网络通信的不同方面被分解为多个层。每一层表示为物理硬件（线缆和电流）与所传输信息之间的不同抽象层次。<strong>每一层只与紧挨的上下层对话。将网络分层，这样就可以修改甚至替换某一层的软件，只要层与层之间的接口不变，就不会影响到其它层。</strong></p>
+<h3 id="四层模型"><a href="#四层模型" class="headerlink" title="四层模型"></a>四层模型</h3><p><img src="http://oje7mvhbz.bkt.clouddn.com/%E5%9B%9B%E5%B1%82%E6%A8%A1%E5%9E%8B.png" alt="四层模型"><br><strong>应用层：</strong>决定了向用户提供应用服务时通信的活动。比如：ftp,dns服务就是其中的两类，HTTP协议也处于该层。<br><strong>传输层：</strong> 对上层应用层提供网络连接中的两台计算机之间的数据传输。在传输层有两个性质不同的协议：TCP和UDP<br><strong>网络层：</strong>用来处理网络上流动的数据包，该层规定了通过怎样的路径到达对方计算机，并把数据发给对方<br><strong>链路层：</strong>用来处理链接网络的硬件部分，包括操作系统、硬件的设备驱动、网卡及光纤等物理可见部分   </p>
+<h1 id="URI-URL"><a href="#URI-URL" class="headerlink" title="URI/URL"></a>URI/URL</h1><p>URI用字符标识某一网络资源，而URL表示资源的地址。URL是URI的子集。<img src="http://oje7mvhbz.bkt.clouddn.com/URI.jpg" alt="URI"></p>
+<h1 id="TCP-IP-三次握手，四次断开"><a href="#TCP-IP-三次握手，四次断开" class="headerlink" title="TCP/IP(三次握手，四次断开)"></a>TCP/IP(三次握手，四次断开)</h1><p><strong>IP</strong>：国际协议，IP被设计为允许任意两点之间有多个路由，可以绕过被破坏的路由器实现数据包的路由。IP是开发的、与平台无关。    </p>
+<p><strong>TCP</strong>：因为两点之间存在多个路由，并且两点之间的最短路由路径可能由于网络业务流量或者其他因素而改变，所以数据包可能不会使用相同的路由，另外即使它们全部到达也不会以发送的顺序到达，为了改进这种机制，将TCP置于IP之上，使连接的两端能够确认接收到IP包，以及请求重传丢失或被破坏的包。<br><img src="http://oje7mvhbz.bkt.clouddn.com/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" alt="三次握手"><br><img src="http://oje7mvhbz.bkt.clouddn.com/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png" alt="四次挥手">   </p>
+<p><strong>UDP</strong>：如果单个包的丢失不会影响整个数据流，那么可以使用UDP包发送数据，UDP不保证包一定到达目的地，也不保证顺序相同。   </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;网络是计算机或类似计算机的设备之间通过常用的传输介质进行通信的集合。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
+    
+    
+      <category term="网络基础" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《剑指offer》笔记</title>
+    <link href="http://yoursite.com/2017/01/20/%E3%80%8A%E5%89%91%E6%8C%87offer%E3%80%8B%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2017/01/20/《剑指offer》笔记/</id>
+    <published>2017-01-20T08:50:17.000Z</published>
+    <updated>2017-01-22T03:42:52.798Z</updated>
+    
+    <content type="html"><![CDATA[<p>《剑指offer》的题目代码实现,不断更新<br><a id="more"></a></p>
+<h3 id="替换空格"><a href="#替换空格" class="headerlink" title="替换空格"></a>替换空格</h3><p>题目描述:<br>请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。   </p>
+<pre><code>    public class Solution {
+       public String replaceSpace(StringBuffer str) {
+    if (str == null){
+        return null;
+    }
+    StringBuilder newStr = new StringBuilder(); 
+    for (int i=0; i&lt;str.length(); i++) {
+        if (str.charAt(i)==&apos; &apos;){
+            newStr.append(&apos;%&apos;);
+            newStr.append(&apos;2&apos;);
+            newStr.append(&apos;0&apos;);
+        } else{
+            newStr.append(str.charAt(i));
+        }
+    }
+    return newStr.toString();
+    }
+}
+</code></pre><h3 id="二维数组中的查找"><a href="#二维数组中的查找" class="headerlink" title="二维数组中的查找"></a>二维数组中的查找</h3><p>题目描述<br>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数    </p>
+<pre><code>public class Solution {
+public boolean Find(int target, int [][] array) {
+    boolean flag = false;
+    for (int i=0; i&lt;array.length; i++) {
+        for (int j=0; j&lt;array[i].length; j++){
+            if (target == array[i][j]) {
+                flag = true;
+                break;
+            }
+        }
+        if (flag){
+            break;
+        }
+    }
+    return flag;
+}
+}
+</code></pre><h3 id="从尾至头打印链表"><a href="#从尾至头打印链表" class="headerlink" title="从尾至头打印链表"></a>从尾至头打印链表</h3><p>题目描述<br>输入一个链表，从尾到头打印链表每个节点的值。    </p>
+<pre><code>    /**
+    *    public class ListNode {
+    *        int val;
+    *        ListNode next = null;
+    *
+    *        ListNode(int val) {
+    *            this.val = val;
+    *        }
+    *    }
+    *
+    */
+    import java.util.ArrayList;
+    public class Solution {
+    ArrayList&lt;Integer&gt; arrayList = new ArrayList&lt;Integer&gt;();
+    public ArrayList&lt;Integer&gt; printListFromTailToHead(ListNode listNode) {
+    if (listNode != null){
+        this.printListFromTailToHead(listNode.next);
+        arrayList.add(listNode.val);
+    }
+    return arrayList;
+    }
+}
+</code></pre><h3 id="旋转数组的最小数字"><a href="#旋转数组的最小数字" class="headerlink" title="旋转数组的最小数字"></a>旋转数组的最小数字</h3><p>题目描述<br>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。<br>输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。<br>例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。<br>NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。   </p>
+<pre><code>    import java.util.ArrayList;
+    public class Solution {
+
+        public int minNumberInRotateArray(int [] array) {
+    if (array.length == 0 || array == null) {
+        return 0;
+    }
+    int min = array[0];
+    for (int i=0; i&lt;array.length; i++) {
+      if (array[i] &lt; min) {
+          min = array[i];
+      }
+    }
+    return min;
+}
+}
+</code></pre><h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><p>题目描述<br>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。<br>n&lt;=39    </p>
+<pre><code>//0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233……
+public class Solution {
+public int Fibonacci(int n) {
+
+    if (n &lt;= 0) {
+        return 0;
+    }
+    if (n == 1 || n == 2){
+       return 1; 
+    }
+    int f1 = 1;
+    int f2 = 1;
+    int f = 0;
+    for (int i=3; i&lt;=n; i++) {
+        f = f1 + f2;
+        f1 = f2;
+        f2 = f;
+    }
+    return f;   
+}
+}
+</code></pre><h3 id="跳台阶"><a href="#跳台阶" class="headerlink" title="跳台阶"></a>跳台阶</h3><p>题目描述<br>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。    </p>
+<pre><code>public class Solution {
+public int JumpFloor(int target) {
+
+    if (target &lt;= 2 ) {
+        return target;
+    }
+    int f1 = 1;
+    int f2 = 2;
+    int f = 0;
+
+    for ( int i = 3; i &lt;= target; i++) {
+        f = f1 + f2;
+        f1 = f2;
+        f2 = f;
+    }
+    return f;
+}
+}
+</code></pre><h3 id="变态跳台阶"><a href="#变态跳台阶" class="headerlink" title="变态跳台阶"></a>变态跳台阶</h3><p>题目描述<br>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。    </p>
+<pre><code>public class Solution {
+public int JumpFloorII(int target) {
+
+    if (target == 1)
+        return 1;
+    if (target == 2)
+        return 2;
+    int a[] = new int[target];
+    a[0] = 1;
+    a[1] = 2;
+    for (int i = 2; i &lt; target; i++) {
+        int sum = 0;
+        for (int j = 0; j &lt; i; j++) {
+            sum += a[j];
+        }
+        a[i] = sum + 1;
+    }
+    return a[target - 1];
+}
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;《剑指offer》的题目代码实现,不断更新&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="剑指offer" scheme="http://yoursite.com/tags/%E5%89%91%E6%8C%87offer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java面试题总结(中)</title>
+    <link href="http://yoursite.com/2017/01/19/Java%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93-%E4%B8%AD/"/>
+    <id>http://yoursite.com/2017/01/19/Java面试题总结-中/</id>
+    <published>2017-01-19T08:05:27.000Z</published>
+    <updated>2017-01-19T08:06:22.366Z</updated>
+    
+    <content type="html"><![CDATA[<p>网上找的题目，自己一题一题做的，查缺补漏<br><a id="more"></a></p>
+<h1 id="集合框架"><a href="#集合框架" class="headerlink" title="集合框架"></a>集合框架</h1><h3 id="1-下列说法正确的是（AC）"><a href="#1-下列说法正确的是（AC）" class="headerlink" title="1. 下列说法正确的是（AC）"></a>1. 下列说法正确的是（AC）</h3><p>A. LinkedList继承自List<br>B. AbstractSet继承自Set<br>C. HashSet继承自AbstractSet<br>D. WeakMap继承自HashMap</p>
+<h3 id="2-ArrayList-list-new-ArrayList-20-中的-list-扩充几次"><a href="#2-ArrayList-list-new-ArrayList-20-中的-list-扩充几次" class="headerlink" title="2. ArrayList list = new ArrayList(20);中的 list 扩充几次?"></a>2. ArrayList list = new ArrayList(20);中的 list 扩充几次?</h3><p>A. 0<br>B. 1<br>C. 2<br>D. 3<br>答案： A<br>ArrayList默认的长度是10，如果要添加20个元素，则要扩充1次，但是，题目已经指明了需要多少空间，所以创建的时候一次性分配了那么多空间，所以不需要再次扩充</p>
+<h3 id="3-Java集合类框架的基本接口有哪些？"><a href="#3-Java集合类框架的基本接口有哪些？" class="headerlink" title="3. Java集合类框架的基本接口有哪些？"></a>3. Java集合类框架的基本接口有哪些？</h3><p>Collection:代表一组集合对象，每一个对象都是它的子元素<br>List:有序的Collection，并且元素可以重复，元素都有索引<br>Set:无序，不可重复的Collection<br>Map:键值对对象，key值不可以重复</p>
+<h3 id="4-为什么集合类没有实现-Cloneable-和-Serializable-接口？"><a href="#4-为什么集合类没有实现-Cloneable-和-Serializable-接口？" class="headerlink" title="4. 为什么集合类没有实现 Cloneable 和 Serializable 接口？"></a>4. 为什么集合类没有实现 Cloneable 和 Serializable 接口？</h3><p>克隆和序列化的语义和含义是和具体的实现相关的，因此，应该由集合类的具体实现来决定如何被克隆或者序列化</p>
+<h3 id="5-什么是迭代器-Iterator"><a href="#5-什么是迭代器-Iterator" class="headerlink" title="5. 什么是迭代器(Iterator)"></a>5. 什么是迭代器(Iterator)</h3><p>Iterator接口提供了很多对集合元素进行迭代的方法，用来取出集合中的元素</p>
+<h3 id="6-Iterator和ListIterator的区别是什么？"><a href="#6-Iterator和ListIterator的区别是什么？" class="headerlink" title="6. Iterator和ListIterator的区别是什么？"></a>6. Iterator和ListIterator的区别是什么？</h3><p>Iterator可以对List、Set迭代，而ListIterator只可以对List迭代<br>ListIterator实现了Iterator接口，包含Iterator接口的方法<br>Iterator对集合只能向前遍历，ListIterator可以向前也可以向后</p>
+<h3 id="7-快速失败-fail-fast-和安全失败-fail-safe-的区别是什么？"><a href="#7-快速失败-fail-fast-和安全失败-fail-safe-的区别是什么？" class="headerlink" title="7. 快速失败(fail-fast)和安全失败(fail-safe)的区别是什么？"></a>7. 快速失败(fail-fast)和安全失败(fail-safe)的区别是什么？</h3><p>Iterator的安全失败是对底层集合做拷贝，所以不受源集合修改的影响java.util 包下面的所有的集合类都是快速失败的，而java.util.concurrent 包下面的所有的类都是安全失败的。快速失败的迭代器会抛出 ConcurrentModificationException 异常，而安全失败的迭代器永远不会抛出这样的异常。</p>
+<h3 id="8-Java-中的-HashMap-的工作原理是什么？"><a href="#8-Java-中的-HashMap-的工作原理是什么？" class="headerlink" title="8. Java 中的 HashMap 的工作原理是什么？"></a>8. Java 中的 HashMap 的工作原理是什么？</h3><p>HashMap是一个键值对形式存储元素的，有一个hash函数，使用hashcode()和equals()方法来检索和添加元素，当调用put()方法时，HashMap会计算key的hash值，然后把键值对存储在合适的索引上，如果key已经存在，则Value则会被更新成新值。HashMap的一些重要的特性是它的容量(capacity)，负载因子(load factor)和扩容极限(threshold resizing)。</p>
+<h3 id="9-hashCode-和-equals-方法的重要性体现在什么地方？"><a href="#9-hashCode-和-equals-方法的重要性体现在什么地方？" class="headerlink" title="9. hashCode() 和 equals() 方法的重要性体现在什么地方？"></a>9. hashCode() 和 equals() 方法的重要性体现在什么地方？</h3><p>Java中HashMap会根据hashCode() 和 equals() 方法来确定键值对的索引，当根据键获取值得时候也会用到这两个方法，如果没有正确实现这两个方法，两个不同的键可能会有相同的hash值，可能会被集合认为是相等的。而且，这两个方法还用来发现重复的值，所以这两个方法的实现对HashMap的精确性和正确性至关重要。</p>
+<h3 id="10-HashMap-和-Hashtable-有什么区别？"><a href="#10-HashMap-和-Hashtable-有什么区别？" class="headerlink" title="10. HashMap 和 Hashtable 有什么区别？"></a>10. HashMap 和 Hashtable 有什么区别？</h3><p>HashMap允许键值对是null，Hashtable不允许null<br>HashMap不是同步的，Hashtable是同步的<br>HashMap提供了对键的列举<br>Hashtable是一个遗留类 </p>
+<h3 id="11-数组-Array-和列表-ArrayList-有什么区别？什么时候应该使用-Array-而不是ArrayList"><a href="#11-数组-Array-和列表-ArrayList-有什么区别？什么时候应该使用-Array-而不是ArrayList" class="headerlink" title="11. 数组(Array)和列表(ArrayList)有什么区别？什么时候应该使用 Array 而不是ArrayList"></a>11. 数组(Array)和列表(ArrayList)有什么区别？什么时候应该使用 Array 而不是ArrayList</h3><p>Array存储的是基本数据类型或者对象类型，ArrayList只能存储对象类型<br>Array是大小不可变的，ArrayList的大小是动态变化的    </p>
+<h3 id="12-ArrayList-和-LinkedList-有什么区别？"><a href="#12-ArrayList-和-LinkedList-有什么区别？" class="headerlink" title="12. ArrayList 和 LinkedList 有什么区别？"></a>12. ArrayList 和 LinkedList 有什么区别？</h3><p>ArrayList:底层数据结构是数组，线程不同步，查询速度非常快<br>LinkedList：底层数据结构是列表，线程不同步，增删元素速度快<br>Vector:底层的数据结构是数组，线程同步，查询和增删元素都非常慢  </p>
+<h3 id="13-Comparable-和Comparator-接口是干什么的？列出它们的区别。"><a href="#13-Comparable-和Comparator-接口是干什么的？列出它们的区别。" class="headerlink" title="13. Comparable 和Comparator 接口是干什么的？列出它们的区别。"></a>13. Comparable 和Comparator 接口是干什么的？列出它们的区别。</h3><p>Java提供了一个只包含compareTo（）方法的Comparable接口，这个方法可以给两个对象排序，具体来说，它返回负数，0，正数来表明输入对象小于，等于，大于已经存在的对象<br>Java提供了包含compare（）和equals（）方法的Comparator的接口compare() 方法用来给两个输入数排序，返回负数，0，正数表明第一个参数是小于，等于，大于第二个参数。equals() 方法需要一个对象作为参数，它用来决定输入参数是否和 comparator 相等。只有当输入参数也是一个 comparator 并且输入参数和当前 comparator 的排序结果是相同的时候，这个方法才返回true。</p>
+<h3 id="14-Java集合类框架的最佳实践有哪些？"><a href="#14-Java集合类框架的最佳实践有哪些？" class="headerlink" title="14. Java集合类框架的最佳实践有哪些？"></a>14. Java集合类框架的最佳实践有哪些？</h3><p>根据需求选择合适的集合类型对性能非常重要<br>使用泛型，增强程序的可读性和健壮性<br>底层的集合实际上是空的情况下，返回长度是0的集合或者是数组，不要返回 null。   </p>
+<h3 id="15-Enumeration-接口和-Iterator-接口的区别有哪些？"><a href="#15-Enumeration-接口和-Iterator-接口的区别有哪些？" class="headerlink" title="15. Enumeration 接口和 Iterator 接口的区别有哪些？"></a>15. Enumeration 接口和 Iterator 接口的区别有哪些？</h3><p>Enumeration的速度是Iterator的两倍，同时占用更少内存，但是Iterator远比Enumeration安全，因为其他线程不能修改正在被Iterator遍历集合里面的的元素，同时，Iterator允许调用者删除底层集合里面的元素，而Enumeration不可以</p>
+<h3 id="16-HashSet-和-TreeSet-有什么区别？"><a href="#16-HashSet-和-TreeSet-有什么区别？" class="headerlink" title="16. HashSet 和 TreeSet 有什么区别？"></a>16. HashSet 和 TreeSet 有什么区别？</h3><p>HashSet: 底层数据结构是哈希表，是线程不同步的，无序，高效<br>TreeSet： 底层数据结构是二叉树，是线程不同步的，对集合中的元素进行指定顺序的排序  </p>
+<h3 id="17-List、Set、Map-是否继承自-Collection-接口？"><a href="#17-List、Set、Map-是否继承自-Collection-接口？" class="headerlink" title="17. List、Set、Map 是否继承自 Collection 接口？"></a>17. List、Set、Map 是否继承自 Collection 接口？</h3><p>List、Set继承自Collection，Map存储的是键值对，显然不是继承自Collection</p>
+<h3 id="18-说出-ArrayList、Vector、LinkedList-的存储性能和特性？"><a href="#18-说出-ArrayList、Vector、LinkedList-的存储性能和特性？" class="headerlink" title="18. 说出 ArrayList、Vector、LinkedList 的存储性能和特性？"></a>18. 说出 ArrayList、Vector、LinkedList 的存储性能和特性？</h3><p>ArrayList:底层数据结构是数组，线程不同步，查询速度非常快<br>LinkedList：底层数据结构是链表，线程不同步，增删元素速度非常快<br>Vector：底层数据结构是数组，线程同步，查询和增删元素都非常慢，已过时</p>
+<h3 id="19-List、Map、Set-三个接口存储元素时各有什么特点？"><a href="#19-List、Map、Set-三个接口存储元素时各有什么特点？" class="headerlink" title="19. List、Map、Set 三个接口存储元素时各有什么特点？"></a>19. List、Map、Set 三个接口存储元素时各有什么特点？</h3><p>List:有序的Collection，元素都有索引，元素可以重复<br>Set：无序的Collection，必须保证元素的唯一性<br>Map：存储的是键值对</p>
+<h3 id="20-判断下列语句是否正确，如果有错误，请指出错误所在？"><a href="#20-判断下列语句是否正确，如果有错误，请指出错误所在？" class="headerlink" title="20. 判断下列语句是否正确，如果有错误，请指出错误所在？"></a>20. 判断下列语句是否正确，如果有错误，请指出错误所在？</h3><pre><code>List a = new ArrayList();
+a.add(5);
+</code></pre><p>答：错误,默认封装 int 类型。</p>
+<h1 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h1><h3 id="1-GC线程是否为守护线程？（是）"><a href="#1-GC线程是否为守护线程？（是）" class="headerlink" title="1. GC线程是否为守护线程？（是）"></a>1. GC线程是否为守护线程？（是）</h3><p>线程分为守护线程和非守护线程（用户线程）<br>只要当前JVM实例中尚存在任何一个非守护线程没有结束，守护线程就不会工作；只有当最后一个非守护线程结束时，守护线程随着 JVM 一同结束工作。 守护线程最典型的应用就是 GC (垃圾回收器)</p>
+<h3 id="2-解释内存中的栈（stack）、堆-heap-和静态存储区的用法。"><a href="#2-解释内存中的栈（stack）、堆-heap-和静态存储区的用法。" class="headerlink" title="2. 解释内存中的栈（stack）、堆(heap)和静态存储区的用法。"></a>2. 解释内存中的栈（stack）、堆(heap)和静态存储区的用法。</h3><p>栈：线程私有，只保存基本数据类型对象，和自定义对象的引用，存放局部变量，函数的参数值<br>堆： 存放对象本身<br>静态存储区：存放常量</p>
+<h3 id="3-Java-中会存在内存泄漏吗，请简单描述"><a href="#3-Java-中会存在内存泄漏吗，请简单描述" class="headerlink" title="3. Java 中会存在内存泄漏吗，请简单描述"></a>3. Java 中会存在内存泄漏吗，请简单描述</h3><p>理论上有GC，不会存在内存泄漏，但实际开发中，存在无用但可达的对象，不会被GC回收，会发生内存泄漏。hibernate中session的一级缓存属于持久状态</p>
+<h3 id="4-GC-是什么？为什么要有-GC？"><a href="#4-GC-是什么？为什么要有-GC？" class="headerlink" title="4. GC 是什么？为什么要有 GC？"></a>4. GC 是什么？为什么要有 GC？</h3><p>GC（垃圾收集）内存的处理是比较容易出现问题的地方，忘记或者错误的回收内存可能会导致系统的奔溃，Java提供的GC可以自动监测对象是否超过作用域从而达到自动回收内存的目的</p>
+<h3 id="5-描述一下-JVM-加载-class-文件的原理机制"><a href="#5-描述一下-JVM-加载-class-文件的原理机制" class="headerlink" title="5. 描述一下 JVM 加载 class 文件的原理机制?"></a>5. 描述一下 JVM 加载 class 文件的原理机制?</h3><p>双亲委派制,收到加载请求时，自己不加载，而是委派给父类加载</p>
+<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><h3 id="1-下面关于java-lang-Exception类的说法正确的是（A）"><a href="#1-下面关于java-lang-Exception类的说法正确的是（A）" class="headerlink" title="1. 下面关于java.lang.Exception类的说法正确的是（A）"></a>1. 下面关于java.lang.Exception类的说法正确的是（A）</h3><p>A. 继承自 Throwable<br>B. Serialable<br>解析：Java 异常的基类为 java.lang.Throwable，java.lang.Error 和java.lang.Exception 继承 Throwable，RuntimeException 和其它的 Exception 等继承 Exception，具体的 RuntimeException 继承 RuntimeE<br>xception。</p>
+<h3 id="2-扩展：错误和异常的区别-Error-vs-Exception"><a href="#2-扩展：错误和异常的区别-Error-vs-Exception" class="headerlink" title="2. 扩展：错误和异常的区别(Error vs Exception)"></a>2. 扩展：错误和异常的区别(Error vs Exception)</h3><p>error都是继承自父类java.lang.Error，而exception都继承自java.lang.Exception.<br>Error和RuntimeException 及其子类都是未检查的异常（unchecked exceptions），而所有其他的Exception类都是检查了的异常（checked exceptions）.<br>错误是非正常的，不该出现的，而异常是非严重的，并且鼓励去捕获</p>
+<h3 id="3-getCustomerInfo-方法如下，try-中可以捕获三种类型的异常，如果在该方法运行中产生了一个-IOException，将会输出什么结果"><a href="#3-getCustomerInfo-方法如下，try-中可以捕获三种类型的异常，如果在该方法运行中产生了一个-IOException，将会输出什么结果" class="headerlink" title="3. getCustomerInfo() 方法如下，try 中可以捕获三种类型的异常，如果在该方法运行中产生了一个 IOException，将会输出什么结果?"></a>3. getCustomerInfo() 方法如下，try 中可以捕获三种类型的异常，如果在该方法运行中产生了一个 IOException，将会输出什么结果?</h3><pre><code>public void getCustomerInfo() {
+try {
+// do something that may cause an Exception
+} catch (java.io.FileNotFoundException ex) {
+System.out.print(&quot;FileNotFoundException!&quot;);
+} catch (java.io.IOException ex) {
+System.out.print(&quot;IOException!&quot;);
+} catch (java.lang.Exception ex) {
+System.out.print(&quot;Exception!&quot;);
+}
+}
+</code></pre><p>A. IOException!<br>B. IOException!Exception!<br>C. FileNotFoundException!IOException!<br>D. FileNotFoundException!IOException!Exception!<br>答案：A       </p>
+<p>解析：考察多个 catch 语句块的执行顺序。当用多个 catch 语句时，catch 语句块在次序上有先后之分。从最前面的 catch 语句块依次先后进行异常类型匹配，这样如果父异常在子异常类之前，那么首先匹配的将是父异常类，子异常类将不会获得匹配的机会，也即子异常类型所在的 catch 语句块将是不可到达的语句。所以，一般将父类异常类即 Exception 老大放在 catch 语句块的最后一个。</p>
+<h3 id="4-try-里有一个-return-语句，那么紧跟在这个-try-后的-finally-里的-code-会不会被执行，什么时候被执行，在-return-前还是后"><a href="#4-try-里有一个-return-语句，那么紧跟在这个-try-后的-finally-里的-code-会不会被执行，什么时候被执行，在-return-前还是后" class="headerlink" title="4. try{} 里有一个 return 语句，那么紧跟在这个 try 后的 finally{} 里的 code 会不会被执行，什么时候被执行，在 return 前还是后?"></a>4. try{} 里有一个 return 语句，那么紧跟在这个 try 后的 finally{} 里的 code 会不会被执行，什么时候被执行，在 return 前还是后?</h3><p>答：会执行，在方法返回调用者前执行  </p>
+<h3 id="5-Java-语言如何进行异常处理，关键字：throws、throw、try、catch、finally-分别如何使用？"><a href="#5-Java-语言如何进行异常处理，关键字：throws、throw、try、catch、finally-分别如何使用？" class="headerlink" title="5. Java 语言如何进行异常处理，关键字：throws、throw、try、catch、finally 分别如何使用？"></a>5. Java 语言如何进行异常处理，关键字：throws、throw、try、catch、finally 分别如何使用？</h3><p>抛出异常<br>throws用在方法上跟异常类名<br>throw用方法内，后面跟对象<br>捕获异常<br>try{}catch{}finally{}</p>
+<h3 id="6-运行时异常与受检异常有何异同？"><a href="#6-运行时异常与受检异常有何异同？" class="headerlink" title="6. 运行时异常与受检异常有何异同？"></a>6. 运行时异常与受检异常有何异同？</h3><p>异常表示程序运行过程中可能出现的非正常状态，运行时异常表示虚拟机的通常操作中可能遇到的异常，是一种常见运行错误，只要程序设计得没有问题通常就不会发生。受检异常跟程序运行的上下文环境有关，即使程序设计无误，仍然可能因使用的问题而引发。   </p>
+<h3 id="7-请写出-5-种常见到的runtime-exception。"><a href="#7-请写出-5-种常见到的runtime-exception。" class="headerlink" title="7. 请写出 5 种常见到的runtime exception。"></a>7. 请写出 5 种常见到的runtime exception。</h3><p>答：<br>NullPointerException：当操作一个空引用时会出现此错误。<br>NumberFormatException：数据格式转换出现问题时出现此异常。<br>ClassCastException：强制类型转换类型不匹配时出现此异常。<br>ArrayIndexOutOfBoundsException：数组下标越界，当使用一个不存在的数组下标时出现此异常。<br>ArithmeticException：数学运行错误时出现此异常</p>
+<h1 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h1><h3 id="1-XML-包括哪些解析技术，区别是什么？"><a href="#1-XML-包括哪些解析技术，区别是什么？" class="headerlink" title="1. XML 包括哪些解析技术，区别是什么？"></a>1. XML 包括哪些解析技术，区别是什么？</h3><p>DOM：一次性将整个文档读入内存中，然后再进行操作<br>SAX：在读取文档时就可以进行操作</p>
+<h3 id="2-XML-文档定义有几种形式？它们之间有何本质区别？"><a href="#2-XML-文档定义有几种形式？它们之间有何本质区别？" class="headerlink" title="2. XML 文档定义有几种形式？它们之间有何本质区别？"></a>2. XML 文档定义有几种形式？它们之间有何本质区别？</h3><p>XML 文档定义分为 DTD 和 Schema 两种形式；其本质区别在于 Schema 本身也是一个 XML 文件，可以被 XML 解析器解析</p>
+<h3 id="3-你在项目中哪些地方用到了-XML？"><a href="#3-你在项目中哪些地方用到了-XML？" class="headerlink" title="3. 你在项目中哪些地方用到了 XML？"></a>3. 你在项目中哪些地方用到了 XML？</h3><p>答:XML 的主要作用有两个方面：数据交换（曾经被称为业界数据交换的事实标准，现在此项功能在很多时候都被 JSON 取代）和信息配置。在做数据交换时，XML 将数据用标签组装成起来，然后压缩打包加密后通过网络传送给接收者，接收解密与解压缩后再从 XML 文件中还原相关信息进行处理。目前很多软件都使用 XML 来存储配置信息，很多项目中我们通常也会将作为配置的硬代码（hard code）写在 XML 文件中，Java 的很多框架也是这么做的。</p>
+<h3 id="4-谈谈对-XML-的理解？说明-Web-应用中-Web-xml-文件的作用？"><a href="#4-谈谈对-XML-的理解？说明-Web-应用中-Web-xml-文件的作用？" class="headerlink" title="4. 谈谈对 XML 的理解？说明 Web 应用中 Web.xml 文件的作用？"></a>4. 谈谈对 XML 的理解？说明 Web 应用中 Web.xml 文件的作用？</h3><p>解答：XML（Extensible Markup Language）即可扩展标记语言，它与 HTML 一样，都是 SGML(Standard Generalized Markup Language,标准通用标记语言)。Xml 是 Internet 环境中跨平台的，依赖于内容的技术，是当前处理结构化文档信息的有力工具。扩展标记语言 XML 是一种简单的数据存储语言，使用一系列简单的标记描述数据，而这些标记可以用方便的方式建立，虽然XML占用的空间比二进制数据要占用更多的空间，但XML极其简单易于掌握和使用。<br>web.xml 的作用是配置欢迎页，servlet，filter，listener 等的</p>
+<h3 id="5-XML-是一种元语言-可以用它来描述其他语言。"><a href="#5-XML-是一种元语言-可以用它来描述其他语言。" class="headerlink" title="5. XML 是一种元语言, 可以用它来描述其他语言。"></a>5. XML 是一种元语言, 可以用它来描述其他语言。</h3><p>错误<br>XML（可扩展标记语言）是一种简单的数据存储语言</p>
+<h3 id="6-DTD-与-XML-Schema-都是XML文档。-选择1项"><a href="#6-DTD-与-XML-Schema-都是XML文档。-选择1项" class="headerlink" title="6. DTD 与 XML Schema 都是XML文档。(选择1项)"></a>6. DTD 与 XML Schema 都是XML文档。(选择1项)</h3><p>A．正确<br>B．不正确<br>解答：DTD 不是 XML 文件， schema 是 XML 文档</p>
+<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h3 id="1-下面哪些是Thread类的方法-ABD"><a href="#1-下面哪些是Thread类的方法-ABD" class="headerlink" title="1. 下面哪些是Thread类的方法?ABD"></a>1. 下面哪些是Thread类的方法?ABD</h3><p>A start()<br>B run()<br>C exit()<br>D getPriority() </p>
+<h3 id="2-下面程序的运行结果-B"><a href="#2-下面程序的运行结果-B" class="headerlink" title="2. 下面程序的运行结果?B"></a>2. 下面程序的运行结果?B</h3><pre><code>public static void main(String args[]) {
+Thread t = new Thread() {
+public void run() {
+pong();
+}
+};
+t.run();
+System.out.print(&quot;ping&quot;);
+}
+static void pong() {
+System.out.print(&quot;pong&quot;);
+}
+</code></pre><p>A. pingpong<br>B. pongping<br>C. pingpong和pongping都有可能b<br>D. 都不输出   </p>
+<h3 id="3-进程和线程的区别是什么？"><a href="#3-进程和线程的区别是什么？" class="headerlink" title="3. 进程和线程的区别是什么？"></a>3. 进程和线程的区别是什么？</h3><p>进程是执行中的运用程序，线程是进程中的一个执行序列，一个进程可以含有多个线程，线程又叫轻量级进程</p>
+<h3 id="4-创建线程有几种不同的方式？你喜欢哪一种？为什么？"><a href="#4-创建线程有几种不同的方式？你喜欢哪一种？为什么？" class="headerlink" title="4. 创建线程有几种不同的方式？你喜欢哪一种？为什么？"></a>4. 创建线程有几种不同的方式？你喜欢哪一种？为什么？</h3><p>三种<br>继承Thread类<br>实现Runable接口<br>应用程序可以使用 Executor 框架来创建线程池<br>更常用实现Runable接口,因为Java只支持单线程    </p>
+<h3 id="5-概括的解释下线程的几种可用状态。"><a href="#5-概括的解释下线程的几种可用状态。" class="headerlink" title="5. 概括的解释下线程的几种可用状态。"></a>5. 概括的解释下线程的几种可用状态。</h3><ul>
+<li>就绪(Runnable):线程准备运行，不一定立马就能开始执行。</li>
+<li>运行中(Running)：进程正在执行线程的代码。</li>
+<li>等待中(Waiting):线程处于阻塞的状态，等待外部的处理结束。</li>
+<li>睡眠中(Sleeping)：线程被强制睡眠。</li>
+<li>I/O阻塞(Blocked on I/O)：等待I/O操作完成。<br>同步阻塞(Blocked on Synchronization)：等待获取锁。</li>
+<li>死亡(Dead)：线程完成了执行。<h3 id="6-同步方法和同步代码块的区别是什么？"><a href="#6-同步方法和同步代码块的区别是什么？" class="headerlink" title="6. 同步方法和同步代码块的区别是什么？"></a>6. 同步方法和同步代码块的区别是什么？</h3>java 中每个对象都有一把锁, 线程可以通过 synchronized 关键字来获取对象上的锁<br>同步方法(粗粒度锁):   <pre><code>1. 修饰一般方法: public synchronized void method (){...}, 获取的是当前调用对象 this 上的锁    
+2. 修饰静态方法: public static synchronized void method (){...}, 获取当前类的字节码对象上的锁    
+</code></pre>同步代码块(细粒度锁):      <pre><code>synchronized ( obj ) {...}, 同步代码块可以指定获取哪个对象上的锁, obj 任意
+</code></pre><h3 id="7-在监视器-Monitor-内部，是如何做线程同步的？程序应该做哪种级别的同步？"><a href="#7-在监视器-Monitor-内部，是如何做线程同步的？程序应该做哪种级别的同步？" class="headerlink" title="7. 在监视器(Monitor)内部，是如何做线程同步的？程序应该做哪种级别的同步？"></a>7. 在监视器(Monitor)内部，是如何做线程同步的？程序应该做哪种级别的同步？</h3>监视器和锁在 Java 虚拟机中是一块使用的。监视器监视一块同步代码块，确保一次只有一个线程执行同步代码块。每一个监视器都和一个对象引用相关联。线程在获取锁之前不允许执行同步代码。<h3 id="8-什么是死锁-deadlock-？"><a href="#8-什么是死锁-deadlock-？" class="headerlink" title="8. 什么是死锁(deadlock)？"></a>8. 什么是死锁(deadlock)？</h3>两个线程都在等待对方执行完毕才能继续往下执行的时候就产生了死锁，导致两个线程陷入了无限的等待中<h3 id="9-如何确保-N-个线程可以访问-N-个资源同时又不导致死锁？"><a href="#9-如何确保-N-个线程可以访问-N-个资源同时又不导致死锁？" class="headerlink" title="9. 如何确保 N 个线程可以访问 N 个资源同时又不导致死锁？"></a>9. 如何确保 N 个线程可以访问 N 个资源同时又不导致死锁？</h3>用多线程的时候，一种非常简单的避免死锁的方式就是：指定获取锁的顺序，并强制线程按照指定的顺序获取锁。因此，如果所有的线程都是以同样的顺序加锁和释放锁，就不会出现死锁了<h3 id="10-sleep-和-wait-有什么区别"><a href="#10-sleep-和-wait-有什么区别" class="headerlink" title="10. sleep() 和 wait() 有什么区别?"></a>10. sleep() 和 wait() 有什么区别?</h3>sleep()是Thread类的静态方法，导致当前线程暂停执行到指定时间，把执行机会让给其他线程，到时会自动恢复，因为sleep不会释放对象锁<br>wait()是Object的方法，线程暂停执行并放弃对象锁，进入等待，只有针对对象调用notify()方法后才会获取对象锁<h3 id="11-sleep-和-yield-有什么区别"><a href="#11-sleep-和-yield-有什么区别" class="headerlink" title="11. sleep() 和 yield() 有什么区别?"></a>11. sleep() 和 yield() 有什么区别?</h3>答：<br>① sleep() 方法给其他线程运行机会时不考虑线程的优先级，因此会给低优先级的线程以运行的机会；yield() 方法只会给相同优先级或更高优先级的线程以运行的机会；<br>② 线程执行 sleep() 方法后转入阻塞（blocked）状态，而执行 yield() 方法后转入就绪（ready）状态；<br>③ sleep() 方法声明抛出InterruptedException，而 yield() 方法没有声明任何异常；<br>④ sleep() 方法比 yield() 方法（跟操作系统相关）具有更好的可移植性。<h3 id="12-当一个线程进入一个对象的-synchronized-方法-A-之后，其它线程是否可进入此对象的-synchronized-方法？"><a href="#12-当一个线程进入一个对象的-synchronized-方法-A-之后，其它线程是否可进入此对象的-synchronized-方法？" class="headerlink" title="12. 当一个线程进入一个对象的 synchronized 方法 A 之后，其它线程是否可进入此对象的 synchronized 方法？"></a>12. 当一个线程进入一个对象的 synchronized 方法 A 之后，其它线程是否可进入此对象的 synchronized 方法？</h3>不能，其他线程只能访问该对象的非同步方法<h3 id="13-请说出与线程同步相关的方法。"><a href="#13-请说出与线程同步相关的方法。" class="headerlink" title="13. 请说出与线程同步相关的方法。"></a>13. 请说出与线程同步相关的方法。</h3></li>
+<li>wait():使一个线程处于等待（阻塞）状态，并且释放所持有的对象的锁；</li>
+<li>sleep():使一个正在运行的线程处于睡眠状态，是一个静态方法，调用此方法要捕捉InterruptedException<br>异常；</li>
+<li>notify():唤醒一个处于等待状态的线程，当然在调用此方法的时候，并不能确切的唤醒某一个等待状态的线<br>程，而是由JVM确定唤醒哪个线程，而且与优先级无关；</li>
+<li>notityAll():唤醒所有处入等待状态的线程，注意并不是给所有唤醒线程一个对象的锁，而是让它们竞争；    <h3 id="14-synchronized-关键字的用法？"><a href="#14-synchronized-关键字的用法？" class="headerlink" title="14. synchronized 关键字的用法？"></a>14. synchronized 关键字的用法？</h3>答：synchronized 关键字可以将对象或者方法标记为同步，以实现对对象和方法的互斥访问，可以用synchronized(对象) { … }定义同步代码块，或者在声明方法时将 synchronized 作为方法的修饰符。<h3 id="15-举例说明同步和异步。"><a href="#15-举例说明同步和异步。" class="headerlink" title="15. 举例说明同步和异步。"></a>15. 举例说明同步和异步。</h3>如果系统中存在临界资源（资源数量少于竞争资源的线程数量的资源），例如正在写的数据以后可能被另一个线程读到，或者正在读的数据可能已经被另一个线程写过了，那么这些数据就必须进行同步存取（数据库操作中的悲观锁就是最好的例子）。当应用程序在对象上调用了一个需要花费很长时间来执行的方法，并且不希望让程序等待方法的返回时，就应该使用异步编程，在很多情况下采用异步途径往往更有效率。事实上，所谓的同步就是指阻塞式操作，而异步就是非阻塞式操作。 <h3 id="16-启动一个线程是用-run-还是-start-方法"><a href="#16-启动一个线程是用-run-还是-start-方法" class="headerlink" title="16. 启动一个线程是用 run() 还是 start() 方法?"></a>16. 启动一个线程是用 run() 还是 start() 方法?</h3>答：启动一个线程是调用 start() 方法，使线程所代表的虚拟处理机处于可运行状态，这意味着它可以由JVM 调度并执行，这并不意味着线程就会立即运行。run()方法是线程启动后要进行回调（callback）的方法。<h3 id="17-什么是线程池（thread-pool）？"><a href="#17-什么是线程池（thread-pool）？" class="headerlink" title="17. 什么是线程池（thread pool）？"></a>17. 什么是线程池（thread pool）？</h3>线程池顾名思义就是事先创建若干个可执行的线程放入一个池（容器）中，需要的时候从池中获取线程不用自行创建，使用完毕不需要销毁线程而是放回池中，从而减少创建和销毁线程对象的开销。<h3 id="18-线程的基本状态以及状态之间的关系？"><a href="#18-线程的基本状态以及状态之间的关系？" class="headerlink" title="18. 线程的基本状态以及状态之间的关系？"></a>18. 线程的基本状态以及状态之间的关系？</h3>线程有三种状态，分别是：就绪（ready）、运行（running）和阻塞（blocked)<h3 id="19-死锁的必要条件？怎么克服"><a href="#19-死锁的必要条件？怎么克服" class="headerlink" title="19. 死锁的必要条件？怎么克服"></a>19. 死锁的必要条件？怎么克服</h3>答：产生死锁的四个必要条件：<br>互斥条件：一个资源每次只能被一个进程使用。<br>请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不放。<br>不剥夺条件:进程已获得的资源，在末使用完之前，不能强行剥夺。<br>循环等待条件:若干进程之间形成一种头尾相接的循环等待资源关系。<br>这四个条件是死锁的必要条件，只要系统发生死锁，这些条件必然成立，而只要上述条件之一不满足，就不会发生死锁。<br>死锁的解决方法:<br>a 撤消陷于死锁的全部进程；<br>b 逐个撤消陷于死锁的进程，直到死锁不存在；<br>c 从陷于死锁的进程中逐个强迫放弃所占用的资源，直至死锁消失。<br>d 从另外一些进程那里强行剥夺足够数量的资源分配给死锁进程，以解除死锁状态<h1 id="JDBC与数据库"><a href="#JDBC与数据库" class="headerlink" title="JDBC与数据库"></a>JDBC与数据库</h1><h3 id="1-在进行数据库编程时，连接池有什么作用？"><a href="#1-在进行数据库编程时，连接池有什么作用？" class="headerlink" title="1. 在进行数据库编程时，连接池有什么作用？"></a>1. 在进行数据库编程时，连接池有什么作用？</h3>因为创建连接和释放连接都有很大的开销，为了提升访问数据库的性能，可以将若干连接放于连接池中，需要时便从连接池拿，用完放回连接池，从而避免频繁创建和释放所造成的开销<h3 id="2-什么是-DAO-模式？"><a href="#2-什么是-DAO-模式？" class="headerlink" title="2. 什么是 DAO 模式？"></a>2. 什么是 DAO 模式？</h3>为数据库或其他持久化机制提供了抽象接口的对象，再不暴露数据库实现细节的前提下实现对数据库的操作<h3 id="3-什么是ORM？"><a href="#3-什么是ORM？" class="headerlink" title="3. 什么是ORM？"></a>3. 什么是ORM？</h3>对象关系映射（Object-Relational Mapping，简称 ORM）是一种为了解决程序的面向对象模型与数据库的关系模型互不匹配问题的技术<h3 id="4-JDBC-中如何进行事务处理？"><a href="#4-JDBC-中如何进行事务处理？" class="headerlink" title="4. JDBC 中如何进行事务处理？"></a>4. JDBC 中如何进行事务处理？</h3>Connection 提供了事务处理的方法，通过调用setAutoCommit(false)可以设置手动提交事务；当事务完成后用 commit()显式提交事务；如果在事务处理过程中发生异常则通过 rollback() 进行事务回滚。除此之外，较新的 JDBC 标准还引入了Savepoint（保存点）的概念，允许事务回滚到指定的保存点。<h3 id="5-事务的-ACID-是指什么？"><a href="#5-事务的-ACID-是指什么？" class="headerlink" title="5. 事务的 ACID 是指什么？"></a>5. 事务的 ACID 是指什么？</h3></li>
+<li>原子性(Atomic)：事务中各项操作，要么全做要么全不做，任何一项操作的失败都会导致整个事务的失败；</li>
+<li>一致性(Consistent)：事务结束后系统状态是一致的；</li>
+<li>隔离性(Isolated)：并发执行的事务彼此无法看到对方的中间状态；</li>
+<li>持久性(Durable)：事务完成后所做的改动都会被持久化，即使发生灾难性的失败。通过日志和同步备份可以在故障发生后重建数据。 <h3 id="6-使用-JDBC-操作数据库时，如何提升读取数据的性能？如何提升更新数据的性能？"><a href="#6-使用-JDBC-操作数据库时，如何提升读取数据的性能？如何提升更新数据的性能？" class="headerlink" title="6. 使用 JDBC 操作数据库时，如何提升读取数据的性能？如何提升更新数据的性能？"></a>6. 使用 JDBC 操作数据库时，如何提升读取数据的性能？如何提升更新数据的性能？</h3>答：要提升读取数据的性能，可以指定通过结果集（ResultSet）对象指定每次抓取数据的大小（fetch size）；要提升更新数据的性能可以PreparedStatement语句构建批处理（batch）。<h3 id="7-存储过程和函数的区别"><a href="#7-存储过程和函数的区别" class="headerlink" title="7. 存储过程和函数的区别"></a>7. 存储过程和函数的区别</h3></li>
+<li><p>一般来说，存储过程实现的功能要复杂一点，而函数的实现的功能针对性比较强。</p>
+</li>
+<li><p>对于存储过程来说可以返回参数，而函数只能返回值或者表对象。</p>
+</li>
+<li><p>存储过程一般是作为一个独立的部分来执行，而函数可以作为查询语句的一个部分来调用，由于函数可以返回一个表对象，因此它可以在查询语句中位于FROM关键字的后面。</p>
+</li>
+<li><p>当存储过程和函数被执行的时候，SQL Manager会到procedure cache中去取相应的查询语句，如果在procedure cache里没有相应的查询语句，SQL Manager就会对存储过程和函数进行编译。</p>
+<h3 id="8-你认为在表上建立索引可以提高数据库系统的效率吗，为什么？"><a href="#8-你认为在表上建立索引可以提高数据库系统的效率吗，为什么？" class="headerlink" title="8. 你认为在表上建立索引可以提高数据库系统的效率吗，为什么？"></a>8. 你认为在表上建立索引可以提高数据库系统的效率吗，为什么？</h3><p>不一定<br>索引太多会影响更新和插入的速度</p>
+<h3 id="9-什么是数据库的参照完整性？"><a href="#9-什么是数据库的参照完整性？" class="headerlink" title="9. 什么是数据库的参照完整性？"></a>9. 什么是数据库的参照完整性？</h3><p>数据库的参照完整性是指表与表之间的一种对应关系，通常情况下可以通过设置两表之间的主键、外键关系，或者编写两表的触发器来实现。 有对应参照完整性的两张表格，在对他们进行数据插入、更新、删除的过程中，系统都会将被修改表格与另一张对应表格进行对照，从而阻止一些不正确的数据的操作。</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;网上找的题目，自己一题一题做的，查缺补漏&lt;br&gt;
+    
+    </summary>
+    
+      <category term="面试题" scheme="http://yoursite.com/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    
+      <category term="Java面试题" scheme="http://yoursite.com/tags/Java%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
+  
+</feed>

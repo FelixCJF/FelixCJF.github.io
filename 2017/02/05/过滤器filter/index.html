@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Felix" />
+
+
+
+<meta name="description" content="Filter 的基本功能是对 Servlet 容器调用 Servlet 的过程进行拦截，从而在 Servlet 进行响应处理的前后实现一些特殊的功能。">
+<meta name="keywords" content="过滤器filter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="过滤器filter">
+<meta property="og:url" content="http://yoursite.com/2017/02/05/过滤器filter/index.html">
+<meta property="og:site_name" content="Felix个人博客">
+<meta property="og:description" content="Filter 的基本功能是对 Servlet 容器调用 Servlet 的过程进行拦截，从而在 Servlet 进行响应处理的前后实现一些特殊的功能。">
+<meta property="og:updated_time" content="2017-02-05T15:17:49.651Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="过滤器filter">
+<meta name="twitter:description" content="Filter 的基本功能是对 Servlet 容器调用 Servlet 的过程进行拦截，从而在 Servlet 进行响应处理的前后实现一些特殊的功能。">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Felix个人博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>过滤器filter | Felix个人博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/140.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Felix</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">半途而废便是最大的失败</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客主页</a></li>
+                        
+                            <li><a href="/archives/">全部文章</a></li>
+                        
+                            <li><a href="/about/">留言打卡</a></li>
+                        
+                            <li><a href="/tags/">分类标签</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#49;&#53;&#53;&#52;&#52;&#50;&#49;&#48;&#54;&#51;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/FelixCJF" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com/" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" href="https://www.douban.com/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" href="http://www.jianshu.com/" title="简书"></a>
+                            
+                                <a class="fa Google" href="http://www.google.cn/" title="Google"></a>
+                            
+                                <a class="fa StackOverflow" href="https://stackoverflow.com/" title="StackOverflow"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BootStrap-fileinput/">BootStrap-fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DWR/">DWR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EasyUI/">EasyUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDBC/">JDBC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java中的网络编程/">Java中的网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java基础/">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java面试题/">Java面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux软件安装/">Linux软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB数据库/">MongoDB数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTFul架构/">RESTFul架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/">UML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http协议/">http协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java四大域对象/">java四大域对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp九大隐式对象/">jsp九大隐式对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux常用命令/">linux常用命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux权限管理/">linux权限管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql和Oracle实现分页/">mysql和Oracle实现分页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-finally/">try-finally</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代理模式/">代理模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剑指offer/">剑指offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客说明/">博客说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工厂方法模式/">工厂方法模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/异常捕获/">异常捕获</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭hexo博客出现的小问题/">搭hexo博客出现的小问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序是怎么跑起来的/">程序是怎么跑起来的</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略模式/">策略模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络基础/">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观察者模式/">观察者模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤器filter/">过滤器filter</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub Pages</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/FelixCJF">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">主题作者MOxFIVE</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="/www.cjianfeng.com">Felix</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://luuman.github.io/">lumman</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">后端小菜鸟</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Felix</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/140.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Felix</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">半途而废便是最大的失败</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客主页</a></li>
+                
+                    <li><a href="/archives/">全部文章</a></li>
+                
+                    <li><a href="/about/">留言打卡</a></li>
+                
+                    <li><a href="/tags/">分类标签</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#49;&#53;&#53;&#52;&#52;&#50;&#49;&#48;&#54;&#51;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/FelixCJF" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" target="_blank" href="https://www.douban.com/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/" title="简书"></a>
+                            
+                                <a class="fa Google" target="_blank" href="http://www.google.cn/" title="Google"></a>
+                            
+                                <a class="fa StackOverflow" target="_blank" href="https://stackoverflow.com/" title="StackOverflow"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-过滤器filter" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/05/过滤器filter/" class="article-date">
+      <time datetime="2017-02-05T14:41:33.000Z" itemprop="datePublished">2017-02-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      过滤器filter
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/过滤器filter/">过滤器filter</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Filter 的基本功能是对 Servlet 容器调用 Servlet 的过程进行拦截，从而在 Servlet 进行响应处理的前后实现一些特殊的功能。<br><a id="more"></a></p>
+<h1 id="过滤器概述"><a href="#过滤器概述" class="headerlink" title="过滤器概述"></a>过滤器概述</h1><p>管理所有的web资源，不管出和进都要经过他。<br>过滤器就是一个保安，能对请求和响应进行拦截。<br>过滤器的执行顺序按照web.xml的标签顺序来执行<br>过滤器的初始化是在加载应用的时候，而不是用户第一次访问的时候。<br>过滤器的销毁是随服务器的关闭而销毁<br>过滤器，是一种职责链设计模式      </p>
+<h1 id="过滤器编写步骤"><a href="#过滤器编写步骤" class="headerlink" title="过滤器编写步骤"></a>过滤器编写步骤</h1><ol>
+<li><p>建立类实现接口  </p>
+<pre><code>//注意所有的包都是javax.servlet.*的
+public class FilterDemo1 implements Filter {
+private FilterConfig filterConfig;
+public FilterDemo1() {
+}
+public void destroy() {
+}
+//对于在拦截范围内的资源(web.xml配置），每次访问，该方法都会执行拦截
+public void doFilter(ServletRequest request, ServletResponse response,
+    FilterChain chain) throws IOException, ServletException {
+String value = filterConfig.getInitParameter(&quot;aaa&quot;);
+System.out.println(value);
+System.out.println(&quot;FilterDemo1 start&quot;);
+//放行，放行后的代码在目标资源执行完成后，再执行
+chain.doFilter(request, response);
+System.out.println(&quot;FilterDemo1 end&quot;);
+}
+public void init(FilterConfig filterConfig) throws ServletException {
+//在Tomcat启动的时候，就会运行初始化方法
+this.filterConfig=filterConfig;
+}
+}
+</code></pre></li>
+<li><p>配置web.xml  </p>
+<pre><code>&lt;filter&gt;&lt;!-- 按配置文件标签的顺序进行过滤 --&gt;
+    &lt;filter-name&gt;FilterDemo1&lt;/filter-name&gt;
+    &lt;filter-class&gt;com.felix.filter.FilterDemo1&lt;/filter-class&gt;
+&lt;init-param&gt;
+    &lt;param-name&gt;aaa&lt;/param-name&gt;
+    &lt;param-value&gt;bbb&lt;/param-value&gt;
+&lt;/init-param&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;FilterDemo1&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;&lt;!-- 拦截所有的web资源 --&gt;
+&lt;/filter-mapping&gt;
+</code></pre><h1 id="过滤器案例"><a href="#过滤器案例" class="headerlink" title="过滤器案例"></a>过滤器案例</h1></li>
+</ol>
+<h3 id="统一全站字符编码的过滤器"><a href="#统一全站字符编码的过滤器" class="headerlink" title="统一全站字符编码的过滤器"></a>统一全站字符编码的过滤器</h3><p>实现类</p>
+<pre><code>public class CharacterEncodingFilter implements Filter {
+private FilterConfig filterConfig;
+public CharacterEncodingFilter() {
+}
+public void destroy() {
+}
+public void doFilter(ServletRequest request, ServletResponse response,
+    FilterChain chain) throws IOException, ServletException {
+//得到配置的参数,配置的参数在web.xml中去配
+String encoding = filterConfig.getInitParameter(&quot;encoding&quot;);
+if(encoding==null){
+    //防止忘记配了
+    encoding = &quot;UTF-8&quot;;
+}
+//中文请求参数乱码的解决方法（post方式提交）
+request.setCharacterEncoding(encoding);
+//解决输出到页面的中文乱码
+response.setContentType(&quot;text/html;charset=&quot;+encoding);
+//不要忘记放行
+chain.doFilter(request, response);
+}
+public void init(FilterConfig filterConfig) throws ServletException {
+this.filterConfig = filterConfig;
+}
+} 
+</code></pre><p>web.xml配置</p>
+<pre><code>&lt;filter&gt;
+    &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;com.felix.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+    &lt;init-param&gt;
+    &lt;param-name&gt;encoding&lt;/param-name&gt;
+    &lt;param-value&gt;UTF-8&lt;/param-value&gt;
+    &lt;/init-param&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt; 
+</code></pre><h3 id="禁止浏览器缓存所有动态页面的过滤器"><a href="#禁止浏览器缓存所有动态页面的过滤器" class="headerlink" title="禁止浏览器缓存所有动态页面的过滤器"></a>禁止浏览器缓存所有动态页面的过滤器</h3><p>实现类</p>
+<pre><code>public class NoCacheFilter implements Filter {
+public NoCacheFilter() {
+}
+public void destroy() {
+}
+//不要缓存文件，只要设置3个头就可以了，然后在web.xml里面进行配置即可
+public void doFilter(ServletRequest req, ServletResponse resp,
+    FilterChain chain) throws IOException, ServletException {
+HttpServletRequest request = (HttpServletRequest) req;
+HttpServletResponse response = (HttpServletResponse) resp;
+response.setHeader(&quot;Expires&quot;, &quot;-1&quot;);//只要比当前时间小就行，一般设置为-1
+response.setHeader(&quot;Cache-Control&quot;, &quot;no-cache&quot;);//1.1
+response.setHeader(&quot;Pragma&quot;, &quot;no-cache&quot;);//1.0
+chain.doFilter(request, response);//别忘了放行
+}
+public void init(FilterConfig filterConfig) throws ServletException {
+}
+}
+</code></pre><p>web.xml配置</p>
+<pre><code>&lt;filter&gt;
+    &lt;filter-name&gt;NoCacheFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;com.felix.filter.NoCacheFilter&lt;/filter-class&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;NoCacheFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/servlet/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;NoCacheFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/servlet/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt; 
+</code></pre><h3 id="控制浏览器缓存页面中的静态资源的过滤器"><a href="#控制浏览器缓存页面中的静态资源的过滤器" class="headerlink" title="控制浏览器缓存页面中的静态资源的过滤器"></a>控制浏览器缓存页面中的静态资源的过滤器</h3><p>实现类</p>
+<pre><code>public class NeedCacheFilter implements Filter {
+FilterConfig filterConfig;
+public void init(FilterConfig filterConfig) throws ServletException {
+this.filterConfig = filterConfig;
+}
+public NeedCacheFilter() {
+}
+public void destroy() {
+}
+public void doFilter(ServletRequest args0, ServletResponse args1,
+    FilterChain chain) throws IOException, ServletException {
+    //浏览器每一次请求会得到一个文件，每个文件是单独下载的
+    //所以过滤器会对每个文件过滤一次。
+HttpServletRequest request = (HttpServletRequest) args0;
+HttpServletResponse response = (HttpServletResponse) args1;
+//根据不同的资源，设置缓存时间
+String htmlTime = filterConfig.getInitParameter(&quot;html&quot;);
+String cssTime = filterConfig.getInitParameter(&quot;css&quot;);
+String jsTime = filterConfig.getInitParameter(&quot;js&quot;);
+long time = 0;
+//根据访问的资源设定时间
+//得到/my_exercise_day15_2/1.html
+String uri = request.getRequestURI();
+//得到文件后缀.方法是从指定的索引开始，到结束
+String extendFileName = uri.substring(uri.lastIndexOf(&quot;.&quot;)+1);
+if(&quot;html&quot;.equals(extendFileName));{
+    time = Long.parseLong(htmlTime)*60*60*1000;
+}
+if(&quot;css&quot;.equals(extendFileName));{
+    time = Long.parseLong(cssTime)*60*60*1000;
+}
+if(&quot;js&quot;.equals(extendFileName));{
+    time = Long.parseLong(jsTime)*60*60*1000;
+}//设置头，时间头
+response.setDateHeader(&quot;Expires&quot;, System.currentTimeMillis()+time);
+chain.doFilter(request, response);
+}
+}
+</code></pre><p>web.xml配置</p>
+<pre><code>&lt;filter&gt;
+    &lt;filter-name&gt;NeedCacheFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;com.felix.filter.NeedCacheFilter&lt;/filter-class&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;html&lt;/param-name&gt;
+        &lt;param-value&gt;2&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;css&lt;/param-name&gt;
+        &lt;param-value&gt;3&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;js&lt;/param-name&gt;
+        &lt;param-value&gt;4&lt;/param-value&gt;
+    &lt;/init-param&gt;
+&lt;/filter&gt;
+</code></pre><h3 id="page指令的错误页面配置"><a href="#page指令的错误页面配置" class="headerlink" title="page指令的错误页面配置"></a>page指令的错误页面配置</h3><pre><code>&lt;filter&gt;
+    &lt;filter-name&gt;FilterDemo&lt;/filter-name&gt;
+    &lt;filter-class&gt;com.felix.filter.FilterDemo&lt;/filter-class&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+       &lt;filter-name&gt;FilterDemo&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+        &lt;!-- 所有错误都会被过滤 --&gt;
+    &lt;dispatcher&gt;ERROR&lt;/dispatcher&gt;
+    &lt;!-- 所有转发都会被过滤--&gt;
+    &lt;dispatcher&gt;FORWARD&lt;/dispatcher&gt;
+    &lt;!-- 所有动态包含都会被过滤 --&gt;
+    &lt;dispatcher&gt;INCLUDE&lt;/dispatcher&gt;
+    &lt;!-- 所有请求都会被过滤 --&gt;
+    &lt;dispatcher&gt;REQUEST&lt;/dispatcher&gt;
+&lt;/filter-mapping&gt;
+&lt;error-page&gt;&lt;!-- 配置错误页面 --&gt;
+    &lt;!-- 需要抓住的异常是什么类型 --&gt;
+    &lt;exception-type&gt;java.lang.Exception&lt;/exception-type&gt;
+    &lt;!-- 出现错误后,需要转发到哪个页面 --&gt;
+    &lt;location&gt;/error.jsp&lt;/location&gt;
+&lt;/error-page&gt; 
+</code></pre><h3 id="Struts2的web-xml配置"><a href="#Struts2的web-xml配置" class="headerlink" title="Struts2的web.xml配置"></a>Struts2的web.xml配置</h3><p>　项目中使用Struts2同样需要在web.xml配置过滤器，用来截取请求，转到Struts2的Action进行处理。</p>
+<pre><code>&lt;!-- struts 2.x filter --&gt;
+&lt;filter&gt;
+    &lt;filter-name&gt;struts2&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter&lt;/filter-class&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;struts2&lt;/filter-name&gt;
+    &lt;url-pattern&gt;*.do&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/02/05/过滤器filter/">过滤器filter</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Felix</a></p>
+        <p><span>发布时间:</span>2017-02-05, 22:41:33</p>
+        <p><span>最后更新:</span>2017-02-05, 23:17:49</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/05/过滤器filter/" title="过滤器filter">http://yoursite.com/2017/02/05/过滤器filter/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/02/05/过滤器filter/　　作者: Felix" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/02/08/JQuery、EasyUI和Bootstrap区别/">
+                    JQuery、EasyUI和Bootstrap区别
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/02/04/Java中的网络编程/">
+                    Java中的网络编程
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#过滤器概述"><span class="toc-number">1.</span> <span class="toc-text">过滤器概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#过滤器编写步骤"><span class="toc-number">2.</span> <span class="toc-text">过滤器编写步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#过滤器案例"><span class="toc-number">3.</span> <span class="toc-text">过滤器案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#统一全站字符编码的过滤器"><span class="toc-number">3.0.1.</span> <span class="toc-text">统一全站字符编码的过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#禁止浏览器缓存所有动态页面的过滤器"><span class="toc-number">3.0.2.</span> <span class="toc-text">禁止浏览器缓存所有动态页面的过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制浏览器缓存页面中的静态资源的过滤器"><span class="toc-number">3.0.3.</span> <span class="toc-text">控制浏览器缓存页面中的静态资源的过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#page指令的错误页面配置"><span class="toc-number">3.0.4.</span> <span class="toc-text">page指令的错误页面配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Struts2的web-xml配置"><span class="toc-number">3.0.5.</span> <span class="toc-text">Struts2的web.xml配置</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"过滤器filter　| Felix个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/05/过滤器filter/" data-title="过滤器filter" data-url="http://yoursite.com/2017/02/05/过滤器filter/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"http://cjianfeng.duoshuo.com"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+            // Add comment count
+            $(function(){ 
+                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=http://cjianfeng.duoshuo.com&threads=2017/02/05/过滤器filter/&callback=?";
+                $.getJSON(jsonUrl, function(result){
+                    $.each(result.response, function(i, field){
+                        var value = field.comments;
+                        if (value > 0) {
+                            $(".count-comment").text(value);
+                            return;
+                        }
+                    })
+                })
+            })
+        
+    </script>
+    
+    <aside class="comment-bar">
+        <a href="javascript:void(0);">
+            <i class="fa fa-commenting-o animated infinite pulse"></i>
+            <i class="fa fa-spinner fa-pulse"></i>
+            <span class="count-comment"></span>
+        </a>
+    </aside>
+    <script>
+        var $commentBar = $("#comments aside.comment-bar");
+        var load$hide = function(){
+            $commentBar.find("a > i").toggle();
+            loadComment();
+            $commentBar.fadeOut(800);
+        }
+        $commentBar.click(function(){
+            load$hide();
+        })
+        $commentBar.children("a").hover(function(){
+            load$hide();
+        })
+        if (window.location.hash === "#comments") {
+            load$hide();
+        }
+    </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/02/08/JQuery、EasyUI和Bootstrap区别/" title="上一篇: JQuery、EasyUI和Bootstrap区别">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/02/04/Java中的网络编程/" title="下一篇: Java中的网络编程">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/多机部署hexo博客/">多机部署hexo博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/欢迎来到Felix博客/">欢迎来到Felix个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/Linux上部署多个Tomcat/">Linux上部署多个Tomcat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/nginx负载均衡配置/">nginx负载均衡配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/BootStrap-fileinput插件的使用/">BootStrap fileinput插件的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/DWR使用教程/">DWR使用教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/程序是怎么跑起来的读书笔记/">程序是怎么跑起来的读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/mysql和Oracle实现分页/">mysql和Oracle实现分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/有关异常捕获的一题面试题/">有关异常捕获的一题面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/JQuery、EasyUI和Bootstrap区别/">JQuery、EasyUI和Bootstrap区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/05/过滤器filter/">过滤器filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java中的网络编程/">Java中的网络编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/03/MongoDB数据库/">MongoDB数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/RESTful架构/">RESTful架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/四大域对象和JSP九大隐式对象/">四大域对象和JSP九大隐式对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/JDBC编码/">JDBC编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/HTTP协议/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/网络基础知识/">网络基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/《剑指offer》笔记/">《剑指offer》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/Java面试题总结-中/">Java面试题总结(中)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/18/XML数据解析/">XML数据解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/16/Java面试题总结-上/">Java面试题总结(上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/设计模式之工厂方法模式/">设计模式之工厂方法模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/设计模式/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/设计模式之代理模式/">设计模式之代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/《深入理解JVM》笔记/">《深入理解JVM》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/设计模式之策略模式/">设计模式之策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/UML学习笔记/">UML学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/设计模式之单例模式/">设计模式之单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java基础复习/">java基础复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/设计模式之观察者模式/">设计模式之观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/finally执行顺序面试题/">finally执行顺序面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/Linux总结/">Linux总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/用Hexo和GitHub-Pages搭建博客问题总结/">用Hexo和GitHub Pages搭建博客问题总结</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Felix
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"cjianfeng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+  </div>
+</body>
+</html>

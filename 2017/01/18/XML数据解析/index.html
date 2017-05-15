@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Felix" />
+
+
+
+<meta name="description" content="XML的数据解析主要有两种方式：DOM解析和SAX解析">
+<meta name="keywords" content="XML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XML数据解析">
+<meta property="og:url" content="http://yoursite.com/2017/01/18/XML数据解析/index.html">
+<meta property="og:site_name" content="Felix个人博客">
+<meta property="og:description" content="XML的数据解析主要有两种方式：DOM解析和SAX解析">
+<meta property="og:updated_time" content="2017-01-18T10:56:41.499Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XML数据解析">
+<meta name="twitter:description" content="XML的数据解析主要有两种方式：DOM解析和SAX解析">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Felix个人博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>XML数据解析 | Felix个人博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/140.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Felix</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">半途而废便是最大的失败</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客主页</a></li>
+                        
+                            <li><a href="/archives/">全部文章</a></li>
+                        
+                            <li><a href="/about/">留言打卡</a></li>
+                        
+                            <li><a href="/tags/">分类标签</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#49;&#53;&#53;&#52;&#52;&#50;&#49;&#48;&#54;&#51;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/FelixCJF" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com/" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" href="https://www.douban.com/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" href="http://www.jianshu.com/" title="简书"></a>
+                            
+                                <a class="fa Google" href="http://www.google.cn/" title="Google"></a>
+                            
+                                <a class="fa StackOverflow" href="https://stackoverflow.com/" title="StackOverflow"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BootStrap-fileinput/">BootStrap-fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DWR/">DWR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EasyUI/">EasyUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDBC/">JDBC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java中的网络编程/">Java中的网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java基础/">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java面试题/">Java面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux软件安装/">Linux软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB数据库/">MongoDB数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTFul架构/">RESTFul架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/">UML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http协议/">http协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java四大域对象/">java四大域对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp九大隐式对象/">jsp九大隐式对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux常用命令/">linux常用命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux权限管理/">linux权限管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql和Oracle实现分页/">mysql和Oracle实现分页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-finally/">try-finally</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代理模式/">代理模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剑指offer/">剑指offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客说明/">博客说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工厂方法模式/">工厂方法模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/异常捕获/">异常捕获</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭hexo博客出现的小问题/">搭hexo博客出现的小问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序是怎么跑起来的/">程序是怎么跑起来的</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略模式/">策略模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络基础/">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观察者模式/">观察者模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤器filter/">过滤器filter</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub Pages</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/FelixCJF">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">主题作者MOxFIVE</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="/www.cjianfeng.com">Felix</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://luuman.github.io/">lumman</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">后端小菜鸟</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Felix</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/140.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Felix</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">半途而废便是最大的失败</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客主页</a></li>
+                
+                    <li><a href="/archives/">全部文章</a></li>
+                
+                    <li><a href="/about/">留言打卡</a></li>
+                
+                    <li><a href="/tags/">分类标签</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#49;&#53;&#53;&#52;&#52;&#50;&#49;&#48;&#54;&#51;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/FelixCJF" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" target="_blank" href="https://www.douban.com/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/" title="简书"></a>
+                            
+                                <a class="fa Google" target="_blank" href="http://www.google.cn/" title="Google"></a>
+                            
+                                <a class="fa StackOverflow" target="_blank" href="https://stackoverflow.com/" title="StackOverflow"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-XML数据解析" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/18/XML数据解析/" class="article-date">
+      <time datetime="2017-01-18T08:34:27.000Z" itemprop="datePublished">2017-01-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      XML数据解析
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XML/">XML</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>XML的数据解析主要有两种方式：DOM解析和SAX解析</p>
+<a id="more"></a>
+<h1 id="解析XML的方式"><a href="#解析XML的方式" class="headerlink" title="解析XML的方式"></a>解析XML的方式</h1><p><strong>DOM解析 ：</strong> W3C提出，非常适合增删改查，但必须把XML全部读入内存中才可以进行操作<br><strong>SAX解析 ：</strong> 在读取文档的时候就可以对文档进行操作，无需整个文档读取完，缺点是只能查询 </p>
+<h1 id="解析时用到的解析包"><a href="#解析时用到的解析包" class="headerlink" title="解析时用到的解析包"></a>解析时用到的解析包</h1><p><strong>Dom4J ：</strong> 开源组织推出的解析包，最好用，大家都在用<br><strong>JAXP ：</strong>  SUN公司推出的解析标准实现<br><strong>JDOM：</strong> 开源组织推出的解析开发包</p>
+<h1 id="JAXP之DOM解析"><a href="#JAXP之DOM解析" class="headerlink" title="JAXP之DOM解析"></a>JAXP之DOM解析</h1><p>准备XML数据</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&lt;书架&gt;
+&lt;书&gt;
+    &lt;书名&gt;Java核心技术&lt;/书名&gt;
+    &lt;作者&gt;Gary Cornell &lt;/作者&gt;
+    &lt;售价&gt;59.00元&lt;/售价&gt;
+&lt;/书&gt;
+&lt;书&gt;
+    &lt;书名&gt;算法&lt;/书名&gt;
+    &lt;作者&gt;Robert Sedgewick&lt;/作者&gt;
+    &lt;售价&gt;78.00元&lt;/售价&gt;
+&lt;/书&gt;
+&lt;/书架&gt;
+</code></pre><p>代码实现</p>
+<pre><code>public   class  jaxp_CRUD_exercise {
+ public   static   void  main(String[] args)  throws  Exception {
+ //首先得到 doucment,先得到工厂,再由工厂得到DocumentBuilder,最后得到Document.
+DocumentBuilderFactory dbf = DocumentBuilderFactory. newInstance ();
+DocumentBuilder db = dbf.newDocumentBuilder();
+Document document = db.parse( &quot;src/book.xml&quot; );
+ test7 (document);
+}     
+// 1、得到某个具体的节点内容
+ private   static   void   test1(Document document)  {
+ //根据书名获取其标签
+NodeList nl = document.getElementsByTagName( &quot;书名&quot; );
+ //第二本书,得到第二个书名标签
+Node node = nl.item(1);
+ //获取主体内容
+String str = node.getTextContent();
+System. out .println(str);;        
+}
+//2、遍历所有元素节点:递归。打印遍历到的元素名称,Document继承Node,传递Document进来即可
+ private   static   void   test2(Node node)  {
+ //判断元素是否为一个元素节点,如果是就打印
+ if (node.getNodeType()==Node. ELEMENT_NODE ){
+    System. out .println(node.getNodeName());
+}
+ //再得到子类,调用自己进行遍历
+NodeList nl = node.getChildNodes();
+ for ( int  x=0;x&lt;nl.getLength();x++){
+    Node cn = nl.item(x);
+     test2 (cn);
+}
+}
+//3、修改某个元素节点的主体内容:第2本书售价改为2元
+ private   static   void   test3(Document document) throws  Exception {
+ //根据书名获取其标签
+NodeList nl = document.getElementsByTagName( &quot;售价&quot; );
+ //第二本书,得到第二个书名标签
+Node node = nl.item(1);
+ //获取主体内容
+node.setTextContent( &quot;2.00元&quot; );
+Transformer ts = TransformerFactory. newInstance ().newTransformer();
+ts.transform( new  DOMSource(document),  new  StreamResult( &quot;src/book.xml&quot; ));
+    }
+//4、向指定元素节点中增加子元素节点:给第一本书增加一个&lt;内部价&gt;58.00元&lt;/内部价&gt;
+ private   static   void   test4(Document document) throws  Exception {
+ //根据书名获取其标签
+Element e = document.createElement( &quot;内部价&quot; ); //创建内部价标签
+e.setTextContent( &quot;58.00元&quot; );
+ //得到第一本元素
+Node fnode = document.getElementsByTagName( &quot;书&quot; ).item(0);
+ //把新元素驾到第一本书上.
+fnode.appendChild(e);
+Transformer ts = TransformerFactory. newInstance ().newTransformer();
+ts.transform( new  DOMSource(document),  new  StreamResult( &quot;src/book.xml&quot; ));
+}    
+//5、向指定元素节点上增加同级元素节点,售价上面增加批发价
+ private   static   void   test5(Document document) throws  Exception {
+ //创建新元素
+Element e = document.createElement( &quot;批发价&quot; ); //创建内部价标签
+e.setTextContent( &quot;48.00元&quot; );
+ //得到插入点的标签(售价),需要父节点才可以操作子节点
+Node node = document.getElementsByTagName( &quot;售价&quot; ).item(0);
+Node pNode = node.getParentNode();
+pNode.insertBefore(e, node);
+Transformer ts = TransformerFactory. newInstance ().newTransformer();
+ts.transform( new  DOMSource(document),  new  StreamResult( &quot;src/book.xml&quot; ));
+}
+//6、删除指定元素节点:删除批发价
+ private   static   void   test6(Document document) throws  Exception {
+ //1.获取批发价的节点
+Node node = document.getElementsByTagName( &quot;批发价&quot; ).item(0);
+ //2.删除节点,必须有批发价的父节点来做
+node.getParentNode().removeChild(node);
+ //3.写入文件
+Transformer ts = TransformerFactory. newInstance ().newTransformer();
+ts.transform( new  DOMSource(document),  new  StreamResult( &quot;src/book.xml&quot; ));
+}
+//7、操作XML文件属性:给第一本书添加属性  出版社=&quot;机械工业出版社&quot;
+ private   static   void  test7(Document document) throws  Exception{
+ //1.获取第一本书的节点
+ //Node node = document.getElementsByTagName(&quot;书&quot;).item(0);
+Element e = (Element)document.getElementsByTagName( &quot;书&quot; ).item(0);
+ //2.给第一本书增加属性
+e.setAttribute( &quot;出版社&quot; ,  &quot;机械工业出版社&quot; );
+ //3.写入文件
+Transformer ts = TransformerFactory. newInstance ().newTransformer();
+ts.transform( new  DOMSource(document),  new      StreamResult( &quot;src/book.xml&quot; ));
+}   
+}
+</code></pre><h1 id="JAXP之SAX解析"><a href="#JAXP之SAX解析" class="headerlink" title="JAXP之SAX解析"></a>JAXP之SAX解析</h1><ul>
+<li>使用SAXParserFactory创建SAX解析工厂</li>
+<li>通过SAX解析工厂得到解析器对象</li>
+<li>通过解析器对象得到一个XML的读取器</li>
+<li>设置读取器时间处理器</li>
+<li><p>解析XML文件</p>
+<pre><code>public   class  MySAX3_exercise {
+//把书中的数据封装到JavaBeam中.
+ public   static   void  main(String[] args)  throws  Exception {
+ //得到解析器SAXSparer
+SAXParser parser = SAXParserFactory. newInstance ().newSAXParser();
+ //得到读取器
+XMLReader reader = parser.getXMLReader();
+ //定义一个集合,存储JavaBeam
+List&lt;Book&gt; books =  new  ArrayList() ;
+ //给读取器注册事件处理器,使用
+reader.setContentHandler( new  MyContentHandler2(books));
+}
+}
+//创建注册事件注册器,把读到的数据存入到JavaBeam中.
+class  MyContentHandler2  extends  DefaultHandler{
+ //定义一个集合容器,引用主函数中的集合
+ private  List&lt;Book&gt;  books ;
+ public  MyContentHandler2(List&lt;Book&gt; books){
+ this . books =books;
+    }
+ //定义一个容器类
+ private  Book  book ;
+ //定义一个容器字符串
+ private  String  currentTagName ;
+ public   void  startElement(String uri, String localName,
+    String qName, Attributes attributes)  throws  SAXException {
+ //如果读到的是书，创建book对象
+ if ( &quot;书&quot; .equals(qName)){
+     book  =  new  Book();
+}
+ currentTagName  = qName;
+    }
+ public   void  characters( char [] ch,  int  start,  int  length)
+     throws  SAXException {
+ if ( currentTagName .equals( &quot;书名&quot; ))
+ book .setName( new  String(ch,start,length));
+ if ( currentTagName .equals( &quot;作者&quot; ))
+ book .setAuthor( new  String(ch,start,length));
+ if ( currentTagName .equals( &quot;售价&quot; ))
+ book .setPrice( new  String(ch,start,length));
+}
+ public   void  endElement(String uri, String localName, String qName)
+     throws  SAXException {
+ //如果读到的是书，把book对象加到集合中去
+ if ( &quot;书&quot; .equals(qName)){
+     books .add( book );
+}
+ currentTagName  =  null ;
+} }
+</code></pre></li>
+</ul>
+<h1 id="DOM4J操作"><a href="#DOM4J操作" class="headerlink" title="DOM4J操作"></a>DOM4J操作</h1><pre><code>    public   class  dom4j_exercise {
+     // DOM4J的使用
+     public   static   void  main(String[] args)  throws  Exception {
+     // 得到解析器
+    SAXReader reader =  new  SAXReader();
+     // 得到Document,
+    Document document = reader.read( &quot;src/book.xml&quot; );
+     // test1(document);
+     // test2(document.getRootElement());
+     test7 (document);
+        }
+     // 1、得到某个具体的节点内容:第2本书的作者
+     private   static   void   test1(Document document)  throws  Exception  {
+     // 1.得到根元素
+    Element root = document.getRootElement();
+     // 2.得到根元素书里面所有(书)元素的集合(只得到儿子,不得到孙子),注意不是get方法,是element.
+    List&lt;Element&gt; books =  root.elements( &quot;书&quot; ) ;
+     // 3.得到第二本书
+    Element secondBook = books.get(1);
+     // 4.得到书中的(作者)元素
+    Element author = secondBook.element( &quot;作者&quot; );
+    System. out .println(author.getTextTrim());
+    }
+     // 2、遍历所有元素节点:只打印元素的名称
+     private   static   void   test2(Element element)  throws  Exception  {
+    System. out .println(element.getName());
+     // 一下代码copyDOM4J文档说明Fast Looping
+     for  ( int  i = 0, size = element.nodeCount(); i &lt; size; i++) {
+        Node node = element.node(i);
+         if  (node  instanceof  Element) {
+             test2 ((Element) node);
+        }  else  {
+             // do something....
+        }
+    }
+    }
+     // 3、修改某个元素节点的主体内容
+     // 第二本书售价由2.00元变为1.00元
+     private   static   void   test3(Document document)  throws  Exception  {
+     // 1.得到根元素
+    Element root = document.getRootElement();
+     // 2.得到根元素书里面所有(书)元素的集合(只得到儿子,不得到孙子)注意不是get方法,是element.
+    List&lt;Element&gt; books =  root.elements( &quot;书&quot; ) ;
+     // 3.得到第二本书
+    Element secondBook = books.get(1);
+     // 4.得到书中的(售价)元素,修改
+    Element price = secondBook.element( &quot;售价&quot; );
+    price.setText( &quot;1.00元&quot; );
+     // 5.写入到文件.复制DOM4J文档说明Writing a document to a file
+     // OutputFormat format = OutputFormat.createPrettyPrint();//好看的,默认的输出格式.
+    OutputFormat format = OutputFormat. createCompactFormat (); // 不好看的,机器看的
+    format.setEncoding( &quot;UTF-8&quot; ); // 设置编码
+    XMLWriter writer =  new  XMLWriter( new  FileOutputStream( &quot;src/book.xml&quot; ),
+            format);
+     // XMLWriter writer = new XMLWriter(new
+     // FileOutputStream(&quot; src /book.xml&quot;));
+    writer.write(document);
+    writer.close();
+    }
+     // 4、向指定元素节点中增加子元素节点 :在第一本书增加内部价节点,48.00元
+     private   static   void   test4(Document document)  throws  Exception  {
+     // 1.创建元素DocumentHelper,这个类可以创建好多东西;
+    Element e = DocumentHelper. createElement ( &quot;内部价&quot; ).addText( &quot;48.00元&quot; );
+     // 2.添加元素到文档中,有父亲才可以添加.
+    document.getRootElement().element( &quot;书&quot; ).add(e);
+     // 3.写入元素
+    XMLWriter writer =  new  XMLWriter( new  FileOutputStream( &quot;src/book.xml&quot; ));
+    writer.write(document);
+    writer.close();
+    }
+     // 5、向指定元素节点上增加同级元素节点,在售价上增加批发价58.00元.
+     private   static   void   test5(Document document)  throws  Exception  {
+     // 1.创建元素DocumentHelper,这个类可以创建好多东西;
+    Element e = DocumentHelper. createElement ( &quot;批发价&quot; ).addText( &quot;58.00元&quot; );
+     // 2.添加元素到文档中,得到第一本书的孩子们,他们在一个集合中,操作这个集合即可.
+    Element book = document.getRootElement().element( &quot;书&quot; );
+    List&lt;Element&gt; list =  book.elements() ;
+     // 3.批发价是插入到第三个元素,index为2
+    list.add(2, e);
+     // 4.写入元素
+    XMLWriter writer =  new  XMLWriter( new  FileOutputStream( &quot;src/book.xml&quot; ));
+    writer.write(document);
+    writer.close();
+    }
+     // 6、删除指定元素节点:删除第一本书的批发价
+     private   static   void   test6(Document document)  throws  Exception  {
+     // 1.删除元素,得到第一本书的孩子们,他们在一个集合中,操作这个集合即可.
+    Element book = document.getRootElement().element( &quot;书&quot; );
+    List&lt;Element&gt; list =  book.elements() ;
+     // 2.批发价是插入到第三个元素,index为2
+    list.remove(2);
+     // 3.写入元素
+    XMLWriter writer =  new  XMLWriter( new  FileOutputStream( &quot;src/book.xml&quot; ));
+    writer.write(document);
+    writer.close();
+}
+ // 7、操作XML文件属性：第二本书添加出版社=&quot;机械工业出版社&quot;
+ private   static   void  test7(Document document)  throws  Exception {
+     // 1.得到根元素
+    Element root = document.getRootElement();
+     // 2.找到第二本书,增加属性,因为是第二本,不是第一本,所以要从集合里区.第一本直接取
+    Element book2 = (Element)root.elements( &quot;书&quot; ).get(1);
+    book2.addAttribute( &quot;出版社&quot; ,  &quot;机械工业出版社&quot; );
+     // 3.写入元素
+    XMLWriter writer =  new  XMLWriter( new  FileOutputStream( &quot;src/book.xml&quot; ));
+    writer.write(document);
+    writer.close();
+} }
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/01/18/XML数据解析/">XML数据解析</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Felix</a></p>
+        <p><span>发布时间:</span>2017-01-18, 16:34:27</p>
+        <p><span>最后更新:</span>2017-01-18, 18:56:41</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/18/XML数据解析/" title="XML数据解析">http://yoursite.com/2017/01/18/XML数据解析/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/01/18/XML数据解析/　　作者: Felix" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/01/19/Java面试题总结-中/">
+                    Java面试题总结(中)
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/01/16/Java面试题总结-上/">
+                    Java面试题总结(上)
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#解析XML的方式"><span class="toc-number">1.</span> <span class="toc-text">解析XML的方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解析时用到的解析包"><span class="toc-number">2.</span> <span class="toc-text">解析时用到的解析包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JAXP之DOM解析"><span class="toc-number">3.</span> <span class="toc-text">JAXP之DOM解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JAXP之SAX解析"><span class="toc-number">4.</span> <span class="toc-text">JAXP之SAX解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DOM4J操作"><span class="toc-number">5.</span> <span class="toc-text">DOM4J操作</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"XML数据解析　| Felix个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/18/XML数据解析/" data-title="XML数据解析" data-url="http://yoursite.com/2017/01/18/XML数据解析/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"http://cjianfeng.duoshuo.com"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+            // Add comment count
+            $(function(){ 
+                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=http://cjianfeng.duoshuo.com&threads=2017/01/18/XML数据解析/&callback=?";
+                $.getJSON(jsonUrl, function(result){
+                    $.each(result.response, function(i, field){
+                        var value = field.comments;
+                        if (value > 0) {
+                            $(".count-comment").text(value);
+                            return;
+                        }
+                    })
+                })
+            })
+        
+    </script>
+    
+    <aside class="comment-bar">
+        <a href="javascript:void(0);">
+            <i class="fa fa-commenting-o animated infinite pulse"></i>
+            <i class="fa fa-spinner fa-pulse"></i>
+            <span class="count-comment"></span>
+        </a>
+    </aside>
+    <script>
+        var $commentBar = $("#comments aside.comment-bar");
+        var load$hide = function(){
+            $commentBar.find("a > i").toggle();
+            loadComment();
+            $commentBar.fadeOut(800);
+        }
+        $commentBar.click(function(){
+            load$hide();
+        })
+        $commentBar.children("a").hover(function(){
+            load$hide();
+        })
+        if (window.location.hash === "#comments") {
+            load$hide();
+        }
+    </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/01/19/Java面试题总结-中/" title="上一篇: Java面试题总结(中)">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/01/16/Java面试题总结-上/" title="下一篇: Java面试题总结(上)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/多机部署hexo博客/">多机部署hexo博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/欢迎来到Felix博客/">欢迎来到Felix个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/Linux上部署多个Tomcat/">Linux上部署多个Tomcat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/nginx负载均衡配置/">nginx负载均衡配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/BootStrap-fileinput插件的使用/">BootStrap fileinput插件的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/DWR使用教程/">DWR使用教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/程序是怎么跑起来的读书笔记/">程序是怎么跑起来的读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/mysql和Oracle实现分页/">mysql和Oracle实现分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/有关异常捕获的一题面试题/">有关异常捕获的一题面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/JQuery、EasyUI和Bootstrap区别/">JQuery、EasyUI和Bootstrap区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/05/过滤器filter/">过滤器filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java中的网络编程/">Java中的网络编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/03/MongoDB数据库/">MongoDB数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/RESTful架构/">RESTful架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/四大域对象和JSP九大隐式对象/">四大域对象和JSP九大隐式对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/JDBC编码/">JDBC编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/HTTP协议/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/网络基础知识/">网络基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/《剑指offer》笔记/">《剑指offer》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/Java面试题总结-中/">Java面试题总结(中)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/18/XML数据解析/">XML数据解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/16/Java面试题总结-上/">Java面试题总结(上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/设计模式之工厂方法模式/">设计模式之工厂方法模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/设计模式/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/设计模式之代理模式/">设计模式之代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/《深入理解JVM》笔记/">《深入理解JVM》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/设计模式之策略模式/">设计模式之策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/UML学习笔记/">UML学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/设计模式之单例模式/">设计模式之单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java基础复习/">java基础复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/设计模式之观察者模式/">设计模式之观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/finally执行顺序面试题/">finally执行顺序面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/Linux总结/">Linux总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/用Hexo和GitHub-Pages搭建博客问题总结/">用Hexo和GitHub Pages搭建博客问题总结</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Felix
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"cjianfeng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+  </div>
+</body>
+</html>

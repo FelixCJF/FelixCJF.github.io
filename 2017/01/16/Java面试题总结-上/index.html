@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Felix" />
+
+
+
+<meta name="description" content="网上找的题目，自己一题一题做的，查缺补漏">
+<meta name="keywords" content="Java面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java面试题总结(上)">
+<meta property="og:url" content="http://yoursite.com/2017/01/16/Java面试题总结-上/index.html">
+<meta property="og:site_name" content="Felix个人博客">
+<meta property="og:description" content="网上找的题目，自己一题一题做的，查缺补漏">
+<meta property="og:updated_time" content="2017-01-16T10:44:49.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java面试题总结(上)">
+<meta name="twitter:description" content="网上找的题目，自己一题一题做的，查缺补漏">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Felix个人博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Java面试题总结(上) | Felix个人博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/140.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Felix</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">半途而废便是最大的失败</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客主页</a></li>
+                        
+                            <li><a href="/archives/">全部文章</a></li>
+                        
+                            <li><a href="/about/">留言打卡</a></li>
+                        
+                            <li><a href="/tags/">分类标签</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#49;&#53;&#53;&#52;&#52;&#50;&#49;&#48;&#54;&#51;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/FelixCJF" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com/" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" href="https://www.douban.com/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" href="http://www.jianshu.com/" title="简书"></a>
+                            
+                                <a class="fa Google" href="http://www.google.cn/" title="Google"></a>
+                            
+                                <a class="fa StackOverflow" href="https://stackoverflow.com/" title="StackOverflow"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BootStrap-fileinput/">BootStrap-fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DWR/">DWR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EasyUI/">EasyUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDBC/">JDBC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java中的网络编程/">Java中的网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java基础/">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java面试题/">Java面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux软件安装/">Linux软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB数据库/">MongoDB数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTFul架构/">RESTFul架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/">UML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http协议/">http协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java四大域对象/">java四大域对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp九大隐式对象/">jsp九大隐式对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux常用命令/">linux常用命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux权限管理/">linux权限管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql和Oracle实现分页/">mysql和Oracle实现分页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-finally/">try-finally</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代理模式/">代理模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剑指offer/">剑指offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客说明/">博客说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工厂方法模式/">工厂方法模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/异常捕获/">异常捕获</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭hexo博客出现的小问题/">搭hexo博客出现的小问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序是怎么跑起来的/">程序是怎么跑起来的</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略模式/">策略模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络基础/">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观察者模式/">观察者模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤器filter/">过滤器filter</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub Pages</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/FelixCJF">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">主题作者MOxFIVE</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="/www.cjianfeng.com">Felix</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://luuman.github.io/">lumman</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">后端小菜鸟</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Felix</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/140.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Felix</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">半途而废便是最大的失败</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客主页</a></li>
+                
+                    <li><a href="/archives/">全部文章</a></li>
+                
+                    <li><a href="/about/">留言打卡</a></li>
+                
+                    <li><a href="/tags/">分类标签</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#49;&#53;&#53;&#52;&#52;&#50;&#49;&#48;&#54;&#51;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/FelixCJF" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" target="_blank" href="https://www.douban.com/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/" title="简书"></a>
+                            
+                                <a class="fa Google" target="_blank" href="http://www.google.cn/" title="Google"></a>
+                            
+                                <a class="fa StackOverflow" target="_blank" href="https://stackoverflow.com/" title="StackOverflow"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Java面试题总结-上" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/16/Java面试题总结-上/" class="article-date">
+      <time datetime="2017-01-16T10:00:38.000Z" itemprop="datePublished">2017-01-16</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java面试题总结(上)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/面试题/">面试题</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java面试题/">Java面试题</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>网上找的题目，自己一题一题做的，查缺补漏<br><a id="more"></a></p>
+<h1 id="一、Java-基本概念"><a href="#一、Java-基本概念" class="headerlink" title="一、Java 基本概念"></a>一、Java 基本概念</h1><h3 id="1-Java-语言的优点"><a href="#1-Java-语言的优点" class="headerlink" title="1. Java 语言的优点?"></a>1. Java 语言的优点?</h3><p>简单、高效<br>跨平台：生成字节码文件后，可以跨平台运行<br>交互式特性:面向网络编程<br>面向对象 ：除了基本数据类型，在Java语言中都是以类的形式定义<br>动态内存管理 :Java使用自动垃圾回收机制来进行内存管理<br>多线程机制：支持多线程，是Java能够并发处理多项任务<br>安全性 ：使用实时内存分配</p>
+<h3 id="2-什么是-Java-虚拟机？为什么-Java-被称作是“平台无关的编程语言”？"><a href="#2-什么是-Java-虚拟机？为什么-Java-被称作是“平台无关的编程语言”？" class="headerlink" title="2.什么是 Java 虚拟机？为什么 Java 被称作是“平台无关的编程语言”？"></a>2.什么是 Java 虚拟机？为什么 Java 被称作是“平台无关的编程语言”？</h3><p>JVM是一个可执行Java字节码的虚拟进程<br>Java程序可以运行在任意平台</p>
+<h3 id="3-Java-和-C-有何区别"><a href="#3-Java-和-C-有何区别" class="headerlink" title="3. Java 和 C++ 有何区别?"></a>3. Java 和 C++ 有何区别?</h3><p>都是面向对象语言<br>Java使用自动内存管理，c++需要程序员分配内存和释放内存<br>Java没有指针，c++有指针<br>Java异常机制可以捕获例外情况，增加了容错能力<br>Java中含字符串，而C++中没有<br>Java只能单继承，而C++可以多重继承<br>Java中goto是保留字</p>
+<h3 id="4-JDK-和-JRE-的区别是什么？"><a href="#4-JDK-和-JRE-的区别是什么？" class="headerlink" title="4. JDK 和 JRE 的区别是什么？"></a>4. JDK 和 JRE 的区别是什么？</h3><p>JDK：Java程序开发的最小环境<br>JRE：Java程序运行的标准环境<br>JDK包括JRE</p>
+<h3 id="5-Java-支持的数据类型有哪些？什么是自动拆装箱？"><a href="#5-Java-支持的数据类型有哪些？什么是自动拆装箱？" class="headerlink" title="5. Java 支持的数据类型有哪些？什么是自动拆装箱？"></a>5. Java 支持的数据类型有哪些？什么是自动拆装箱？</h3><p>基本数据类型 ：char,byte,short,int,float,long,double,boolen<br>引用数据类型 ：<br>自动装箱就是把基本数据类型转换成引用数据类型，比如int转换成Integer<br>自动拆箱就是把引用数据类型转换成基本数据类型，比如Double转换成Double</p>
+<h3 id="6-什么是值传递和引用传递？"><a href="#6-什么是值传递和引用传递？" class="headerlink" title="6. 什么是值传递和引用传递？"></a>6. 什么是值传递和引用传递？</h3><p>值传递，也就是对象的传递，传递的是一个对象的副本，传递的副本对象发生改变，不会对源对象产生影响<br>引用传递，也就是传递对象的引用，外部对引用对象所做的改变会放映到所有的对象中   </p>
+<h3 id="7-一个-“-java”-源文件中是否可以包括多个类（不是内部类）？有什么限制？"><a href="#7-一个-“-java”-源文件中是否可以包括多个类（不是内部类）？有什么限制？" class="headerlink" title="7. 一个 “.java” 源文件中是否可以包括多个类（不是内部类）？有什么限制？"></a>7. 一个 “.java” 源文件中是否可以包括多个类（不是内部类）？有什么限制？</h3><p>可以包含多个类，当只能有一个public修饰的类，切public类名必须和文件名一致</p>
+<h3 id="8-静态变量和实例变量的区别？"><a href="#8-静态变量和实例变量的区别？" class="headerlink" title="8. 静态变量和实例变量的区别？"></a>8. 静态变量和实例变量的区别？</h3><p>静态变量被static修饰，实例变量不被static修饰<br>静态变量属于类，实例变量属于对象<br>静态变量存在于方法区中，实例变量存在于堆中<br>静态变量随着类的加载而加载，随着类的消失而消失，实例变量随着对象的创建而存在，随着对象的回收而消失<br>静态变量既可以被对象调用，也可以被类名调用，实例变量只能被对象调用   </p>
+<h3 id="9-不通过构造函数也能创建对象吗"><a href="#9-不通过构造函数也能创建对象吗" class="headerlink" title="9. 不通过构造函数也能创建对象吗?"></a>9. 不通过构造函数也能创建对象吗?</h3><p>可以<br>通过new创建一个对象<br>通过反射<br>通过调用对象的clone方法<br>通过反序列化手段，Java.io.ObjectStream的readObject方法    </p>
+<p>后两个不通过构造函数创建对象   </p>
+<h3 id="10-是否可以从一个静态（static）方法内部发出对非静态（non-static）方法的调用？"><a href="#10-是否可以从一个静态（static）方法内部发出对非静态（non-static）方法的调用？" class="headerlink" title="10. 是否可以从一个静态（static）方法内部发出对非静态（non-static）方法的调用？"></a>10. 是否可以从一个静态（static）方法内部发出对非静态（non-static）方法的调用？</h3><p>不能，<br>静态方法只能访问静态成员，因为静态方法优先于对象的创建，所以当调用非静态方法的时候，对象可能还没有创建</p>
+<h3 id="11-如何实现对象克隆？"><a href="#11-如何实现对象克隆？" class="headerlink" title="11. 如何实现对象克隆？"></a>11. 如何实现对象克隆？</h3><p>两种方法<br>实现Cloneable，并重写Object中的clone方法<br>实现Serializable，并通过对象的序列化和反序列化实现正真的深度克隆    </p>
+<h3 id="14-Anonymous-Inner-Class-匿名内部类-是否可以继承其它类？是否可以实现接口？"><a href="#14-Anonymous-Inner-Class-匿名内部类-是否可以继承其它类？是否可以实现接口？" class="headerlink" title="14. Anonymous Inner Class(匿名内部类)是否可以继承其它类？是否可以实现接口？"></a>14. Anonymous Inner Class(匿名内部类)是否可以继承其它类？是否可以实现接口？</h3><p>定义匿名内部类的前提是：必须继承一个类或者实现一个接口</p>
+<h3 id="12-内部类可以引用它的包含类（外部类）的成员吗？有没有什么限制？"><a href="#12-内部类可以引用它的包含类（外部类）的成员吗？有没有什么限制？" class="headerlink" title="12. 内部类可以引用它的包含类（外部类）的成员吗？有没有什么限制？"></a>12. 内部类可以引用它的包含类（外部类）的成员吗？有没有什么限制？</h3><p>可以，包括私有成员</p>
+<h3 id="13-列出自己常用的-jdk-包"><a href="#13-列出自己常用的-jdk-包" class="headerlink" title="13. 列出自己常用的 jdk 包."></a>13. 列出自己常用的 jdk 包.</h3><p>java.lang    含有系统基础类，唯一一个不需要导入就可以使用的,比如String<br>java.net     含有与网络有关的类       比如URL<br>Java.io      含有与输入输出有关的类   比如文件操作    File,InputStream,OutputStream<br>java.sql     含有与数据库有关的类     比如Connection，Statement，ResultSet<br>java.util    含有Java相关的工具类     比如集合相关，Concention，List,Set,Map   </p>
+<h3 id="14-JDK-JRE-和-JVM-的区别？"><a href="#14-JDK-JRE-和-JVM-的区别？" class="headerlink" title="14. JDK, JRE 和 JVM 的区别？"></a>14. JDK, JRE 和 JVM 的区别？</h3><p>JDK: Java程序开发的最小环境<br>JRE：Java程序运行的标准环境<br>JVM：将字节码文件转换为机器码文件，Java语言的核心<br>JDK包括JRE。JRE包括JVM    </p>
+<h1 id="二、面向对象编程"><a href="#二、面向对象编程" class="headerlink" title="二、面向对象编程"></a>二、面向对象编程</h1><h3 id="1-Java-中的方法覆盖-Overriding-和方法重载-Overloading-是什么意思？"><a href="#1-Java-中的方法覆盖-Overriding-和方法重载-Overloading-是什么意思？" class="headerlink" title="1. Java 中的方法覆盖 (Overriding) 和方法重载 (Overloading) 是什么意思？"></a>1. Java 中的方法覆盖 (Overriding) 和方法重载 (Overloading) 是什么意思？</h3><p>方法重载：方法名相同，参数列表不同。与返回值无关<br>方法覆盖：方法签名一样，返回值一样。子类覆盖父类时，保证子类的访问权限大于父类，子类只能抛出父类异常或异常的子类，并且被覆盖的方法不能private修饰   </p>
+<h3 id="2-Overload-和-Override-的区别？-Overloaded-的方法是否可以改变返回值的类型"><a href="#2-Overload-和-Override-的区别？-Overloaded-的方法是否可以改变返回值的类型" class="headerlink" title="2. Overload 和 Override 的区别？ Overloaded 的方法是否可以改变返回值的类型?"></a>2. Overload 和 Override 的区别？ Overloaded 的方法是否可以改变返回值的类型?</h3><p>重载是在同一个类中，覆盖是在子类中覆盖父类中的方法，重载和返回值无关，覆写需要保证方法签名和返回值都一样      </p>
+<h3 id="3-Java-中，什么是构造函数？什么是构造函数重载？什么是复制构造函数？"><a href="#3-Java-中，什么是构造函数？什么是构造函数重载？什么是复制构造函数？" class="headerlink" title="3. Java 中，什么是构造函数？什么是构造函数重载？什么是复制构造函数？"></a>3. Java 中，什么是构造函数？什么是构造函数重载？什么是复制构造函数？</h3><p>构造函数：每一个对象被创建时都会调用构造函数，当没有给类提供构造函数的时候，Java编译器会创建一个默认的构造函数<br>构造函数重载：一个类中定义多个构造函数，每一个构造函数都有不同的参数列表<br>复制构造函数：C++里面的       </p>
+<h3 id="4-构造器-Constructor-是否可被-Override"><a href="#4-构造器-Constructor-是否可被-Override" class="headerlink" title="4. 构造器 Constructor 是否可被 Override?"></a>4. 构造器 Constructor 是否可被 Override?</h3><p>不可以，覆写的前提是继承，所以构造器只能被重载，不能被覆写 </p>
+<h3 id="5-Java-支持多继承么？"><a href="#5-Java-支持多继承么？" class="headerlink" title="5. Java 支持多继承么？"></a>5. Java 支持多继承么？</h3><p>不支持，但Java支持多实现  </p>
+<h3 id="6-接口和抽象类的区别是什么？"><a href="#6-接口和抽象类的区别是什么？" class="headerlink" title="6. 接口和抽象类的区别是什么？"></a>6. 接口和抽象类的区别是什么？</h3><p>抽象类只能被继承，接口只能被实现，但可以多实现。<br>抽象类中可以有非抽象方法，接口中只能含有抽象方法，需要被子类实现<br>接口中成员函数修饰符是public，抽象类的成员修饰符可以自定义<br>接口中的变量默认final，抽象类可以声明非final变量<br>接口是绝对抽象的不能实例化，抽象类也不可以被实例化，但有构造函数    </p>
+<h3 id="7-下列说法正确的有（）"><a href="#7-下列说法正确的有（）" class="headerlink" title="7. 下列说法正确的有（）"></a>7. 下列说法正确的有（）</h3><p>A．class 中的 constructor 不可省略<br>B．constructor 必须与 class 同名，但方法不能与class同名<br>C．constructor在一个对象被 new 时执行<br>D．一个 class 只能定义一个 constructor<br>答案：C<br>解析：普通的类方法是可以和类名同名的，和构造方法唯一的区分就是，构造方法没有返回值。     </p>
+<h3 id="8-Java-接口的修饰符可以为"><a href="#8-Java-接口的修饰符可以为" class="headerlink" title="8. Java 接口的修饰符可以为?"></a>8. Java 接口的修饰符可以为?</h3><p>A. private<br>B. protected<br>C. final<br>D. abstrac<br>答案：CD<br>接口的属性默认是 public static final常量，且必须赋初值。<br>接口的方法默认是 public abstract    </p>
+<h3 id="9-下面是-People-和-Child-类的定义和构造方法，每个构造方法都输出编号。在执行-new-Child-“mike”-的时候都有哪些构造方法被顺序调用？请选择输出结果"><a href="#9-下面是-People-和-Child-类的定义和构造方法，每个构造方法都输出编号。在执行-new-Child-“mike”-的时候都有哪些构造方法被顺序调用？请选择输出结果" class="headerlink" title="9. 下面是 People 和 Child 类的定义和构造方法，每个构造方法都输出编号。在执行 new Child(“mike”) 的时候都有哪些构造方法被顺序调用？请选择输出结果"></a>9. 下面是 People 和 Child 类的定义和构造方法，每个构造方法都输出编号。在执行 new Child(“mike”) 的时候都有哪些构造方法被顺序调用？请选择输出结果</h3><pre><code>class People {
+String name;
+public People() {
+System.out.print(1);
+}
+public People(String name) {
+System.out.print(2);
+this.name = name;
+}
+}
+class Child extends People {
+People father;
+public Child(String name) {
+System.out.print(3);
+this.name = name;
+father = new People(name + &quot;:F&quot;);
+}
+public Child() {
+System.out.print(4);
+}
+}    
+</code></pre><p>A. 312<br>B. 32<br>C. 432<br>D. 132<br>答案：D<br>必须先调用父类构造函数，没有显式调用的话，则默认调用默认的父类构造参数   </p>
+<h3 id="10-两个对象值相同-x-equals-y-true-，但却可有不同的-hash-code，这句话对不对？"><a href="#10-两个对象值相同-x-equals-y-true-，但却可有不同的-hash-code，这句话对不对？" class="headerlink" title="10. 两个对象值相同(x.equals(y) == true)，但却可有不同的 hash code，这句话对不对？"></a>10. 两个对象值相同(x.equals(y) == true)，但却可有不同的 hash code，这句话对不对？</h3><p>不对，如果两个对象值相同，则它们hashcode相同 ，如果它们hashcode相同，值不一定相同</p>
+<h3 id="11-接口是否可继承（extends）接口-抽象类是否可实现（implements）接口-抽象类是否可继承具体类（concrete-class）"><a href="#11-接口是否可继承（extends）接口-抽象类是否可实现（implements）接口-抽象类是否可继承具体类（concrete-class）" class="headerlink" title="11. 接口是否可继承（extends）接口? 抽象类是否可实现（implements）接口? 抽象类是否可继承具体类（concrete class）?"></a>11. 接口是否可继承（extends）接口? 抽象类是否可实现（implements）接口? 抽象类是否可继承具体类（concrete class）?</h3><p>可以，抽象类可以继承具体类，前提是抽象类必须有明确的构造函数    </p>
+<h3 id="12-指出下面程序的运行结果"><a href="#12-指出下面程序的运行结果" class="headerlink" title="12. 指出下面程序的运行结果:"></a>12. 指出下面程序的运行结果:</h3><pre><code>class A{
+static{
+System.out.print(&quot;1&quot;);
+}
+public A(){
+System.out.print(&quot;2&quot;);
+}
+}
+class B extends A{
+static{
+System.out.print(&quot;a&quot;);
+}
+public B(){
+System.out.print(&quot;b&quot;);
+}
+}
+public class Hello{
+public static void main(String[] args){
+A ab = new B();
+ab = new B();
+}
+}  
+</code></pre><p>答：执行结果：1a2b2b。<br>创建对象时构造器的调用顺序是：先初始化静态成员，然后调用父类构造器，再初始化非静态成员，最后调用自身构造器  </p>
+<h3 id="13-Class-forName（String-className）这个方法的作用"><a href="#13-Class-forName（String-className）这个方法的作用" class="headerlink" title="13. Class.forName（String className）这个方法的作用"></a>13. Class.forName（String className）这个方法的作用</h3><p>通过类全名获取类对象</p>
+<h3 id="14-什么是-AOP-和-OOP，IOC-和-DI-有什么不同"><a href="#14-什么是-AOP-和-OOP，IOC-和-DI-有什么不同" class="headerlink" title="14. 什么是 AOP 和 OOP，IOC 和 DI 有什么不同?"></a>14. 什么是 AOP 和 OOP，IOC 和 DI 有什么不同?</h3><p>AOP: 面向切面编程<br>OOP：面向对象编程<br>IOC：控制反转<br>DI： 依赖注入  </p>
+<h1 id="三、关键字"><a href="#三、关键字" class="headerlink" title="三、关键字"></a>三、关键字</h1><h3 id="1-”static”-关键字是什么意思？Java-中是否可以覆盖-override-一个-private或者是-static-的方法？"><a href="#1-”static”-关键字是什么意思？Java-中是否可以覆盖-override-一个-private或者是-static-的方法？" class="headerlink" title="1. ”static” 关键字是什么意思？Java 中是否可以覆盖(override) 一个 private或者是 static 的方法？"></a>1. ”static” 关键字是什么意思？Java 中是否可以覆盖(override) 一个 private或者是 static 的方法？</h3><p>“static” 关键字表明一个成员变量或者是成员方法可以在没有所属的类的实例变量的情况下被访问。<br>不可以</p>
+<h3 id="2-是否可以在-static-环境中访问非-static-变量？"><a href="#2-是否可以在-static-环境中访问非-static-变量？" class="headerlink" title="2. 是否可以在 static 环境中访问非 static 变量？"></a>2. 是否可以在 static 环境中访问非 static 变量？</h3><p>不可以，static变量是属于类的，调用非static变量时，对象可能还没有被创建</p>
+<h3 id="3-volatile关键字是否能保证线程安全？"><a href="#3-volatile关键字是否能保证线程安全？" class="headerlink" title="3. volatile关键字是否能保证线程安全？"></a>3. volatile关键字是否能保证线程安全？</h3><p>不能,保证线程的可见性，可以正确读取其他线程写入的值  </p>
+<h3 id="4-Java-有没有-goto"><a href="#4-Java-有没有-goto" class="headerlink" title="4. Java 有没有 goto?"></a>4. Java 有没有 goto?</h3><p>作为保留字</p>
+<h3 id="5-Java-中的-final关键字有哪些用法"><a href="#5-Java-中的-final关键字有哪些用法" class="headerlink" title="5. Java 中的 final关键字有哪些用法"></a>5. Java 中的 final关键字有哪些用法</h3><p>修饰类：不能被继承<br>修饰变量：变量值不能改变<br>修饰方法：不能被覆写   </p>
+<h3 id="6-什么时候用-assert？"><a href="#6-什么时候用-assert？" class="headerlink" title="6. 什么时候用 assert？"></a>6. 什么时候用 assert？</h3><p>调试的时候 </p>
+<h3 id="7-final-finally-finalize-的区别"><a href="#7-final-finally-finalize-的区别" class="headerlink" title="7. final, finally, finalize 的区别?"></a>7. final, finally, finalize 的区别?</h3><p>final :修饰词，修饰类，变量，方法<br>finally：关键字，异常捕获的时候使用，无论是否发生异常，都会执行<br>finalize：Object中的方法，垃圾回收器进行垃圾清理之前调用finalize（）做必要的清理工作   </p>
+<h1 id="四、基本类型和运算"><a href="#四、基本类型和运算" class="headerlink" title="四、基本类型和运算"></a>四、基本类型和运算</h1><h3 id="1-说说-amp-和-amp-amp-的区别。"><a href="#1-说说-amp-和-amp-amp-的区别。" class="headerlink" title="1. 说说 &amp; 和 &amp;&amp; 的区别。"></a>1. 说说 &amp; 和 &amp;&amp; 的区别。</h3><p>&amp;：与操作  两边表达式都为TRUE时，才是TRUE，只要一边为FALSE，则最后结果为FALSE<br>&amp;&amp;：短路与  左边的表达式错误，则不执行右边的表达式   </p>
+<h3 id="2-用最有效率的方法算出-2-乘以-8-等於几"><a href="#2-用最有效率的方法算出-2-乘以-8-等於几" class="headerlink" title="2. 用最有效率的方法算出 2 乘以 8 等於几?"></a>2. 用最有效率的方法算出 2 乘以 8 等於几?</h3><p>2&lt;&lt;3</p>
+<h3 id="3-存在使-i-1-lt-i的数吗"><a href="#3-存在使-i-1-lt-i的数吗" class="headerlink" title="3. 存在使 i + 1 &lt; i的数吗"></a>3. 存在使 i + 1 &lt; i的数吗</h3><p>存在，当i为int的最大数时，加一则变成了负数，等式成立</p>
+<h3 id="4-System-out-println-“5”-2-的输出结果应该是（52）。"><a href="#4-System-out-println-“5”-2-的输出结果应该是（52）。" class="headerlink" title="4. System.out.println(“5” + 2);的输出结果应该是（52）。"></a>4. System.out.println(“5” + 2);的输出结果应该是（52）。</h3><h3 id="5-下面的方法，当输入为-2-的时候返回值是多少"><a href="#5-下面的方法，当输入为-2-的时候返回值是多少" class="headerlink" title="5. 下面的方法，当输入为 2 的时候返回值是多少?"></a>5. 下面的方法，当输入为 2 的时候返回值是多少?</h3><pre><code>public static int getValue(int i) {
+int result = 0;
+switch (i) {
+case 1:
+result = result + i;
+case 2:
+result = result + i * 2;
+case 3:
+result = result + i * 3;
+}
+return result;
+}   
+</code></pre><p>答案：10</p>
+<h3 id="6-float-f-3-4-是否正确"><a href="#6-float-f-3-4-是否正确" class="headerlink" title="6. float f=3.4;是否正确?"></a>6. float f=3.4;是否正确?</h3><p>不正确 </p>
+<h3 id="7-3-4是double类型的，需要强制转换"><a href="#7-3-4是double类型的，需要强制转换" class="headerlink" title="7. 3.4是double类型的，需要强制转换"></a>7. 3.4是double类型的，需要强制转换</h3><h3 id="8-int-和-Integer-有什么区别"><a href="#8-int-和-Integer-有什么区别" class="headerlink" title="8. int 和 Integer 有什么区别?"></a>8. int 和 Integer 有什么区别?</h3><p>int 是基本数据类型<br>Integer 是包装类型   </p>
+<h3 id="9-char-型变量中能不能存贮一个中文汉字-为什么"><a href="#9-char-型变量中能不能存贮一个中文汉字-为什么" class="headerlink" title="9. char 型变量中能不能存贮一个中文汉字?为什么?"></a>9. char 型变量中能不能存贮一个中文汉字?为什么?</h3><p>可以，char占两个字节  </p>
+<h3 id="10-Math-round-11-5-等于多少-Math-round-11-5-等于多少"><a href="#10-Math-round-11-5-等于多少-Math-round-11-5-等于多少" class="headerlink" title="10. Math.round(11.5) ? 等于多少? Math.round(-11.5)等于多少?"></a>10. Math.round(11.5) ? 等于多少? Math.round(-11.5)等于多少?</h3><p>返回与数值最接近的长整数  </p>
+<h1 id="五、字符串与数组"><a href="#五、字符串与数组" class="headerlink" title="五、字符串与数组"></a>五、字符串与数组</h1><h3 id="1-下面程序的运行结果是（）"><a href="#1-下面程序的运行结果是（）" class="headerlink" title="1. 下面程序的运行结果是（）"></a>1. 下面程序的运行结果是（）</h3><pre><code>String str1 = &quot;hello&quot;;
+String str2 = &quot;he&quot; + new String(&quot;llo&quot;);
+System.err.println(str1 == str2)  
+</code></pre><p>false ==判断对象的地址</p>
+<h3 id="2-下面代码的运行结果为"><a href="#2-下面代码的运行结果为" class="headerlink" title="2. 下面代码的运行结果为?"></a>2. 下面代码的运行结果为?</h3><pre><code>import java.io.*;
+import java.util.*;
+public class foo{
+public static void main (String[] args){
+String s;
+System.out.println(&quot;s=&quot; + s);
+}
+}   
+</code></pre><p>A. 代码得到编译，并输出 “s=”<br>B. 代码得到编译，并输出 “s=null”<br>C. 由于 String s 没有初始化，代码不能编译通过<br>D. 代码得到编译，但捕获到 NullPointException异常<br>答案：C<br> java中所有定义的基本类型和对象都必须初始化之后才能输出对象   </p>
+<h3 id="3-String-是最基本的数据类型吗"><a href="#3-String-是最基本的数据类型吗" class="headerlink" title="3. String 是最基本的数据类型吗?"></a>3. String 是最基本的数据类型吗?</h3><p>不是，除了基本类型和枚举类型，其他都是引用类型</p>
+<h3 id="4-数组有没有-length-方法-String-有没有-length-方法？"><a href="#4-数组有没有-length-方法-String-有没有-length-方法？" class="headerlink" title="4. 数组有没有 length() 方法? String 有没有 length() 方法？"></a>4. 数组有没有 length() 方法? String 有没有 length() 方法？</h3><p>数组中有length属性，String中有length（）方法</p>
+<h3 id="5-是否可以继承-String-类"><a href="#5-是否可以继承-String-类" class="headerlink" title="5. 是否可以继承 String 类?"></a>5. 是否可以继承 String 类?</h3><p>String是final类，不可以被继承</p>
+<h3 id="6-String-和StringBuilder、StringBuffer-的区别"><a href="#6-String-和StringBuilder、StringBuffer-的区别" class="headerlink" title="6. String 和StringBuilder、StringBuffer 的区别?"></a>6. String 和StringBuilder、StringBuffer 的区别?</h3><p>String：只读字符串，长度固定，且不可变<br>StringBuilder：字符缓冲区，长度可变，线程安全<br>StringBuffer：长度可变、效率高，线程不安全</p>
+<h3 id="7-String-s-new-String-“xyz”-创建了几个字符串对象？"><a href="#7-String-s-new-String-“xyz”-创建了几个字符串对象？" class="headerlink" title="7. String s=new String(“xyz”);创建了几个字符串对象？"></a>7. String s=new String(“xyz”);创建了几个字符串对象？</h3><p>两个，一个是常量池中的“xyz”，另一个是堆上的对象s</p>
+<h3 id="8-将字符-“12345”-转换成-long-型"><a href="#8-将字符-“12345”-转换成-long-型" class="headerlink" title="8. 将字符 “12345” 转换成 long 型"></a>8. 将字符 “12345” 转换成 long 型</h3><p>答：<br>        <code>String s=”12345″; 
+        long num=Long.valueOf(s).longValue();</code></p>
+<h3 id="9-为了显示-myStr-23-这样的结果，写出在控制台输入的命令"><a href="#9-为了显示-myStr-23-这样的结果，写出在控制台输入的命令" class="headerlink" title="9. 为了显示 myStr = 23 这样的结果，写出在控制台输入的命令"></a>9. 为了显示 myStr = 23 这样的结果，写出在控制台输入的命令</h3><pre><code>public class MyClass {
+public static void main(String args[]) {
+String s1 = args[0];
+String s2 = args[1];
+String myStr = args[2];
+System.out.printin(“myStr =” + s2 + myStr);
+}
+}
+</code></pre><p>答：java MyClass 1 2 3 4</p>
+<h3 id="10-String-s-“Hello”-s-s-“-world-”-这两行代码执行后，原始的-String对象中的内容到底变了没有？"><a href="#10-String-s-“Hello”-s-s-“-world-”-这两行代码执行后，原始的-String对象中的内容到底变了没有？" class="headerlink" title="10. String s = “Hello”;s = s + “ world!”; 这两行代码执行后，原始的 String对象中的内容到底变了没有？"></a>10. String s = “Hello”;s = s + “ world!”; 这两行代码执行后，原始的 String对象中的内容到底变了没有？</h3><p>原始内容没变，只是s不指向“hello”而是指向一个新的对象</p>
+<h3 id="11-如何把一段逗号分割的字符串转换成一个数组"><a href="#11-如何把一段逗号分割的字符串转换成一个数组" class="headerlink" title="11. 如何把一段逗号分割的字符串转换成一个数组?"></a>11. 如何把一段逗号分割的字符串转换成一个数组?</h3><h3 id="12-下面这条语句一共创建了多少个对象：-String-s-“a”-”b”-”c”-”d”"><a href="#12-下面这条语句一共创建了多少个对象：-String-s-“a”-”b”-”c”-”d”" class="headerlink" title="12. 下面这条语句一共创建了多少个对象： String s=“a”+”b”+”c”+”d”"></a>12. 下面这条语句一共创建了多少个对象： String s=“a”+”b”+”c”+”d”</h3><p>一个<br>这说明 Javac 编译可以对字符串常量直接相加的表达式进行优化，不必要等到运行期去进行加法运算处理，而是在编译时去掉其中的加号，直接将其编译成一个这些常量相连的结果。</p>
+<h3 id="14-什么是-Java-序列化，如何实现-Java-序列化？"><a href="#14-什么是-Java-序列化，如何实现-Java-序列化？" class="headerlink" title="14. 什么是 Java 序列化，如何实现 Java 序列化？"></a>14. 什么是 Java 序列化，如何实现 Java 序列化？</h3><p>序列化：处理对象流的机制，将对象流化<br>序列化的实现：将需要被序列化的类实现 Serializable 接口，该接口没有需要实现的方法， implements Serializable 只是为了标注该对象是可被序列化的，然后使用一个输出流(如：FileOutputStream)来构造一个ObjectOutputStream(对象流)对象，接着，使用ObjectOutputStream对象的writeObject(Object obj）方法就可以将参数为obj的对象写出(即保存其状态)，要恢复的话则用输入流</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/01/16/Java面试题总结-上/">Java面试题总结(上)</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Felix</a></p>
+        <p><span>发布时间:</span>2017-01-16, 18:00:38</p>
+        <p><span>最后更新:</span>2017-01-16, 18:44:49</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/16/Java面试题总结-上/" title="Java面试题总结(上)">http://yoursite.com/2017/01/16/Java面试题总结-上/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/01/16/Java面试题总结-上/　　作者: Felix" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/01/18/XML数据解析/">
+                    XML数据解析
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/01/13/设计模式之工厂方法模式/">
+                    设计模式之工厂方法模式
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、Java-基本概念"><span class="toc-number">1.</span> <span class="toc-text">一、Java 基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Java-语言的优点"><span class="toc-number">1.0.1.</span> <span class="toc-text">1. Java 语言的优点?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-什么是-Java-虚拟机？为什么-Java-被称作是“平台无关的编程语言”？"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.什么是 Java 虚拟机？为什么 Java 被称作是“平台无关的编程语言”？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Java-和-C-有何区别"><span class="toc-number">1.0.3.</span> <span class="toc-text">3. Java 和 C++ 有何区别?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-JDK-和-JRE-的区别是什么？"><span class="toc-number">1.0.4.</span> <span class="toc-text">4. JDK 和 JRE 的区别是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Java-支持的数据类型有哪些？什么是自动拆装箱？"><span class="toc-number">1.0.5.</span> <span class="toc-text">5. Java 支持的数据类型有哪些？什么是自动拆装箱？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-什么是值传递和引用传递？"><span class="toc-number">1.0.6.</span> <span class="toc-text">6. 什么是值传递和引用传递？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-一个-“-java”-源文件中是否可以包括多个类（不是内部类）？有什么限制？"><span class="toc-number">1.0.7.</span> <span class="toc-text">7. 一个 “.java” 源文件中是否可以包括多个类（不是内部类）？有什么限制？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-静态变量和实例变量的区别？"><span class="toc-number">1.0.8.</span> <span class="toc-text">8. 静态变量和实例变量的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-不通过构造函数也能创建对象吗"><span class="toc-number">1.0.9.</span> <span class="toc-text">9. 不通过构造函数也能创建对象吗?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-是否可以从一个静态（static）方法内部发出对非静态（non-static）方法的调用？"><span class="toc-number">1.0.10.</span> <span class="toc-text">10. 是否可以从一个静态（static）方法内部发出对非静态（non-static）方法的调用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-如何实现对象克隆？"><span class="toc-number">1.0.11.</span> <span class="toc-text">11. 如何实现对象克隆？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-Anonymous-Inner-Class-匿名内部类-是否可以继承其它类？是否可以实现接口？"><span class="toc-number">1.0.12.</span> <span class="toc-text">14. Anonymous Inner Class(匿名内部类)是否可以继承其它类？是否可以实现接口？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-内部类可以引用它的包含类（外部类）的成员吗？有没有什么限制？"><span class="toc-number">1.0.13.</span> <span class="toc-text">12. 内部类可以引用它的包含类（外部类）的成员吗？有没有什么限制？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-列出自己常用的-jdk-包"><span class="toc-number">1.0.14.</span> <span class="toc-text">13. 列出自己常用的 jdk 包.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-JDK-JRE-和-JVM-的区别？"><span class="toc-number">1.0.15.</span> <span class="toc-text">14. JDK, JRE 和 JVM 的区别？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、面向对象编程"><span class="toc-number">2.</span> <span class="toc-text">二、面向对象编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Java-中的方法覆盖-Overriding-和方法重载-Overloading-是什么意思？"><span class="toc-number">2.0.1.</span> <span class="toc-text">1. Java 中的方法覆盖 (Overriding) 和方法重载 (Overloading) 是什么意思？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Overload-和-Override-的区别？-Overloaded-的方法是否可以改变返回值的类型"><span class="toc-number">2.0.2.</span> <span class="toc-text">2. Overload 和 Override 的区别？ Overloaded 的方法是否可以改变返回值的类型?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Java-中，什么是构造函数？什么是构造函数重载？什么是复制构造函数？"><span class="toc-number">2.0.3.</span> <span class="toc-text">3. Java 中，什么是构造函数？什么是构造函数重载？什么是复制构造函数？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-构造器-Constructor-是否可被-Override"><span class="toc-number">2.0.4.</span> <span class="toc-text">4. 构造器 Constructor 是否可被 Override?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Java-支持多继承么？"><span class="toc-number">2.0.5.</span> <span class="toc-text">5. Java 支持多继承么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-接口和抽象类的区别是什么？"><span class="toc-number">2.0.6.</span> <span class="toc-text">6. 接口和抽象类的区别是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-下列说法正确的有（）"><span class="toc-number">2.0.7.</span> <span class="toc-text">7. 下列说法正确的有（）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Java-接口的修饰符可以为"><span class="toc-number">2.0.8.</span> <span class="toc-text">8. Java 接口的修饰符可以为?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-下面是-People-和-Child-类的定义和构造方法，每个构造方法都输出编号。在执行-new-Child-“mike”-的时候都有哪些构造方法被顺序调用？请选择输出结果"><span class="toc-number">2.0.9.</span> <span class="toc-text">9. 下面是 People 和 Child 类的定义和构造方法，每个构造方法都输出编号。在执行 new Child(“mike”) 的时候都有哪些构造方法被顺序调用？请选择输出结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-两个对象值相同-x-equals-y-true-，但却可有不同的-hash-code，这句话对不对？"><span class="toc-number">2.0.10.</span> <span class="toc-text">10. 两个对象值相同(x.equals(y) == true)，但却可有不同的 hash code，这句话对不对？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-接口是否可继承（extends）接口-抽象类是否可实现（implements）接口-抽象类是否可继承具体类（concrete-class）"><span class="toc-number">2.0.11.</span> <span class="toc-text">11. 接口是否可继承（extends）接口? 抽象类是否可实现（implements）接口? 抽象类是否可继承具体类（concrete class）?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-指出下面程序的运行结果"><span class="toc-number">2.0.12.</span> <span class="toc-text">12. 指出下面程序的运行结果:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-Class-forName（String-className）这个方法的作用"><span class="toc-number">2.0.13.</span> <span class="toc-text">13. Class.forName（String className）这个方法的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-什么是-AOP-和-OOP，IOC-和-DI-有什么不同"><span class="toc-number">2.0.14.</span> <span class="toc-text">14. 什么是 AOP 和 OOP，IOC 和 DI 有什么不同?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、关键字"><span class="toc-number">3.</span> <span class="toc-text">三、关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-”static”-关键字是什么意思？Java-中是否可以覆盖-override-一个-private或者是-static-的方法？"><span class="toc-number">3.0.1.</span> <span class="toc-text">1. ”static” 关键字是什么意思？Java 中是否可以覆盖(override) 一个 private或者是 static 的方法？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-是否可以在-static-环境中访问非-static-变量？"><span class="toc-number">3.0.2.</span> <span class="toc-text">2. 是否可以在 static 环境中访问非 static 变量？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-volatile关键字是否能保证线程安全？"><span class="toc-number">3.0.3.</span> <span class="toc-text">3. volatile关键字是否能保证线程安全？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Java-有没有-goto"><span class="toc-number">3.0.4.</span> <span class="toc-text">4. Java 有没有 goto?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Java-中的-final关键字有哪些用法"><span class="toc-number">3.0.5.</span> <span class="toc-text">5. Java 中的 final关键字有哪些用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-什么时候用-assert？"><span class="toc-number">3.0.6.</span> <span class="toc-text">6. 什么时候用 assert？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-final-finally-finalize-的区别"><span class="toc-number">3.0.7.</span> <span class="toc-text">7. final, finally, finalize 的区别?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、基本类型和运算"><span class="toc-number">4.</span> <span class="toc-text">四、基本类型和运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-说说-amp-和-amp-amp-的区别。"><span class="toc-number">4.0.1.</span> <span class="toc-text">1. 说说 & 和 && 的区别。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-用最有效率的方法算出-2-乘以-8-等於几"><span class="toc-number">4.0.2.</span> <span class="toc-text">2. 用最有效率的方法算出 2 乘以 8 等於几?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-存在使-i-1-lt-i的数吗"><span class="toc-number">4.0.3.</span> <span class="toc-text">3. 存在使 i + 1 < i的数吗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-System-out-println-“5”-2-的输出结果应该是（52）。"><span class="toc-number">4.0.4.</span> <span class="toc-text">4. System.out.println(“5” + 2);的输出结果应该是（52）。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-下面的方法，当输入为-2-的时候返回值是多少"><span class="toc-number">4.0.5.</span> <span class="toc-text">5. 下面的方法，当输入为 2 的时候返回值是多少?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-float-f-3-4-是否正确"><span class="toc-number">4.0.6.</span> <span class="toc-text">6. float f=3.4;是否正确?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-4是double类型的，需要强制转换"><span class="toc-number">4.0.7.</span> <span class="toc-text">7. 3.4是double类型的，需要强制转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-int-和-Integer-有什么区别"><span class="toc-number">4.0.8.</span> <span class="toc-text">8. int 和 Integer 有什么区别?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-char-型变量中能不能存贮一个中文汉字-为什么"><span class="toc-number">4.0.9.</span> <span class="toc-text">9. char 型变量中能不能存贮一个中文汉字?为什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-Math-round-11-5-等于多少-Math-round-11-5-等于多少"><span class="toc-number">4.0.10.</span> <span class="toc-text">10. Math.round(11.5) ? 等于多少? Math.round(-11.5)等于多少?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、字符串与数组"><span class="toc-number">5.</span> <span class="toc-text">五、字符串与数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-下面程序的运行结果是（）"><span class="toc-number">5.0.1.</span> <span class="toc-text">1. 下面程序的运行结果是（）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-下面代码的运行结果为"><span class="toc-number">5.0.2.</span> <span class="toc-text">2. 下面代码的运行结果为?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-String-是最基本的数据类型吗"><span class="toc-number">5.0.3.</span> <span class="toc-text">3. String 是最基本的数据类型吗?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-数组有没有-length-方法-String-有没有-length-方法？"><span class="toc-number">5.0.4.</span> <span class="toc-text">4. 数组有没有 length() 方法? String 有没有 length() 方法？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-是否可以继承-String-类"><span class="toc-number">5.0.5.</span> <span class="toc-text">5. 是否可以继承 String 类?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-String-和StringBuilder、StringBuffer-的区别"><span class="toc-number">5.0.6.</span> <span class="toc-text">6. String 和StringBuilder、StringBuffer 的区别?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-String-s-new-String-“xyz”-创建了几个字符串对象？"><span class="toc-number">5.0.7.</span> <span class="toc-text">7. String s=new String(“xyz”);创建了几个字符串对象？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-将字符-“12345”-转换成-long-型"><span class="toc-number">5.0.8.</span> <span class="toc-text">8. 将字符 “12345” 转换成 long 型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-为了显示-myStr-23-这样的结果，写出在控制台输入的命令"><span class="toc-number">5.0.9.</span> <span class="toc-text">9. 为了显示 myStr = 23 这样的结果，写出在控制台输入的命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-String-s-“Hello”-s-s-“-world-”-这两行代码执行后，原始的-String对象中的内容到底变了没有？"><span class="toc-number">5.0.10.</span> <span class="toc-text">10. String s = “Hello”;s = s + “ world!”; 这两行代码执行后，原始的 String对象中的内容到底变了没有？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-如何把一段逗号分割的字符串转换成一个数组"><span class="toc-number">5.0.11.</span> <span class="toc-text">11. 如何把一段逗号分割的字符串转换成一个数组?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-下面这条语句一共创建了多少个对象：-String-s-“a”-”b”-”c”-”d”"><span class="toc-number">5.0.12.</span> <span class="toc-text">12. 下面这条语句一共创建了多少个对象： String s=“a”+”b”+”c”+”d”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-什么是-Java-序列化，如何实现-Java-序列化？"><span class="toc-number">5.0.13.</span> <span class="toc-text">14. 什么是 Java 序列化，如何实现 Java 序列化？</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Java面试题总结(上)　| Felix个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/16/Java面试题总结-上/" data-title="Java面试题总结(上)" data-url="http://yoursite.com/2017/01/16/Java面试题总结-上/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"http://cjianfeng.duoshuo.com"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+            // Add comment count
+            $(function(){ 
+                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=http://cjianfeng.duoshuo.com&threads=2017/01/16/Java面试题总结-上/&callback=?";
+                $.getJSON(jsonUrl, function(result){
+                    $.each(result.response, function(i, field){
+                        var value = field.comments;
+                        if (value > 0) {
+                            $(".count-comment").text(value);
+                            return;
+                        }
+                    })
+                })
+            })
+        
+    </script>
+    
+    <aside class="comment-bar">
+        <a href="javascript:void(0);">
+            <i class="fa fa-commenting-o animated infinite pulse"></i>
+            <i class="fa fa-spinner fa-pulse"></i>
+            <span class="count-comment"></span>
+        </a>
+    </aside>
+    <script>
+        var $commentBar = $("#comments aside.comment-bar");
+        var load$hide = function(){
+            $commentBar.find("a > i").toggle();
+            loadComment();
+            $commentBar.fadeOut(800);
+        }
+        $commentBar.click(function(){
+            load$hide();
+        })
+        $commentBar.children("a").hover(function(){
+            load$hide();
+        })
+        if (window.location.hash === "#comments") {
+            load$hide();
+        }
+    </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/01/18/XML数据解析/" title="上一篇: XML数据解析">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/01/13/设计模式之工厂方法模式/" title="下一篇: 设计模式之工厂方法模式">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/多机部署hexo博客/">多机部署hexo博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/欢迎来到Felix博客/">欢迎来到Felix个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/Linux上部署多个Tomcat/">Linux上部署多个Tomcat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/nginx负载均衡配置/">nginx负载均衡配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/BootStrap-fileinput插件的使用/">BootStrap fileinput插件的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/DWR使用教程/">DWR使用教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/程序是怎么跑起来的读书笔记/">程序是怎么跑起来的读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/mysql和Oracle实现分页/">mysql和Oracle实现分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/有关异常捕获的一题面试题/">有关异常捕获的一题面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/JQuery、EasyUI和Bootstrap区别/">JQuery、EasyUI和Bootstrap区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/05/过滤器filter/">过滤器filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java中的网络编程/">Java中的网络编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/03/MongoDB数据库/">MongoDB数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/RESTful架构/">RESTful架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/四大域对象和JSP九大隐式对象/">四大域对象和JSP九大隐式对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/JDBC编码/">JDBC编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/HTTP协议/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/网络基础知识/">网络基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/《剑指offer》笔记/">《剑指offer》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/Java面试题总结-中/">Java面试题总结(中)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/18/XML数据解析/">XML数据解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/16/Java面试题总结-上/">Java面试题总结(上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/设计模式之工厂方法模式/">设计模式之工厂方法模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/设计模式/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/设计模式之代理模式/">设计模式之代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/《深入理解JVM》笔记/">《深入理解JVM》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/设计模式之策略模式/">设计模式之策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/UML学习笔记/">UML学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/设计模式之单例模式/">设计模式之单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java基础复习/">java基础复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/设计模式之观察者模式/">设计模式之观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/finally执行顺序面试题/">finally执行顺序面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/Linux总结/">Linux总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/用Hexo和GitHub-Pages搭建博客问题总结/">用Hexo和GitHub Pages搭建博客问题总结</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Felix
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"cjianfeng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+  </div>
+</body>
+</html>

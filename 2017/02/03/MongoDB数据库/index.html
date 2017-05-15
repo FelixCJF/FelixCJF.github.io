@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Felix" />
+
+
+
+<meta name="description" content="MongoDB数据库学习笔记整理">
+<meta name="keywords" content="MongoDB数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB数据库">
+<meta property="og:url" content="http://yoursite.com/2017/02/03/MongoDB数据库/index.html">
+<meta property="og:site_name" content="Felix个人博客">
+<meta property="og:description" content="MongoDB数据库学习笔记整理">
+<meta property="og:updated_time" content="2017-02-03T15:58:34.404Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MongoDB数据库">
+<meta name="twitter:description" content="MongoDB数据库学习笔记整理">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Felix个人博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>MongoDB数据库 | Felix个人博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/140.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Felix</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">半途而废便是最大的失败</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客主页</a></li>
+                        
+                            <li><a href="/archives/">全部文章</a></li>
+                        
+                            <li><a href="/about/">留言打卡</a></li>
+                        
+                            <li><a href="/tags/">分类标签</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#49;&#53;&#53;&#52;&#52;&#50;&#49;&#48;&#54;&#51;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/FelixCJF" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com/" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" href="https://www.douban.com/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" href="http://www.jianshu.com/" title="简书"></a>
+                            
+                                <a class="fa Google" href="http://www.google.cn/" title="Google"></a>
+                            
+                                <a class="fa StackOverflow" href="https://stackoverflow.com/" title="StackOverflow"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BootStrap-fileinput/">BootStrap-fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DWR/">DWR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EasyUI/">EasyUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDBC/">JDBC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java中的网络编程/">Java中的网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java基础/">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java面试题/">Java面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux软件安装/">Linux软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB数据库/">MongoDB数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTFul架构/">RESTFul架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/">UML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http协议/">http协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java四大域对象/">java四大域对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp九大隐式对象/">jsp九大隐式对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux常用命令/">linux常用命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux权限管理/">linux权限管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql和Oracle实现分页/">mysql和Oracle实现分页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-finally/">try-finally</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代理模式/">代理模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剑指offer/">剑指offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客说明/">博客说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工厂方法模式/">工厂方法模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/异常捕获/">异常捕获</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭hexo博客出现的小问题/">搭hexo博客出现的小问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序是怎么跑起来的/">程序是怎么跑起来的</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略模式/">策略模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络基础/">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观察者模式/">观察者模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤器filter/">过滤器filter</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub Pages</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/FelixCJF">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">主题作者MOxFIVE</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="/www.cjianfeng.com">Felix</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://luuman.github.io/">lumman</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">后端小菜鸟</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Felix</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/140.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Felix</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">半途而废便是最大的失败</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客主页</a></li>
+                
+                    <li><a href="/archives/">全部文章</a></li>
+                
+                    <li><a href="/about/">留言打卡</a></li>
+                
+                    <li><a href="/tags/">分类标签</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#49;&#53;&#53;&#52;&#52;&#50;&#49;&#48;&#54;&#51;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/FelixCJF" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" target="_blank" href="https://www.douban.com/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/" title="简书"></a>
+                            
+                                <a class="fa Google" target="_blank" href="http://www.google.cn/" title="Google"></a>
+                            
+                                <a class="fa StackOverflow" target="_blank" href="https://stackoverflow.com/" title="StackOverflow"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-MongoDB数据库" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/03/MongoDB数据库/" class="article-date">
+      <time datetime="2017-02-03T15:15:43.000Z" itemprop="datePublished">2017-02-03</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MongoDB数据库
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB数据库/">MongoDB数据库</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>MongoDB数据库学习笔记整理<br><a id="more"></a></p>
+<h1 id="NoSql数据库"><a href="#NoSql数据库" class="headerlink" title="NoSql数据库"></a>NoSql数据库</h1><p>非关系型数据库，CouchDB，<strong>Redis</strong>，BigTable（谷歌的，付费），Neo4j ，HBase （Hadoop经常用），<strong>MongoDB</strong></p>
+<h3 id="NoSql优缺点"><a href="#NoSql优缺点" class="headerlink" title="NoSql优缺点"></a>NoSql优缺点</h3><p>优点：<br>简单的扩展，快速的读写，低廉的成本，灵活的数据模型<br>缺点：<br>不提供对SQL的支持，支持的特性不够丰富，现有的产品不够成熟</p>
+<h1 id="MongoDB数据库"><a href="#MongoDB数据库" class="headerlink" title="MongoDB数据库"></a>MongoDB数据库</h1><p>MongoDB由数据库（database）、集合（collection）、文档对象（document）组成<br>MongoDB里的集合对应于关系型数据库里的表，但是集合中没有列、行和关系的概念，集合中只有文档，一个文档就相当于一条记录，这体现了模式自由的特点   </p>
+<h3 id="MongoDB数据类型"><a href="#MongoDB数据类型" class="headerlink" title="MongoDB数据类型"></a>MongoDB数据类型</h3><pre><code>数据类型                描述                            举例                                                          
+null                  表示空值或者未定义的对象           {&quot;x&quot;:null}                
+布尔值                  真或者假：true或者false           {&quot;x&quot;:true}
+32位整数             32位整数。shell是不支持该类型的，shell中默认会转换成64位浮点数      
+64位整数             64位整数。shell是不支持该类型的，shell中默认会转换成64位浮点数      
+64位浮点数           64位浮点数。shell中的数字就是这一种类型  {&quot;x&quot;：3.14，&quot;y&quot;：3}
+字符串                 UTF-8字符串                                          {&quot;foo&quot;:&quot;bar&quot;}
+符号                 shell不支持，shell会将数据库中的符号类型的数据自动转换成字符串      
+对象id                  文档的12字节的唯一id                                  {&quot;id&quot;: ObjectId()}（特有的，就这么写） 
+日期                 从标准纪元开始的毫秒数                                  {&quot;date&quot;:new Date()}
+正则表达式          文档中可以包含正则表达式，遵循JavaScript的语法  {&quot;foo&quot;:/foobar/i}
+代码                文档中可以包含JavaScript代码                          {&quot;x&quot;：function() {}}     
+未定义                undefined                                                  {&quot;x&quot;：undefined}
+数组               值的集合或者列表                                          {&quot;arr&quot;: [&quot;a&quot;,&quot;b&quot;]}
+内嵌文档          文档可以作为文档中某个key的value           {&quot;x&quot;:{&quot;foo&quot;:&quot;bar&quot;}}（可以无限内嵌）
+</code></pre><h3 id="三种方式启动数据库"><a href="#三种方式启动数据库" class="headerlink" title="三种方式启动数据库"></a>三种方式启动数据库</h3><ul>
+<li><p>第一种，命令行中输入：  </p>
+<pre><code>mongod --dbpath=C:\release\mongo_data
+</code></pre></li>
+<li><p>第二种，批处理：<br>建立批处理文件，并在文件中写  </p>
+<pre><code>mongod --dbpath=C:\release\mongo_data 
+</code></pre></li>
+<li><p>第三种，注册服务</p>
+<pre><code>D:\mongodb\bin\mongod.exe --logpath D:\mongo_log\mongodb.log --logappend --dbpath D:\mongo_data --directoryperdb --serviceName MongoDB --install
+</code></pre></li>
+</ul>
+<p>从系统服务中移除此服务：   </p>
+<pre><code>D:\mongodb\bin\mongod.exe --logpath D:\mongo_log\mongodb.log --logappend --dbpath D:\mongo_data --directoryperdb --serviceName MongoDB --remove
+</code></pre><ul>
+<li>mongo_data中的文件：<br>local.0：本地数据储存的地方<br>local.ns—namespace，名称空间<br>mongod.lock—锁    </li>
+</ul>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>show dbs ：查看所有数据库<br>use mydb1：创建数据库mydb1（有就使用，没有就创建）：<br>db.dropDatabase()：删除当前数据库：<br>db：查看当前所在数据库：<br>show collections 或使用show tables：查看当前数据库中所有的集合：<br>db.createCollection(“集合名称”)：显示方式创建集合<br>db.集合名称.insert({})：隐式方式创建集合，并同时向集合中插入数据,例如：db.customer.insert({name:”jack”})<br>db.集合名称.remove({删除条件})：删除集合中符合条件的记录，没有条件则删除全部：db.c1.remove({name:”user1”})   </p>
+<h3 id="查询集合中的文档"><a href="#查询集合中的文档" class="headerlink" title="查询集合中的文档"></a>查询集合中的文档</h3><p>db.集合名称.find({条件})：根据条件查询集合中的文档：db.c1.find({name:”name1”})<br>集合名称.findOne()：查询第一个文档<br>db.user.find({name:”name0”},{age:0})：投影查询，第一个参数，表示查询条件，第二个显示哪些字段（最好使用ture和false）             </p>
+<p>查询集合中的文档 ，使用条件表达式：<br>db.collection.find({field:{$gt:value}});//大于： field &gt; value<br>db.collection.find({field:{$lt:value}});//小于： field &lt; value<br>db.collection.find({field:{$gte:value}});//大于等于： field &gt;= value<br>db.collection.find({field:{$lte:value}});//小于等于： field &lt;= value<br>db.collection.find({field:{$ne:value}});//不等于：  field != value<br>查询集合中的文档 ，统计(count)、排序(sort)、分页(skip、limit)<br>db.customer.count()：查询集合中有多少个文档<br>db.customer.find({age:{$lt:5}}).count()：查询集合中符合条件的有多少个文档<br>db.customer.find().sort({age:1})：给查询出来的文档按age的值进行排序，1为正序，0为倒叙<br>db.customer.find().skip(2).limit(3)：<br>db.customer.find().sort({age:-1}).skip(2).limit(3);<br>db.customer.find().sort({age:-1}).skip(2).limit(3).count();<br>count()命令默认参数是0，意思是直接跟随find，参数为1，则表示跟随在自己所在的位置<br>count，sort，和分页命令位置随便放，但是执行的顺序不会变化，例如sort放在最后和放在前面是一样的结果   </p>
+<h3 id="更新集合中的文档"><a href="#更新集合中的文档" class="headerlink" title="更新集合中的文档"></a>更新集合中的文档</h3><p>db.collection.update(criteria,objNew,upsert,multi)<br>db.c2.update({name:”name0”},{name:”jack”})<br>参数说明：<br>criteria：用于设置查询条件的对象（相当于SQL里的where）<br>objNew：用于设置更新内容的对象（改成谁）<br>upsert：0（一般选择），如果存在则更新，不存在则什么都不做。1，如果没有找到，就插入（新增）这个记录。<br>multi：0，有多个符合条件的记录，只更新第一个。1，一般选择，有多个符合条件的记录，更新全部      </p>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>创建普通索引，使用命令 db.collection.ensureIndex({key:1})<br>给name增加了一个索引，在system.indexes里面可以看到<br>创建唯一索引，使用命令 db.collection.ensureIndex({key:1}，{unique:true})<br> 查看关于索引的相关信息，使用命令 db.collection.stats()<br> 查看查询使用索引的情况，使用命令   db.collection.find({key:value}).explain()<br> 删除索引，使用命令 db.collection.dropIndex({key:1})    </p>
+<h3 id="固定集合"><a href="#固定集合" class="headerlink" title="固定集合"></a>固定集合</h3><p>固定集合指的是事先创建而且大小固定的集合 。如果空间不足，最早的文档就会被删除，为新的文档腾出空间。<br>创建固定集合使用命令： </p>
+<pre><code>db.createCollection(“collectionName”{capped:true,size:100000,max:100});           
+</code></pre><p>size指定集合大小，单位为KB，max指定文档的数量。只要有一个参数超过，就开始删除旧文件腾空间。      </p>
+<h3 id="备份、恢复和导入、导出"><a href="#备份、恢复和导入、导出" class="headerlink" title="备份、恢复和导入、导出"></a>备份、恢复和导入、导出</h3><p>备份(mongodump)和恢复(mongorestore)导入(mongoimport)和导出(mongoexport)</p>
+<ul>
+<li><p>备份数据使用下面的命令：</p>
+<pre><code>操作系统&gt;mongodump -h dbhost -d dbname -o dbdirectory
+</code></pre><p>-h：MongDB所在服务器地址，例如：127.0.0.1，当然也可以指定端口号：127.0.0.1:27017<br>-d：需要备份的数据库实例，例如：test<br>-o：备份的数据存放位置，例如：c:\data\dump，当然该目录需要提前建立，在备份完成后，系统自动在dump目录下建立一个test目录，这个目录里面存放该数据库实例的备份数据    </p>
+</li>
+<li><p>恢复数据使用下面的命令：  </p>
+<pre><code>操作系统&gt;mongorestore -h dbhost -d dbname -directoryperdb dbdirectory
+</code></pre><p>-h：MongoDB所在服务器地址<br>-d：需要恢复的数据库实例，例如：test，当然这个名称也可以和备份时候的不一样，比如test2<br>-directoryperdb：备份数据所在位置，例如：c:\data\dump\test    </p>
+</li>
+<li><p>导出数据可以使用命令： </p>
+<pre><code>操作系统&gt;mongoexport -h dbhost -d dbname -c collectionName -o output
+</code></pre></li>
+</ul>
+<p>-h  数据库地址<br>-d 指明使用的库<br>-c 指明要导出的集合<br>-o 指明要导出的文件名（注意这里是文件，纯文本文件）      </p>
+<ul>
+<li><p>导入数据可以使用命令：</p>
+<pre><code>操作系统&gt;mongoimport -h dbhost -d dbname -c collectionname output 
+</code></pre></li>
+</ul>
+<p>-h  数据库地址<br>-d 指明使用的库<br>-c 指明要导入的集合   </p>
+<h3 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h3><h3 id="Java连接数据库"><a href="#Java连接数据库" class="headerlink" title="Java连接数据库"></a>Java连接数据库</h3><pre><code>public class MongoTest {
+/**
+ * 查询数据库中的集合
+ * @throws Exception 
+ */
+@Test
+public void test1() throws Exception{
+Mongo mongo = new Mongo(&quot;localhost&quot;,27017);//连接mongo服务器
+//连接数据库test
+DB db = mongo.getDB(&quot;test&quot;);
+//连接到集合c2
+DBCollection collection = db.getCollection(&quot;c2&quot;);
+//查询数据库并返回结果集
+DBCursor find = collection.find();
+//通过游标进行打印
+while(find.hasNext()){
+    DBObject object = find.next();
+    System.out.println(object);
+}
+mongo.close();
+}
+/**
+ * 删除数据
+ */
+@Test
+public void test2() throws Exception{
+Mongo mongo = new Mongo(&quot;localhost&quot;,27017);//连接mongo服务器
+DB db = mongo.getDB(&quot;test&quot;);
+DBCollection collection = db.getCollection(&quot;c2&quot;);
+//得到数据
+DBObject query = new BasicDBObject(&quot;name&quot;,&quot;name1&quot;);
+//删除数据，删除成功返回1，不成功返回0
+WriteResult result = collection.remove(query);
+System.out.println(result.getN());
+mongo.close();
+    }
+} 
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/02/03/MongoDB数据库/">MongoDB数据库</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Felix</a></p>
+        <p><span>发布时间:</span>2017-02-03, 23:15:43</p>
+        <p><span>最后更新:</span>2017-02-03, 23:58:34</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/03/MongoDB数据库/" title="MongoDB数据库">http://yoursite.com/2017/02/03/MongoDB数据库/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/02/03/MongoDB数据库/　　作者: Felix" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/02/04/Java中的网络编程/">
+                    Java中的网络编程
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/02/01/RESTful架构/">
+                    RESTful架构
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NoSql数据库"><span class="toc-number">1.</span> <span class="toc-text">NoSql数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NoSql优缺点"><span class="toc-number">1.0.1.</span> <span class="toc-text">NoSql优缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MongoDB数据库"><span class="toc-number">2.</span> <span class="toc-text">MongoDB数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MongoDB数据类型"><span class="toc-number">2.0.1.</span> <span class="toc-text">MongoDB数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三种方式启动数据库"><span class="toc-number">2.0.2.</span> <span class="toc-text">三种方式启动数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用命令"><span class="toc-number">2.0.3.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询集合中的文档"><span class="toc-number">2.0.4.</span> <span class="toc-text">查询集合中的文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新集合中的文档"><span class="toc-number">2.0.5.</span> <span class="toc-text">更新集合中的文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#索引"><span class="toc-number">2.0.6.</span> <span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#固定集合"><span class="toc-number">2.0.7.</span> <span class="toc-text">固定集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备份、恢复和导入、导出"><span class="toc-number">2.0.8.</span> <span class="toc-text">备份、恢复和导入、导出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主从复制"><span class="toc-number">2.0.9.</span> <span class="toc-text">主从复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java连接数据库"><span class="toc-number">2.0.10.</span> <span class="toc-text">Java连接数据库</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"MongoDB数据库　| Felix个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/03/MongoDB数据库/" data-title="MongoDB数据库" data-url="http://yoursite.com/2017/02/03/MongoDB数据库/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"http://cjianfeng.duoshuo.com"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+            // Add comment count
+            $(function(){ 
+                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=http://cjianfeng.duoshuo.com&threads=2017/02/03/MongoDB数据库/&callback=?";
+                $.getJSON(jsonUrl, function(result){
+                    $.each(result.response, function(i, field){
+                        var value = field.comments;
+                        if (value > 0) {
+                            $(".count-comment").text(value);
+                            return;
+                        }
+                    })
+                })
+            })
+        
+    </script>
+    
+    <aside class="comment-bar">
+        <a href="javascript:void(0);">
+            <i class="fa fa-commenting-o animated infinite pulse"></i>
+            <i class="fa fa-spinner fa-pulse"></i>
+            <span class="count-comment"></span>
+        </a>
+    </aside>
+    <script>
+        var $commentBar = $("#comments aside.comment-bar");
+        var load$hide = function(){
+            $commentBar.find("a > i").toggle();
+            loadComment();
+            $commentBar.fadeOut(800);
+        }
+        $commentBar.click(function(){
+            load$hide();
+        })
+        $commentBar.children("a").hover(function(){
+            load$hide();
+        })
+        if (window.location.hash === "#comments") {
+            load$hide();
+        }
+    </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/02/04/Java中的网络编程/" title="上一篇: Java中的网络编程">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/02/01/RESTful架构/" title="下一篇: RESTful架构">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/多机部署hexo博客/">多机部署hexo博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/欢迎来到Felix博客/">欢迎来到Felix个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/Linux上部署多个Tomcat/">Linux上部署多个Tomcat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/nginx负载均衡配置/">nginx负载均衡配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/BootStrap-fileinput插件的使用/">BootStrap fileinput插件的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/DWR使用教程/">DWR使用教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/程序是怎么跑起来的读书笔记/">程序是怎么跑起来的读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/mysql和Oracle实现分页/">mysql和Oracle实现分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/有关异常捕获的一题面试题/">有关异常捕获的一题面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/JQuery、EasyUI和Bootstrap区别/">JQuery、EasyUI和Bootstrap区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/05/过滤器filter/">过滤器filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java中的网络编程/">Java中的网络编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/03/MongoDB数据库/">MongoDB数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/RESTful架构/">RESTful架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/四大域对象和JSP九大隐式对象/">四大域对象和JSP九大隐式对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/JDBC编码/">JDBC编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/HTTP协议/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/网络基础知识/">网络基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/《剑指offer》笔记/">《剑指offer》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/Java面试题总结-中/">Java面试题总结(中)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/18/XML数据解析/">XML数据解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/16/Java面试题总结-上/">Java面试题总结(上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/设计模式之工厂方法模式/">设计模式之工厂方法模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/设计模式/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/设计模式之代理模式/">设计模式之代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/《深入理解JVM》笔记/">《深入理解JVM》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/设计模式之策略模式/">设计模式之策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/UML学习笔记/">UML学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/设计模式之单例模式/">设计模式之单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java基础复习/">java基础复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/设计模式之观察者模式/">设计模式之观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/finally执行顺序面试题/">finally执行顺序面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/Linux总结/">Linux总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/用Hexo和GitHub-Pages搭建博客问题总结/">用Hexo和GitHub Pages搭建博客问题总结</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Felix
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"cjianfeng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+  </div>
+</body>
+</html>

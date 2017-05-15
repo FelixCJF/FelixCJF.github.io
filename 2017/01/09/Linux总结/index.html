@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Felix" />
+
+
+
+<meta name="description" content="这篇文章简单记录了Linux的基本知识点和基础命令">
+<meta name="keywords" content="linux常用命令,vim,linux权限管理,Linux软件安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux总结">
+<meta property="og:url" content="http://yoursite.com/2017/01/09/Linux总结/index.html">
+<meta property="og:site_name" content="Felix个人博客">
+<meta property="og:description" content="这篇文章简单记录了Linux的基本知识点和基础命令">
+<meta property="og:image" content="http://oje7mvhbz.bkt.clouddn.com/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://oje7mvhbz.bkt.clouddn.com/vim-modes.png">
+<meta property="og:image" content="http://oje7mvhbz.bkt.clouddn.com/%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90.png">
+<meta property="og:updated_time" content="2017-01-09T10:02:36.745Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux总结">
+<meta name="twitter:description" content="这篇文章简单记录了Linux的基本知识点和基础命令">
+<meta name="twitter:image" content="http://oje7mvhbz.bkt.clouddn.com/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Felix个人博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Linux总结 | Felix个人博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/140.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Felix</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">半途而废便是最大的失败</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客主页</a></li>
+                        
+                            <li><a href="/archives/">全部文章</a></li>
+                        
+                            <li><a href="/about/">留言打卡</a></li>
+                        
+                            <li><a href="/tags/">分类标签</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#49;&#53;&#53;&#52;&#52;&#50;&#49;&#48;&#54;&#51;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/FelixCJF" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com/" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" href="https://www.douban.com/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" href="http://www.jianshu.com/" title="简书"></a>
+                            
+                                <a class="fa Google" href="http://www.google.cn/" title="Google"></a>
+                            
+                                <a class="fa StackOverflow" href="https://stackoverflow.com/" title="StackOverflow"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BootStrap-fileinput/">BootStrap-fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DWR/">DWR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EasyUI/">EasyUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDBC/">JDBC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java中的网络编程/">Java中的网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java基础/">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java面试题/">Java面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux软件安装/">Linux软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB数据库/">MongoDB数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTFul架构/">RESTFul架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/">UML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http协议/">http协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java四大域对象/">java四大域对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp九大隐式对象/">jsp九大隐式对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux常用命令/">linux常用命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux权限管理/">linux权限管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql和Oracle实现分页/">mysql和Oracle实现分页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-finally/">try-finally</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代理模式/">代理模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剑指offer/">剑指offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客说明/">博客说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工厂方法模式/">工厂方法模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/异常捕获/">异常捕获</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭hexo博客出现的小问题/">搭hexo博客出现的小问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序是怎么跑起来的/">程序是怎么跑起来的</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略模式/">策略模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络基础/">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观察者模式/">观察者模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤器filter/">过滤器filter</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub Pages</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/FelixCJF">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">主题作者MOxFIVE</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="/www.cjianfeng.com">Felix</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://luuman.github.io/">lumman</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">后端小菜鸟</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Felix</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/140.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Felix</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">半途而废便是最大的失败</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客主页</a></li>
+                
+                    <li><a href="/archives/">全部文章</a></li>
+                
+                    <li><a href="/about/">留言打卡</a></li>
+                
+                    <li><a href="/tags/">分类标签</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#49;&#53;&#53;&#52;&#52;&#50;&#49;&#48;&#54;&#51;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/FelixCJF" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" target="_blank" href="https://www.douban.com/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/" title="简书"></a>
+                            
+                                <a class="fa Google" target="_blank" href="http://www.google.cn/" title="Google"></a>
+                            
+                                <a class="fa StackOverflow" target="_blank" href="https://stackoverflow.com/" title="StackOverflow"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Linux总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/09/Linux总结/" class="article-date">
+      <time datetime="2017-01-09T07:37:41.000Z" itemprop="datePublished">2017-01-09</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux总结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux软件安装/">Linux软件安装</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux常用命令/">linux常用命令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux权限管理/">linux权限管理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>这篇文章简单记录了Linux的基本知识点和基础命令</p>
+ <a id="more"></a>
+<h1 id="Linux简介"><a href="#Linux简介" class="headerlink" title="Linux简介"></a>Linux简介</h1><h3 id="Linux是什么？"><a href="#Linux是什么？" class="headerlink" title="Linux是什么？"></a>Linux是什么？</h3><ul>
+<li>Linux是一种免费试用和传播的类Unix系统，是一个多用户，多任务，支持多线程，多CPU的操作系统。</li>
+<li>Linux是自由开放源码的操作系统</li>
+<li>多作为企业中服务器试用</li>
+<li>常见的Linux主要有RedHat、CentOS、Ubuntu<h3 id="为什么要使用Linux"><a href="#为什么要使用Linux" class="headerlink" title="为什么要使用Linux"></a>为什么要使用Linux</h3></li>
+</ul>
+<ol>
+<li>主流、开源、免费</li>
+<li>更接近于底层</li>
+<li>更加自由</li>
+<li>让用户知道自己要干嘛</li>
+</ol>
+<h1 id="Linux安装"><a href="#Linux安装" class="headerlink" title="Linux安装"></a>Linux安装</h1><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li>虚拟机安装（推荐）</li>
+<li>光盘安装<h3 id="简单配置"><a href="#简单配置" class="headerlink" title="简单配置"></a>简单配置</h3><h6 id="静态IP配置"><a href="#静态IP配置" class="headerlink" title="静态IP配置"></a>静态IP配置</h6></li>
+</ul>
+<ol>
+<li><code>vim /etc/sysconfig/network-scripts/ifcfg-eth0</code></li>
+<li>修改如下<br>DEVICE=”eth0”<br>BOOTPROTO=“static”<br>HWADDR=”00:0C:29:62:4C:2B”<br>IPV6INIT=”yes”<br>NM_CONTROLLED=”yes”<br>ONBOOT=”yes”<br>TYPE=”Ethernet”<br>UUID=”1acc3359-b1fd-4ac8-b044-58b5fe5a16ce“<br>IPADDR=”192.168.13.333”<br>NETMASK=”255.255.255.0”<br>GATEWAY=”192.168.13.0”<br>DNS1=”8.8.8.8”<br>DNS2=”8.8.4.4”</li>
+</ol>
+<h6 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h6><ul>
+<li><code>rm -rf /etc/udev/rules.d/70-persistent-net.rules</code> 然后重启系统</li>
+<li>HWADDR是否正确</li>
+<li>关闭NetworkManager管理工具<br>chkconfig NetworkManager off  永久redhat关闭NetworkManager 管理工具<br>service NetworkManager stop   临时redhat关闭NetworkManager 管理工具</li>
+</ul>
+<h3 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="Linux目录结构"></a>Linux目录结构</h3><p><img src="http://oje7mvhbz.bkt.clouddn.com/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt="Linux目录结构"></p>
+<ul>
+<li>bin   存放二进制可执行文件</li>
+<li>boot  存放系统引导时使用的各种文件</li>
+<li>dev   存放设备文件</li>
+<li>etc   存放系统配置文件</li>
+<li>home  存放用户文件的根目录</li>
+<li>lib   存放跟文件系统中的程序运行所需要的共享库及内核模块</li>
+<li>sbin  存放二进制可执行文件（root用户才可进入）</li>
+<li>root  超级用户目录</li>
+<li>tmp   存放各种临时文件</li>
+<li>var   存放运行时需要改变的数据文件（log日志）</li>
+</ul>
+<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><h3 id="命令的分类"><a href="#命令的分类" class="headerlink" title="命令的分类"></a>命令的分类</h3><ol>
+<li>内部命令：属于Shell解析器的一部分，存放在bash目录，执行速度快，不需要创建子进程<br>cd 切换目录<br>pwd 显示当前目录<br>help 显示帮助</li>
+<li>外部命令：独立于Shell解析器之外的文件程序，执行速度慢，一般存放在bin/ sbin/ /usr/sbin/此类目录，执行时创建子线程。<br>ls  显示目录列表<br>　　　　常用参数:   <pre><code> 　　　　　　　　　-l　列表展示　　　　　　　　　　　　　　　　　　　　
+</code></pre>　　　-a   展示所有　　　　　　　　<br>　　　　　　  　　　　　　　　　-t　显示时间<br>mkdir    创建目录<br>cp         复制文件或目录<br>查看帮助文档：<br>内部命令：help + 命令（help cd）<br>外部命令：man + 命令（man ls）</li>
+</ol>
+<h3 id="操作文件目录命令"><a href="#操作文件目录命令" class="headerlink" title="操作文件目录命令"></a>操作文件目录命令</h3><ul>
+<li>pwd     显示当前目录</li>
+<li>mkdir 创建目录<br>  -p    父目录不存在情况下生成父目录</li>
+<li>touch    创建文件</li>
+<li>echo    写文件内容 ：  echo ‘aaaa’ &gt; a.txt</li>
+<li>cp    复制文件或目录<br>-r 递归复制，将指定目录下的文件和目录一并拷贝</li>
+<li>mv    移动文件目录，文件或目录改名</li>
+<li>rm     删除文件<br>-r     删除该目录下的所有文件<br>-f  强制删除文件或目录</li>
+<li>cat    显示文本文件内容</li>
+<li>more、less 分页显示文本文件内容</li>
+<li>head、tail查看文本中开头或结尾部分的内容<br>head  -n  5  a.log 查看a.log文件的前5行<br>tail  -f  b.log 循环读取（fellow）</li>
+</ul>
+<h3 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h3><p>wc 统计文本的行数、字数、字符数（word count）<br>-m 统计文本字符数<br>-w 统计文本字数<br>-l 统计文本行数</p>
+<hr>
+<ul>
+<li>find    在文件系统中查找指定文件         find /etc/ -name ‘aaa’</li>
+<li>grep     在指定文本中查找指定的字符串    grep ‘aaa’ java.txt</li>
+<li>ln    建立链接文件</li>
+</ul>
+<hr>
+<ul>
+<li>top    显示当前耗费资源最多的进程</li>
+<li>ps    显示进程状态  　　　　　　　　　　　　　　　　　　　　　　<br>  -e /-A 显示所有进程，环境变量<br>-f 全格式<br>-a 显示所有用户的所有进程（包括其它用户）<br>-u 按用户名和启动时间的顺序来显示进程<br>-x 显示无控制终端的进程</li>
+<li>kill 杀死进程  kill -9 pid</li>
+</ul>
+<hr>
+<ul>
+<li>df    显示磁盘空间使用情况</li>
+<li>free 显示当前内存和交换空间的使用情况 </li>
+<li>netstat 显示网络状态信息<br>-t (tcp)仅显示tcp相关选项<br>-u (udp)仅显示udp相关选项<br>-n 拒绝显示别名，能显示数字的全部转化成数字。<br>-p 显示建立相关链接的程序名<br>-a 显示所有连接和监听端口  </li>
+<li>ifconfig 网卡网络配置</li>
+<li>ping 连通测试</li>
+</ul>
+<h3 id="压缩备份命令"><a href="#压缩备份命令" class="headerlink" title="压缩备份命令"></a>压缩备份命令</h3><ul>
+<li>gzip    压缩解压文件目录，后缀为gz<br>命令格式：gzip [选项] 压缩（解压缩）的文件名<br>-d将压缩文件解压（decompress）<br>-l显示压缩文件的大小，未压缩文件的大小，压缩比（list）<br>-v显示文件名和压缩比（verbose）<br>-num用指定的数字num调整压缩的速度，-1或–fast表示最快压缩方法   （低压缩    比），-9或–best表示最慢压缩方法（高压缩比）。系统缺省值为6</li>
+<li>bzip2    压缩解压文件目录，后缀为bz<br>命令格式：bzip2 [-cdz] 文档名<br>-c将压缩的过程产生的数据输出到屏幕上<br>-d解压缩的参数（decompress）<br>-z压缩的参数（compress）<br>-num 用指定的数字num调整压缩的速度，-1或–fast表示最快压缩方法（低压缩    比），-9或–best表示最慢压缩方法（高压缩比）。系统缺省值为6   </li>
+<li>tar    文件目录打包<br>-c    创建一个压缩文件的参数指令<br>-x    解开一个压缩文件的参数指令<br>-f    使用档名，在 f 之后要立即接档名（file）<br>-z  是否需要用gzip压缩<br>-j    是否用bzip2压缩<br>-v    压缩过程中显示文件<br>tar -zcvf  a.tar.gz  a.txt    </li>
+</ul>
+<h3 id="关机重启命令"><a href="#关机重启命令" class="headerlink" title="关机重启命令"></a>关机重启命令</h3><ul>
+<li>shutdown    系统关机<br>-r    关机后立即重启<br>-h    关机后不重新启动   </li>
+<li>halt    关机后关闭电源</li>
+<li>reboot    重启</li>
+</ul>
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><ol>
+<li>Tab    自动补全命令</li>
+<li>Ctrl + C    停止当前进程</li>
+<li>Ctrl + L    清屏（相当于clear）</li>
+<li>history    查看命令历史</li>
+</ol>
+<h1 id="Vim编辑器"><a href="#Vim编辑器" class="headerlink" title="Vim编辑器"></a>Vim编辑器</h1><h3 id="Vi简介"><a href="#Vi简介" class="headerlink" title="Vi简介"></a>Vi简介</h3><p>vi / vim 是Unix / Linux上最常用的文本编辑器而且功能非常强大。<br>只有命令，没有菜单。<br><img src="http://oje7mvhbz.bkt.clouddn.com/vim-modes.png" alt="VIM模式图"></p>
+<h3 id="快捷键-1"><a href="#快捷键-1" class="headerlink" title="快捷键"></a>快捷键</h3><p>i    在光标前插入<br>I    在光标当前行开始插入<br>a    在光标后插入<br>A    在光标当前行末尾插入<br>o    在光标当前行的下一行插入新行<br>O    在光标当前行的上一行插入新行     </p>
+<h3 id="定位及使用"><a href="#定位及使用" class="headerlink" title="定位及使用"></a>定位及使用</h3><p>:set nu    显示行号<br>:set nonu    取消行号<br>gg    到文本的第一行<br>G    到文本的最后一行<br>:n    到文本的第n行    </p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>x    删除光标所在处字符<br>nx    删除光标所在处后的n个字符<br>dd    删除光标所在行。ndd删除n行<br>dG    删除光标所在行到末尾行的所以内容<br>D    删除光标所在处到行尾的内容<br>:n1,n2d    删除指定范围的行   </p>
+<h3 id="替换和取消"><a href="#替换和取消" class="headerlink" title="替换和取消"></a>替换和取消</h3><p>u    undo，取消上一步操作<br>Ctrl + r    redo，返回到undo之前<br>r    替换光标所在处的字符<br>R    从光标所在处开始替换，按Esc键结束<br>Shift+ zz    保存退出，与“:wq”作用相同<br>v    进入字符可视模式（选中）<br>V  或  Shift + v    进入行可视模式（整行选中）<br>Ctrl + v    进入块可视模式（按照块选中）   </p>
+<p>#用户和组的管理</p>
+<h3 id="用户和组的相关概念"><a href="#用户和组的相关概念" class="headerlink" title="用户和组的相关概念"></a>用户和组的相关概念</h3><p>linux操作系统是一个多用户操作系统，它允许多用户同时登录到系统上并使用资源。系统会根据账户来区分每个用户的文件，进程，任务和工作环境，使得每个用户工作都不受干扰。</p>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><ul>
+<li><strong>保存用户信息的文件 /etc/passwd</strong></li>
+<li><strong>保存用户密码的文件 /etc/shadow</strong></li>
+<li>保存用户组的文件 /etc/group</li>
+<li>保存用户组密码的文件：/etc/gshadow</li>
+<li><p>用户配置文件：/etc/default/useradd</p>
+<h3 id="操作命令"><a href="#操作命令" class="headerlink" title="操作命令"></a>操作命令</h3><h6 id="etc-passwd格式："><a href="#etc-passwd格式：" class="headerlink" title="/etc/passwd格式："></a>/etc/passwd格式：</h6><p>使用命令：man 5 passwd<br>account:password:UID:GID:GECOS:directory:shell<br>用户名    用户登陆系统的用户名<br>密码    密码位<br>UID    用户标示号<br>GID    默认组标示号<br>描述信息    存放用户的描述信息<br>宿主目录    用户登陆系统的默认目录，默认是在/home/下<br>命令解析器    用户使用的Shell，默认是bash   </p>
+<h6 id="Linux用户分类"><a href="#Linux用户分类" class="headerlink" title="Linux用户分类"></a>Linux用户分类</h6><p>超级用户：（root，UID=0）<br>普通用户：（UID在500到60000）<br>伪用户：（UID在1到499）<br>系统和服务相关的：bin、daemon、shutdown等<br>进程相关的：mail、news、games等<br>为用户不能登陆系统，而且没有宿主目录</p>
+<h6 id="etc-shadow格式"><a href="#etc-shadow格式" class="headerlink" title="/etc/shadow格式:"></a>/etc/shadow格式:</h6><p>查看命令：man 5 shadow<br>用户名    　登陆系统的用户名<br> 密码    　加密密码<br>最后一次修改时间    　用户最后一次修改密码距现在的天数，从1970-1-1起<br>最小时间间隔    　两次修改密码之间的最小天数<br>最大时间间隔    　密码有效天数<br>警告时间    　从系统警告到密码失效的天数<br>账号闲置时间    　账号闲置时间<br>失效时间    　密码失效的天数<br>标志    　标志</p>
+<h6 id="用户组：-etc-group格式"><a href="#用户组：-etc-group格式" class="headerlink" title="用户组：/etc/group格式"></a>用户组：/etc/group格式</h6><p>每个用户至少属于一个用户组<br>每个用户组可以包含多个用户<br>同一个用户组的用户享有该组共有的权限    </p>
+<p>组名    用的所在的组<br>组密码    密码位，一般不使用<br>GID    主标示号<br>组内用户列表    属于改组的用户列表   </p>
+<h3 id="操作用户命令"><a href="#操作用户命令" class="headerlink" title="操作用户命令"></a>操作用户命令</h3></li>
+<li>添加用户命令：useradd<br>-u 指定组ID（uid）<br>-g 指定所属的组名（gid）<br>-G 指定多个组，用逗号“，”分开（Groups）<br>-c 用户描述（comment）<br>-e 失效时间（expire date）<br>例子：<br>useradd -u 888 -g users -G sys,root -c “hr zhang” zhangsan<br>passwd zhangsan</li>
+<li>修改用户命令：usermod（user modify）<br>-l 修改用户名 （login）usermod -l a b（b改为a<br>-g 添加组 usermod -g sys tom<br>-G添加多个组 usermod -G sys,root tom<br>–L 锁定用户账号密码（Lock）<br>–U 解锁用户账号（Unlock）    </li>
+<li>删除用户命令：userdel（user delete）<br>-r 删除账号时同时删除目录（remove）<h3 id="操作用户组命令"><a href="#操作用户组命令" class="headerlink" title="操作用户组命令"></a>操作用户组命令</h3></li>
+<li>添加组：groupadd<br>  g 指定gid</li>
+<li>修改组：groupmod<br>-n 更改组名（new group）</li>
+<li>删除组：groupdel</li>
+<li>显示用户所属组：groups user<br>#权限管理<h3 id="三种基本权限"><a href="#三种基本权限" class="headerlink" title="三种基本权限"></a>三种基本权限</h3></li>
+<li>r 读权限</li>
+<li>w    写权限</li>
+<li>x    执行权限<br><img src="http://oje7mvhbz.bkt.clouddn.com/%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90.png" alt="三种权限"><h3 id="权限更改"><a href="#权限更改" class="headerlink" title="权限更改"></a>权限更改</h3></li>
+<li>chmod修改文件权限命令（change mode）<br>参数：-R 下面的文件和子目录做相同权限操作<br>例如：chmod  u+x  a.txt            chmod  +x  a.txt</li>
+<li>用数字来表示权限（r=4，w=2，x=1，-=0）<br>例如：chmod  750  b.txt<br>rwx用二进制表示是111，十进制4+2+1=7<br>r-x用二进制表示是101，十进制4+0+1=5   </li>
+</ul>
+<h1 id="远程登录工具"><a href="#远程登录工具" class="headerlink" title="远程登录工具"></a>远程登录工具</h1><h3 id="为什么要使用远程登录工具"><a href="#为什么要使用远程登录工具" class="headerlink" title="为什么要使用远程登录工具"></a>为什么要使用远程登录工具</h3><p>在企业实际操作中，不可能只在服务器机房中操作服务器，如果需要在远程操作服务器，那么就需要用到远程登录工具才能进行操作。</p>
+<h3 id="SecureCRT的使用"><a href="#SecureCRT的使用" class="headerlink" title="SecureCRT的使用"></a>SecureCRT的使用</h3><ol>
+<li>点击connect，输入IP地址，用户，点击连接</li>
+<li>save session</li>
+<li>查看防火墙状态：service iptables status<h3 id="文件上传工具"><a href="#文件上传工具" class="headerlink" title="文件上传工具"></a>文件上传工具</h3>使用filezilla工具</li>
+</ol>
+<h1 id="RPM管理"><a href="#RPM管理" class="headerlink" title="RPM管理"></a>RPM管理</h1><h3 id="RPM简介"><a href="#RPM简介" class="headerlink" title="RPM简介"></a>RPM简介</h3><p>RPM是RedHat Package Manager（RedHat软件包管理工具）的缩写，这一文件格式名称虽然打上了RedHat的标志，但是其原始设计理念是开放式的，现在包括RedHat、CentOS、SUSE等Linux的分发版本都有采用，可以算是公认的行业标准了。RPM文件在Linux系统中的安装最为简便</p>
+<h3 id="RPM命令"><a href="#RPM命令" class="headerlink" title="RPM命令"></a>RPM命令</h3><ul>
+<li>rpm的常用参数<br>i：安装应用程序（install）<br>e：卸载应用程序（erase）<br>vh：显示安装进度；（verbose   hash）<br>U：升级软件包；（update）<br>qa: 显示所有已安装软件包（query all）    </li>
+<li>结合grep命令使用<br>例子：rpm  -ivh  gcc-c++-4.4.7-3.el6.x86_64.rpm<br>查看安装rpm文件的位置：rpm -ql mysql<br>查看rpm已经安装过的文件：rpm -qa | grep mysql</li>
+</ul>
+<h1 id="软件安装配置"><a href="#软件安装配置" class="headerlink" title="软件安装配置"></a>软件安装配置</h1><h3 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h3><ol>
+<li>上传rpm软件包</li>
+<li>rpm -ivh perl-DBD-MySQL-4.013-3.el6.i686.rpm</li>
+<li>rpm -Uvh openssl-1.0.1e-16.el6_5.14.i686.rpm  更新</li>
+<li>rpm -Uvh mysql-libs-5.1.73-3.el6_5.i686.rpm   更新</li>
+<li>rpm -ivh mysql-5.1.73-3.el6_5.i686.rpm</li>
+<li>rpm -ivh mysql-server-5.1.73-3.el6_5.i686.rpm</li>
+<li>解除依赖强行卸载：rpm -e mysql-libs-5.1.73-3.el6_5.i686.rpm –nodeps<br>启动：  service mysqld start   <h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3></li>
+<li>上次jdk压缩包</li>
+<li>解压：<br>执行命令： tar -zxvf jdk-7u55-linux-i586.tar.gz -C /usr/java/</li>
+<li>配置jdk环境<br>1.编辑文件：    vim /etc/profile<br>2.在文件尾部添加：<br>JAVA_HOME=/usr/java/jdk1.7.0_55/<br>export PATH=$JAVA_HOME/bin:$PATH<br>3.重新加载一下文件： source /etc/profile<br>4.查看jdk：java -version<h3 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h3></li>
+<li>上次软件包</li>
+<li>解压：<br>执行命令：tar -zxvf apache-tomcat-7.0.47.tar.gz -C /usr/java/</li>
+<li>启动tomcat：<br>到tomcat的bin目录下执行： ./startup.sh </li>
+<li>查看是否启动成功<br>执行： jps<h3 id="YUM命令"><a href="#YUM命令" class="headerlink" title="YUM命令"></a>YUM命令</h3>Yum（全称为 Yellow dog Updater, Modified）是一个在Fedora和RedHat以及SUSE、CentOS中的Shell前端软件包管理器。基於RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无须繁琐地一次次下载、安装。<br>例子（需要上网，没有网络可以建本地源）：<br>yum  install  gcc-c++<br>yum  remove  gcc-c++<br>yum  update  gcc-c++  </li>
+</ol>
+<p>linux不启动图形化界面：<br> vi /etc/inittab<br> id:3:initdefault:   ——此行修改成3为终端、5为图形化界面</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/01/09/Linux总结/">Linux总结</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Felix</a></p>
+        <p><span>发布时间:</span>2017-01-09, 15:37:41</p>
+        <p><span>最后更新:</span>2017-01-09, 18:02:36</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/09/Linux总结/" title="Linux总结">http://yoursite.com/2017/01/09/Linux总结/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/01/09/Linux总结/　　作者: Felix" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/01/09/finally执行顺序面试题/">
+                    finally执行顺序面试题
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/01/07/用Hexo和GitHub-Pages搭建博客问题总结/">
+                    用Hexo和GitHub Pages搭建博客问题总结
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux简介"><span class="toc-number">1.</span> <span class="toc-text">Linux简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux是什么？"><span class="toc-number">1.0.1.</span> <span class="toc-text">Linux是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么要使用Linux"><span class="toc-number">1.0.2.</span> <span class="toc-text">为什么要使用Linux</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux安装"><span class="toc-number">2.</span> <span class="toc-text">Linux安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">2.0.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简单配置"><span class="toc-number">2.0.2.</span> <span class="toc-text">简单配置</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#静态IP配置"><span class="toc-number">2.0.2.0.0.1.</span> <span class="toc-text">静态IP配置</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#注意事项"><span class="toc-number">2.0.2.0.0.2.</span> <span class="toc-text">注意事项</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux目录结构"><span class="toc-number">2.0.3.</span> <span class="toc-text">Linux目录结构</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux常用命令"><span class="toc-number">3.</span> <span class="toc-text">Linux常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令的分类"><span class="toc-number">3.0.1.</span> <span class="toc-text">命令的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作文件目录命令"><span class="toc-number">3.0.2.</span> <span class="toc-text">操作文件目录命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他命令"><span class="toc-number">3.0.3.</span> <span class="toc-text">其他命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#压缩备份命令"><span class="toc-number">3.0.4.</span> <span class="toc-text">压缩备份命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关机重启命令"><span class="toc-number">3.0.5.</span> <span class="toc-text">关机重启命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快捷键"><span class="toc-number">3.0.6.</span> <span class="toc-text">快捷键</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vim编辑器"><span class="toc-number">4.</span> <span class="toc-text">Vim编辑器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vi简介"><span class="toc-number">4.0.1.</span> <span class="toc-text">Vi简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快捷键-1"><span class="toc-number">4.0.2.</span> <span class="toc-text">快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定位及使用"><span class="toc-number">4.0.3.</span> <span class="toc-text">定位及使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除"><span class="toc-number">4.0.4.</span> <span class="toc-text">删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#替换和取消"><span class="toc-number">4.0.5.</span> <span class="toc-text">替换和取消</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户和组的相关概念"><span class="toc-number">4.0.6.</span> <span class="toc-text">用户和组的相关概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件"><span class="toc-number">4.0.7.</span> <span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作命令"><span class="toc-number">4.0.8.</span> <span class="toc-text">操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#etc-passwd格式："><span class="toc-number">4.0.8.0.0.1.</span> <span class="toc-text">/etc/passwd格式：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Linux用户分类"><span class="toc-number">4.0.8.0.0.2.</span> <span class="toc-text">Linux用户分类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#etc-shadow格式"><span class="toc-number">4.0.8.0.0.3.</span> <span class="toc-text">/etc/shadow格式:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#用户组：-etc-group格式"><span class="toc-number">4.0.8.0.0.4.</span> <span class="toc-text">用户组：/etc/group格式</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作用户命令"><span class="toc-number">4.0.9.</span> <span class="toc-text">操作用户命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作用户组命令"><span class="toc-number">4.0.10.</span> <span class="toc-text">操作用户组命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三种基本权限"><span class="toc-number">4.0.11.</span> <span class="toc-text">三种基本权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#权限更改"><span class="toc-number">4.0.12.</span> <span class="toc-text">权限更改</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#远程登录工具"><span class="toc-number">5.</span> <span class="toc-text">远程登录工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么要使用远程登录工具"><span class="toc-number">5.0.1.</span> <span class="toc-text">为什么要使用远程登录工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SecureCRT的使用"><span class="toc-number">5.0.2.</span> <span class="toc-text">SecureCRT的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件上传工具"><span class="toc-number">5.0.3.</span> <span class="toc-text">文件上传工具</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RPM管理"><span class="toc-number">6.</span> <span class="toc-text">RPM管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RPM简介"><span class="toc-number">6.0.1.</span> <span class="toc-text">RPM简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RPM命令"><span class="toc-number">6.0.2.</span> <span class="toc-text">RPM命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#软件安装配置"><span class="toc-number">7.</span> <span class="toc-text">软件安装配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装MySQL"><span class="toc-number">7.0.1.</span> <span class="toc-text">安装MySQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装JDK"><span class="toc-number">7.0.2.</span> <span class="toc-text">安装JDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Tomcat"><span class="toc-number">7.0.3.</span> <span class="toc-text">安装Tomcat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#YUM命令"><span class="toc-number">7.0.4.</span> <span class="toc-text">YUM命令</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Linux总结　| Felix个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/09/Linux总结/" data-title="Linux总结" data-url="http://yoursite.com/2017/01/09/Linux总结/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"http://cjianfeng.duoshuo.com"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+            // Add comment count
+            $(function(){ 
+                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=http://cjianfeng.duoshuo.com&threads=2017/01/09/Linux总结/&callback=?";
+                $.getJSON(jsonUrl, function(result){
+                    $.each(result.response, function(i, field){
+                        var value = field.comments;
+                        if (value > 0) {
+                            $(".count-comment").text(value);
+                            return;
+                        }
+                    })
+                })
+            })
+        
+    </script>
+    
+    <aside class="comment-bar">
+        <a href="javascript:void(0);">
+            <i class="fa fa-commenting-o animated infinite pulse"></i>
+            <i class="fa fa-spinner fa-pulse"></i>
+            <span class="count-comment"></span>
+        </a>
+    </aside>
+    <script>
+        var $commentBar = $("#comments aside.comment-bar");
+        var load$hide = function(){
+            $commentBar.find("a > i").toggle();
+            loadComment();
+            $commentBar.fadeOut(800);
+        }
+        $commentBar.click(function(){
+            load$hide();
+        })
+        $commentBar.children("a").hover(function(){
+            load$hide();
+        })
+        if (window.location.hash === "#comments") {
+            load$hide();
+        }
+    </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/01/09/finally执行顺序面试题/" title="上一篇: finally执行顺序面试题">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/01/07/用Hexo和GitHub-Pages搭建博客问题总结/" title="下一篇: 用Hexo和GitHub Pages搭建博客问题总结">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/多机部署hexo博客/">多机部署hexo博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/欢迎来到Felix博客/">欢迎来到Felix个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/Linux上部署多个Tomcat/">Linux上部署多个Tomcat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/nginx负载均衡配置/">nginx负载均衡配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/BootStrap-fileinput插件的使用/">BootStrap fileinput插件的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/DWR使用教程/">DWR使用教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/程序是怎么跑起来的读书笔记/">程序是怎么跑起来的读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/mysql和Oracle实现分页/">mysql和Oracle实现分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/有关异常捕获的一题面试题/">有关异常捕获的一题面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/JQuery、EasyUI和Bootstrap区别/">JQuery、EasyUI和Bootstrap区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/05/过滤器filter/">过滤器filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java中的网络编程/">Java中的网络编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/03/MongoDB数据库/">MongoDB数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/RESTful架构/">RESTful架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/四大域对象和JSP九大隐式对象/">四大域对象和JSP九大隐式对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/JDBC编码/">JDBC编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/HTTP协议/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/网络基础知识/">网络基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/《剑指offer》笔记/">《剑指offer》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/Java面试题总结-中/">Java面试题总结(中)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/18/XML数据解析/">XML数据解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/16/Java面试题总结-上/">Java面试题总结(上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/设计模式之工厂方法模式/">设计模式之工厂方法模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/设计模式/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/设计模式之代理模式/">设计模式之代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/《深入理解JVM》笔记/">《深入理解JVM》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/设计模式之策略模式/">设计模式之策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/UML学习笔记/">UML学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/设计模式之单例模式/">设计模式之单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java基础复习/">java基础复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/设计模式之观察者模式/">设计模式之观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/finally执行顺序面试题/">finally执行顺序面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/Linux总结/">Linux总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/用Hexo和GitHub-Pages搭建博客问题总结/">用Hexo和GitHub Pages搭建博客问题总结</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Felix
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"cjianfeng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+  </div>
+</body>
+</html>

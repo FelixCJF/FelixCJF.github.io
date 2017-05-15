@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Felix" />
+
+
+
+<meta name="description" content="《深入理解JAVA虚拟机》周志明版的笔记">
+<meta name="keywords" content="JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《深入理解JVM》笔记">
+<meta property="og:url" content="http://yoursite.com/2017/01/11/《深入理解JVM》笔记/index.html">
+<meta property="og:site_name" content="Felix个人博客">
+<meta property="og:description" content="《深入理解JAVA虚拟机》周志明版的笔记">
+<meta property="og:image" content="http://oje7mvhbz.bkt.clouddn.com/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.png">
+<meta property="og:image" content="http://oje7mvhbz.bkt.clouddn.com/%5DN$9NN102GUT%5D1%253_INIA~T.png">
+<meta property="og:updated_time" content="2017-01-12T14:11:57.497Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《深入理解JVM》笔记">
+<meta name="twitter:description" content="《深入理解JAVA虚拟机》周志明版的笔记">
+<meta name="twitter:image" content="http://oje7mvhbz.bkt.clouddn.com/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Felix个人博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>《深入理解JVM》笔记 | Felix个人博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/140.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Felix</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">半途而废便是最大的失败</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客主页</a></li>
+                        
+                            <li><a href="/archives/">全部文章</a></li>
+                        
+                            <li><a href="/about/">留言打卡</a></li>
+                        
+                            <li><a href="/tags/">分类标签</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#49;&#53;&#53;&#52;&#52;&#50;&#49;&#48;&#54;&#51;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/FelixCJF" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com/" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" href="https://www.douban.com/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" href="http://www.jianshu.com/" title="简书"></a>
+                            
+                                <a class="fa Google" href="http://www.google.cn/" title="Google"></a>
+                            
+                                <a class="fa StackOverflow" href="https://stackoverflow.com/" title="StackOverflow"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BootStrap-fileinput/">BootStrap-fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DWR/">DWR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EasyUI/">EasyUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDBC/">JDBC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java中的网络编程/">Java中的网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java基础/">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java面试题/">Java面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux软件安装/">Linux软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB数据库/">MongoDB数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTFul架构/">RESTFul架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/">UML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http协议/">http协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java四大域对象/">java四大域对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp九大隐式对象/">jsp九大隐式对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux常用命令/">linux常用命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux权限管理/">linux权限管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql和Oracle实现分页/">mysql和Oracle实现分页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-finally/">try-finally</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代理模式/">代理模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剑指offer/">剑指offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客说明/">博客说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工厂方法模式/">工厂方法模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/异常捕获/">异常捕获</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭hexo博客出现的小问题/">搭hexo博客出现的小问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序是怎么跑起来的/">程序是怎么跑起来的</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略模式/">策略模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络基础/">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观察者模式/">观察者模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤器filter/">过滤器filter</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub Pages</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/FelixCJF">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">主题作者MOxFIVE</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="/www.cjianfeng.com">Felix</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://luuman.github.io/">lumman</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">后端小菜鸟</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Felix</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/140.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Felix</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">半途而废便是最大的失败</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客主页</a></li>
+                
+                    <li><a href="/archives/">全部文章</a></li>
+                
+                    <li><a href="/about/">留言打卡</a></li>
+                
+                    <li><a href="/tags/">分类标签</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#49;&#53;&#53;&#52;&#52;&#50;&#49;&#48;&#54;&#51;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/FelixCJF" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" target="_blank" href="https://www.douban.com/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/" title="简书"></a>
+                            
+                                <a class="fa Google" target="_blank" href="http://www.google.cn/" title="Google"></a>
+                            
+                                <a class="fa StackOverflow" target="_blank" href="https://stackoverflow.com/" title="StackOverflow"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-《深入理解JVM》笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/11/《深入理解JVM》笔记/" class="article-date">
+      <time datetime="2017-01-11T11:48:21.000Z" itemprop="datePublished">2017-01-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《深入理解JVM》笔记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>《深入理解JAVA虚拟机》周志明版的笔记<br><a id="more"></a></p>
+<h1 id="走进Java"><a href="#走进Java" class="headerlink" title="走进Java"></a>走进Java</h1><p><strong>JDK：</strong> 支持Java程序开发的最小环境<br>Java体系包括了：  </p>
+<ol>
+<li>Java程序语言  </li>
+<li>JVM  </li>
+<li>java API类库  </li>
+<li>.class文件  </li>
+<li>第三方类库</li>
+</ol>
+<p><strong>JRE:</strong>支持Java程序运行的标准环境</p>
+<h3 id="Java历史版本的特性"><a href="#Java历史版本的特性" class="headerlink" title="Java历史版本的特性"></a>Java历史版本的特性</h3><p><strong>Java Version SE 5.0</strong>     </p>
+<ul>
+<li>引入泛型</li>
+<li>foreach循环，可以使用迭代方式</li>
+<li>自动装箱和拆箱</li>
+<li>类型安全的枚举</li>
+<li>可变参数</li>
+<li>动态注解</li>
+</ul>
+<p><strong>Java Version SE 6.0</strong>  </p>
+<ul>
+<li>支持脚本语言</li>
+<li>引入jdbc4.0API</li>
+<li>引入Java Comppiler API </li>
+<li>课拔插注解</li>
+<li>继承web service </li>
+<li>做了很多优化</li>
+</ul>
+<p><strong>Java Version SE 7.0</strong>  </p>
+<ul>
+<li>switch语句块中允许String作为分支条件</li>
+<li>在一个语句块中捕获多种异常；</li>
+<li>支持动态语言；</li>
+<li>支持try-with-resources；</li>
+<li>引入Java NIO.2开发包；  </li>
+<li>数值类型可以用2进制字符串表示，并且可以在字符串表示中添加下划线；</li>
+<li>钻石型语法；</li>
+<li>null值的自动处理。</li>
+</ul>
+<p><strong>Java Version SE 8.0</strong>    </p>
+<ul>
+<li>函数式接口</li>
+<li>Lambda表达式</li>
+<li>接口的增强</li>
+</ul>
+<p><strong>未来</strong>  </p>
+<ul>
+<li>模块化 </li>
+<li>混合语言  </li>
+<li>多核并行</li>
+<li>进一步丰富语法 </li>
+<li>64位虚拟机</li>
+</ul>
+<h1 id="自动内存管理机制"><a href="#自动内存管理机制" class="headerlink" title="自动内存管理机制"></a>自动内存管理机制</h1><h3 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h3><p> <img src="http://oje7mvhbz.bkt.clouddn.com/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.png" alt="运行时数据区域">   </p>
+<ul>
+<li><strong>程序计数器：</strong>当前线程所执行的字节码的行号指示器，线程私有的。  </li>
+<li><strong>JVM栈：</strong>方法的内存模型，一个栈帧对应一个方法，线程私有</li>
+<li><strong>本地方法栈：</strong>JVM栈为虚拟机执行Java方法（字节码）服务，而本地方法栈为JVM使用到的Native方法服务。线程私有</li>
+<li><strong>Java堆：</strong>是JVM内存中最大的一块，存放着对象实例，GC主要管理区域，线程共享</li>
+<li><strong>方法区：</strong>被所有线程共享，用于存储已被虚拟机加载的类信息、常量、静态<br>变量、即时编译器编译后的代码等数据</li>
+<li><strong>运行时常量池：</strong>方法区的一部分。保存 Class 文件中的符号引<br>用、翻译出来的直接引用。运行时常量池可以在运行期间将新的常量放入池中。</li>
+<li><strong>直接内存</strong>   </li>
+</ul>
+<h3 id="如何判断对象已死"><a href="#如何判断对象已死" class="headerlink" title="如何判断对象已死"></a>如何判断对象已死</h3><ul>
+<li>引用计数法<br>  给对象加一个引用计数器，每当一个地方引用他，计数器就+1，引用失效计数器就-1，当任何时刻对象引用计数器都是0，则该对象已死，很难解决循环引用问题</li>
+<li>根搜索法<br>  通过“GC Roots”对象作为起始点，从这些节点开始向下搜索，搜索所走过的路劲叫做引用链，当一个GC Roots没有与任何引用链相连，则该对象已死</li>
+</ul>
+<h3 id="四种引用方式"><a href="#四种引用方式" class="headerlink" title="四种引用方式"></a>四种引用方式</h3><ul>
+<li><strong>强引用：</strong>  <code>Object obj = new Object();</code>类似这种，引用还在，则垃圾回收器永远不会回收掉被引用的对象  </li>
+<li><strong>软引用：</strong> 描述一些有用，但非必须的对象。在将要发生内存溢出之前回收，如果内存还是不够才会抛出内存异常。提供了 SoftReference 类实现软引用  </li>
+<li><strong>弱引用：</strong>描述非必须的对象，强度比软引用弱，只能存活到下一次垃圾回收器收集前，不管内存够不够都会被回收，提供了 WeakReference 类来实现弱引用   </li>
+<li><strong>虚引用：</strong>一个对象是否有虚引用对存活时间没有影响，也无法通过一个虚引用来获得一个实例，虚引用存在的目的是，当这个对象被垃圾回收器回收时，会收到一个系统通知。提供了 PhantomReference 类来实现虚引用。  </li>
+</ul>
+<h3 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h3><ul>
+<li><strong>标记-清除法算法:</strong> 分为标记和清除两个阶段，先给要回收的对象标记，标记完成后再对被标记的对象统一回收<br>  缺点：   <ol>
+<li>效率问题，标记和清除过程效率都不高   </li>
+<li>空间问题，标记清除之后会产生较多不连续内存碎片，空间碎片太多可能会导致程序分配较大对象时，难于找到足够的连续内存，不得不发起下一次垃圾回收  </li>
+</ol>
+</li>
+<li><strong>复制算法:</strong> 将可用内存按容量划分为大小相等的两块，每次只使用其中一块。当这一块的内存用完了，<br>就将存活着的对象复制到另一块上面，然后再把已经使用过的内存空间一次清理掉。常用来回收新生代，因为新生代存活率较低<br>  优点：每次只针对其中一块内存进行回收，不会产生内存碎片，实行简单，运行高效<br>  缺点：每次只使用一半内存，对象存活率较高时，复制操作执行较多，效率变低  </li>
+<li><strong>标记-整理算法:</strong> 标记阶段和“标记-清除”一样，只不过不是直接清除，而是让所有存活对向一边移动，然后清除边界以外的内存。常用来回收老年代  </li>
+<li><strong>分代收集算法：</strong> 根据对象的存活周期，将Java堆分为<strong>新生代</strong><br>和<strong>老年代</strong>这样就可以根据各个年代的特点来选择合适的算法</li>
+</ul>
+<ul>
+<li>新生代，每次垃圾收集时会有大批对象死去，只有少量存活，所以选择复制算法，只需要少量存活对象的复制成本就可以完成收集。</li>
+<li><p>老年代，对象存活率高、没有额外空间对它进行分配担保，必须使用“标记-清理”或“标记-整理”算法进行回收。</p>
+</li>
+<li><p>Minor GC：新生代 GC，指发生在新生代的垃圾收集动作，因为 Java 对象大多死亡频繁，所以 Minor GC 非常频繁，一般回收速度较快。</p>
+</li>
+<li>Full GC：老年代 GC，也叫 Major GC，速度一般比 Minor GC 慢 10 倍以上。</li>
+</ul>
+<h3 id="内存分配策略和回收策略"><a href="#内存分配策略和回收策略" class="headerlink" title="内存分配策略和回收策略"></a>内存分配策略和回收策略</h3><ol>
+<li>对象优先分配在 Eden</li>
+<li>大对象直接进入老年代</li>
+<li>长期存活的对象将进入老年代</li>
+<li>动态对象年龄判定</li>
+<li>空间分配担保 <h1 id="虚拟机执行子系统"><a href="#虚拟机执行子系统" class="headerlink" title="虚拟机执行子系统"></a>虚拟机执行子系统</h1></li>
+</ol>
+<h3 id="字节码文件（平台无关性）"><a href="#字节码文件（平台无关性）" class="headerlink" title="字节码文件（平台无关性）"></a>字节码文件（平台无关性）</h3><p>Class文件是一组以8位字节为基础单位的二进制流，各个数据项目间没有任何分隔符。当遇到8位字节以上空间的数据项时，则会按照高位在前的方式分隔成若干个8位字节进行存储。</p>
+<p><strong>程序编译成字节码，字节码被JVM解析</strong>   </p>
+<p><strong>魔数：</strong>每个Class文件的头4个字节称为魔数（Magic Number），它的唯一作用是用于确定这个文件是否为一个能被虚拟机接受的Class文件</p>
+<h3 id="类加载"><a href="#类加载" class="headerlink" title="类加载"></a>类加载</h3><p>JVM把类数据冲class文件加载进内存  </p>
+<h3 id="类加载时机和特点"><a href="#类加载时机和特点" class="headerlink" title="类加载时机和特点"></a>类加载时机和特点</h3><p>特点：   </p>
+<ol>
+<li>发生在程序运行期<br>2.动态加载，动态连接 </li>
+</ol>
+<p>时机：   </p>
+<ol>
+<li>遇到new等字节码指令</li>
+<li>反射调用  </li>
+<li>JVM启动时的主类  </li>
+<li>初始化类，父类未初始化 </li>
+</ol>
+<h3 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h3><ol>
+<li>加载 </li>
+<li>验证 ： 保证数据准确性，安全性，不危害JVM  </li>
+<li>准备  </li>
+<li>解析  </li>
+<li>初始化</li>
+</ol>
+<h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><p>双亲委派模型（Parents Delegation Model）要求除了顶层的启动类加载器外，其余加载器都应当有自己的父类加载器。收到加载请求，自己不加载，而是委派给父类加载</p>
+<ul>
+<li><strong>启动类加载器（Bootstrap ClassLoader）：</strong>使用C++实现（仅限于HotSpot），是虚拟<br>机自身的一部分。负责将存放在\lib目录中的类库加载到虚拟机中。其无法被Java程序直接<br>引用。</li>
+<li><strong>扩展类加载器（Extention ClassLoader）:</strong>由ExtClassLoader实现，负责加载\lib\ext目录中的所有类库，开发者可以直接使用。</li>
+<li><strong>应用程序类加载器（Application ClassLoader）：</strong>APPClassLoader实现。负责加载用户类路径（ClassPath）上所指定的类库。</li>
+</ul>
+<h1 id="程序编译与代码优化"><a href="#程序编译与代码优化" class="headerlink" title="程序编译与代码优化"></a>程序编译与代码优化</h1><h3 id="解释器和编译器"><a href="#解释器和编译器" class="headerlink" title="解释器和编译器"></a>解释器和编译器</h3><ul>
+<li>当程序需要快速启动和执行时，解释器首先发挥作用，省去编译的时间，立即执行。</li>
+<li>当程序运行后，随着时间的推移，编译器逐渐发挥作用，把越来越多的代码编译成本地代<br>码，可以提高执行效率<br><img src="http://oje7mvhbz.bkt.clouddn.com/%5DN$9NN102GUT%5D1%253_INIA~T.png" alt="解释器和编译器互动"></li>
+</ul>
+<p>javac编译器<br>语法糖 </p>
+<h3 id="JIT编译器"><a href="#JIT编译器" class="headerlink" title="JIT编译器"></a>JIT编译器</h3><p>为了提高热点代码的执行效率，在运行时，虚拟机将会把这些代码编译成与本地平台相关的机器码，并进行各种层次的优化，完成这个任务的编译器成为即时编译器（Just In TimeCompiler，JIT编译器）。</p>
+<ul>
+<li>语言无关的经典优化技术之一：公共子表达式消除</li>
+<li>语言相关的经典优化技术之一：数组范围检查消除</li>
+<li>最重要的优化技术之一：方法内联<br>*　最前沿的优化技术之一：逃逸分析<h1 id="高效并发"><a href="#高效并发" class="headerlink" title="高效并发"></a>高效并发</h1></li>
+</ul>
+<h3 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h3><ul>
+<li>主内存 : 所有变量</li>
+<li>工作内存 : 线程使用的变量，主内存副本拷贝<h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3>关键字volatile是Java虚拟机提供的最轻量级的同步机制  </li>
+</ul>
+<p>特性：   </p>
+<ol>
+<li>保证此变量对所有线程可见   </li>
+<li>禁止指令重排序优化</li>
+</ol>
+<p><strong>Java里面的运算并非原子操作，导致volatile变量的运算在并发下一样是不安全的。</strong></p>
+<h3 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h3><h5 id="互斥同步"><a href="#互斥同步" class="headerlink" title="互斥同步"></a>互斥同步</h5><p>互斥是实现同步的一种手段，临界区、互斥量和信号量都是主要的互斥实现方式。Java中最基本的同步手段就是<strong>synchronized</strong>关键字，其编译后会在同步块的前后分别形成monitorenter和monitorexit两个字节码指令</p>
+<h5 id="非阻塞同步"><a href="#非阻塞同步" class="headerlink" title="非阻塞同步"></a>非阻塞同步</h5><p>互斥同步最大的问题，就是进行线程阻塞和唤醒所带来的性能问题，是一种悲观的并发策略</p>
+<h5 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h5><ul>
+<li>适应性自旋</li>
+<li>锁消除</li>
+<li>锁粗化</li>
+<li>轻量级锁</li>
+<li>偏向锁</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/01/11/《深入理解JVM》笔记/">《深入理解JVM》笔记</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Felix</a></p>
+        <p><span>发布时间:</span>2017-01-11, 19:48:21</p>
+        <p><span>最后更新:</span>2017-01-12, 22:11:57</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/11/《深入理解JVM》笔记/" title="《深入理解JVM》笔记">http://yoursite.com/2017/01/11/《深入理解JVM》笔记/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/01/11/《深入理解JVM》笔记/　　作者: Felix" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/01/12/设计模式之代理模式/">
+                    设计模式之代理模式
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/01/11/设计模式之策略模式/">
+                    设计模式之策略模式
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#走进Java"><span class="toc-number">1.</span> <span class="toc-text">走进Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java历史版本的特性"><span class="toc-number">1.0.1.</span> <span class="toc-text">Java历史版本的特性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自动内存管理机制"><span class="toc-number">2.</span> <span class="toc-text">自动内存管理机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#运行时数据区域"><span class="toc-number">2.0.1.</span> <span class="toc-text">运行时数据区域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何判断对象已死"><span class="toc-number">2.0.2.</span> <span class="toc-text">如何判断对象已死</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四种引用方式"><span class="toc-number">2.0.3.</span> <span class="toc-text">四种引用方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾收集算法"><span class="toc-number">2.0.4.</span> <span class="toc-text">垃圾收集算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存分配策略和回收策略"><span class="toc-number">2.0.5.</span> <span class="toc-text">内存分配策略和回收策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#虚拟机执行子系统"><span class="toc-number">3.</span> <span class="toc-text">虚拟机执行子系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字节码文件（平台无关性）"><span class="toc-number">3.0.1.</span> <span class="toc-text">字节码文件（平台无关性）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类加载"><span class="toc-number">3.0.2.</span> <span class="toc-text">类加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类加载时机和特点"><span class="toc-number">3.0.3.</span> <span class="toc-text">类加载时机和特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类加载过程"><span class="toc-number">3.0.4.</span> <span class="toc-text">类加载过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双亲委派模型"><span class="toc-number">3.0.5.</span> <span class="toc-text">双亲委派模型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#程序编译与代码优化"><span class="toc-number">4.</span> <span class="toc-text">程序编译与代码优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解释器和编译器"><span class="toc-number">4.0.1.</span> <span class="toc-text">解释器和编译器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JIT编译器"><span class="toc-number">4.0.2.</span> <span class="toc-text">JIT编译器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#高效并发"><span class="toc-number">5.</span> <span class="toc-text">高效并发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java内存模型"><span class="toc-number">5.0.1.</span> <span class="toc-text">Java内存模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#volatile"><span class="toc-number">5.0.2.</span> <span class="toc-text">volatile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程安全"><span class="toc-number">5.0.3.</span> <span class="toc-text">线程安全</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#互斥同步"><span class="toc-number">5.0.3.0.1.</span> <span class="toc-text">互斥同步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#非阻塞同步"><span class="toc-number">5.0.3.0.2.</span> <span class="toc-text">非阻塞同步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#锁优化"><span class="toc-number">5.0.3.0.3.</span> <span class="toc-text">锁优化</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"《深入理解JVM》笔记　| Felix个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/11/《深入理解JVM》笔记/" data-title="《深入理解JVM》笔记" data-url="http://yoursite.com/2017/01/11/《深入理解JVM》笔记/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"http://cjianfeng.duoshuo.com"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+            // Add comment count
+            $(function(){ 
+                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=http://cjianfeng.duoshuo.com&threads=2017/01/11/《深入理解JVM》笔记/&callback=?";
+                $.getJSON(jsonUrl, function(result){
+                    $.each(result.response, function(i, field){
+                        var value = field.comments;
+                        if (value > 0) {
+                            $(".count-comment").text(value);
+                            return;
+                        }
+                    })
+                })
+            })
+        
+    </script>
+    
+    <aside class="comment-bar">
+        <a href="javascript:void(0);">
+            <i class="fa fa-commenting-o animated infinite pulse"></i>
+            <i class="fa fa-spinner fa-pulse"></i>
+            <span class="count-comment"></span>
+        </a>
+    </aside>
+    <script>
+        var $commentBar = $("#comments aside.comment-bar");
+        var load$hide = function(){
+            $commentBar.find("a > i").toggle();
+            loadComment();
+            $commentBar.fadeOut(800);
+        }
+        $commentBar.click(function(){
+            load$hide();
+        })
+        $commentBar.children("a").hover(function(){
+            load$hide();
+        })
+        if (window.location.hash === "#comments") {
+            load$hide();
+        }
+    </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/01/12/设计模式之代理模式/" title="上一篇: 设计模式之代理模式">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/01/11/设计模式之策略模式/" title="下一篇: 设计模式之策略模式">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/多机部署hexo博客/">多机部署hexo博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/欢迎来到Felix博客/">欢迎来到Felix个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/Linux上部署多个Tomcat/">Linux上部署多个Tomcat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/nginx负载均衡配置/">nginx负载均衡配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/BootStrap-fileinput插件的使用/">BootStrap fileinput插件的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/DWR使用教程/">DWR使用教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/程序是怎么跑起来的读书笔记/">程序是怎么跑起来的读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/mysql和Oracle实现分页/">mysql和Oracle实现分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/有关异常捕获的一题面试题/">有关异常捕获的一题面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/JQuery、EasyUI和Bootstrap区别/">JQuery、EasyUI和Bootstrap区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/05/过滤器filter/">过滤器filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java中的网络编程/">Java中的网络编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/03/MongoDB数据库/">MongoDB数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/RESTful架构/">RESTful架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/四大域对象和JSP九大隐式对象/">四大域对象和JSP九大隐式对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/JDBC编码/">JDBC编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/HTTP协议/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/网络基础知识/">网络基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/《剑指offer》笔记/">《剑指offer》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/Java面试题总结-中/">Java面试题总结(中)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/18/XML数据解析/">XML数据解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/16/Java面试题总结-上/">Java面试题总结(上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/设计模式之工厂方法模式/">设计模式之工厂方法模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/设计模式/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/设计模式之代理模式/">设计模式之代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/《深入理解JVM》笔记/">《深入理解JVM》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/设计模式之策略模式/">设计模式之策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/UML学习笔记/">UML学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/设计模式之单例模式/">设计模式之单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java基础复习/">java基础复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/设计模式之观察者模式/">设计模式之观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/finally执行顺序面试题/">finally执行顺序面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/Linux总结/">Linux总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/用Hexo和GitHub-Pages搭建博客问题总结/">用Hexo和GitHub Pages搭建博客问题总结</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Felix
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"cjianfeng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+  </div>
+</body>
+</html>
