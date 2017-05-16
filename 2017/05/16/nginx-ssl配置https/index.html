@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="BootStrap fileinput是一款基于bootstrap的上传组件">
-<meta name="keywords" content="BootStrap-fileinput">
+<meta name="description" content="因工作需要，试着配了下nginx+ssl配置https,被nginx版本问题坑的要死。。。。">
+<meta name="keywords" content="https">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BootStrap fileinput插件的使用">
-<meta property="og:url" content="http://yoursite.com/2017/04/28/BootStrap-fileinput插件的使用/index.html">
+<meta property="og:title" content="nginx+ssl配置https">
+<meta property="og:url" content="http://yoursite.com/2017/05/16/nginx-ssl配置https/index.html">
 <meta property="og:site_name" content="菜鸟Java成长之路">
-<meta property="og:description" content="BootStrap fileinput是一款基于bootstrap的上传组件">
-<meta property="og:updated_time" content="2017-04-28T15:36:30.103Z">
+<meta property="og:description" content="因工作需要，试着配了下nginx+ssl配置https,被nginx版本问题坑的要死。。。。">
+<meta property="og:updated_time" content="2017-05-16T10:22:27.020Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BootStrap fileinput插件的使用">
-<meta name="twitter:description" content="BootStrap fileinput是一款基于bootstrap的上传组件">
+<meta name="twitter:title" content="nginx+ssl配置https">
+<meta name="twitter:description" content="因工作需要，试着配了下nginx+ssl配置https,被nginx版本问题坑的要死。。。。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>BootStrap fileinput插件的使用 | 菜鸟Java成长之路</title>
+<title>nginx+ssl配置https | 菜鸟Java成长之路</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -283,11 +283,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-BootStrap-fileinput插件的使用" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-nginx-ssl配置https" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/28/BootStrap-fileinput插件的使用/" class="article-date">
-      <time datetime="2017-04-28T12:15:14.000Z" itemprop="datePublished">2017-04-28</time>
+      <a href="/2017/05/16/nginx-ssl配置https/" class="article-date">
+      <time datetime="2017-05-16T10:02:17.000Z" itemprop="datePublished">2017-05-16</time>
 </a>
 
 
@@ -302,7 +302,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      BootStrap fileinput插件的使用
+      nginx+ssl配置https
     </h1>
   
 
@@ -311,13 +311,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BootStrap-fileinput/">BootStrap-fileinput</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/">https</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -327,45 +327,53 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>BootStrap fileinput是一款基于bootstrap的上传组件<br><a id="more"></a><br>bootstrap fileinput这款插件使用简单方便，但还是有比较多的坑，因为官网的使用API真的好烂，描述的不够清楚<br><a href="http://plugins.krajee.com/file-input" target="_blank" rel="external">BootStrap fileinput官网</a></p>
-<h1 id="引入css和js"><a href="#引入css和js" class="headerlink" title="引入css和js"></a>引入css和js</h1><h3 id="css文件"><a href="#css文件" class="headerlink" title="css文件"></a>css文件</h3><pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;./resources/css/bootstrap.min.css&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;./resources/css/fileinput.min.css&quot;&gt;
-</code></pre><h3 id="js文件"><a href="#js文件" class="headerlink" title="js文件"></a>js文件</h3><pre><code>&lt;script type=&quot;text/JavaScript&quot; src=&quot;./resources/js/jQuery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;./resources/js/fileinput.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;./resources/js/zh.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;./resources/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
-</code></pre><h1 id="定义上传标签"><a href="#定义上传标签" class="headerlink" title="定义上传标签"></a>定义上传标签</h1><pre><code>&lt;input type=&quot;file&quot; name=&quot;uploadPic&quot; id=&quot;uploadPic&quot; multiple class=&quot;file-loading&quot; /&gt;
-</code></pre><p>###这里有个大坑啊，官网里写的class=“file”,但是如果是这样，那么你自己定义的配置就不会覆盖默认配置，也就是中文化无效，所有你的配置都不会起作用。应该是class=”file-loading”###</p>
-<h1 id="初始化js"><a href="#初始化js" class="headerlink" title="初始化js"></a>初始化js</h1><pre><code>//初始化fileinput控件
-function initFileInput(ctrlName, uploadUrl) {    
-var control = $(&apos;#&apos; + ctrlName); 
+        <p>因工作需要，试着配了下nginx+ssl配置https,被nginx版本问题坑的要死。。。。<br><a id="more"></a></p>
+<h1 id="确保nginx支持ssl"><a href="#确保nginx支持ssl" class="headerlink" title="确保nginx支持ssl"></a>确保nginx支持ssl</h1><p>nginx编译时带 –with-http_ssl_module 参数，否则后面加入ssl配置时会报以下错</p>
+<pre><code>[emerg] 10464#0: unknown directive &quot;ssl&quot; in /usr/local/nginx/conf/nginx.conf:118”
+</code></pre><h1 id="使用openssl颁发证书"><a href="#使用openssl颁发证书" class="headerlink" title="使用openssl颁发证书"></a>使用openssl颁发证书</h1><p>创建服务端私钥</p>
+<pre><code>cd /usr/local/nginx/
+mkdir ssl
+cd ssl
+openssl genrsa -des3 -out server.key 2048
+</code></pre><p>创建证书请求文件,然后按要求依次输入密码、国家代码、省份城市、邮箱等信息</p>
+<pre><code>openssl req -new -nodes -sha256 -key server.key -out server.csr
+</code></pre><p>去除私钥里的密码信息</p>
+<pre><code>openssl rsa -in server.key -out server_nopwd.key
+</code></pre><p>使用刚生成的私钥和CSR进行证书签名</p>
+<pre><code>openssl x509 -req -days 3650 -sha256 -in server.csr -signkey server_nopwd.key -out server.crt
+</code></pre><h1 id="修改nginx配置文件"><a href="#修改nginx配置文件" class="headerlink" title="修改nginx配置文件"></a>修改nginx配置文件</h1><pre><code>server {
+        listen       443 ssl;
+        server_name  localhost;
 
-control.fileinput({
-    language: &apos;zh&apos;, //设置语言
-    uploadUrl: uploadUrl, //上传的地址
-    allowedFileExtensions: [&apos;jpg&apos;, &apos;gif&apos;, &apos;png&apos;],//接收的文件后缀
-    showUpload: true, //是否显示上传按钮
-    showCaption: false,//是否显示标题
-    browseClass: &quot;btn btn-primary&quot;, //按钮样式     
-    dropZoneEnabled: false,//是否显示拖拽区域
-    minImageWidth: 50, //图片的最小宽度
-    minImageHeight: 50,//图片的最小高度
-    maxImageWidth: 1000,//图片的最大宽度
-    maxImageHeight: 1000,//图片的最大高度
-    maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
-    minFileCount: 0,
-    maxFileCount: 10, //表示允许同时上传的最大文件个数
-    enctype: &apos;multipart/form-data&apos;,            
-});
-}
+        ssl_certificate      /usr/local/nginx/ssl/server.crt;
+        ssl_certificate_key  /usr/local/nginx/ssl/server_nopwd.key;
 
+        #ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
 
-$(document).ready(function(){
-    initFileInput(&quot;uploadPic&quot;, &quot;/upload/uploadPic&quot;).on(&quot;fileuploaded&quot;, function (event,data) {
-    var data = response.data; // 特别注意，返回的data不可直接使用，需要使用response获取.
-    //图片上传测试，这儿处理返回结果;后台返回的json数据
-});;
-</code></pre><h1 id="后台代码，可以直接用SpringMVC的MultipartFile"><a href="#后台代码，可以直接用SpringMVC的MultipartFile" class="headerlink" title="后台代码，可以直接用SpringMVC的MultipartFile"></a>后台代码，可以直接用SpringMVC的MultipartFile</h1>
+        ssl_protocols TLSv1.2 TLSv1.1 TLSv1;
+        ssl_prefer_server_ciphers on;
+        ssl_ciphers EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH;
+
+        location /{
+               #root   /usr/local/nginx/html80;
+               proxy_pass http://myServer;
+
+        }
+    }
+</code></pre><p><strong> 注：配置完成后的网站路径及默认页等配置请与80端口保持一致。</strong></p>
+<h1 id="访问页面"><a href="#访问页面" class="headerlink" title="访问页面"></a>访问页面</h1><ul>
+<li><p>线上：  启动nginx，访问https：//+证书绑定的域名    </p>
+</li>
+<li><p>本地测试： 如果本地测试，请做本地解析访问：打开  系统盘:\Windows\System32\Drivers\etc\hosts 文件，用文本编辑器修改，把证书绑定的域名解析到本地ip。</p>
+</li>
+<li><p>浏览器添加信任证书   </p>
+</li>
+<li>防火墙设置-例外端口-添加443端口（TCP）</li>
+</ul>
+<h1 id="无法连接错误解决"><a href="#无法连接错误解决" class="headerlink" title="无法连接错误解决"></a>无法连接错误解决</h1><h3 id="把443端口的server提到80端口前面，我试了之后还没有解决。。。。。"><a href="#把443端口的server提到80端口前面，我试了之后还没有解决。。。。。" class="headerlink" title="把443端口的server提到80端口前面，我试了之后还没有解决。。。。。"></a>把443端口的server提到80端口前面，我试了之后还没有解决。。。。。</h3><h3 id="查资料，发现需要在443监听端口后面加ssl"><a href="#查资料，发现需要在443监听端口后面加ssl" class="headerlink" title="查资料，发现需要在443监听端口后面加ssl"></a>查资料，发现需要在443监听端口后面加ssl</h3><pre><code>listen 443; &gt;&gt;&gt; listen 443 ssl;
+</code></pre><p>原因是listen 443这种写法是支持新版本而不支持老版本的。</p>
+
       
     </div>
     
@@ -373,13 +381,13 @@ $(document).ready(function(){
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/28/BootStrap-fileinput插件的使用/">BootStrap fileinput插件的使用</a></p>
+        <p><span>本文标题:</span><a href="/2017/05/16/nginx-ssl配置https/">nginx+ssl配置https</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Felix</a></p>
-        <p><span>发布时间:</span>2017-04-28, 20:15:14</p>
-        <p><span>最后更新:</span>2017-04-28, 23:36:30</p>
+        <p><span>发布时间:</span>2017-05-16, 18:02:17</p>
+        <p><span>最后更新:</span>2017-05-16, 18:22:27</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/28/BootStrap-fileinput插件的使用/" title="BootStrap fileinput插件的使用">http://yoursite.com/2017/04/28/BootStrap-fileinput插件的使用/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/28/BootStrap-fileinput插件的使用/　　作者: Felix" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/16/nginx-ssl配置https/" title="nginx+ssl配置https">http://yoursite.com/2017/05/16/nginx-ssl配置https/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/05/16/nginx-ssl配置https/　　作者: Felix" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -391,16 +399,10 @@ $(document).ready(function(){
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/04/30/nginx负载均衡配置/">
-                    nginx负载均衡配置
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/03/30/DWR使用教程/">
-                    DWR使用教程
+                <a href="/2017/05/15/多机部署hexo博客/">
+                    多机部署hexo博客
                 </a>
             </div>
         
@@ -412,7 +414,7 @@ $(document).ready(function(){
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#引入css和js"><span class="toc-number">1.</span> <span class="toc-text">引入css和js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#css文件"><span class="toc-number">1.0.1.</span> <span class="toc-text">css文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js文件"><span class="toc-number">1.0.2.</span> <span class="toc-text">js文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#定义上传标签"><span class="toc-number">2.</span> <span class="toc-text">定义上传标签</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化js"><span class="toc-number">3.</span> <span class="toc-text">初始化js</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#后台代码，可以直接用SpringMVC的MultipartFile"><span class="toc-number">4.</span> <span class="toc-text">后台代码，可以直接用SpringMVC的MultipartFile</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#确保nginx支持ssl"><span class="toc-number">1.</span> <span class="toc-text">确保nginx支持ssl</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用openssl颁发证书"><span class="toc-number">2.</span> <span class="toc-text">使用openssl颁发证书</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#修改nginx配置文件"><span class="toc-number">3.</span> <span class="toc-text">修改nginx配置文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#访问页面"><span class="toc-number">4.</span> <span class="toc-text">访问页面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#无法连接错误解决"><span class="toc-number">5.</span> <span class="toc-text">无法连接错误解决</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#把443端口的server提到80端口前面，我试了之后还没有解决。。。。。"><span class="toc-number">5.0.1.</span> <span class="toc-text">把443端口的server提到80端口前面，我试了之后还没有解决。。。。。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查资料，发现需要在443监听端口后面加ssl"><span class="toc-number">5.0.2.</span> <span class="toc-text">查资料，发现需要在443监听端口后面加ssl</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
@@ -448,7 +450,7 @@ $(document).ready(function(){
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"BootStrap fileinput插件的使用　| 菜鸟Java成长之路　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"nginx+ssl配置https　| 菜鸟Java成长之路　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -464,7 +466,7 @@ $(document).ready(function(){
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/04/28/BootStrap-fileinput插件的使用/" data-title="BootStrap fileinput插件的使用" data-url="http://yoursite.com/2017/04/28/BootStrap-fileinput插件的使用/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/05/16/nginx-ssl配置https/" data-title="nginx+ssl配置https" data-url="http://yoursite.com/2017/05/16/nginx-ssl配置https/"></div>
     <script>
         var duoshuoQuery = {short_name:"http://cjianfeng.duoshuo.com"};
         var loadComment = function(){
@@ -477,7 +479,7 @@ $(document).ready(function(){
         
             // Add comment count
             $(function(){ 
-                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=http://cjianfeng.duoshuo.com&threads=2017/04/28/BootStrap-fileinput插件的使用/&callback=?";
+                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=http://cjianfeng.duoshuo.com&threads=2017/05/16/nginx-ssl配置https/&callback=?";
                 $.getJSON(jsonUrl, function(result){
                     $.each(result.response, function(i, field){
                         var value = field.comments;
@@ -524,15 +526,13 @@ $(document).ready(function(){
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/04/30/nginx负载均衡配置/" title="上一篇: nginx负载均衡配置">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/03/30/DWR使用教程/" title="下一篇: DWR使用教程">
+            <a href="/2017/05/15/多机部署hexo博客/" title="下一篇: 多机部署hexo博客">
                 <i class="fa fa-angle-right"></i>
             </a>
         
