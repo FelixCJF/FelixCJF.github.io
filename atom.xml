@@ -145,12 +145,57 @@ npm install hexo-deployer-git --save
     <link href="http://yoursite.com/2017/04/30/Linux%E4%B8%8A%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AATomcat/"/>
     <id>http://yoursite.com/2017/04/30/Linux上部署多个Tomcat/</id>
     <published>2017-04-30T01:00:39.000Z</published>
-    <updated>2017-04-30T01:00:39.811Z</updated>
+    <updated>2017-05-26T08:29:35.038Z</updated>
+    
+    <content type="html"><![CDATA[<p>自用笔记<br><a id="more"></a></p>
+<ul>
+<li>修改Tomcat的端口号</li>
+<li><p>修改/etc/profile环境变量</p>
+<pre><code>export JAVA_HOME=/usr/java/jdk1.7.0_79
+export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export PATH=$PATH:$JAVA_HOME/bin
+
+#tomcat0  
+CATALINA_0_BASE=/usr/local/server/tomcat0  
+CATALINA_0_HOME=/usr/local/server/tomcat0  
+export CATALINA_0_BASE CATALINA_0_HOME  
+
+# tomcat1  
+CATALINA_1_BASE=/usr/local/server/tomcat1 
+CATALINA_1_HOME=/usr/local/server/tomcatc1   
+export CATALINA_2_BASE CATALINA_2_HOME 
+
+#tomcat2
+CATALINA_2_BASE=/usr/local/server/tomcat2 
+CATALINA_2_HOME=/usr/local/server/tomcat2  
+export CATALINA_2_BASE CATALINA_2_HOME
+
+TOMCAT_0_HOME=/usr/local/server/tomcat0  
+export TOMCAT_0_HOME  
+
+TOMCAT_1_HOME=/usr/local/server/tomcat1  
+export TOMCAT_1_HOME
+
+TOMCAT_2_HOME=/usr/local/server/tomcat2
+export TOMCAT_2_HOME    
+
+#log out service while timeout
+export TMOUT=900
+readonly TMOUT
+</code></pre></li>
+</ul>
+]]></content>
     
     <summary type="html">
     
+      &lt;p&gt;自用笔记&lt;br&gt;
+    
     </summary>
     
+      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
+    
+    
+      <category term="Linux部署多个Tomcat" scheme="http://yoursite.com/tags/Linux%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AATomcat/"/>
     
   </entry>
   
