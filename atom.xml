@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-05-16T10:22:27.020Z</updated>
+  <updated>2017-05-26T08:02:04.427Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>判断ip是否合法</title>
+    <link href="http://yoursite.com/2017/05/26/%E5%88%A4%E6%96%ADip%E6%98%AF%E5%90%A6%E5%90%88%E6%B3%95/"/>
+    <id>http://yoursite.com/2017/05/26/判断ip是否合法/</id>
+    <published>2017-05-26T07:56:50.000Z</published>
+    <updated>2017-05-26T08:02:04.427Z</updated>
+    
+    <content type="html"><![CDATA[<p>自用笔记<br><a id="more"></a><br>java中使用正则表达式校验ip是否合法</p>
+<pre><code>public static boolean isIPAddress(String ip) {
+    boolean isIP = false;
+    Pattern pattern = Pattern.compile(&quot;\\b((?!\\d\\d\\d)\\d+|1\\d\\d|2[0-4]\\d|25[0-5])\\.((?!\\d\\d\\d)\\d+|1\\d\\d|2[0-4]\\d|25[0-5])\\.((?!\\d\\d\\d)\\d+|1\\d\\d|2[0-4]\\d|25[0-5])\\.((?!\\d\\d\\d)\\d+|1\\d\\d|2[0-4]\\d|25[0-5])\\b&quot;);
+    Matcher m = pattern.matcher(ip);
+    isIP = m.matches();
+    return isIP;
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;自用笔记&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
+    
+    
+      <category term="ip校验" scheme="http://yoursite.com/tags/ip%E6%A0%A1%E9%AA%8C/"/>
+    
+  </entry>
   
   <entry>
     <title>nginx+ssl配置https</title>
@@ -1406,126 +1436,6 @@ public int JumpFloorII(int target) {
     
     
       <category term="剑指offer" scheme="http://yoursite.com/tags/%E5%89%91%E6%8C%87offer/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java面试题总结(中)</title>
-    <link href="http://yoursite.com/2017/01/19/Java%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93-%E4%B8%AD/"/>
-    <id>http://yoursite.com/2017/01/19/Java面试题总结-中/</id>
-    <published>2017-01-19T08:05:27.000Z</published>
-    <updated>2017-01-19T08:06:22.366Z</updated>
-    
-    <content type="html"><![CDATA[<p>网上找的题目，自己一题一题做的，查缺补漏<br><a id="more"></a></p>
-<h1 id="集合框架"><a href="#集合框架" class="headerlink" title="集合框架"></a>集合框架</h1><h3 id="1-下列说法正确的是（AC）"><a href="#1-下列说法正确的是（AC）" class="headerlink" title="1. 下列说法正确的是（AC）"></a>1. 下列说法正确的是（AC）</h3><p>A. LinkedList继承自List<br>B. AbstractSet继承自Set<br>C. HashSet继承自AbstractSet<br>D. WeakMap继承自HashMap</p>
-<h3 id="2-ArrayList-list-new-ArrayList-20-中的-list-扩充几次"><a href="#2-ArrayList-list-new-ArrayList-20-中的-list-扩充几次" class="headerlink" title="2. ArrayList list = new ArrayList(20);中的 list 扩充几次?"></a>2. ArrayList list = new ArrayList(20);中的 list 扩充几次?</h3><p>A. 0<br>B. 1<br>C. 2<br>D. 3<br>答案： A<br>ArrayList默认的长度是10，如果要添加20个元素，则要扩充1次，但是，题目已经指明了需要多少空间，所以创建的时候一次性分配了那么多空间，所以不需要再次扩充</p>
-<h3 id="3-Java集合类框架的基本接口有哪些？"><a href="#3-Java集合类框架的基本接口有哪些？" class="headerlink" title="3. Java集合类框架的基本接口有哪些？"></a>3. Java集合类框架的基本接口有哪些？</h3><p>Collection:代表一组集合对象，每一个对象都是它的子元素<br>List:有序的Collection，并且元素可以重复，元素都有索引<br>Set:无序，不可重复的Collection<br>Map:键值对对象，key值不可以重复</p>
-<h3 id="4-为什么集合类没有实现-Cloneable-和-Serializable-接口？"><a href="#4-为什么集合类没有实现-Cloneable-和-Serializable-接口？" class="headerlink" title="4. 为什么集合类没有实现 Cloneable 和 Serializable 接口？"></a>4. 为什么集合类没有实现 Cloneable 和 Serializable 接口？</h3><p>克隆和序列化的语义和含义是和具体的实现相关的，因此，应该由集合类的具体实现来决定如何被克隆或者序列化</p>
-<h3 id="5-什么是迭代器-Iterator"><a href="#5-什么是迭代器-Iterator" class="headerlink" title="5. 什么是迭代器(Iterator)"></a>5. 什么是迭代器(Iterator)</h3><p>Iterator接口提供了很多对集合元素进行迭代的方法，用来取出集合中的元素</p>
-<h3 id="6-Iterator和ListIterator的区别是什么？"><a href="#6-Iterator和ListIterator的区别是什么？" class="headerlink" title="6. Iterator和ListIterator的区别是什么？"></a>6. Iterator和ListIterator的区别是什么？</h3><p>Iterator可以对List、Set迭代，而ListIterator只可以对List迭代<br>ListIterator实现了Iterator接口，包含Iterator接口的方法<br>Iterator对集合只能向前遍历，ListIterator可以向前也可以向后</p>
-<h3 id="7-快速失败-fail-fast-和安全失败-fail-safe-的区别是什么？"><a href="#7-快速失败-fail-fast-和安全失败-fail-safe-的区别是什么？" class="headerlink" title="7. 快速失败(fail-fast)和安全失败(fail-safe)的区别是什么？"></a>7. 快速失败(fail-fast)和安全失败(fail-safe)的区别是什么？</h3><p>Iterator的安全失败是对底层集合做拷贝，所以不受源集合修改的影响java.util 包下面的所有的集合类都是快速失败的，而java.util.concurrent 包下面的所有的类都是安全失败的。快速失败的迭代器会抛出 ConcurrentModificationException 异常，而安全失败的迭代器永远不会抛出这样的异常。</p>
-<h3 id="8-Java-中的-HashMap-的工作原理是什么？"><a href="#8-Java-中的-HashMap-的工作原理是什么？" class="headerlink" title="8. Java 中的 HashMap 的工作原理是什么？"></a>8. Java 中的 HashMap 的工作原理是什么？</h3><p>HashMap是一个键值对形式存储元素的，有一个hash函数，使用hashcode()和equals()方法来检索和添加元素，当调用put()方法时，HashMap会计算key的hash值，然后把键值对存储在合适的索引上，如果key已经存在，则Value则会被更新成新值。HashMap的一些重要的特性是它的容量(capacity)，负载因子(load factor)和扩容极限(threshold resizing)。</p>
-<h3 id="9-hashCode-和-equals-方法的重要性体现在什么地方？"><a href="#9-hashCode-和-equals-方法的重要性体现在什么地方？" class="headerlink" title="9. hashCode() 和 equals() 方法的重要性体现在什么地方？"></a>9. hashCode() 和 equals() 方法的重要性体现在什么地方？</h3><p>Java中HashMap会根据hashCode() 和 equals() 方法来确定键值对的索引，当根据键获取值得时候也会用到这两个方法，如果没有正确实现这两个方法，两个不同的键可能会有相同的hash值，可能会被集合认为是相等的。而且，这两个方法还用来发现重复的值，所以这两个方法的实现对HashMap的精确性和正确性至关重要。</p>
-<h3 id="10-HashMap-和-Hashtable-有什么区别？"><a href="#10-HashMap-和-Hashtable-有什么区别？" class="headerlink" title="10. HashMap 和 Hashtable 有什么区别？"></a>10. HashMap 和 Hashtable 有什么区别？</h3><p>HashMap允许键值对是null，Hashtable不允许null<br>HashMap不是同步的，Hashtable是同步的<br>HashMap提供了对键的列举<br>Hashtable是一个遗留类 </p>
-<h3 id="11-数组-Array-和列表-ArrayList-有什么区别？什么时候应该使用-Array-而不是ArrayList"><a href="#11-数组-Array-和列表-ArrayList-有什么区别？什么时候应该使用-Array-而不是ArrayList" class="headerlink" title="11. 数组(Array)和列表(ArrayList)有什么区别？什么时候应该使用 Array 而不是ArrayList"></a>11. 数组(Array)和列表(ArrayList)有什么区别？什么时候应该使用 Array 而不是ArrayList</h3><p>Array存储的是基本数据类型或者对象类型，ArrayList只能存储对象类型<br>Array是大小不可变的，ArrayList的大小是动态变化的    </p>
-<h3 id="12-ArrayList-和-LinkedList-有什么区别？"><a href="#12-ArrayList-和-LinkedList-有什么区别？" class="headerlink" title="12. ArrayList 和 LinkedList 有什么区别？"></a>12. ArrayList 和 LinkedList 有什么区别？</h3><p>ArrayList:底层数据结构是数组，线程不同步，查询速度非常快<br>LinkedList：底层数据结构是列表，线程不同步，增删元素速度快<br>Vector:底层的数据结构是数组，线程同步，查询和增删元素都非常慢  </p>
-<h3 id="13-Comparable-和Comparator-接口是干什么的？列出它们的区别。"><a href="#13-Comparable-和Comparator-接口是干什么的？列出它们的区别。" class="headerlink" title="13. Comparable 和Comparator 接口是干什么的？列出它们的区别。"></a>13. Comparable 和Comparator 接口是干什么的？列出它们的区别。</h3><p>Java提供了一个只包含compareTo（）方法的Comparable接口，这个方法可以给两个对象排序，具体来说，它返回负数，0，正数来表明输入对象小于，等于，大于已经存在的对象<br>Java提供了包含compare（）和equals（）方法的Comparator的接口compare() 方法用来给两个输入数排序，返回负数，0，正数表明第一个参数是小于，等于，大于第二个参数。equals() 方法需要一个对象作为参数，它用来决定输入参数是否和 comparator 相等。只有当输入参数也是一个 comparator 并且输入参数和当前 comparator 的排序结果是相同的时候，这个方法才返回true。</p>
-<h3 id="14-Java集合类框架的最佳实践有哪些？"><a href="#14-Java集合类框架的最佳实践有哪些？" class="headerlink" title="14. Java集合类框架的最佳实践有哪些？"></a>14. Java集合类框架的最佳实践有哪些？</h3><p>根据需求选择合适的集合类型对性能非常重要<br>使用泛型，增强程序的可读性和健壮性<br>底层的集合实际上是空的情况下，返回长度是0的集合或者是数组，不要返回 null。   </p>
-<h3 id="15-Enumeration-接口和-Iterator-接口的区别有哪些？"><a href="#15-Enumeration-接口和-Iterator-接口的区别有哪些？" class="headerlink" title="15. Enumeration 接口和 Iterator 接口的区别有哪些？"></a>15. Enumeration 接口和 Iterator 接口的区别有哪些？</h3><p>Enumeration的速度是Iterator的两倍，同时占用更少内存，但是Iterator远比Enumeration安全，因为其他线程不能修改正在被Iterator遍历集合里面的的元素，同时，Iterator允许调用者删除底层集合里面的元素，而Enumeration不可以</p>
-<h3 id="16-HashSet-和-TreeSet-有什么区别？"><a href="#16-HashSet-和-TreeSet-有什么区别？" class="headerlink" title="16. HashSet 和 TreeSet 有什么区别？"></a>16. HashSet 和 TreeSet 有什么区别？</h3><p>HashSet: 底层数据结构是哈希表，是线程不同步的，无序，高效<br>TreeSet： 底层数据结构是二叉树，是线程不同步的，对集合中的元素进行指定顺序的排序  </p>
-<h3 id="17-List、Set、Map-是否继承自-Collection-接口？"><a href="#17-List、Set、Map-是否继承自-Collection-接口？" class="headerlink" title="17. List、Set、Map 是否继承自 Collection 接口？"></a>17. List、Set、Map 是否继承自 Collection 接口？</h3><p>List、Set继承自Collection，Map存储的是键值对，显然不是继承自Collection</p>
-<h3 id="18-说出-ArrayList、Vector、LinkedList-的存储性能和特性？"><a href="#18-说出-ArrayList、Vector、LinkedList-的存储性能和特性？" class="headerlink" title="18. 说出 ArrayList、Vector、LinkedList 的存储性能和特性？"></a>18. 说出 ArrayList、Vector、LinkedList 的存储性能和特性？</h3><p>ArrayList:底层数据结构是数组，线程不同步，查询速度非常快<br>LinkedList：底层数据结构是链表，线程不同步，增删元素速度非常快<br>Vector：底层数据结构是数组，线程同步，查询和增删元素都非常慢，已过时</p>
-<h3 id="19-List、Map、Set-三个接口存储元素时各有什么特点？"><a href="#19-List、Map、Set-三个接口存储元素时各有什么特点？" class="headerlink" title="19. List、Map、Set 三个接口存储元素时各有什么特点？"></a>19. List、Map、Set 三个接口存储元素时各有什么特点？</h3><p>List:有序的Collection，元素都有索引，元素可以重复<br>Set：无序的Collection，必须保证元素的唯一性<br>Map：存储的是键值对</p>
-<h3 id="20-判断下列语句是否正确，如果有错误，请指出错误所在？"><a href="#20-判断下列语句是否正确，如果有错误，请指出错误所在？" class="headerlink" title="20. 判断下列语句是否正确，如果有错误，请指出错误所在？"></a>20. 判断下列语句是否正确，如果有错误，请指出错误所在？</h3><pre><code>List a = new ArrayList();
-a.add(5);
-</code></pre><p>答：错误,默认封装 int 类型。</p>
-<h1 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h1><h3 id="1-GC线程是否为守护线程？（是）"><a href="#1-GC线程是否为守护线程？（是）" class="headerlink" title="1. GC线程是否为守护线程？（是）"></a>1. GC线程是否为守护线程？（是）</h3><p>线程分为守护线程和非守护线程（用户线程）<br>只要当前JVM实例中尚存在任何一个非守护线程没有结束，守护线程就不会工作；只有当最后一个非守护线程结束时，守护线程随着 JVM 一同结束工作。 守护线程最典型的应用就是 GC (垃圾回收器)</p>
-<h3 id="2-解释内存中的栈（stack）、堆-heap-和静态存储区的用法。"><a href="#2-解释内存中的栈（stack）、堆-heap-和静态存储区的用法。" class="headerlink" title="2. 解释内存中的栈（stack）、堆(heap)和静态存储区的用法。"></a>2. 解释内存中的栈（stack）、堆(heap)和静态存储区的用法。</h3><p>栈：线程私有，只保存基本数据类型对象，和自定义对象的引用，存放局部变量，函数的参数值<br>堆： 存放对象本身<br>静态存储区：存放常量</p>
-<h3 id="3-Java-中会存在内存泄漏吗，请简单描述"><a href="#3-Java-中会存在内存泄漏吗，请简单描述" class="headerlink" title="3. Java 中会存在内存泄漏吗，请简单描述"></a>3. Java 中会存在内存泄漏吗，请简单描述</h3><p>理论上有GC，不会存在内存泄漏，但实际开发中，存在无用但可达的对象，不会被GC回收，会发生内存泄漏。hibernate中session的一级缓存属于持久状态</p>
-<h3 id="4-GC-是什么？为什么要有-GC？"><a href="#4-GC-是什么？为什么要有-GC？" class="headerlink" title="4. GC 是什么？为什么要有 GC？"></a>4. GC 是什么？为什么要有 GC？</h3><p>GC（垃圾收集）内存的处理是比较容易出现问题的地方，忘记或者错误的回收内存可能会导致系统的奔溃，Java提供的GC可以自动监测对象是否超过作用域从而达到自动回收内存的目的</p>
-<h3 id="5-描述一下-JVM-加载-class-文件的原理机制"><a href="#5-描述一下-JVM-加载-class-文件的原理机制" class="headerlink" title="5. 描述一下 JVM 加载 class 文件的原理机制?"></a>5. 描述一下 JVM 加载 class 文件的原理机制?</h3><p>双亲委派制,收到加载请求时，自己不加载，而是委派给父类加载</p>
-<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><h3 id="1-下面关于java-lang-Exception类的说法正确的是（A）"><a href="#1-下面关于java-lang-Exception类的说法正确的是（A）" class="headerlink" title="1. 下面关于java.lang.Exception类的说法正确的是（A）"></a>1. 下面关于java.lang.Exception类的说法正确的是（A）</h3><p>A. 继承自 Throwable<br>B. Serialable<br>解析：Java 异常的基类为 java.lang.Throwable，java.lang.Error 和java.lang.Exception 继承 Throwable，RuntimeException 和其它的 Exception 等继承 Exception，具体的 RuntimeException 继承 RuntimeE<br>xception。</p>
-<h3 id="2-扩展：错误和异常的区别-Error-vs-Exception"><a href="#2-扩展：错误和异常的区别-Error-vs-Exception" class="headerlink" title="2. 扩展：错误和异常的区别(Error vs Exception)"></a>2. 扩展：错误和异常的区别(Error vs Exception)</h3><p>error都是继承自父类java.lang.Error，而exception都继承自java.lang.Exception.<br>Error和RuntimeException 及其子类都是未检查的异常（unchecked exceptions），而所有其他的Exception类都是检查了的异常（checked exceptions）.<br>错误是非正常的，不该出现的，而异常是非严重的，并且鼓励去捕获</p>
-<h3 id="3-getCustomerInfo-方法如下，try-中可以捕获三种类型的异常，如果在该方法运行中产生了一个-IOException，将会输出什么结果"><a href="#3-getCustomerInfo-方法如下，try-中可以捕获三种类型的异常，如果在该方法运行中产生了一个-IOException，将会输出什么结果" class="headerlink" title="3. getCustomerInfo() 方法如下，try 中可以捕获三种类型的异常，如果在该方法运行中产生了一个 IOException，将会输出什么结果?"></a>3. getCustomerInfo() 方法如下，try 中可以捕获三种类型的异常，如果在该方法运行中产生了一个 IOException，将会输出什么结果?</h3><pre><code>public void getCustomerInfo() {
-try {
-// do something that may cause an Exception
-} catch (java.io.FileNotFoundException ex) {
-System.out.print(&quot;FileNotFoundException!&quot;);
-} catch (java.io.IOException ex) {
-System.out.print(&quot;IOException!&quot;);
-} catch (java.lang.Exception ex) {
-System.out.print(&quot;Exception!&quot;);
-}
-}
-</code></pre><p>A. IOException!<br>B. IOException!Exception!<br>C. FileNotFoundException!IOException!<br>D. FileNotFoundException!IOException!Exception!<br>答案：A       </p>
-<p>解析：考察多个 catch 语句块的执行顺序。当用多个 catch 语句时，catch 语句块在次序上有先后之分。从最前面的 catch 语句块依次先后进行异常类型匹配，这样如果父异常在子异常类之前，那么首先匹配的将是父异常类，子异常类将不会获得匹配的机会，也即子异常类型所在的 catch 语句块将是不可到达的语句。所以，一般将父类异常类即 Exception 老大放在 catch 语句块的最后一个。</p>
-<h3 id="4-try-里有一个-return-语句，那么紧跟在这个-try-后的-finally-里的-code-会不会被执行，什么时候被执行，在-return-前还是后"><a href="#4-try-里有一个-return-语句，那么紧跟在这个-try-后的-finally-里的-code-会不会被执行，什么时候被执行，在-return-前还是后" class="headerlink" title="4. try{} 里有一个 return 语句，那么紧跟在这个 try 后的 finally{} 里的 code 会不会被执行，什么时候被执行，在 return 前还是后?"></a>4. try{} 里有一个 return 语句，那么紧跟在这个 try 后的 finally{} 里的 code 会不会被执行，什么时候被执行，在 return 前还是后?</h3><p>答：会执行，在方法返回调用者前执行  </p>
-<h3 id="5-Java-语言如何进行异常处理，关键字：throws、throw、try、catch、finally-分别如何使用？"><a href="#5-Java-语言如何进行异常处理，关键字：throws、throw、try、catch、finally-分别如何使用？" class="headerlink" title="5. Java 语言如何进行异常处理，关键字：throws、throw、try、catch、finally 分别如何使用？"></a>5. Java 语言如何进行异常处理，关键字：throws、throw、try、catch、finally 分别如何使用？</h3><p>抛出异常<br>throws用在方法上跟异常类名<br>throw用方法内，后面跟对象<br>捕获异常<br>try{}catch{}finally{}</p>
-<h3 id="6-运行时异常与受检异常有何异同？"><a href="#6-运行时异常与受检异常有何异同？" class="headerlink" title="6. 运行时异常与受检异常有何异同？"></a>6. 运行时异常与受检异常有何异同？</h3><p>异常表示程序运行过程中可能出现的非正常状态，运行时异常表示虚拟机的通常操作中可能遇到的异常，是一种常见运行错误，只要程序设计得没有问题通常就不会发生。受检异常跟程序运行的上下文环境有关，即使程序设计无误，仍然可能因使用的问题而引发。   </p>
-<h3 id="7-请写出-5-种常见到的runtime-exception。"><a href="#7-请写出-5-种常见到的runtime-exception。" class="headerlink" title="7. 请写出 5 种常见到的runtime exception。"></a>7. 请写出 5 种常见到的runtime exception。</h3><p>答：<br>NullPointerException：当操作一个空引用时会出现此错误。<br>NumberFormatException：数据格式转换出现问题时出现此异常。<br>ClassCastException：强制类型转换类型不匹配时出现此异常。<br>ArrayIndexOutOfBoundsException：数组下标越界，当使用一个不存在的数组下标时出现此异常。<br>ArithmeticException：数学运行错误时出现此异常</p>
-<h1 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h1><h3 id="1-XML-包括哪些解析技术，区别是什么？"><a href="#1-XML-包括哪些解析技术，区别是什么？" class="headerlink" title="1. XML 包括哪些解析技术，区别是什么？"></a>1. XML 包括哪些解析技术，区别是什么？</h3><p>DOM：一次性将整个文档读入内存中，然后再进行操作<br>SAX：在读取文档时就可以进行操作</p>
-<h3 id="2-XML-文档定义有几种形式？它们之间有何本质区别？"><a href="#2-XML-文档定义有几种形式？它们之间有何本质区别？" class="headerlink" title="2. XML 文档定义有几种形式？它们之间有何本质区别？"></a>2. XML 文档定义有几种形式？它们之间有何本质区别？</h3><p>XML 文档定义分为 DTD 和 Schema 两种形式；其本质区别在于 Schema 本身也是一个 XML 文件，可以被 XML 解析器解析</p>
-<h3 id="3-你在项目中哪些地方用到了-XML？"><a href="#3-你在项目中哪些地方用到了-XML？" class="headerlink" title="3. 你在项目中哪些地方用到了 XML？"></a>3. 你在项目中哪些地方用到了 XML？</h3><p>答:XML 的主要作用有两个方面：数据交换（曾经被称为业界数据交换的事实标准，现在此项功能在很多时候都被 JSON 取代）和信息配置。在做数据交换时，XML 将数据用标签组装成起来，然后压缩打包加密后通过网络传送给接收者，接收解密与解压缩后再从 XML 文件中还原相关信息进行处理。目前很多软件都使用 XML 来存储配置信息，很多项目中我们通常也会将作为配置的硬代码（hard code）写在 XML 文件中，Java 的很多框架也是这么做的。</p>
-<h3 id="4-谈谈对-XML-的理解？说明-Web-应用中-Web-xml-文件的作用？"><a href="#4-谈谈对-XML-的理解？说明-Web-应用中-Web-xml-文件的作用？" class="headerlink" title="4. 谈谈对 XML 的理解？说明 Web 应用中 Web.xml 文件的作用？"></a>4. 谈谈对 XML 的理解？说明 Web 应用中 Web.xml 文件的作用？</h3><p>解答：XML（Extensible Markup Language）即可扩展标记语言，它与 HTML 一样，都是 SGML(Standard Generalized Markup Language,标准通用标记语言)。Xml 是 Internet 环境中跨平台的，依赖于内容的技术，是当前处理结构化文档信息的有力工具。扩展标记语言 XML 是一种简单的数据存储语言，使用一系列简单的标记描述数据，而这些标记可以用方便的方式建立，虽然XML占用的空间比二进制数据要占用更多的空间，但XML极其简单易于掌握和使用。<br>web.xml 的作用是配置欢迎页，servlet，filter，listener 等的</p>
-<h3 id="5-XML-是一种元语言-可以用它来描述其他语言。"><a href="#5-XML-是一种元语言-可以用它来描述其他语言。" class="headerlink" title="5. XML 是一种元语言, 可以用它来描述其他语言。"></a>5. XML 是一种元语言, 可以用它来描述其他语言。</h3><p>错误<br>XML（可扩展标记语言）是一种简单的数据存储语言</p>
-<h3 id="6-DTD-与-XML-Schema-都是XML文档。-选择1项"><a href="#6-DTD-与-XML-Schema-都是XML文档。-选择1项" class="headerlink" title="6. DTD 与 XML Schema 都是XML文档。(选择1项)"></a>6. DTD 与 XML Schema 都是XML文档。(选择1项)</h3><p>A．正确<br>B．不正确<br>解答：DTD 不是 XML 文件， schema 是 XML 文档</p>
-<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h3 id="1-下面哪些是Thread类的方法-ABD"><a href="#1-下面哪些是Thread类的方法-ABD" class="headerlink" title="1. 下面哪些是Thread类的方法?ABD"></a>1. 下面哪些是Thread类的方法?ABD</h3><p>A start()<br>B run()<br>C exit()<br>D getPriority() </p>
-<h3 id="2-下面程序的运行结果-B"><a href="#2-下面程序的运行结果-B" class="headerlink" title="2. 下面程序的运行结果?B"></a>2. 下面程序的运行结果?B</h3><pre><code>public static void main(String args[]) {
-Thread t = new Thread() {
-public void run() {
-pong();
-}
-};
-t.run();
-System.out.print(&quot;ping&quot;);
-}
-static void pong() {
-System.out.print(&quot;pong&quot;);
-}
-</code></pre><p>A. pingpong<br>B. pongping<br>C. pingpong和pongping都有可能b<br>D. 都不输出   </p>
-<h3 id="3-进程和线程的区别是什么？"><a href="#3-进程和线程的区别是什么？" class="headerlink" title="3. 进程和线程的区别是什么？"></a>3. 进程和线程的区别是什么？</h3><p>进程是执行中的运用程序，线程是进程中的一个执行序列，一个进程可以含有多个线程，线程又叫轻量级进程</p>
-<h3 id="4-创建线程有几种不同的方式？你喜欢哪一种？为什么？"><a href="#4-创建线程有几种不同的方式？你喜欢哪一种？为什么？" class="headerlink" title="4. 创建线程有几种不同的方式？你喜欢哪一种？为什么？"></a>4. 创建线程有几种不同的方式？你喜欢哪一种？为什么？</h3><p>三种<br>继承Thread类<br>实现Runable接口<br>应用程序可以使用 Executor 框架来创建线程池<br>更常用实现Runable接口,因为Java只支持单线程    </p>
-<h3 id="5-概括的解释下线程的几种可用状态。"><a href="#5-概括的解释下线程的几种可用状态。" class="headerlink" title="5. 概括的解释下线程的几种可用状态。"></a>5. 概括的解释下线程的几种可用状态。</h3><ul>
-<li>就绪(Runnable):线程准备运行，不一定立马就能开始执行。</li>
-<li>运行中(Running)：进程正在执行线程的代码。</li>
-<li>等待中(Waiting):线程处于阻塞的状态，等待外部的处理结束。</li>
-<li>睡眠中(Sleeping)：线程被强制睡眠。</li>
-<li>I/O阻塞(Blocked on I/O)：等待I/O操作完成。<br>同步阻塞(Blocked on Synchronization)：等待获取锁。</li>
-<li>死亡(Dead)：线程完成了执行。<h3 id="6-同步方法和同步代码块的区别是什么？"><a href="#6-同步方法和同步代码块的区别是什么？" class="headerlink" title="6. 同步方法和同步代码块的区别是什么？"></a>6. 同步方法和同步代码块的区别是什么？</h3>java 中每个对象都有一把锁, 线程可以通过 synchronized 关键字来获取对象上的锁<br>同步方法(粗粒度锁):   <pre><code>1. 修饰一般方法: public synchronized void method (){...}, 获取的是当前调用对象 this 上的锁    
-2. 修饰静态方法: public static synchronized void method (){...}, 获取当前类的字节码对象上的锁    
-</code></pre>同步代码块(细粒度锁):      <pre><code>synchronized ( obj ) {...}, 同步代码块可以指定获取哪个对象上的锁, obj 任意
-</code></pre><h3 id="7-在监视器-Monitor-内部，是如何做线程同步的？程序应该做哪种级别的同步？"><a href="#7-在监视器-Monitor-内部，是如何做线程同步的？程序应该做哪种级别的同步？" class="headerlink" title="7. 在监视器(Monitor)内部，是如何做线程同步的？程序应该做哪种级别的同步？"></a>7. 在监视器(Monitor)内部，是如何做线程同步的？程序应该做哪种级别的同步？</h3>监视器和锁在 Java 虚拟机中是一块使用的。监视器监视一块同步代码块，确保一次只有一个线程执行同步代码块。每一个监视器都和一个对象引用相关联。线程在获取锁之前不允许执行同步代码。<h3 id="8-什么是死锁-deadlock-？"><a href="#8-什么是死锁-deadlock-？" class="headerlink" title="8. 什么是死锁(deadlock)？"></a>8. 什么是死锁(deadlock)？</h3>两个线程都在等待对方执行完毕才能继续往下执行的时候就产生了死锁，导致两个线程陷入了无限的等待中<h3 id="9-如何确保-N-个线程可以访问-N-个资源同时又不导致死锁？"><a href="#9-如何确保-N-个线程可以访问-N-个资源同时又不导致死锁？" class="headerlink" title="9. 如何确保 N 个线程可以访问 N 个资源同时又不导致死锁？"></a>9. 如何确保 N 个线程可以访问 N 个资源同时又不导致死锁？</h3>用多线程的时候，一种非常简单的避免死锁的方式就是：指定获取锁的顺序，并强制线程按照指定的顺序获取锁。因此，如果所有的线程都是以同样的顺序加锁和释放锁，就不会出现死锁了<h3 id="10-sleep-和-wait-有什么区别"><a href="#10-sleep-和-wait-有什么区别" class="headerlink" title="10. sleep() 和 wait() 有什么区别?"></a>10. sleep() 和 wait() 有什么区别?</h3>sleep()是Thread类的静态方法，导致当前线程暂停执行到指定时间，把执行机会让给其他线程，到时会自动恢复，因为sleep不会释放对象锁<br>wait()是Object的方法，线程暂停执行并放弃对象锁，进入等待，只有针对对象调用notify()方法后才会获取对象锁<h3 id="11-sleep-和-yield-有什么区别"><a href="#11-sleep-和-yield-有什么区别" class="headerlink" title="11. sleep() 和 yield() 有什么区别?"></a>11. sleep() 和 yield() 有什么区别?</h3>答：<br>① sleep() 方法给其他线程运行机会时不考虑线程的优先级，因此会给低优先级的线程以运行的机会；yield() 方法只会给相同优先级或更高优先级的线程以运行的机会；<br>② 线程执行 sleep() 方法后转入阻塞（blocked）状态，而执行 yield() 方法后转入就绪（ready）状态；<br>③ sleep() 方法声明抛出InterruptedException，而 yield() 方法没有声明任何异常；<br>④ sleep() 方法比 yield() 方法（跟操作系统相关）具有更好的可移植性。<h3 id="12-当一个线程进入一个对象的-synchronized-方法-A-之后，其它线程是否可进入此对象的-synchronized-方法？"><a href="#12-当一个线程进入一个对象的-synchronized-方法-A-之后，其它线程是否可进入此对象的-synchronized-方法？" class="headerlink" title="12. 当一个线程进入一个对象的 synchronized 方法 A 之后，其它线程是否可进入此对象的 synchronized 方法？"></a>12. 当一个线程进入一个对象的 synchronized 方法 A 之后，其它线程是否可进入此对象的 synchronized 方法？</h3>不能，其他线程只能访问该对象的非同步方法<h3 id="13-请说出与线程同步相关的方法。"><a href="#13-请说出与线程同步相关的方法。" class="headerlink" title="13. 请说出与线程同步相关的方法。"></a>13. 请说出与线程同步相关的方法。</h3></li>
-<li>wait():使一个线程处于等待（阻塞）状态，并且释放所持有的对象的锁；</li>
-<li>sleep():使一个正在运行的线程处于睡眠状态，是一个静态方法，调用此方法要捕捉InterruptedException<br>异常；</li>
-<li>notify():唤醒一个处于等待状态的线程，当然在调用此方法的时候，并不能确切的唤醒某一个等待状态的线<br>程，而是由JVM确定唤醒哪个线程，而且与优先级无关；</li>
-<li>notityAll():唤醒所有处入等待状态的线程，注意并不是给所有唤醒线程一个对象的锁，而是让它们竞争；    <h3 id="14-synchronized-关键字的用法？"><a href="#14-synchronized-关键字的用法？" class="headerlink" title="14. synchronized 关键字的用法？"></a>14. synchronized 关键字的用法？</h3>答：synchronized 关键字可以将对象或者方法标记为同步，以实现对对象和方法的互斥访问，可以用synchronized(对象) { … }定义同步代码块，或者在声明方法时将 synchronized 作为方法的修饰符。<h3 id="15-举例说明同步和异步。"><a href="#15-举例说明同步和异步。" class="headerlink" title="15. 举例说明同步和异步。"></a>15. 举例说明同步和异步。</h3>如果系统中存在临界资源（资源数量少于竞争资源的线程数量的资源），例如正在写的数据以后可能被另一个线程读到，或者正在读的数据可能已经被另一个线程写过了，那么这些数据就必须进行同步存取（数据库操作中的悲观锁就是最好的例子）。当应用程序在对象上调用了一个需要花费很长时间来执行的方法，并且不希望让程序等待方法的返回时，就应该使用异步编程，在很多情况下采用异步途径往往更有效率。事实上，所谓的同步就是指阻塞式操作，而异步就是非阻塞式操作。 <h3 id="16-启动一个线程是用-run-还是-start-方法"><a href="#16-启动一个线程是用-run-还是-start-方法" class="headerlink" title="16. 启动一个线程是用 run() 还是 start() 方法?"></a>16. 启动一个线程是用 run() 还是 start() 方法?</h3>答：启动一个线程是调用 start() 方法，使线程所代表的虚拟处理机处于可运行状态，这意味着它可以由JVM 调度并执行，这并不意味着线程就会立即运行。run()方法是线程启动后要进行回调（callback）的方法。<h3 id="17-什么是线程池（thread-pool）？"><a href="#17-什么是线程池（thread-pool）？" class="headerlink" title="17. 什么是线程池（thread pool）？"></a>17. 什么是线程池（thread pool）？</h3>线程池顾名思义就是事先创建若干个可执行的线程放入一个池（容器）中，需要的时候从池中获取线程不用自行创建，使用完毕不需要销毁线程而是放回池中，从而减少创建和销毁线程对象的开销。<h3 id="18-线程的基本状态以及状态之间的关系？"><a href="#18-线程的基本状态以及状态之间的关系？" class="headerlink" title="18. 线程的基本状态以及状态之间的关系？"></a>18. 线程的基本状态以及状态之间的关系？</h3>线程有三种状态，分别是：就绪（ready）、运行（running）和阻塞（blocked)<h3 id="19-死锁的必要条件？怎么克服"><a href="#19-死锁的必要条件？怎么克服" class="headerlink" title="19. 死锁的必要条件？怎么克服"></a>19. 死锁的必要条件？怎么克服</h3>答：产生死锁的四个必要条件：<br>互斥条件：一个资源每次只能被一个进程使用。<br>请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不放。<br>不剥夺条件:进程已获得的资源，在末使用完之前，不能强行剥夺。<br>循环等待条件:若干进程之间形成一种头尾相接的循环等待资源关系。<br>这四个条件是死锁的必要条件，只要系统发生死锁，这些条件必然成立，而只要上述条件之一不满足，就不会发生死锁。<br>死锁的解决方法:<br>a 撤消陷于死锁的全部进程；<br>b 逐个撤消陷于死锁的进程，直到死锁不存在；<br>c 从陷于死锁的进程中逐个强迫放弃所占用的资源，直至死锁消失。<br>d 从另外一些进程那里强行剥夺足够数量的资源分配给死锁进程，以解除死锁状态<h1 id="JDBC与数据库"><a href="#JDBC与数据库" class="headerlink" title="JDBC与数据库"></a>JDBC与数据库</h1><h3 id="1-在进行数据库编程时，连接池有什么作用？"><a href="#1-在进行数据库编程时，连接池有什么作用？" class="headerlink" title="1. 在进行数据库编程时，连接池有什么作用？"></a>1. 在进行数据库编程时，连接池有什么作用？</h3>因为创建连接和释放连接都有很大的开销，为了提升访问数据库的性能，可以将若干连接放于连接池中，需要时便从连接池拿，用完放回连接池，从而避免频繁创建和释放所造成的开销<h3 id="2-什么是-DAO-模式？"><a href="#2-什么是-DAO-模式？" class="headerlink" title="2. 什么是 DAO 模式？"></a>2. 什么是 DAO 模式？</h3>为数据库或其他持久化机制提供了抽象接口的对象，再不暴露数据库实现细节的前提下实现对数据库的操作<h3 id="3-什么是ORM？"><a href="#3-什么是ORM？" class="headerlink" title="3. 什么是ORM？"></a>3. 什么是ORM？</h3>对象关系映射（Object-Relational Mapping，简称 ORM）是一种为了解决程序的面向对象模型与数据库的关系模型互不匹配问题的技术<h3 id="4-JDBC-中如何进行事务处理？"><a href="#4-JDBC-中如何进行事务处理？" class="headerlink" title="4. JDBC 中如何进行事务处理？"></a>4. JDBC 中如何进行事务处理？</h3>Connection 提供了事务处理的方法，通过调用setAutoCommit(false)可以设置手动提交事务；当事务完成后用 commit()显式提交事务；如果在事务处理过程中发生异常则通过 rollback() 进行事务回滚。除此之外，较新的 JDBC 标准还引入了Savepoint（保存点）的概念，允许事务回滚到指定的保存点。<h3 id="5-事务的-ACID-是指什么？"><a href="#5-事务的-ACID-是指什么？" class="headerlink" title="5. 事务的 ACID 是指什么？"></a>5. 事务的 ACID 是指什么？</h3></li>
-<li>原子性(Atomic)：事务中各项操作，要么全做要么全不做，任何一项操作的失败都会导致整个事务的失败；</li>
-<li>一致性(Consistent)：事务结束后系统状态是一致的；</li>
-<li>隔离性(Isolated)：并发执行的事务彼此无法看到对方的中间状态；</li>
-<li>持久性(Durable)：事务完成后所做的改动都会被持久化，即使发生灾难性的失败。通过日志和同步备份可以在故障发生后重建数据。 <h3 id="6-使用-JDBC-操作数据库时，如何提升读取数据的性能？如何提升更新数据的性能？"><a href="#6-使用-JDBC-操作数据库时，如何提升读取数据的性能？如何提升更新数据的性能？" class="headerlink" title="6. 使用 JDBC 操作数据库时，如何提升读取数据的性能？如何提升更新数据的性能？"></a>6. 使用 JDBC 操作数据库时，如何提升读取数据的性能？如何提升更新数据的性能？</h3>答：要提升读取数据的性能，可以指定通过结果集（ResultSet）对象指定每次抓取数据的大小（fetch size）；要提升更新数据的性能可以PreparedStatement语句构建批处理（batch）。<h3 id="7-存储过程和函数的区别"><a href="#7-存储过程和函数的区别" class="headerlink" title="7. 存储过程和函数的区别"></a>7. 存储过程和函数的区别</h3></li>
-<li><p>一般来说，存储过程实现的功能要复杂一点，而函数的实现的功能针对性比较强。</p>
-</li>
-<li><p>对于存储过程来说可以返回参数，而函数只能返回值或者表对象。</p>
-</li>
-<li><p>存储过程一般是作为一个独立的部分来执行，而函数可以作为查询语句的一个部分来调用，由于函数可以返回一个表对象，因此它可以在查询语句中位于FROM关键字的后面。</p>
-</li>
-<li><p>当存储过程和函数被执行的时候，SQL Manager会到procedure cache中去取相应的查询语句，如果在procedure cache里没有相应的查询语句，SQL Manager就会对存储过程和函数进行编译。</p>
-<h3 id="8-你认为在表上建立索引可以提高数据库系统的效率吗，为什么？"><a href="#8-你认为在表上建立索引可以提高数据库系统的效率吗，为什么？" class="headerlink" title="8. 你认为在表上建立索引可以提高数据库系统的效率吗，为什么？"></a>8. 你认为在表上建立索引可以提高数据库系统的效率吗，为什么？</h3><p>不一定<br>索引太多会影响更新和插入的速度</p>
-<h3 id="9-什么是数据库的参照完整性？"><a href="#9-什么是数据库的参照完整性？" class="headerlink" title="9. 什么是数据库的参照完整性？"></a>9. 什么是数据库的参照完整性？</h3><p>数据库的参照完整性是指表与表之间的一种对应关系，通常情况下可以通过设置两表之间的主键、外键关系，或者编写两表的触发器来实现。 有对应参照完整性的两张表格，在对他们进行数据插入、更新、删除的过程中，系统都会将被修改表格与另一张对应表格进行对照，从而阻止一些不正确的数据的操作。</p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;网上找的题目，自己一题一题做的，查缺补漏&lt;br&gt;
-    
-    </summary>
-    
-      <category term="面试题" scheme="http://yoursite.com/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
-    
-      <category term="Java面试题" scheme="http://yoursite.com/tags/Java%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
   </entry>
   
