@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-05-26T08:02:04.427Z</updated>
+  <updated>2017-06-02T09:09:58.533Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>各种历史版本下载</title>
+    <link href="http://yoursite.com/2017/06/02/%E5%90%84%E7%A7%8D%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC%E4%B8%8B%E8%BD%BD/"/>
+    <id>http://yoursite.com/2017/06/02/各种历史版本下载/</id>
+    <published>2017-06-02T08:59:58.000Z</published>
+    <updated>2017-06-02T09:09:58.533Z</updated>
+    
+    <content type="html"><![CDATA[<p>jdk、Tomcat、eclipse历史版本下载链接<br><a id="more"></a><br><a href="http://archive.apache.org/dist/tomcat/" target="_blank" rel="external">tomcat历史版本下载</a><br><a href="http://www.oracle.com/technetwork/Java/javase/downloads/index.html" target="_blank" rel="external">JDK历史版本下载</a><br><a href="http://wiki.eclipse.org/Older_Versions_Of_Eclipse" target="_blank" rel="external">eclipse历史版本下载</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;jdk、Tomcat、eclipse历史版本下载链接&lt;br&gt;
+    
+    </summary>
+    
+      <category term="其他" scheme="http://yoursite.com/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="历史版本下载" scheme="http://yoursite.com/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC%E4%B8%8B%E8%BD%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>判断ip是否合法</title>
@@ -1321,166 +1344,6 @@ conn.close();
     
     
       <category term="网络基础" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《剑指offer》笔记</title>
-    <link href="http://yoursite.com/2017/01/20/%E3%80%8A%E5%89%91%E6%8C%87offer%E3%80%8B%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2017/01/20/《剑指offer》笔记/</id>
-    <published>2017-01-20T08:50:17.000Z</published>
-    <updated>2017-01-22T03:42:52.798Z</updated>
-    
-    <content type="html"><![CDATA[<p>《剑指offer》的题目代码实现,不断更新<br><a id="more"></a></p>
-<h3 id="替换空格"><a href="#替换空格" class="headerlink" title="替换空格"></a>替换空格</h3><p>题目描述:<br>请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。   </p>
-<pre><code>    public class Solution {
-       public String replaceSpace(StringBuffer str) {
-    if (str == null){
-        return null;
-    }
-    StringBuilder newStr = new StringBuilder(); 
-    for (int i=0; i&lt;str.length(); i++) {
-        if (str.charAt(i)==&apos; &apos;){
-            newStr.append(&apos;%&apos;);
-            newStr.append(&apos;2&apos;);
-            newStr.append(&apos;0&apos;);
-        } else{
-            newStr.append(str.charAt(i));
-        }
-    }
-    return newStr.toString();
-    }
-}
-</code></pre><h3 id="二维数组中的查找"><a href="#二维数组中的查找" class="headerlink" title="二维数组中的查找"></a>二维数组中的查找</h3><p>题目描述<br>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数    </p>
-<pre><code>public class Solution {
-public boolean Find(int target, int [][] array) {
-    boolean flag = false;
-    for (int i=0; i&lt;array.length; i++) {
-        for (int j=0; j&lt;array[i].length; j++){
-            if (target == array[i][j]) {
-                flag = true;
-                break;
-            }
-        }
-        if (flag){
-            break;
-        }
-    }
-    return flag;
-}
-}
-</code></pre><h3 id="从尾至头打印链表"><a href="#从尾至头打印链表" class="headerlink" title="从尾至头打印链表"></a>从尾至头打印链表</h3><p>题目描述<br>输入一个链表，从尾到头打印链表每个节点的值。    </p>
-<pre><code>    /**
-    *    public class ListNode {
-    *        int val;
-    *        ListNode next = null;
-    *
-    *        ListNode(int val) {
-    *            this.val = val;
-    *        }
-    *    }
-    *
-    */
-    import java.util.ArrayList;
-    public class Solution {
-    ArrayList&lt;Integer&gt; arrayList = new ArrayList&lt;Integer&gt;();
-    public ArrayList&lt;Integer&gt; printListFromTailToHead(ListNode listNode) {
-    if (listNode != null){
-        this.printListFromTailToHead(listNode.next);
-        arrayList.add(listNode.val);
-    }
-    return arrayList;
-    }
-}
-</code></pre><h3 id="旋转数组的最小数字"><a href="#旋转数组的最小数字" class="headerlink" title="旋转数组的最小数字"></a>旋转数组的最小数字</h3><p>题目描述<br>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。<br>输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。<br>例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。<br>NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。   </p>
-<pre><code>    import java.util.ArrayList;
-    public class Solution {
-
-        public int minNumberInRotateArray(int [] array) {
-    if (array.length == 0 || array == null) {
-        return 0;
-    }
-    int min = array[0];
-    for (int i=0; i&lt;array.length; i++) {
-      if (array[i] &lt; min) {
-          min = array[i];
-      }
-    }
-    return min;
-}
-}
-</code></pre><h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><p>题目描述<br>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。<br>n&lt;=39    </p>
-<pre><code>//0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233……
-public class Solution {
-public int Fibonacci(int n) {
-
-    if (n &lt;= 0) {
-        return 0;
-    }
-    if (n == 1 || n == 2){
-       return 1; 
-    }
-    int f1 = 1;
-    int f2 = 1;
-    int f = 0;
-    for (int i=3; i&lt;=n; i++) {
-        f = f1 + f2;
-        f1 = f2;
-        f2 = f;
-    }
-    return f;   
-}
-}
-</code></pre><h3 id="跳台阶"><a href="#跳台阶" class="headerlink" title="跳台阶"></a>跳台阶</h3><p>题目描述<br>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。    </p>
-<pre><code>public class Solution {
-public int JumpFloor(int target) {
-
-    if (target &lt;= 2 ) {
-        return target;
-    }
-    int f1 = 1;
-    int f2 = 2;
-    int f = 0;
-
-    for ( int i = 3; i &lt;= target; i++) {
-        f = f1 + f2;
-        f1 = f2;
-        f2 = f;
-    }
-    return f;
-}
-}
-</code></pre><h3 id="变态跳台阶"><a href="#变态跳台阶" class="headerlink" title="变态跳台阶"></a>变态跳台阶</h3><p>题目描述<br>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。    </p>
-<pre><code>public class Solution {
-public int JumpFloorII(int target) {
-
-    if (target == 1)
-        return 1;
-    if (target == 2)
-        return 2;
-    int a[] = new int[target];
-    a[0] = 1;
-    a[1] = 2;
-    for (int i = 2; i &lt; target; i++) {
-        int sum = 0;
-        for (int j = 0; j &lt; i; j++) {
-            sum += a[j];
-        }
-        a[i] = sum + 1;
-    }
-    return a[target - 1];
-}
-}
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;《剑指offer》的题目代码实现,不断更新&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="剑指offer" scheme="http://yoursite.com/tags/%E5%89%91%E6%8C%87offer/"/>
     
   </entry>
   
