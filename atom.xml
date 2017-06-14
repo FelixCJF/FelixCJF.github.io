@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-02T09:09:58.533Z</updated>
+  <updated>2017-06-14T10:54:38.593Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,421 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ueditor使用</title>
+    <link href="http://yoursite.com/2017/06/14/Ueditor%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2017/06/14/Ueditor使用/</id>
+    <published>2017-06-14T10:12:41.000Z</published>
+    <updated>2017-06-14T10:54:38.593Z</updated>
+    
+    <content type="html"><![CDATA[<p>UEditor和springMVC整合上传图片</p>
+<a id="more"></a>
+<p><a href="http://ueditor.baidu.com/website/" target="_blank" rel="external">UEditro官网</a><br><a href="http://fex.baidu.com/ueditor/#start-start" target="_blank" rel="external">官方文档</a></p>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>提供了各种版本的下载，我下载的是jsp版本的，当然你也可以下载完整源码，一样的使用，<strong>注意版本，不同的版本使用方法可能有些不同</strong><br><img src="http://oje7mvhbz.bkt.clouddn.com/GD%5DADT7L~%29Q%7B6_1%5BTGJ%29%5B%5DF.png" alt="下载UEditor"></p>
+<h3 id="导入项目"><a href="#导入项目" class="headerlink" title="导入项目"></a>导入项目</h3><p>把所有下载的包解压后，导入项目中。<strong>并把/jsp/lib文件夹下的jar包添加到pom.xml中</strong><br><img src="http://oje7mvhbz.bkt.clouddn.com/06%5D36C5@P4P3G0@0Q5X%7DB56.png" alt="导入项目中"></p>
+<h3 id="在需要使用的页面引入js和css"><a href="#在需要使用的页面引入js和css" class="headerlink" title="在需要使用的页面引入js和css"></a>在需要使用的页面引入js和css</h3><pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;/js/ueditor/ueditor.config.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/js/ueditor/ueditor.all.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;/js/ueditor/lang/zh-cn/zh-cn.js&quot;&gt;&lt;/script&gt;
+&lt;link href=&quot;/js/ueditor/themes/default/css/ueditor.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+</code></pre><h3 id="在页面js中实例化UE"><a href="#在页面js中实例化UE" class="headerlink" title="在页面js中实例化UE"></a>在页面js中实例化UE</h3><pre><code>/*富文本编辑器*/
+var editor = UE.getEditor(&apos;content&apos;);
+
+UE.Editor.prototype._bkGetActionUrl = UE.Editor.prototype.getActionUrl;
+
+UE.Editor.prototype.getActionUrl = function(action) {
+
+if (action == &apos;uploadimage&apos; || action == &apos;uploadscrawl&apos; || action == &apos;catchimage&apos;
+    || action == &apos;uploadimage&apos;) {
+        return basePath+&apos;/uploadimage.html&apos;;
+}else {
+        return this._bkGetActionUrl.call(this, action);
+    }
+}
+</code></pre><h3 id="如果你的jsp文件夹没有移动过位置就不需要配置uditor-config-js和controller中的路径"><a href="#如果你的jsp文件夹没有移动过位置就不需要配置uditor-config-js和controller中的路径" class="headerlink" title="如果你的jsp文件夹没有移动过位置就不需要配置uditor.config.js和controller中的路径"></a>如果你的jsp文件夹没有移动过位置就不需要配置uditor.config.js和controller中的路径</h3><h3 id="配置uditor-config-js自定义工具栏"><a href="#配置uditor-config-js自定义工具栏" class="headerlink" title="配置uditor.config.js自定义工具栏"></a>配置uditor.config.js自定义工具栏</h3><pre><code>toolbars: [
+[
+    &apos;anchor&apos;, //锚点
+    &apos;undo&apos;, //撤销
+    &apos;redo&apos;, //重做
+    &apos;bold&apos;, //加粗
+    &apos;indent&apos;, //首行缩进
+    &apos;snapscreen&apos;, //截图
+    &apos;italic&apos;, //斜体
+    &apos;underline&apos;, //下划线
+    &apos;strikethrough&apos;, //删除线
+    &apos;subscript&apos;, //下标
+    &apos;fontborder&apos;, //字符边框
+    &apos;superscript&apos;, //上标
+    &apos;formatmatch&apos;, //格式刷
+    &apos;source&apos;, //源代码
+    &apos;blockquote&apos;, //引用
+    &apos;pasteplain&apos;, //纯文本粘贴模式
+    &apos;selectall&apos;, //全选
+    &apos;print&apos;, //打印
+    &apos;preview&apos;, //预览
+    &apos;horizontal&apos;, //分隔线
+    &apos;removeformat&apos;, //清除格式
+    &apos;time&apos;, //时间
+    &apos;date&apos;, //日期
+    &apos;unlink&apos;, //取消链接
+    &apos;insertrow&apos;, //前插入行
+    &apos;insertcol&apos;, //前插入列
+    &apos;mergeright&apos;, //右合并单元格
+    &apos;mergedown&apos;, //下合并单元格
+    &apos;deleterow&apos;, //删除行
+    &apos;deletecol&apos;, //删除列
+    &apos;splittorows&apos;, //拆分成行
+    &apos;splittocols&apos;, //拆分成列
+    &apos;splittocells&apos;, //完全拆分单元格
+    &apos;deletecaption&apos;, //删除表格标题
+    &apos;inserttitle&apos;, //插入标题
+    &apos;mergecells&apos;, //合并多个单元格
+    &apos;deletetable&apos;, //删除表格
+    &apos;cleardoc&apos;, //清空文档
+    &apos;insertparagraphbeforetable&apos;, //&quot;表格前插入行&quot;
+    &apos;insertcode&apos;, //代码语言
+    &apos;fontfamily&apos;, //字体
+    &apos;fontsize&apos;, //字号
+    &apos;paragraph&apos;, //段落格式
+    &apos;simpleupload&apos;, //单图上传
+    &apos;insertimage&apos;, //多图上传
+    &apos;edittable&apos;, //表格属性
+    &apos;edittd&apos;, //单元格属性
+    &apos;link&apos;, //超链接
+    &apos;emotion&apos;, //表情
+    &apos;spechars&apos;, //特殊字符
+    &apos;searchreplace&apos;, //查询替换
+    &apos;map&apos;, //Baidu地图
+    &apos;gmap&apos;, //Google地图
+    &apos;insertvideo&apos;, //视频
+    &apos;help&apos;, //帮助
+    &apos;justifyleft&apos;, //居左对齐
+    &apos;justifyright&apos;, //居右对齐
+    &apos;justifycenter&apos;, //居中对齐
+    &apos;justifyjustify&apos;, //两端对齐
+    &apos;forecolor&apos;, //字体颜色
+    &apos;backcolor&apos;, //背景色
+    &apos;insertorderedlist&apos;, //有序列表
+    &apos;insertunorderedlist&apos;, //无序列表
+    &apos;fullscreen&apos;, //全屏
+    &apos;directionalityltr&apos;, //从左向右输入
+    &apos;directionalityrtl&apos;, //从右向左输入
+    &apos;rowspacingtop&apos;, //段前距
+    &apos;rowspacingbottom&apos;, //段后距
+    &apos;pagebreak&apos;, //分页
+    &apos;insertframe&apos;, //插入Iframe
+    &apos;imagenone&apos;, //默认
+    &apos;imageleft&apos;, //左浮动
+    &apos;imageright&apos;, //右浮动
+    &apos;attachment&apos;, //附件
+    &apos;imagecenter&apos;, //居中
+    &apos;wordimage&apos;, //图片转存
+    &apos;lineheight&apos;, //行间距
+    &apos;edittip &apos;, //编辑提示
+    &apos;customstyle&apos;, //自定义标题
+    &apos;autotypeset&apos;, //自动排版
+    &apos;webapp&apos;, //百度应用
+    &apos;touppercase&apos;, //字母大写
+    &apos;tolowercase&apos;, //字母小写
+    &apos;background&apos;, //背景
+    &apos;template&apos;, //模板
+    &apos;scrawl&apos;, //涂鸦
+    &apos;music&apos;, //音乐
+    &apos;inserttable&apos;, //插入表格
+    &apos;drafts&apos;, // 从草稿箱加载
+    &apos;charts&apos;, // 图表
+    ]
+]
+</code></pre><h3 id="配置config-json，这里列举一个配置，其他一样配置imagePathFormat和imageUrlPrefix一定不能错"><a href="#配置config-json，这里列举一个配置，其他一样配置imagePathFormat和imageUrlPrefix一定不能错" class="headerlink" title="配置config.json，这里列举一个配置，其他一样配置imagePathFormat和imageUrlPrefix一定不能错"></a>配置config.json，这里列举一个配置，其他一样配置imagePathFormat和imageUrlPrefix一定不能错</h3><pre><code>/* 前后端通信相关的配置,注释只允许使用多行方式 */
+{
+/* 上传图片配置项 */
+&quot;imageActionName&quot;: &quot;uploadimage&quot;, /* 执行上传图片的action名称 */
+&quot;imageFieldName&quot;: &quot;upfile&quot;, /* 提交的图片表单名称 */
+&quot;imageMaxSize&quot;: 2048000, /* 上传大小限制，单位B */
+&quot;imageAllowFiles&quot;: [&quot;.png&quot;, &quot;.jpg&quot;, &quot;.jpeg&quot;, &quot;.gif&quot;, &quot;.bmp&quot;], /* 上传图片格式显示 */
+&quot;imageCompressEnable&quot;: true, /* 是否压缩图片,默认是true */
+&quot;imageCompressBorder&quot;: 1600, /* 图片压缩最长边限制 */
+&quot;imageInsertAlign&quot;: &quot;none&quot;, /* 插入的图片浮动方式 */
+&quot;imageUrlPrefix&quot;: &quot;&quot;, /* 图片访问路径前缀 */
+&quot;imagePathFormat&quot;: &quot;/ueditor/jsp/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}&quot;, /* 上传保存路径,可以自定义保存路径和文件名格式 */
+                            /* {filename} 会替换成原文件名,配置这项需要注意中文乱码问题 */
+                            /* {rand:6} 会替换成随机数,后面的数字是随机数的位数 */
+                            /* {time} 会替换成时间戳 */
+                            /* {yyyy} 会替换成四位年份 */
+                            /* {yy} 会替换成两位年份 */
+                            /* {mm} 会替换成两位月份 */
+                            /* {dd} 会替换成两位日期 */
+                            /* {hh} 会替换成两位小时 */
+                            /* {ii} 会替换成两位分钟 */
+                            /* {ss} 会替换成两位秒 */
+                            /* 非法字符 \ : * ? &quot; &lt; &gt; | */
+                            /* 具请体看线上文档: fex.baidu.com/ueditor/#use-format_upload_filename */
+}
+</code></pre><p><strong>imageUrlPrefix：</strong> 这个一般是项目url，比如www.baidu.com<br><strong>imagePathFormat：</strong> 和上传路劲中的一致就可以了</p>
+<h3 id="我使用的是springMVC实现上传，只有当返回的json中state的值为SUCCESS才上传成功，上传失败则回显state的值"><a href="#我使用的是springMVC实现上传，只有当返回的json中state的值为SUCCESS才上传成功，上传失败则回显state的值" class="headerlink" title="我使用的是springMVC实现上传，只有当返回的json中state的值为SUCCESS才上传成功，上传失败则回显state的值"></a>我使用的是springMVC实现上传，只有当返回的json中state的值为SUCCESS才上传成功，上传失败则回显state的值</h3><pre><code>@ResponseBody  
+@RequestMapping(value = &quot;/uploadimage.html&quot;)  
+public Map&lt;String,Object&gt; uploadImage(@RequestParam(&quot;upfile&quot;) MultipartFile[] multipartFiles, HttpServletRequest request, HttpServletResponse response) {  
+    //存放地址  
+    String filepath = &quot;&quot;;
+    Map&lt;String,Object&gt; map=new HashMap&lt;String,Object&gt;();
+    //对上传文件进行安全性验证
+    if(multipartFiles!=null &amp;&amp; multipartFiles.length&gt;0){
+        //循环遍历
+        for (MultipartFile multipartFile : multipartFiles) {
+            String state=&quot;SUCCESS&quot;;
+            if (CheckoutFileTypeUtil.getUpFilelegitimacyFlag(multipartFile)) {
+                try {
+                    filepath = UploadUtil.uploadUeFile(multipartFile);
+                    if (logger.isDebugEnabled()) {
+                        logger.debug(&quot;上传成功---------------------&quot;+filepath+&quot;上传成功---------------------&quot;);
+                    }
+                    //注意url会和conf.json中的路径配合找到图片
+                    map.put(&quot;url&quot;, filepath);
+                    map.put(&quot;state&quot;, &quot;SUCCESS&quot;);
+                } catch (IOException e) {
+                    logger.debug(&quot;图片上传失败&quot;);
+                    e.printStackTrace(); 
+                }
+            }else {
+                    map.put(&quot;state&quot;, &quot;上传失败!&quot;);
+                    map.put(&quot;url&quot;, null);
+                if (logger.isDebugEnabled()) {
+                    logger.debug(&quot;图片格式不对,上传失败!&quot;);
+                }
+            }
+        }
+    }
+    return map;
+} 
+</code></pre><h3 id="对上传的文件进行后端安全性验证，验证文件的魔数和格式，防止黑客绕过前端上传木马"><a href="#对上传的文件进行后端安全性验证，验证文件的魔数和格式，防止黑客绕过前端上传木马" class="headerlink" title="对上传的文件进行后端安全性验证，验证文件的魔数和格式，防止黑客绕过前端上传木马"></a>对上传的文件进行后端安全性验证，验证文件的魔数和格式，防止黑客绕过前端上传木马</h3><pre><code>    /**
+     * 
+     * @Description: 处理上传附件,校验是否合法
+     * 在服务器端判断文件类型的问题，故用获取文件头的方式，
+     * 直接读取文件的前几个字节，来判断上传文件是否符合格式
+     */
+public class CheckoutFileTypeUtil {
+    //记录各个文件头信息及对应的文件类型
+    public static Map&lt;String, String&gt; mFileTypes = new HashMap&lt;String, String&gt;();
+
+    //所有合法的文件后缀
+    public static String res_fileType=&quot;.jpg.png.gif.bmp&quot;;
+
+    static {
+        // images          
+            mFileTypes.put(&quot;FFD8FFE0&quot;, &quot;.jpg&quot;);
+            mFileTypes.put(&quot;FFD8FFE1&quot;, &quot;.jpg&quot;);
+        mFileTypes.put(&quot;89504E47&quot;, &quot;.png&quot;);
+        mFileTypes.put(&quot;47494638&quot;, &quot;.gif&quot;);
+        mFileTypes.put(&quot;49492A00&quot;, &quot;.tif&quot;);
+        mFileTypes.put(&quot;424D&quot;, &quot;.bmp&quot;);
+
+        //PS和CAD
+        mFileTypes.put(&quot;38425053&quot;, &quot;.psd&quot;);
+        mFileTypes.put(&quot;41433130&quot;, &quot;.dwg&quot;); // CAD
+        mFileTypes.put(&quot;252150532D41646F6265&quot;,&quot;.ps&quot;);
+
+        //办公文档类
+        mFileTypes.put(&quot;D0CF11E0&quot;, &quot;.doc&quot;); //ppt、doc、xls
+        mFileTypes.put(&quot;504B0304&quot;, &quot;.docx&quot;);//pptx、docx、xlsx   
+
+        /**注意由于文本文档录入内容过多，则读取文件头时较为多变-START**/
+        mFileTypes.put(&quot;0D0A0D0A&quot;, &quot;.txt&quot;);//txt
+            mFileTypes.put(&quot;0D0A2D2D&quot;, &quot;.txt&quot;);//txt
+        mFileTypes.put(&quot;0D0AB4B4&quot;, &quot;.txt&quot;);//txt       
+        mFileTypes.put(&quot;B4B4BDA8&quot;, &quot;.txt&quot;);//文件头部为汉字
+        mFileTypes.put(&quot;73646673&quot;, &quot;.txt&quot;);//txt,文件头部为英文字母
+        mFileTypes.put(&quot;32323232&quot;, &quot;.txt&quot;);//txt,文件头部内容为数字
+        mFileTypes.put(&quot;0D0A09B4&quot;, &quot;.txt&quot;);//txt,文件头部内容为数字
+        mFileTypes.put(&quot;3132330D&quot;, &quot;.txt&quot;);//txt,文件头部内容为数字     
+        /**注意由于文本文档录入内容过多，则读取文件头时较为多变-END**/
+
+
+        mFileTypes.put(&quot;7B5C727466&quot;, &quot;.rtf&quot;); // 日记本
+
+        mFileTypes.put(&quot;255044462D312E&quot;, &quot;.pdf&quot;);
+
+        //视频或音频类
+        mFileTypes.put(&quot;3026B275&quot;,&quot;.wma&quot;);
+        mFileTypes.put(&quot;57415645&quot;, &quot;.wav&quot;);
+        mFileTypes.put(&quot;41564920&quot;, &quot;.avi&quot;);
+        mFileTypes.put(&quot;4D546864&quot;, &quot;.mid&quot;);
+        mFileTypes.put(&quot;2E524D46&quot;, &quot;.rm&quot;);
+        mFileTypes.put(&quot;000001BA&quot;, &quot;.mpg&quot;);
+            mFileTypes.put(&quot;000001B3&quot;, &quot;.mpg&quot;);
+        mFileTypes.put(&quot;6D6F6F76&quot;, &quot;.mov&quot;);
+        mFileTypes.put(&quot;3026B2758E66CF11&quot;, &quot;.asf&quot;);
+
+        //压缩包
+        mFileTypes.put(&quot;52617221&quot;, &quot;.rar&quot;);    
+        mFileTypes.put(&quot;1F8B08&quot;, &quot;.gz&quot;);
+
+        //程序文件
+        mFileTypes.put(&quot;3C3F786D6C&quot;, &quot;.xml&quot;);
+        mFileTypes.put(&quot;68746D6C3E&quot;, &quot;.html&quot;);
+        mFileTypes.put(&quot;7061636B&quot;, &quot;.java&quot;);
+        mFileTypes.put(&quot;3C254020&quot;, &quot;.jsp&quot;);
+        mFileTypes.put(&quot;4D5A9000&quot;, &quot;.exe&quot;);        
+
+
+        mFileTypes.put(&quot;44656C69766572792D646174653A&quot;, &quot;.eml&quot;); // 邮件
+        mFileTypes.put(&quot;5374616E64617264204A&quot;, &quot;.mdb&quot;);//Access数据库文件
+
+        mFileTypes.put(&quot;46726F6D&quot;, &quot;.mht&quot;);
+        mFileTypes.put(&quot;4D494D45&quot;, &quot;.mhtml&quot;);
+
+
+    }
+
+
+
+    /**
+     * 根据文件的输入流获取文件头信息
+     *
+     * @param filePath 文件路径
+     * @return 文件头信息
+     */
+    public static String getFileType(InputStream  is) {
+        byte[] b = new byte[4];
+        if(is!=null){
+            try {
+                is.read(b, 0, b.length);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }              
+
+       return mFileTypes.get(getFileHeader(b));
+    }
+
+
+    /**
+     * 根据文件转换成的字节数组获取文件头信息
+     *
+     * @param filePath
+     *            文件路径
+     * @return 文件头信息
+     */
+    public static String getFileHeader(byte[] b) {     
+    String value = bytesToHexString(b);
+    return value;
+}
+
+/**
+ * 
+ * 将要读取文件头信息的文件的byte数组转换成string类型表示
+ * 下面这段代码就是用来对文件类型作验证的方法，
+ * 将字节数组的前四位转换成16进制字符串，并且转换的时候，要先和0xFF做一次与运算。
+ * 这是因为，整个文件流的字节数组中，有很多是负数，进行了与运算后，可以将前面的符号位都去掉，
+ * 这样转换成的16进制字符串最多保留两位，如果是正数又小于10，那么转换后只有一位，
+ * 需要在前面补0，这样做的目的是方便比较，取完前四位这个循环就可以终止了
+ * @param src要读取文件头信息的文件的byte数组
+ * @return 文件头信息
+ */
+private static String bytesToHexString(byte[] src) {
+    StringBuilder builder = new StringBuilder();
+    if (src == null || src.length &lt;= 0) {
+        return null;
+    }
+    String hv;
+    for (int i = 0; i &lt; src.length; i++) {
+        // 以十六进制（基数 16）无符号整数形式返回一个整数参数的字符串表示形式，并转换为大写
+        hv = Integer.toHexString(src[i] &amp; 0xFF).toUpperCase();
+        if (hv.length() &lt; 2) {
+            builder.append(0);
+        }
+        builder.append(hv);
+    }
+
+    System.out.println(&quot;获取文件头信息:&quot;+builder.toString());
+
+    return builder.toString();
+}
+
+
+/**
+ * cjf
+ * 判断上传的文件是否合法
+ * （一）、第一：检查文件的扩展名，
+ * (二）、 第二：检查文件的MIME类型 。
+ * @param attachDoc
+ * @return boolean
+ */
+public static boolean getUpFilelegitimacyFlag(MultipartFile picFile){
+    boolean upFlag=false;//为真表示符合上传条件，为假表标不符合
+    if(picFile !=null){           
+        String picName = picFile.getOriginalFilename();
+
+        System.out.println(&quot;#######上传的文件:&quot;+picName);
+
+        if(!&quot;&quot;.equals(picName)&amp;&amp;picName!=null){
+
+            /**返回在此字符串中最右边出现的指定子字符串的索引   **/                             
+            String pname = picName.substring(picName.lastIndexOf(&quot;.&quot;));
+
+            /**统一转换为小写**/
+            pname=pname.toLowerCase();
+
+            /**第一步：检查文件扩展名，是否符合要求范围**/
+            if(res_fileType.indexOf(pname)!=-1){
+                upFlag=true;
+            }
+
+            /**
+             * 第二步：获取上传附件的文件头，判断属于哪种类型,并获取其扩展名         
+             * 直接读取文件的前几个字节，来判断上传文件是否符合格式
+             * 防止上传附件变更扩展名绕过校验
+             ***/    
+            if(upFlag){
+
+                byte[] b = new byte[4];
+
+                String req_fileType = null;
+                try {
+                    req_fileType = getFileType(picFile.getInputStream());
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }                  
+                System.out.println(&quot;///////用户上传的文件类型///////////&quot;+req_fileType);
+                /**第三步：检查文件扩展名，是否符合要求范围**/
+                if(req_fileType!=null &amp;&amp; !&quot;&quot;.equals(req_fileType) &amp;&amp; !&quot;null&quot;.equals(req_fileType)){
+                    /**第四步：校验上传的文件扩展名，是否在其规定范围内**/
+                    if(res_fileType.indexOf(req_fileType)!=-1){                    
+                        upFlag=true;
+                    }else{
+                        upFlag=false;
+                    }
+                }else{
+                    /**特殊情况校验,如果用户上传的扩展名为,文本文件,则允许上传-START**/
+                    if(pname.indexOf(&quot;.txt&quot;)!=-1){
+                        upFlag=true;
+                    }else{
+                        upFlag=false;
+                    }
+                    /**特殊情况校验,如果用户上传的扩展名为,文本文件,则允许上传-END**/
+                }
+            }                                      
+        }      
+    }
+    return upFlag;
+}
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;UEditor和springMVC整合上传图片&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
+    
+    
+      <category term="UEditor" scheme="http://yoursite.com/tags/UEditor/"/>
+    
+      <category term="文件上传安全性验证" scheme="http://yoursite.com/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%AE%89%E5%85%A8%E6%80%A7%E9%AA%8C%E8%AF%81/"/>
+    
+  </entry>
   
   <entry>
     <title>各种历史版本下载</title>
@@ -1315,35 +1730,6 @@ conn.close();
     
     
       <category term="http协议" scheme="http://yoursite.com/tags/http%E5%8D%8F%E8%AE%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>网络基础知识</title>
-    <link href="http://yoursite.com/2017/01/22/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    <id>http://yoursite.com/2017/01/22/网络基础知识/</id>
-    <published>2017-01-22T12:03:51.000Z</published>
-    <updated>2017-01-22T12:56:56.194Z</updated>
-    
-    <content type="html"><![CDATA[<p>网络是计算机或类似计算机的设备之间通过常用的传输介质进行通信的集合。<br><a id="more"></a><br>节点：网络中的每一台设备<br>地址：用户唯一标识节点的资格字节序列   </p>
-<h1 id="网络的分层"><a href="#网络的分层" class="headerlink" title="网络的分层"></a>网络的分层</h1><p>为了对应用程序开发人员和用户隐藏这种网络传输的复杂性网络通信的不同方面被分解为多个层。每一层表示为物理硬件（线缆和电流）与所传输信息之间的不同抽象层次。<strong>每一层只与紧挨的上下层对话。将网络分层，这样就可以修改甚至替换某一层的软件，只要层与层之间的接口不变，就不会影响到其它层。</strong></p>
-<h3 id="四层模型"><a href="#四层模型" class="headerlink" title="四层模型"></a>四层模型</h3><p><img src="http://oje7mvhbz.bkt.clouddn.com/%E5%9B%9B%E5%B1%82%E6%A8%A1%E5%9E%8B.png" alt="四层模型"><br><strong>应用层：</strong>决定了向用户提供应用服务时通信的活动。比如：ftp,dns服务就是其中的两类，HTTP协议也处于该层。<br><strong>传输层：</strong> 对上层应用层提供网络连接中的两台计算机之间的数据传输。在传输层有两个性质不同的协议：TCP和UDP<br><strong>网络层：</strong>用来处理网络上流动的数据包，该层规定了通过怎样的路径到达对方计算机，并把数据发给对方<br><strong>链路层：</strong>用来处理链接网络的硬件部分，包括操作系统、硬件的设备驱动、网卡及光纤等物理可见部分   </p>
-<h1 id="URI-URL"><a href="#URI-URL" class="headerlink" title="URI/URL"></a>URI/URL</h1><p>URI用字符标识某一网络资源，而URL表示资源的地址。URL是URI的子集。<img src="http://oje7mvhbz.bkt.clouddn.com/URI.jpg" alt="URI"></p>
-<h1 id="TCP-IP-三次握手，四次断开"><a href="#TCP-IP-三次握手，四次断开" class="headerlink" title="TCP/IP(三次握手，四次断开)"></a>TCP/IP(三次握手，四次断开)</h1><p><strong>IP</strong>：国际协议，IP被设计为允许任意两点之间有多个路由，可以绕过被破坏的路由器实现数据包的路由。IP是开发的、与平台无关。    </p>
-<p><strong>TCP</strong>：因为两点之间存在多个路由，并且两点之间的最短路由路径可能由于网络业务流量或者其他因素而改变，所以数据包可能不会使用相同的路由，另外即使它们全部到达也不会以发送的顺序到达，为了改进这种机制，将TCP置于IP之上，使连接的两端能够确认接收到IP包，以及请求重传丢失或被破坏的包。<br><img src="http://oje7mvhbz.bkt.clouddn.com/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" alt="三次握手"><br><img src="http://oje7mvhbz.bkt.clouddn.com/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png" alt="四次挥手">   </p>
-<p><strong>UDP</strong>：如果单个包的丢失不会影响整个数据流，那么可以使用UDP包发送数据，UDP不保证包一定到达目的地，也不保证顺序相同。   </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;网络是计算机或类似计算机的设备之间通过常用的传输介质进行通信的集合。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
-    
-    
-      <category term="网络基础" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
