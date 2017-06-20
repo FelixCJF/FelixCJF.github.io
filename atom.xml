@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-14T10:54:38.593Z</updated>
+  <updated>2017-06-20T06:45:42.087Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webmagic爬虫使用</title>
+    <link href="http://yoursite.com/2017/06/20/webmagic%E7%88%AC%E8%99%AB%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2017/06/20/webmagic爬虫使用/</id>
+    <published>2017-06-20T06:45:42.000Z</published>
+    <updated>2017-06-20T06:45:42.087Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Ueditor使用</title>
@@ -1672,64 +1686,6 @@ conn.close();
     
     
       <category term="JDBC" scheme="http://yoursite.com/tags/JDBC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTTP协议</title>
-    <link href="http://yoursite.com/2017/01/22/HTTP%E5%8D%8F%E8%AE%AE/"/>
-    <id>http://yoursite.com/2017/01/22/HTTP协议/</id>
-    <published>2017-01-22T12:59:16.000Z</published>
-    <updated>2017-01-23T02:04:30.205Z</updated>
-    
-    <content type="html"><![CDATA[<p> 超文本传输协议HTTP（Hyper Text Transport Protocol）W3C组织制定的。<br><a id="more"></a></p>
-<ul>
-<li>HTTP构建于TCP/IP协议之上，默认端口号是80  </li>
-<li>HTTP是无连接无状态的</li>
-<li>由请求和响应部分组成</li>
-</ul>
-<h1 id="请求部分-客户端向服务器发送的数据"><a href="#请求部分-客户端向服务器发送的数据" class="headerlink" title="请求部分 (客户端向服务器发送的数据)"></a>请求部分 (客户端向服务器发送的数据)</h1><h3 id="请求行-位于信息的第一行"><a href="#请求行-位于信息的第一行" class="headerlink" title="请求行(位于信息的第一行 )"></a>请求行(位于信息的第一行 )</h3><p> <strong>GET：</strong>请求方式(method)。是默认的请求方式。常用的还有POST（引入表单）等。<br> <strong>POST：</strong>通过html中的form标签中的属性method指定。</p>
-<h3 id="请求消息头-从第二行开始，至第一个空行结束"><a href="#请求消息头-从第二行开始，至第一个空行结束" class="headerlink" title="请求消息头(从第二行开始，至第一个空行结束)"></a>请求消息头(从第二行开始，至第一个空行结束)</h3><ul>
-<li>Accept： text/html, application/xhtml+xml,<br>浏览器可接受的MIME类型.(文件系统中采用扩展名区分不同的文件的。网络上是用MIME类型来区分不同的数据、有一定的对应关系（Tomcat\conf\web.xml有)<br>MIME类型：大类型/具体类型.例如jpg：image/jpeg或者bmp: image/bmp</li>
-<li>Accept-Charset：浏览器通过这个头告诉服务器，它支持哪种字符集</li>
-<li>Accept-Encoding：gzip, deflate<br>浏览器能够进行解码的数据编码方式，比如gzip </li>
-<li>Accept-Language:zh-Hans-CN,zh-Hans;q=0.5<br>浏览器所希望的语言种类，当服务器能够提供一种以上的语言版本时要用到。 可以在浏览器中进行设置。</li>
-<li>Host：localhost:8080<br>初始URL中的主机和端口 </li>
-<li>Referer：www.baidu.com<br>包含一个URL，取值为当前页面之前的那个页面地址<br>应用：1.看广告投放效果,  2.防盗链</li>
-<li>Content-Type：application/x-www-form-urlencoded; charset=UTF-8<br>请求正文内容类型。目前：只有通过表单提交数据，且请求方式是post时，才会出现请求正文内容，才会有该头。<br>默认值是：application/x-www-form-urlencoded<br>常用可选值：multipart/form-data       </li>
-<li>If-Modified-Since:<br>利用这个头与服务器的文件进行比对，如果一致，则从缓存中直接读取文件。    </li>
-<li>User-Agent:浏览器类型.   </li>
-<li>Content-Length：表示请求正文的长度 ,数据字节长度。   </li>
-<li>Connection：表示是否需要持久连接。如果服务器看到这里的值为“Keep -Alive”，            </li>
-<li>Cookie:这是最重要的请求头信息之一 （会话管理）  </li>
-<li>Date：GMT请求时间GMT</li>
-</ul>
-<h3 id="请求正文-第一个空行之后的所有内容"><a href="#请求正文-第一个空行之后的所有内容" class="headerlink" title="请求正文(第一个空行之后的所有内容)"></a>请求正文(第一个空行之后的所有内容)</h3><p>只有通过表单，且请求方式是POST时才能看到正文。<br>当Content-Type是：application/x-www-form-urlencoded，表单提交的数据表现形式为<br>username=felix&amp;password=321<br>username和password表单中输入域的name<br>felix和321就是用户输入的数据多个输入域用&amp;进行分割的 </p>
-<h1 id="响应部分-服务器向客服端发送的数据"><a href="#响应部分-服务器向客服端发送的数据" class="headerlink" title="响应部分 (服务器向客服端发送的数据)"></a>响应部分 (服务器向客服端发送的数据)</h1><h3 id="响应行-位于信息的第一行-HTTP-1-1-200-OK"><a href="#响应行-位于信息的第一行-HTTP-1-1-200-OK" class="headerlink" title="响应行(位于信息的第一行 HTTP/1.1 200 OK)"></a>响应行(位于信息的第一行 HTTP/1.1 200 OK)</h3><p>HTTP/1.1:服务器使用的协议<br>200：响应码。（预留了500个，目前真正有意义的也就30个左右）<br>常用响应码：<br>200：一切正常<br>302/307:临时重定向<br>304：未修改（缓存）<br>404：资源不存在<br>500：服务器内部错误(自己的程序出错了)。<br>OK：对错误的描述信息。(OK表示一切正常)   </p>
-<h3 id="响应消息头-从第二行开始，至第一个空行结束"><a href="#响应消息头-从第二行开始，至第一个空行结束" class="headerlink" title="响应消息头(从第二行开始，至第一个空行结束)"></a>响应消息头(从第二行开始，至第一个空行结束)</h3><ul>
-<li>Location: <a href="http://www.felix.com/index.jsp指示新的资源的位置" target="_blank" rel="external">http://www.felix.com/index.jsp指示新的资源的位置</a><br>302+该头：完成是请求的重定向。 </li>
-<li>Content-Encoding：告知客户端服务器发送的数据采用的编码类型gzip(压缩格式)</li>
-<li>Content-Length：80 告诉浏览器正文的长度</li>
-<li>Content-Language：zh-cn服务发送的文本的语言</li>
-<li>Content-Type：text/html默认的; 告知客户端请求正文的MIME类型</li>
-<li>Last-Modified：GMT文件的最后修改时间</li>
-<li>Refresh: 1;url=<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a><br>1：指示客户端刷新频率。单位是秒<br>1;url=<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a> ：指示客户端1秒后刷新到指定网址</li>
-<li>Content-Disposition: attachment; filename=aaa.zip<br>指示客户端下载文件，并制定文件的名称     </li>
-<li>Set-Cookie:SS=Q0=5Lb_nQ; path=/search<br>服务器端发送的Cookie（会话管理）<br>控制浏览器不要缓存<br>Expires: -1<br>Cache-Control: no-cache (1.1)<br>Pragma: no-cache   (1.0)     </li>
-</ul>
-<h3 id="响应正文-第一个空行之后的所有内容"><a href="#响应正文-第一个空行之后的所有内容" class="headerlink" title="响应正文(第一个空行之后的所有内容)"></a>响应正文(第一个空行之后的所有内容)</h3><p>浏览器要显示的数据。在未压缩的前提下，与右键   查看源码完全对应。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt; 超文本传输协议HTTP（Hyper Text Transport Protocol）W3C组织制定的。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
-    
-    
-      <category term="http协议" scheme="http://yoursite.com/tags/http%E5%8D%8F%E8%AE%AE/"/>
     
   </entry>
   
