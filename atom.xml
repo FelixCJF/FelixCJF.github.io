@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-20T06:45:42.087Z</updated>
+  <updated>2017-06-21T06:51:26.830Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,107 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>UEditor样式被过滤解决</title>
+    <link href="http://yoursite.com/2017/06/21/UEditor%E6%A0%B7%E5%BC%8F%E8%A2%AB%E8%BF%87%E6%BB%A4%E8%A7%A3%E5%86%B3/"/>
+    <id>http://yoursite.com/2017/06/21/UEditor样式被过滤解决/</id>
+    <published>2017-06-21T06:34:34.000Z</published>
+    <updated>2017-06-21T06:51:26.830Z</updated>
+    
+    <content type="html"><![CDATA[<p>前几天项目使用UEditor，结果发现class样式被过滤掉了，div标签也被自动替换成了p标签</p>
+<a id="more"></a>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>前几天项目使用UEditor，结果发现class样式被过滤掉了，div标签也被自动替换成了p标签，也就是html内容无法正确显示，会被自动替换。</p>
+<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>1.在ueditor.all.js文件内找到如下代码     </p>
+<pre><code>UE.plugins[&apos;defaultfilter&apos;] = function () {
+var me = this;
+me.setOpt({
+    &apos;allowDivTransToP&apos;:true,
+    &apos;disabledTableInTable&apos;:true
+});
+//默认的过滤处理
+//进入编辑器的内容处理
+me.addInputRule(function (root) {
+    var allowDivTransToP = this.options.allowDivTransToP;
+    var val;
+    function tdParent(node){
+        while(node &amp;&amp; node.type == &apos;element&apos;){
+            if(node.tagName == &apos;td&apos;){
+                return true;
+            }
+            node = node.parentNode;
+        }
+        return false;
+    }
+    //进行默认的处理
+    root.traversal(function (node) {
+        if (node.type == &apos;element&apos;) {
+            if (!dtd.$cdata[node.tagName] &amp;&amp; me.options.autoClearEmptyNode &amp;&amp; dtd.$inline[node.tagName] &amp;&amp; !dtd.$empty[node.tagName] &amp;&amp; (!node.attrs || utils.isEmptyObject(node.attrs))) {
+                if (!node.firstChild()) node.parentNode.removeChild(node);
+                else if (node.tagName == &apos;span&apos; &amp;&amp; (!node.attrs || utils.isEmptyObject(node.attrs))) {
+                    node.parentNode.removeChild(node, true)
+                }
+                return;
+            }
+            switch (node.tagName) {
+                case &apos;style&apos;:
+                case &apos;script&apos;:
+                    node.setAttr({
+                        cdata_tag: node.tagName,
+                        cdata_data: (node.innerHTML() || &apos;&apos;),
+                        &apos;_ue_custom_node_&apos;:&apos;true&apos;
+                    });
+                    node.tagName = &apos;div&apos;;
+                    node.innerHTML(&apos;&apos;);
+                    break;
+                case &apos;a&apos;:
+                    if (val = node.getAttr(&apos;href&apos;)) {
+                        node.setAttr(&apos;_href&apos;, val)
+                    }
+                    break;
+                //以下代码省略
+</code></pre><p>2.把上面代码中的’allowDivTransToP’:true, 改成如下 </p>
+<pre><code>me.setOpt({
+    &apos;allowDivTransToP&apos;:false,
+    &apos;disabledTableInTable&apos;:true
+});
+</code></pre><p>3.把 switch (node.tagName)中的case ‘style’:case ‘script’:注释掉，如下      </p>
+<pre><code>switch (node.tagName) {
+            //case &apos;style&apos;:
+            /*case &apos;script&apos;:
+                node.setAttr({
+                    cdata_tag: node.tagName,
+                    cdata_data: (node.innerHTML() || &apos;&apos;),
+                    &apos;_ue_custom_node_&apos;:&apos;true&apos;
+                });
+                node.tagName = &apos;div&apos;;
+                node.innerHTML(&apos;&apos;);
+                break;
+            */
+            case &apos;a&apos;:
+                if (val = node.getAttr(&apos;href&apos;)) {
+                    node.setAttr(&apos;_href&apos;, val)
+                }
+                break;
+            //以下代码省略
+</code></pre><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><ul>
+<li>allowDivTransToP设置为false是因为默认的设置是将div自动转换为p，这样写好的样式就找不到相应的div<br>了，所以才渲染不上的。</li>
+<li>addInputRule函数中的switch 代码段中的case style ，script选择给删除或者注释，是为了避免出现编辑器style或script自动的转换成别的标签。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前几天项目使用UEditor，结果发现class样式被过滤掉了，div标签也被自动替换成了p标签&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
+    
+    
+      <category term="UEditor样式过滤" scheme="http://yoursite.com/tags/UEditor%E6%A0%B7%E5%BC%8F%E8%BF%87%E6%BB%A4/"/>
+    
+  </entry>
   
   <entry>
     <title>webmagic爬虫使用</title>
@@ -1616,76 +1717,6 @@ void include(java.lang.String relativeUrlPath)
       <category term="java四大域对象" scheme="http://yoursite.com/tags/java%E5%9B%9B%E5%A4%A7%E5%9F%9F%E5%AF%B9%E8%B1%A1/"/>
     
       <category term="jsp九大隐式对象" scheme="http://yoursite.com/tags/jsp%E4%B9%9D%E5%A4%A7%E9%9A%90%E5%BC%8F%E5%AF%B9%E8%B1%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JDBC编码</title>
-    <link href="http://yoursite.com/2017/01/30/JDBC%E7%BC%96%E7%A0%81/"/>
-    <id>http://yoursite.com/2017/01/30/JDBC编码/</id>
-    <published>2017-01-30T10:18:51.000Z</published>
-    <updated>2017-01-30T13:32:42.237Z</updated>
-    
-    <content type="html"><![CDATA[<p>JDBC全称为：Java Data Base Connectivity（java数据库连接），它主要由接口组成。<a id="more"></a><br>JDBC属于JavaEE技术之一。它的API类在JDK中。是SUN公司制定的规范<br>数据库厂商就对JDBC进行了实现，所谓的驱动。  </p>
-<h1 id="JDBC编码步骤"><a href="#JDBC编码步骤" class="headerlink" title="JDBC编码步骤"></a>JDBC编码步骤</h1><h3 id="注册驱动"><a href="#注册驱动" class="headerlink" title="注册驱动"></a>注册驱动</h3><p>不能直接new一个com.mysql.jdbc.Driver<br>//DriverManager.registerDriver(new com.mysql.jdbc.Driver());<br>因为这样1、依赖具体的数据库驱动；2、会导致驱动被注册2遍.  </p>
-<pre><code>//mysql数据库   
-Class.forName(&quot;com.mysql.jdbc.Driver&quot;).newInstance();   
-//Oracle数据库
-Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;).newInstance();
-</code></pre><h3 id="获取与数据库的连接"><a href="#获取与数据库的连接" class="headerlink" title="获取与数据库的连接"></a>获取与数据库的连接</h3><p>mysql数据库   </p>
-<pre><code>//方式一： 
-Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/demo&quot;, &quot;root&quot;, &quot;12345&quot;);
-//方式二：
-Properties props = new Properties();
-props.put(&quot;user&quot;, &quot;root&quot;);//key看数据库的规定
-props.put(&quot;password&quot;, &quot;12345&quot;);
-props.put(&quot;useUnicode&quot;, &quot;true&quot;); 
-props.put(&quot;characterEncoding&quot;, &quot;utf8&quot;);
-Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/demo&quot;, props);
-//方式三：
-Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/demo?user=root&amp;password=12345&quot;); 
-</code></pre><p>Oracle数据库 </p>
-<pre><code>//方式一  
-String URL = &quot;jdbc:oracle:thin:@localhost:1521:demo&quot;;
-String USER = &quot;username&quot;;
-String PASS = &quot;password&quot;
-Connection conn = DriverManager.getConnection(URL, USER, PASS); 
-//方式二
-Properties props = new Properties();
-String URL = &quot;jdbc:oracle:thin:@localhost:1521:demo&quot;;
-props.put(&quot;user&quot;,&quot;username&quot;);
-props.put(&quot;password&quot;,&quot;password&quot;);
-Connection conn = DriverManager.getConnection(URL,props);
-//方式三
-String URL = &quot;jdbc:oracle:thin:username/password@localhost:1521:demo&quot;;
-Connection conn = DriverManager.getConnection(URL);
-</code></pre><h3 id="得到SQL语句的对象"><a href="#得到SQL语句的对象" class="headerlink" title="得到SQL语句的对象"></a>得到SQL语句的对象</h3><pre><code>Statement stmt = conn.createStatement();
-</code></pre><h3 id="发送SQL语句-得到返回的结果"><a href="#发送SQL语句-得到返回的结果" class="headerlink" title="发送SQL语句,得到返回的结果"></a>发送SQL语句,得到返回的结果</h3><pre><code>ResultSet rs = stmt.executeQuery(&quot;selcet chinese,english,math from student&quot;);
-//Statement常用方法
-//ResultSet executeQuery(String sql):sql一般是DQL语句
-//int executeUpdate(String sql):sql一般是没有返回结果集的语句，比如DML、DDL。返回值是影响到的行数
-//boolean execute(String sql):sql可以任何的语句。返回值：如果执行的sql语句有结果集，返回true，没有结果集，返回false
-</code></pre><h3 id="遍历结果集"><a href="#遍历结果集" class="headerlink" title="遍历结果集"></a>遍历结果集</h3><pre><code>while(rs.next()){
-System.out.println(&quot;---------------------------&quot;);
-System.out.print(rs.getObject(&quot;chinese&quot;)+&quot;\t&quot;);
-System.out.print(rs.getObject(&quot;english&quot;)+&quot;\t&quot;);
-System.out.println(rs.getObject(&quot;math&quot;));
-} 
-</code></pre><h3 id="释放占用的资源"><a href="#释放占用的资源" class="headerlink" title="释放占用的资源"></a>释放占用的资源</h3><pre><code>rs.close();
-stmt.close();
-conn.close();
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;JDBC全称为：Java Data Base Connectivity（java数据库连接），它主要由接口组成。
-    
-    </summary>
-    
-      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
-    
-    
-      <category term="JDBC" scheme="http://yoursite.com/tags/JDBC/"/>
     
   </entry>
   
