@@ -121,12 +121,23 @@ me.addInputRule(function (root) {
     <link href="http://yoursite.com/2017/06/20/webmagic%E7%88%AC%E8%99%AB%E4%BD%BF%E7%94%A8/"/>
     <id>http://yoursite.com/2017/06/20/webmagic爬虫使用/</id>
     <published>2017-06-20T06:45:42.000Z</published>
-    <updated>2017-06-20T06:45:42.087Z</updated>
+    <updated>2017-06-21T07:10:29.575Z</updated>
+    
+    <content type="html"><![CDATA[<p>WebMagic是国内大牛开发的一款灵活开源的Java爬虫框架</p>
+<a id="more"></a>]]></content>
     
     <summary type="html">
     
+      &lt;p&gt;WebMagic是国内大牛开发的一款灵活开源的Java爬虫框架&lt;/p&gt;
+    
     </summary>
     
+      <category term="JavaEE" scheme="http://yoursite.com/categories/JavaEE/"/>
+    
+    
+      <category term="WebMagic" scheme="http://yoursite.com/tags/WebMagic/"/>
+    
+      <category term="爬虫" scheme="http://yoursite.com/tags/%E7%88%AC%E8%99%AB/"/>
     
   </entry>
   
