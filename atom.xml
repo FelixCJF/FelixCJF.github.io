@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-23T00:59:45.526Z</updated>
+  <updated>2017-06-23T01:38:45.507Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/06/22/Activiti%E6%B5%81%E7%A8%8B%E6%A1%86%E6%9E%B6%E4%B8%8A%E6%89%8B/"/>
     <id>http://yoursite.com/2017/06/22/Activiti流程框架上手/</id>
     <published>2017-06-22T09:12:42.000Z</published>
-    <updated>2017-06-23T00:59:45.526Z</updated>
+    <updated>2017-06-23T01:38:45.507Z</updated>
     
     <content type="html"><![CDATA[<p>Activiti其核心是BPMN2.0 的流程引擎，是覆盖了业务流程管理、工作流、服务协作等领域的一个开源的、灵活的、易扩展的可执行流程语言框架<br><a id="more"></a><br><a href="https://www.activiti.org/quick-start" target="_blank" rel="external">官网quick-start</a><br><a href="http://itmyhome.com/activiti/#download" target="_blank" rel="external">Activiti 5.16 中文用户手册</a></p>
 <p>简单使用介绍，深入需自行查文档   </p>
@@ -50,8 +50,7 @@ ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();//自动�
 </li>
 </ul>
 <h2 id="BPMN2-0"><a href="#BPMN2-0" class="headerlink" title="BPMN2.0"></a>BPMN2.0</h2><p>业务流程建模与标注（Business Process Model and Notation，BPMN) ，描述流程的基本符号，包括这些图元如何组合成一个业务流程图（Business Process Diagram），可以安装eclipse插件，直接建立bpmn图</p>
-<p>##　eclipse插件安装</p>
-<ol>
+<h2 id="eclipse插件安装"><a href="#eclipse插件安装" class="headerlink" title="eclipse插件安装"></a>eclipse插件安装</h2><ol>
 <li>打开 Help -&gt; Install New Software. </li>
 <li>在Install界面板中，点击Add按钮</li>
 <li><p>然后填入下列字段 </p>
@@ -150,8 +149,7 @@ xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.o
     &lt;/dependency&gt;
 &lt;/dependencies&gt;
 &lt;/project&gt;
-</code></pre><p>##　建立bpmn图片或者bpmn的xml文件</p>
-<ol>
+</code></pre><h2 id="建立bpmn图片或者bpmn的xml文件"><a href="#建立bpmn图片或者bpmn的xml文件" class="headerlink" title="建立bpmn图片或者bpmn的xml文件"></a>建立bpmn图片或者bpmn的xml文件</h2><ol>
 <li>使用bpmn,建立bpmn如下图，部署后，系统会自动解析，可以在properties选项卡下设置相关属性，我使用的是这种方式<br><img src="http://oje7mvhbz.bkt.clouddn.com/%E8%AF%B7%E5%81%87%E6%B5%81%E7%A8%8B.png" alt="请假流程"></li>
 </ol>
 <ol>
