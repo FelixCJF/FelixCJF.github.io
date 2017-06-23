@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-23T00:48:19.540Z</updated>
+  <updated>2017-06-23T00:51:15.748Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/06/22/Activiti%E6%B5%81%E7%A8%8B%E6%A1%86%E6%9E%B6%E4%B8%8A%E6%89%8B/"/>
     <id>http://yoursite.com/2017/06/22/Activiti流程框架上手/</id>
     <published>2017-06-22T09:12:42.000Z</published>
-    <updated>2017-06-23T00:48:19.540Z</updated>
+    <updated>2017-06-23T00:51:15.748Z</updated>
     
     <content type="html"><![CDATA[<p>Activiti其核心是BPMN2.0 的流程引擎，是覆盖了业务流程管理、工作流、服务协作等领域的一个开源的、灵活的、易扩展的可执行流程语言框架<br><a id="more"></a><br><a href="https://www.activiti.org/quick-start" target="_blank" rel="external">官网quick-start</a><br><a href="http://itmyhome.com/activiti/#download" target="_blank" rel="external">Activiti 5.16 中文用户手册</a></p>
 <p>简单使用介绍，深入需自行查文档   </p>
@@ -468,8 +468,7 @@ public void completeTask() {
 <li>再执行办理任务代码，执行完以后以”项目经理”身份进行查询，没有结果。</li>
 <li>重复上面的直到流程执行完。</li>
 </ul>
-<p>##　验证流程是否结束，查看历史流程</p>
-<pre><code>/**
+<h2 id="验证流程是否结束，查看历史流程"><a href="#验证流程是否结束，查看历史流程" class="headerlink" title="　验证流程是否结束，查看历史流程"></a>　验证流程是否结束，查看历史流程</h2><pre><code>/**
  * 验证流程已结束
  */
 @Test
