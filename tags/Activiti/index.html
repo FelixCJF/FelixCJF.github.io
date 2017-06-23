@@ -15,17 +15,12 @@
 
 
 
-<meta name="description" content="JDBC全称为：Java Data Base Connectivity（java数据库连接），它主要由接口组成。">
-<meta name="keywords" content="JDBC">
-<meta property="og:type" content="article">
-<meta property="og:title" content="JDBC编码">
-<meta property="og:url" content="http://yoursite.com/2017/01/30/JDBC编码/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="菜鸟Java成长之路">
+<meta property="og:url" content="http://yoursite.com/tags/Activiti/index.html">
 <meta property="og:site_name" content="菜鸟Java成长之路">
-<meta property="og:description" content="JDBC全称为：Java Data Base Connectivity（java数据库连接），它主要由接口组成。">
-<meta property="og:updated_time" content="2017-01-30T13:32:42.237Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JDBC编码">
-<meta name="twitter:description" content="JDBC全称为：Java Data Base Connectivity（java数据库连接），它主要由接口组成。">
+<meta name="twitter:title" content="菜鸟Java成长之路">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +52,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>JDBC编码 | 菜鸟Java成长之路</title>
+<title>Tag: Activiti | 菜鸟Java成长之路</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -67,9 +62,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: true,
+        isPost: false,
         isArchive: false,
-        isTag: false,
+        isTag: true,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -283,280 +278,59 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-JDBC编码" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
   
-    <div class="article-meta">
-      <a href="/2017/01/30/JDBC编码/" class="article-date">
-      <time datetime="2017-01-30T10:18:51.000Z" itemprop="datePublished">2017-01-30</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+          <div class="article-meta">
+              <a href="/2017/06/22/Activiti流程框架上手/" class="archive-article-date">
+      <time datetime="2017-06-22T09:12:42.000Z" itemprop="datePublished">06-22</time>
 </a>
 
 
-    </div>
+        </div>
+         
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      JDBC编码
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/06/22/Activiti流程框架上手/">Activiti流程框架上手</a>
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
+        <div class="article-info info-on-archive">
+          
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
     </div>
 
 
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JDBC/">JDBC</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
           
-        <p>JDBC全称为：Java Data Base Connectivity（java数据库连接），它主要由接口组成。<a id="more"></a><br>JDBC属于JavaEE技术之一。它的API类在JDK中。是SUN公司制定的规范<br>数据库厂商就对JDBC进行了实现，所谓的驱动。  </p>
-<h1 id="JDBC编码步骤"><a href="#JDBC编码步骤" class="headerlink" title="JDBC编码步骤"></a>JDBC编码步骤</h1><h3 id="注册驱动"><a href="#注册驱动" class="headerlink" title="注册驱动"></a>注册驱动</h3><p>不能直接new一个com.mysql.jdbc.Driver<br>//DriverManager.registerDriver(new com.mysql.jdbc.Driver());<br>因为这样1、依赖具体的数据库驱动；2、会导致驱动被注册2遍.  </p>
-<pre><code>//mysql数据库   
-Class.forName(&quot;com.mysql.jdbc.Driver&quot;).newInstance();   
-//Oracle数据库
-Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;).newInstance();
-</code></pre><h3 id="获取与数据库的连接"><a href="#获取与数据库的连接" class="headerlink" title="获取与数据库的连接"></a>获取与数据库的连接</h3><p>mysql数据库   </p>
-<pre><code>//方式一： 
-Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/demo&quot;, &quot;root&quot;, &quot;12345&quot;);
-//方式二：
-Properties props = new Properties();
-props.put(&quot;user&quot;, &quot;root&quot;);//key看数据库的规定
-props.put(&quot;password&quot;, &quot;12345&quot;);
-props.put(&quot;useUnicode&quot;, &quot;true&quot;); 
-props.put(&quot;characterEncoding&quot;, &quot;utf8&quot;);
-Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/demo&quot;, props);
-//方式三：
-Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/demo?user=root&amp;password=12345&quot;); 
-</code></pre><p>Oracle数据库 </p>
-<pre><code>//方式一  
-String URL = &quot;jdbc:oracle:thin:@localhost:1521:demo&quot;;
-String USER = &quot;username&quot;;
-String PASS = &quot;password&quot;
-Connection conn = DriverManager.getConnection(URL, USER, PASS); 
-//方式二
-Properties props = new Properties();
-String URL = &quot;jdbc:oracle:thin:@localhost:1521:demo&quot;;
-props.put(&quot;user&quot;,&quot;username&quot;);
-props.put(&quot;password&quot;,&quot;password&quot;);
-Connection conn = DriverManager.getConnection(URL,props);
-//方式三
-String URL = &quot;jdbc:oracle:thin:username/password@localhost:1521:demo&quot;;
-Connection conn = DriverManager.getConnection(URL);
-</code></pre><h3 id="得到SQL语句的对象"><a href="#得到SQL语句的对象" class="headerlink" title="得到SQL语句的对象"></a>得到SQL语句的对象</h3><pre><code>Statement stmt = conn.createStatement();
-</code></pre><h3 id="发送SQL语句-得到返回的结果"><a href="#发送SQL语句-得到返回的结果" class="headerlink" title="发送SQL语句,得到返回的结果"></a>发送SQL语句,得到返回的结果</h3><pre><code>ResultSet rs = stmt.executeQuery(&quot;selcet chinese,english,math from student&quot;);
-//Statement常用方法
-//ResultSet executeQuery(String sql):sql一般是DQL语句
-//int executeUpdate(String sql):sql一般是没有返回结果集的语句，比如DML、DDL。返回值是影响到的行数
-//boolean execute(String sql):sql可以任何的语句。返回值：如果执行的sql语句有结果集，返回true，没有结果集，返回false
-</code></pre><h3 id="遍历结果集"><a href="#遍历结果集" class="headerlink" title="遍历结果集"></a>遍历结果集</h3><pre><code>while(rs.next()){
-System.out.println(&quot;---------------------------&quot;);
-System.out.print(rs.getObject(&quot;chinese&quot;)+&quot;\t&quot;);
-System.out.print(rs.getObject(&quot;english&quot;)+&quot;\t&quot;);
-System.out.println(rs.getObject(&quot;math&quot;));
-} 
-</code></pre><h3 id="释放占用的资源"><a href="#释放占用的资源" class="headerlink" title="释放占用的资源"></a>释放占用的资源</h3><pre><code>rs.close();
-stmt.close();
-conn.close();
-</code></pre>
-      
-    </div>
-    
-  </div>
-  
-    
-    <div class="copyright">
-        <p><span>Title:</span><a href="/2017/01/30/JDBC编码/">JDBC编码</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">Felix</a></p>
-        <p><span>Created:</span>2017-01-30, 18:18:51</p>
-        <p><span>Updated:</span>2017-01-30, 21:32:42</p>
-        <p>
-            <span>Full URL:</span><a class="post-url" href="/2017/01/30/JDBC编码/" title="JDBC编码">http://yoursite.com/2017/01/30/JDBC编码/</a>
-            <span class="copy-path" data-clipboard-text="From http://yoursite.com/2017/01/30/JDBC编码/　　By Felix" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
-        </p>
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Activiti/">Activiti</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BPMN2-0/">BPMN2.0</a></li></ul>
     </div>
 
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/01/30/四大域对象和JSP九大隐式对象/">
-                    四大域对象和JSP九大隐式对象
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/01/22/HTTP协议/">
-                    HTTP协议
-                </a>
-            </div>
-        
-    </nav>
-
-  
-</article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
-        
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JDBC编码步骤"><span class="toc-number">1.</span> <span class="toc-text">JDBC编码步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册驱动"><span class="toc-number">1.0.1.</span> <span class="toc-text">注册驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取与数据库的连接"><span class="toc-number">1.0.2.</span> <span class="toc-text">获取与数据库的连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#得到SQL语句的对象"><span class="toc-number">1.0.3.</span> <span class="toc-text">得到SQL语句的对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发送SQL语句-得到返回的结果"><span class="toc-number">1.0.4.</span> <span class="toc-text">发送SQL语句,得到返回的结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历结果集"><span class="toc-number">1.0.5.</span> <span class="toc-text">遍历结果集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#释放占用的资源"><span class="toc-number">1.0.6.</span> <span class="toc-text">释放占用的资源</span></a></li></ol></li></ol></li></ol>
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
-
-    <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
-    </script>
-
-
-
-    
-<div class="share">
-    
-        <div class="bdsharebuttonbox">
-            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
-            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
-            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
-            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
-            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
-            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
         </div>
-        <script>
-            window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"JDBC编码　| 菜鸟Java成长之路　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-        </script>
-    
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
 
     
-</div>
-
-
-
-
-
-
-
-    
-      <div class="duoshuo" id="comments">
-    <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/30/JDBC编码/" data-title="JDBC编码" data-url="http://yoursite.com/2017/01/30/JDBC编码/"></div>
-    <script>
-        var duoshuoQuery = {short_name:"http://cjianfeng.duoshuo.com"};
-        var loadComment = function(){
-            var d = document, s = d.createElement('script');
-            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-            s.async = true; s.charset = 'UTF-8';
-            (d.head || d.body).appendChild(s);
-        }
-
-        
-            // Add comment count
-            $(function(){ 
-                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=http://cjianfeng.duoshuo.com&threads=2017/01/30/JDBC编码/&callback=?";
-                $.getJSON(jsonUrl, function(result){
-                    $.each(result.response, function(i, field){
-                        var value = field.comments;
-                        if (value > 0) {
-                            $(".count-comment").text(value);
-                            return;
-                        }
-                    })
-                })
-            })
-        
-    </script>
-    
-    <aside class="comment-bar">
-        <a href="javascript:void(0);">
-            <i class="fa fa-commenting-o animated infinite pulse"></i>
-            <i class="fa fa-spinner fa-pulse"></i>
-            <span class="count-comment"></span>
-        </a>
-    </aside>
-    <script>
-        var $commentBar = $("#comments aside.comment-bar");
-        var load$hide = function(){
-            $commentBar.find("a > i").toggle();
-            loadComment();
-            $commentBar.fadeOut(800);
-        }
-        $commentBar.click(function(){
-            load$hide();
-        })
-        $commentBar.children("a").hover(function(){
-            load$hide();
-        })
-        if (window.location.hash === "#comments") {
-            load$hide();
-        }
-    </script>
-
-</div>
-    
-
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2017/01/30/四大域对象和JSP九大隐式对象/" title="Pre: 四大域对象和JSP九大隐式对象">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2017/01/22/HTTP协议/" title="Next: HTTP协议">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/06/22/Activiti流程框架上手/">Activiti流程框架上手</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/21/UEditor样式被过滤解决/">UEditor样式被过滤解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/20/webmagic爬虫使用/">webmagic爬虫使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/14/Ueditor使用/">Ueditor使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/02/各种历史版本下载/">各种历史版本下载</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/26/判断ip是否合法/">判断ip是否合法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/16/nginx-ssl配置https/">nginx+ssl配置https</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/多机部署hexo博客/">多机部署hexo博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/Linux上部署多个Tomcat/">Linux上部署多个Tomcat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/nginx负载均衡配置/">nginx负载均衡配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/BootStrap-fileinput插件的使用/">BootStrap fileinput插件的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/DWR使用教程/">DWR使用教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/程序是怎么跑起来的读书笔记/">程序是怎么跑起来的读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/mysql和Oracle实现分页/">mysql和Oracle实现分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/有关异常捕获的一题面试题/">有关异常捕获的一题面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/JQuery、EasyUI和Bootstrap区别/">JQuery、EasyUI和Bootstrap区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/05/过滤器filter/">过滤器filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java中的网络编程/">Java中的网络编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/03/MongoDB数据库/">MongoDB数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/RESTful架构/">RESTful架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/四大域对象和JSP九大隐式对象/">四大域对象和JSP九大隐式对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/JDBC编码/">JDBC编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/HTTP协议/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/网络基础知识/">网络基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/《剑指offer》笔记/">《剑指offer》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/Java面试题总结-中/">Java面试题总结(中)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/18/XML数据解析/">XML数据解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/16/Java面试题总结-上/">Java面试题总结(上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/设计模式之工厂方法模式/">设计模式之工厂方法模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/设计模式/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/设计模式之代理模式/">设计模式之代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/《深入理解JVM》笔记/">《深入理解JVM》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/设计模式之策略模式/">设计模式之策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/UML学习笔记/">UML学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/设计模式之单例模式/">设计模式之单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java基础复习/">java基础复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/设计模式之观察者模式/">设计模式之观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/finally执行顺序面试题/">finally执行顺序面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/Linux总结/">Linux总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/用Hexo和GitHub-Pages搭建博客问题总结/">用Hexo和GitHub Pages搭建博客问题总结</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
-
 
 </div>
       <footer id="footer">

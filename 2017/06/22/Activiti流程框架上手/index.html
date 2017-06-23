@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Felix" />
+
+
+
+<meta name="description" content="Activiti其核心是BPMN2.0 的流程引擎，是覆盖了业务流程管理、工作流、服务协作等领域的一个开源的、灵活的、易扩展的可执行流程语言框架">
+<meta name="keywords" content="Activiti,BPMN2.0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Activiti流程框架上手">
+<meta property="og:url" content="http://yoursite.com/2017/06/22/Activiti流程框架上手/index.html">
+<meta property="og:site_name" content="菜鸟Java成长之路">
+<meta property="og:description" content="Activiti其核心是BPMN2.0 的流程引擎，是覆盖了业务流程管理、工作流、服务协作等领域的一个开源的、灵活的、易扩展的可执行流程语言框架">
+<meta property="og:image" content="http://oje7mvhbz.bkt.clouddn.com/%E7%BB%93%E6%9E%84%E5%9B%BE.png">
+<meta property="og:image" content="http://oje7mvhbz.bkt.clouddn.com/%E6%8F%92%E4%BB%B6.png">
+<meta property="og:image" content="http://oje7mvhbz.bkt.clouddn.com/%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8.png">
+<meta property="og:image" content="http://oje7mvhbz.bkt.clouddn.com/%E8%A1%A8.png">
+<meta property="og:image" content="http://oje7mvhbz.bkt.clouddn.com/%E8%AF%B7%E5%81%87%E6%B5%81%E7%A8%8B.png">
+<meta property="og:image" content="http://oje7mvhbz.bkt.clouddn.com/%E8%AF%B7%E5%81%87%E6%B5%81%E7%A8%8B.png">
+<meta property="og:updated_time" content="2017-06-23T00:48:19.540Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Activiti流程框架上手">
+<meta name="twitter:description" content="Activiti其核心是BPMN2.0 的流程引擎，是覆盖了业务流程管理、工作流、服务协作等领域的一个开源的、灵活的、易扩展的可执行流程语言框架">
+<meta name="twitter:image" content="http://oje7mvhbz.bkt.clouddn.com/%E7%BB%93%E6%9E%84%E5%9B%BE.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="菜鸟Java成长之路" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Activiti流程框架上手 | 菜鸟Java成长之路</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/140.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Felix</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">半途而废便是最大的失败</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客主页</a></li>
+                        
+                            <li><a href="/archives/">全部文章</a></li>
+                        
+                            <li><a href="/about/">留言打卡</a></li>
+                        
+                            <li><a href="/tags/">分类标签</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#49;&#53;&#53;&#52;&#52;&#50;&#49;&#48;&#54;&#51;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/FelixCJF" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com/" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" href="https://www.douban.com/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" href="http://www.jianshu.com/" title="简书"></a>
+                            
+                                <a class="fa Google" href="http://www.google.cn/" title="Google"></a>
+                            
+                                <a class="fa StackOverflow" href="https://stackoverflow.com/" title="StackOverflow"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Activiti/">Activiti</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BPMN2-0/">BPMN2.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BootStrap-fileinput/">BootStrap-fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DWR/">DWR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EasyUI/">EasyUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDBC/">JDBC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java中的网络编程/">Java中的网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java基础/">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java面试题/">Java面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux软件安装/">Linux软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux部署多个Tomcat/">Linux部署多个Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB数据库/">MongoDB数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTFul架构/">RESTFul架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UEditor/">UEditor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UEditor样式过滤/">UEditor样式过滤</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/">UML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebMagic/">WebMagic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http协议/">http协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ip校验/">ip校验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java四大域对象/">java四大域对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp九大隐式对象/">jsp九大隐式对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux常用命令/">linux常用命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux权限管理/">linux权限管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql和Oracle实现分页/">mysql和Oracle实现分页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-finally/">try-finally</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代理模式/">代理模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剑指offer/">剑指offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/历史版本下载/">历史版本下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多机部署博客/">多机部署博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工厂方法模式/">工厂方法模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/异常捕获/">异常捕获</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭hexo博客出现的小问题/">搭hexo博客出现的小问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件上传安全性验证/">文件上传安全性验证</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序是怎么跑起来的/">程序是怎么跑起来的</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略模式/">策略模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络基础/">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观察者模式/">观察者模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤器filter/">过滤器filter</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub Pages</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/FelixCJF">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">主题作者MOxFIVE</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="/www.cjianfeng.com">Felix</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://luuman.github.io/">lumman</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">后端小菜鸟</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Felix</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/140.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Felix</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">半途而废便是最大的失败</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客主页</a></li>
+                
+                    <li><a href="/archives/">全部文章</a></li>
+                
+                    <li><a href="/about/">留言打卡</a></li>
+                
+                    <li><a href="/tags/">分类标签</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#49;&#53;&#53;&#52;&#52;&#50;&#49;&#48;&#54;&#51;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/FelixCJF" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" target="_blank" href="https://www.douban.com/" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/" title="简书"></a>
+                            
+                                <a class="fa Google" target="_blank" href="http://www.google.cn/" title="Google"></a>
+                            
+                                <a class="fa StackOverflow" target="_blank" href="https://stackoverflow.com/" title="StackOverflow"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-Activiti流程框架上手" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/22/Activiti流程框架上手/" class="article-date">
+      <time datetime="2017-06-22T09:12:42.000Z" itemprop="datePublished">2017-06-22</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Activiti流程框架上手
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Activiti/">Activiti</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BPMN2-0/">BPMN2.0</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Activiti其核心是BPMN2.0 的流程引擎，是覆盖了业务流程管理、工作流、服务协作等领域的一个开源的、灵活的、易扩展的可执行流程语言框架<br><a id="more"></a><br><a href="https://www.activiti.org/quick-start" target="_blank" rel="external">官网quick-start</a><br><a href="http://itmyhome.com/activiti/#download" target="_blank" rel="external">Activiti 5.16 中文用户手册</a></p>
+<p>简单使用介绍，深入需自行查文档   </p>
+<h1 id="Activiti介绍"><a href="#Activiti介绍" class="headerlink" title="Activiti介绍"></a>Activiti介绍</h1><p><img src="http://oje7mvhbz.bkt.clouddn.com/%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt="Activiti结构图"></p>
+<h2 id="工作流引擎ProcessEngine"><a href="#工作流引擎ProcessEngine" class="headerlink" title="工作流引擎ProcessEngine"></a>工作流引擎ProcessEngine</h2><p>这是Activiti工作的核心。负责生成流程运行时的各种实例及数据、监控和管理流程的运行。<br><strong>产生方式：</strong>    </p>
+<pre><code>//方式一
+ProcessEngine processEngine = ProcessEngineConfiguration
+            .createProcessEngineConfigurationFromResource(&quot;activiti.cfg.xml&quot;)
+            .buildProcessEngine();  
+//方式二
+ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();//自动加载classpath下的activiti.cfg.xml
+</code></pre><p><strong>主要Service的作用：</strong>   </p>
+<ul>
+<li><p><strong>Repository Service</strong> 提供了管理和控制发布包和流程的定义操作。如：部署流程定义；查询引擎中的已有发布包和流程定义；暂停或激活发布包；获取发布包中的资源，如xml文件或是流程图片等。     </p>
+</li>
+<li><p><strong>Runtime Service</strong> 负责启动一个流程顶的新实例。对于每个流程定义来说，同一个时间内，可以有多个实例在执行。runtime service还可以用于获取和保存流程实例中的变量。或是用于查询流程实例，执行实例，触发实例等。   </p>
+</li>
+<li><p><strong>Task Service</strong> 任务相关的服务。包含功能：查询分配给用户或用户组的任务的信息；创建独立运行于流程实例外的任务；手段设置任务与用户的关联关系；认领(claim)任务， 完成(complete)任务等。         </p>
+</li>
+<li><p>Identity Service 负责管理（创建，更新，删除，查询…）群组和用户。注意，activiti执行时不会对用户执行检查。任务可以分配给任何人，无论这个用户是否存在。</p>
+</li>
+<li><p>Form Service 表单服务。可选的。提供启动表单和任务表单两个概念。即在流程实例启动前展示给用户的，和完成任务时展示给用户的两种表单。注意，这是个可选服务，表单不一定需要嵌入到流程定义中。</p>
+</li>
+<li><p><strong>History Service</strong> 历史数据服务。执行流程时，引擎会保存如实例启动时间，任务参与者，完成时间，执行路径等数据。Histroy Service通过查询功能获取这些数据。</p>
+</li>
+<li><p>Management Service 管理服务。提供查询和管理异步操作的功能。异步操作的用途包含定时器，延迟，暂停，激活等。</p>
+</li>
+</ul>
+<h2 id="BPMN2-0"><a href="#BPMN2-0" class="headerlink" title="BPMN2.0"></a>BPMN2.0</h2><p>业务流程建模与标注（Business Process Model and Notation，BPMN) ，描述流程的基本符号，包括这些图元如何组合成一个业务流程图（Business Process Diagram），可以安装eclipse插件，直接建立bpmn图</p>
+<p>##　eclipse插件安装</p>
+<ol>
+<li>打开 Help -&gt; Install New Software. </li>
+<li>在Install界面板中，点击Add按钮</li>
+<li><p>然后填入下列字段 </p>
+<pre><code>Name: Activiti BPMN 2.0 designer
+Location: http://activiti.org/designer/update/
+</code></pre></li>
+<li>回到Install界面，在面板正中列表中把所有展示出来的项目都勾上</li>
+<li>安装完以后，点击新建工程new-&gt;Other…打开面板，如果看到下图内容则安装成功：<br><img src="http://oje7mvhbz.bkt.clouddn.com/%E6%8F%92%E4%BB%B6.png" alt="插件安装"></li>
+<li>打开菜单Windows-&gt;Preferences-&gt;Activiti-&gt;Save下流程流程图片的生成方式:<br><img src="http://oje7mvhbz.bkt.clouddn.com/%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8.png" alt=""><h2 id="相关数据库"><a href="#相关数据库" class="headerlink" title="相关数据库"></a>相关数据库</h2>Activiti的后台是有数据库的支持，所有的表都以ACT_开头。 第二部分是表示表的用途的两个字母标识。 用途也和服务的API对应。使用Activiti自动建表策略，创建引擎时会自动建立25张表，如下图：<br><img src="http://oje7mvhbz.bkt.clouddn.com/%E8%A1%A8.png" alt="25张相关表"></li>
+</ol>
+<ul>
+<li>ACT<em> RE</em>*: ‘RE’表示repository。 这个前缀的表包含了流程定义和流程静态资源 （图片，规则，等等）。</li>
+<li>ACT<em> RU</em>*: ‘RU’表示runtime。 这些运行时的表，包含流程实例，任务，变量，异步任务，等运行中的数据。Activiti只在流程实例执行过程中保存这些数据， 在流程结束时就会删除这些记录。 这样运行时表可以一直很小速度很快。</li>
+<li>ACT<em> ID</em>*: ‘ID’表示identity。 这些表包含身份信息，比如用户，组等等。</li>
+<li>ACT<em> HI</em>*: ‘HI’表示history。 这些表包含历史数据，比如历史流程实例， 变量，任务等等。</li>
+<li>ACT<em> GE</em>*: 通用数据， 用于不同场景下。</li>
+</ul>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>建立activiti.cfg.xml文件，Activiti核心配置文件，配置流程引擎创建工具的基本参数和数据库连接池参数。可以和spring整合。</p>
+<pre><code>&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+    xmlns:context=&quot;http://www.springframework.org/schema/context&quot; xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd&quot;&gt;
+
+    &lt;!-- 定义流程引擎配置对象 --&gt;
+    &lt;bean id=&quot;processEngineConfiguration&quot;     class=&quot;org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration&quot;&gt;
+        &lt;!-- 配置数据库驱动 --&gt;
+        &lt;property name=&quot;jdbcDriver&quot; value=&quot;com.mysql.jdbc.Driver&quot;&gt;&lt;/property&gt;
+        &lt;!-- 配置数据库url --&gt;
+        &lt;property name=&quot;jdbcUrl&quot; value=&quot;jdbc:mysql://localhost:3306/actdemo?characterEncoding=UTF-8&quot;&gt;&lt;/property&gt;
+        &lt;!-- 配置数据库用户名 --&gt;
+        &lt;property name=&quot;jdbcUsername&quot; value=&quot;root&quot;&gt;&lt;/property&gt;
+        &lt;!-- 配置数据库密码 --&gt;
+        &lt;property name=&quot;jdbcPassword&quot; value=&quot;&quot;&gt;&lt;/property&gt;
+        &lt;!-- 配置数据库建表策略，自动建立25张相关表 --&gt;
+        &lt;property name=&quot;databaseSchemaUpdate&quot; value=&quot;true&quot;&gt;&lt;/property&gt;
+        &lt;!-- 
+            Actiivit提供了4中历史记录级别
+                none:不保存任何记录,可以提高系统性能
+                activity:保存所有的流程实例，任务，活动信息
+                auit:默认级别,保存所有实例，任务，活动，表单属性
+                full:最完整的,除了auit中的，还能保存更加详细的信息，如流程变量
+         --&gt;
+         &lt;property name=&quot;history&quot; value=&quot;activity&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre><h1 id="流程定义语言"><a href="#流程定义语言" class="headerlink" title="流程定义语言"></a>流程定义语言</h1><p><img src="http://oje7mvhbz.bkt.clouddn.com/%E8%AF%B7%E5%81%87%E6%B5%81%E7%A8%8B.png" alt="请假流程"></p>
+<h2 id="流程-process"><a href="#流程-process" class="headerlink" title="流程(process)"></a>流程(process)</h2><p>bpmn文件一个流程的根元素。一个流程就代表一个工作流。</p>
+<h2 id="顺序流-sequenceFlow"><a href="#顺序流-sequenceFlow" class="headerlink" title="顺序流(sequenceFlow )"></a>顺序流(sequenceFlow )</h2><p>顺序流是连接两个流程节点的连线，代表一个节点的出口。流程执行完一个节点后，会沿着节点的所有外出顺序流继续执行。 就是说，BPMN 2.0默认的行为就是并发的： 两个外出顺序流会创造两个单独的，并发流程分支。<br>顺序流主要由4个属性组成：<br><strong>Id:</strong> 唯一标示，用来区分不同的顺序流<br><strong>sourceRef：</strong>连线的源头节点ID<br><strong>targetRef：</strong> 连线的目标节点ID<br><strong>name（可选）：</strong> 连线的名称，不涉及业务，主要用于显示   </p>
+<ul>
+<li>结束节点没有出口</li>
+<li>其他节点有一个或多个出口。如果有一个出口，则代表是一个单线流程；如果有多个出口，则代表是开启并发流程。</li>
+</ul>
+<h1 id="请假流程快速实现（测试）"><a href="#请假流程快速实现（测试）" class="headerlink" title="请假流程快速实现（测试）"></a>请假流程快速实现（测试）</h1><h2 id="建立maven工程引入依赖"><a href="#建立maven工程引入依赖" class="headerlink" title="建立maven工程引入依赖"></a>建立maven工程引入依赖</h2><pre><code>&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+&lt;groupId&gt;com.rtzc&lt;/groupId&gt;
+&lt;artifactId&gt;activitiDemoProject&lt;/artifactId&gt;
+&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.activiti&lt;/groupId&gt;
+        &lt;artifactId&gt;activiti-engine&lt;/artifactId&gt;
+        &lt;version&gt;5.22.0&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+        &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;
+        &lt;version&gt;1.7.21&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+        &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+        &lt;version&gt;1.7.21&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;mysql&lt;/groupId&gt;
+        &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+        &lt;version&gt;5.1.22&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;junit&lt;/groupId&gt;
+        &lt;artifactId&gt;junit&lt;/artifactId&gt;
+        &lt;version&gt;3.8.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;!-- https://mvnrepository.com/artifact/commons-io/commons-io --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;commons-io&lt;/groupId&gt;
+        &lt;artifactId&gt;commons-io&lt;/artifactId&gt;
+        &lt;version&gt;2.4&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre><p>##　建立bpmn图片或者bpmn的xml文件</p>
+<ol>
+<li>使用bpmn,建立bpmn如下图，部署后，系统会自动解析，可以在properties选项卡下设置相关属性，我使用的是这种方式<br><img src="http://oje7mvhbz.bkt.clouddn.com/%E8%AF%B7%E5%81%87%E6%B5%81%E7%A8%8B.png" alt="请假流程"></li>
+</ol>
+<ol>
+<li>使用bpmn的xml文件，流程定义文件，在部署后，每次系统启动时都会被解析，把内容封装成流程定义放入项目缓存中。Activiti框架结合这个xml文件自动管理流，</li>
+</ol>
+<pre><code>&lt;definitions  xmlns=&quot;http://www.omg.org/spec/BPMN/20100524/MODEL&quot;  xmlns:activiti=&quot;http://activiti.org/bpmn&quot;  targetNamespace=&quot;Examples&quot;&gt;        
+&lt;!-- 流程定义部分 --&gt;  
+&lt;processid=&quot;myProcess&quot;name=&quot;My First Process&quot;&gt;           
+    &lt;startEvent id=&quot;startevent1&quot; name=&quot;Start&quot;&gt;&lt;/startEvent&gt;                
+    &lt;endEvent id=&quot;endevent1&quot; name=&quot;End&quot;&gt;&lt;/endEvent&gt;        
+    &lt;userTask id=&quot;usertask1&quot; name=&quot;员工申请请假&quot;  activiti:assignee=&quot;员工&quot;&gt;&lt;/userTask&gt;        
+    &lt;userTask id=&quot;usertask2&quot; name=&quot;项目经理审批&quot;  activiti:assignee=&quot;经理&quot;&gt;&lt;/userTask&gt;        
+    &lt;userTask id=&quot;usertask3&quot; name=&quot;总经理审批&quot;  activiti:assignee=&quot;老板&quot;&gt;&lt;/userTask&gt;        
+    &lt;sequenceFlow id=&quot;flow1&quot; sourceRef=&quot;startevent1&quot; targetRef=&quot;usertask1&quot;&gt;&lt;/sequenceFlow&gt;        
+    &lt;sequenceFlow id=&quot;flow2&quot; name=&quot;提交申请&quot; sourceRef=&quot;usertask1&quot; argetRef=&quot;usertask2&quot;&gt;&lt;/sequenceFlow&gt;        
+    &lt;sequenceFlow id=&quot;flow3&quot; name=&quot;项目经理审批&quot; sourceRef=&quot;usertask2&quot;  argetRef=&quot;usertask3&quot;&gt;&lt;/sequenceFlow&gt;        
+    &lt;sequenceFlow id=&quot;flow4&quot; name=&quot;总经理审批&quot; sourceRef=&quot;usertask3&quot;  argetRef=&quot;endevent1&quot;&gt;&lt;/sequenceFlow&gt;        
+&lt;/process&gt;            
+&lt;!-- BPMN绘图规范定义部分（用来描述节点图标的大小和坐标） --&gt;
+&lt;bpmndi:BPMNDiagram id=&quot;BPMNDiagram_myProcess&quot;&gt;
+....
+&lt;/bpmndi:BPMNDiagram&gt;
+&lt;/definitions&gt;
+</code></pre><h2 id="部署流程定义"><a href="#部署流程定义" class="headerlink" title="部署流程定义"></a>部署流程定义</h2><pre><code>/**
+ * 部署流程定义
+ */
+@Test
+public void deploy() {
+    // 创建流程引擎
+    ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+    // 创建部署环境变量
+    DeploymentBuilder deploymentBuilder = processEngine
+            .getRepositoryService().createDeployment();
+    // 部署流程
+    Deployment deployment = deploymentBuilder.name(&quot;请假部署测试&quot;)//部署流程显示名称
+            .addClasspathResource(&quot;请假流程.bpmn&quot;)//设置流程文件
+            .addClasspathResource(&quot;请假流程.png&quot;)
+            .deploy();//部署
+    //打印部署id
+    System.out.println(&quot;部署id为&quot;+deployment.getId()+&quot;部署名称为&quot;+deployment.getName() );
+}
+</code></pre><p>说明：     </p>
+<ol>
+<li>通过流程引擎获取了一个RepositoryService对象-&gt;仓库服务对象     </li>
+<li>由仓库的服务对象产生一个部署对象配置对象，用来封装部署环境的相关配置。   </li>
+<li>在部署配置对象中设置显示名，上传规则文件相对classpath的地址。</li>
+<li>部署，往数据库中存储流程定义的过程。操作了三张表这一步</li>
+</ol>
+<p><strong>act_ re_deployment</strong> 存放流程定义的显示名和部署时间，每部署一次增加一条记录             </p>
+<p><strong>act_ re_procdef</strong> 存放流程定义的属性信息，部署每个新的流程定义都会在这张表中增加一条记录。<br><strong>act_ge_bytearray</strong>    存储流程定义相关的部署信息。即流程定义文档的存放地。每部署一次就会增加两条记录，一条是关于bpmn规则文件的，一条是图片的（如果部署时只指定了bpmn一个文件，activiti会在部署时解析bpmn文件内容自动生成流程图）。以二进制形式存储在数据库中。</p>
+<h2 id="查询流程定义的相关信息"><a href="#查询流程定义的相关信息" class="headerlink" title="查询流程定义的相关信息"></a>查询流程定义的相关信息</h2><pre><code>/**
+ * 查看流程规则信息
+ */
+@Test
+public void view(){
+    // 创建流程引擎
+    ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+    //获取流程定义信息
+    List&lt;ProcessDefinition&gt; definitions = processEngine.getRepositoryService()
+                .createProcessDefinitionQuery()//创建流程定义查询对象
+                .list();//执行查询，也可以添加过滤和排序分页条件
+
+    //迭代查询出来的流程定义
+    for (ProcessDefinition processDefinition : definitions) {
+        System.out.println(&quot;id=&quot;+processDefinition.getId());
+        System.out.println(&quot;name=&quot;+processDefinition.getName());
+        System.out.println(&quot;key=&quot;+processDefinition.getKey());
+        System.out.println(&quot;version=&quot;+processDefinition.getVersion());
+        System.out.println(&quot;depolymentId=&quot;+processDefinition.getDeploymentId());
+        System.out.println(&quot;-----------查询完毕----------&quot;);
+    }
+
+}
+</code></pre><p>查询结果：   </p>
+<pre><code>id=leaveFlow:1:25004
+name=leaveFlow
+key=leaveFlow
+version=1
+depolymentId=25001
+-----------查询完毕----------
+id=leaveFlow:2:32504
+name=leaveFlow
+key=leaveFlow
+version=2
+depolymentId=32501
+-----------查询完毕----------
+</code></pre><p>说明：    </p>
+<ul>
+<li>key属性被用来区别不同的流程定义。              </li>
+<li>带有特定key的流程定义第一次部署时，version为1。之后每次部署都会在当前最高版本号上加1         </li>
+<li>Id的值的生成规则为:{processDefinitionKey}:{processDefinitionVersion}:{generated-id}, 这里的generated-id是一个自动生成的唯一的数字</li>
+<li>重复部署一次，deploymentId的值以一定的形式变化     </li>
+<li>流程定义(ProcessDefinition)在数据库中没有相应的表对应，只是从act_ge_bytearray表中取出相应的bpmn和png图片，并进行解析。</li>
+</ul>
+<h2 id="删除流程定义"><a href="#删除流程定义" class="headerlink" title="删除流程定义"></a>删除流程定义</h2><pre><code>/**
+ * 删除流程定义
+ */
+@Test
+public void delete(){
+    //创建流程引擎
+    ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+    //流程定义id
+    String deploymentId = &quot;20001&quot;;
+    //删除指定的部署信息，如果有关联，则报错,一般用这个,级联涉及数据较多，一般是超级管理员权限
+    //processEngine.getRepositoryService().deleteDeployment(deploymentId);
+    //删除指定的部署信息，如果有关联，则级联删除,cascade参数代表是否级联删除
+    processEngine.getRepositoryService().deleteDeployment(deploymentId, true);
+
+}
+</code></pre><p>说明：   </p>
+<ul>
+<li>因为删除的是流程定义，而流程定义的部署是属于仓库服务的，所以应该先得到RepositoryService    </li>
+<li>如果该流程定义下没有正在运行的流程，则可以用普通方法进行删除。如果是有关联的信息，则需要用方法进行级联删除。一般情况下用普通删除就可以。级联删除涉及的数据比较多，一般只开放给超级管理员使用。</li>
+</ul>
+<h2 id="查询出流程图片（用来显示流程图片）"><a href="#查询出流程图片（用来显示流程图片）" class="headerlink" title="查询出流程图片（用来显示流程图片）"></a>查询出流程图片（用来显示流程图片）</h2><pre><code>/**
+ * 查询流程定义文档（主要是流程图片）
+ */
+@Test
+public void queryResource() throws Exception{
+    // 创建流程引擎
+    ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+    // 流程定义id
+    String deploymentId = &quot;10001&quot;;
+    List&lt;String&gt; names = processEngine.getRepositoryService().getDeploymentResourceNames(deploymentId);
+    String resourceName = null;
+    //遍历资源文件名列表
+    for (String string : names) {
+        //获取以.png后缀的文件名
+        if (string.lastIndexOf(&quot;.png&quot;)&gt;=0) {
+            resourceName = string;
+        }
+    }
+    //如果流程图片存在
+    if (resourceName != null) {
+        File file = new File(&quot;D:/&quot;+resourceName);
+        //通过流程图片对应的id和名称获得对应的输入流
+        InputStream in = processEngine.getRepositoryService().getResourceAsStream(deploymentId, resourceName);
+        //使用fileUtils把图片拷贝至指定目录下
+        FileUtils.copyInputStreamToFile(in, file);
+    }
+}
+</code></pre><p>说明：       </p>
+<ul>
+<li>deploymentId为流程部署ID</li>
+<li>resourceName为act_ge<em>bytearray表中NAME</em>列的值</li>
+<li>使用repositoryService的getDeploymentResourceNames方法可以获取指定部署下得所有文件的名称</li>
+<li>使用repositoryService的getResourceAsStream方法传入部署ID和文件名称可以获取部署下指定名称文件的输入流</li>
+<li>最后的有关IO流的操作，使用FileUtils工具的copyInputStreamToFile方法完成流程流程到文件的拷贝</li>
+</ul>
+<h2 id="开始流程"><a href="#开始流程" class="headerlink" title="开始流程"></a>开始流程</h2><pre><code>/**
+ * 启动流程实例
+ *         启动流程实例，返回流程实例对象，停在start后的第一个节点上
+ */
+@Test
+public void startProcess(){
+    //创建流程引擎
+    ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+    //获取流程运行时服务对象
+    RuntimeService runtimeService = processEngine.getRuntimeService();
+    //启动流程实例，返回实例对象
+    ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(&quot;leaveFlow&quot;);
+    //显示相关信息
+    System.out.println(&quot;流程实例ID=&quot;+processInstance.getId());
+    System.out.println(&quot;当前活动节点ID=&quot;+processInstance.getActivityId());
+
+}
+</code></pre><p>结果显示：  </p>
+<pre><code>流程实例ID=40001
+当前活动节点ID=usertask1
+</code></pre><p>说明：  </p>
+<ul>
+<li>操作数据库的act_ru_execution表,如果是用户任务节点，同时也会在act_ru_task添加一条记录</li>
+</ul>
+<h2 id="查询待办任务"><a href="#查询待办任务" class="headerlink" title="查询待办任务"></a>查询待办任务</h2><pre><code>/**
+ * 查询指定用户的待办任务
+ * 
+ */
+@Test
+public void findUnfinshTask() {
+    // 创建流程引擎
+    ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+    String assignee = &quot;员工&quot;;
+    //查询个人的代办任务
+    List&lt;Task&gt; tasks = processEngine.getTaskService()
+            .createTaskQuery()//创建流程任务查询对象
+            .taskAssignee(assignee)//添加过滤条件
+            //.listPage(firstResult, maxResults)添加分页
+            .orderByTaskCreateTime().desc()//排序
+            .list();//执行查询
+    System.out.println(&quot;------&quot;+assignee+&quot;的个人任务列表------&quot;);
+    for (Task task : tasks) {
+        System.out.println(&quot;任务ID:&quot;+task.getId());
+        System.out.println(&quot;任务名称:&quot;+task.getName());
+        System.out.println(&quot;任务办理者:&quot;+task.getAssignee());
+        System.out.println(&quot;任务创建时间:&quot;+task.getCreateTime());
+        System.out.println(&quot;任务执行对象的ID:&quot;+task.getExecutionId());
+    }
+
+}
+</code></pre><p>显示结果：     </p>
+<pre><code>------员工的个人任务列表------   
+任务ID:40004
+任务名称:员工请假申请
+任务办理者:员工
+任务创建时间:Fri Jun 23 08:33:08 CST 2017
+任务执行对象的ID:40001
+任务ID:32508
+任务名称:员工请假申请
+任务办理者:员工
+任务创建时间:Thu Jun 22 16:50:10 CST 2017
+任务执行对象的ID:32505  
+</code></pre><p>说明：    </p>
+<ul>
+<li>因为是任务查询，所以从processEngine中应该得到TaskService</li>
+<li>使用TaskService获取到任务查询对象TaskQuery</li>
+<li>为查询对象添加查询过滤条件，使用taskAssignee指定任务的候选者（即查询指定用户的代办任务），添加分页排序等过滤条件</li>
+<li>调用list方法执行查询，返回办理者为指定用户的任务列表</li>
+<li>任务ID、名称、办理人、创建时间可以从act_ru_task表中查到。</li>
+<li>在这种情况下，ProcessInstance相当于Execution</li>
+<li>一个Task节点和Execution节点是1对1的情况，在task对象中使用Execution_来标示他们之间的关系</li>
+<li>任务ID在数据库表act<em> ru</em> task中对应“ID_”列</li>
+</ul>
+<h2 id="可领取任务查询和领取"><a href="#可领取任务查询和领取" class="headerlink" title="可领取任务查询和领取"></a>可领取任务查询和领取</h2><pre><code>/**
+ * 查询指定用户的可以领取的任务
+ * 
+ */
+@Test
+public void findCanTakeTask() {
+    // 创建流程引擎
+    ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+    String candidateUser = &quot;员工&quot;;
+    //查询个人的代办任务
+    List&lt;Task&gt; tasks = processEngine.getTaskService()
+            .createTaskQuery()//创建流程任务查询对象
+            .taskCandidateUser(candidateUser)//代表过滤任务候选者为自己的任务
+            //.listPage(firstResult, maxResults)添加分页
+            .orderByTaskCreateTime().desc()//排序
+            .list();//执行查询
+    System.out.println(&quot;------&quot;+candidateUser+&quot;的个人任务列表------&quot;);
+    for (Task task : tasks) {
+        System.out.println(&quot;任务ID:&quot;+task.getId());
+        System.out.println(&quot;任务名称:&quot;+task.getName());
+        System.out.println(&quot;任务办理者:&quot;+task.getAssignee());
+        System.out.println(&quot;任务创建时间:&quot;+task.getCreateTime());
+        System.out.println(&quot;任务执行对象的ID:&quot;+task.getExecutionId());
+    }
+
+}
+/**
+ * 查询指定用户的可以领取的任务
+ * 
+ */
+@Test
+public void findCanTakeTask() {
+    // 创建流程引擎
+    ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+    String candidateUser = &quot;员工1&quot;;
+    //查询个人的代办任务
+    List&lt;Task&gt; tasks = processEngine.getTaskService()
+            .createTaskQuery()//创建流程任务查询对象
+            .taskCandidateUser(candidateUser)//代表过滤任务候选者为自己的任务
+            //.listPage(firstResult, maxResults)添加分页
+            .orderByTaskCreateTime().desc()//排序
+            .list();//执行查询
+    System.out.println(&quot;------&quot;+candidateUser+&quot;的个人任务列表------&quot;);
+    for (Task task : tasks) {
+        System.out.println(&quot;任务ID:&quot;+task.getId());
+        System.out.println(&quot;任务名称:&quot;+task.getName());
+        System.out.println(&quot;任务办理者:&quot;+task.getAssignee());
+        System.out.println(&quot;任务创建时间:&quot;+task.getCreateTime());
+        System.out.println(&quot;任务执行对象的ID:&quot;+task.getExecutionId());
+    }
+
+}
+
+/**
+ * 公共任务的认领
+ */
+@Test
+public void takeTask(){
+    // 创建流程引擎
+    ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+    // 接手得任务ID
+    String taskId = &quot;&quot;;
+    // 员工ID
+    String userId = &quot;&quot;;
+    //认领任务
+    processEngine.getTaskService().claim(taskId, userId);
+}
+</code></pre><p>说明：   </p>
+<ul>
+<li>在查询对象上，添加taskCandidateUser过滤条件，代表过滤任务候    选者为自己的任务</li>
+<li>所有公共任务的assignee属性为空</li>
+<li>调用taskService的claim（认领）方法，把公共任务变成指定用户的私有任务</li>
+</ul>
+<h2 id="办理任务"><a href="#办理任务" class="headerlink" title="办理任务"></a>办理任务</h2><pre><code>/**
+ * 任务的办理,完成任务后,使流程往后进行
+ */
+@Test
+public void completeTask() {
+    // 创建流程引擎
+    ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+    // 指定任务id
+    String taskId = &quot;35002&quot;;
+    // 完成任务
+    processEngine.getTaskService().complete(taskId);
+}
+</code></pre><p>说明：  </p>
+<ul>
+<li>是办理任务，所以从ProcessEngine得到的是TaskService。</li>
+<li>当执行完这段代码，再以员工的身份去执行查询的时候，会发现这个时候已经没有数据了。</li>
+<li>对于执行完的任务，activiti将从act_ru_task表中删除该任务，下一个任务会被插入进来。</li>
+<li>以”项目经理”的身份进行查询，可以查到结果。因为流程执行到项目经理审批这个节点了。</li>
+<li>再执行办理任务代码，执行完以后以”项目经理”身份进行查询，没有结果。</li>
+<li>重复上面的直到流程执行完。</li>
+</ul>
+<p>##　验证流程是否结束，查看历史流程</p>
+<pre><code>/**
+ * 验证流程已结束
+ */
+@Test
+public void checkTaskEnded() {
+    // 创建流程引擎
+    ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+    // 流程定义ID
+    String processId = &quot;leaveFlow:1:25004&quot;;
+    //通过流程定义Id获取到流程定义对象
+    ProcessInstance processInstance = processEngine.getRuntimeService()
+                                            .createProcessInstanceQuery()
+                                            .processInstanceId(processId)
+                                            .singleResult();
+    //查看实例是否完成
+    if (processInstance!= null) {
+        System.out.println(&quot;当前活动节点为&quot;+processInstance.getActivityId());
+    }else {
+        System.out.println(&quot;ID为【&quot;+processId+&quot;】的实例流程已经结束&quot;);
+    }
+}
+
+/**
+ * 查看历史流程，某个用户一共执行了多少次请假流程
+ * 
+ */
+@Test
+public void queryHistoryInstance() {
+    // 创建流程引擎
+    ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+    // 指定流程定义Id
+    String processDefinitionId = &quot;leaveFlow:1:25004&quot;;
+    // 查询历史流程实例
+    List&lt;HistoricProcessInstance&gt; list = processEngine.getHistoryService()
+            .createHistoricProcessInstanceQuery()
+            .processDefinitionId(processDefinitionId)//安装该流程定义id
+            .finished()//已完成
+            .orderByProcessInstanceStartTime().desc()//排序
+            .list();
+    for (HistoricProcessInstance historicProcessInstance : list) {
+        System.out.println(&quot;ID:&quot;+historicProcessInstance.getProcessDefinitionId());
+        System.out.println(&quot;开始活动ID:&quot;+historicProcessInstance.getStartActivityId());
+        System.out.println(&quot;开始时间:&quot;+historicProcessInstance.getStartTime());
+        System.out.println(&quot;结束时间:&quot;+historicProcessInstance.getEndTime());
+    }
+
+}
+
+/**
+ * 查看历史流程活动  查看某一次流程所经历的步骤
+ */
+@Test
+public void queryHistoryActivit() {
+    // 创建流程引擎
+    ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+    // 指定流程定义Id
+    String processDefinitionId = &quot;leaveFlow:1:25004&quot;;
+    //查询历史流程
+    List&lt;HistoricActivityInstance&gt; list = processEngine.getHistoryService()
+                                .createHistoricActivityInstanceQuery()
+                                .processInstanceId(processDefinitionId)
+                                .list();
+    for (HistoricActivityInstance historicActivityInstance : list) {
+        System.out.println(&quot;ID:&quot;+historicActivityInstance.getProcessDefinitionId());
+        System.out.println(&quot;开始活动ID:&quot;+historicActivityInstance.getActivityId());
+        System.out.println(&quot;开始活动名称:&quot; + historicActivityInstance.getActivityName());
+        System.out.println(&quot;开始时间:&quot;+historicActivityInstance.getStartTime());
+        System.out.println(&quot;结束时间:&quot;+historicActivityInstance.getEndTime());
+    }
+
+}
+
+}
+</code></pre><p>说明：　　　</p>
+<ul>
+<li><p>在流程执行的过程中，创建的流程实例ID在整个过程中都不会变，当流程结束后，流程实例将会被删除</p>
+</li>
+<li><p>HistoricProcessInstance 包含当前和已经结束的流程实例信息。</p>
+</li>
+<li>HistoricActivityInstance 包含一个活动(流程上的节点)的执行信息 </li>
+<li>processInstanceId查看具体某一次流程执行过程中所经历的步骤</li>
+</ul>
+<h2 id="流程变量添加（可添加javabean）"><a href="#流程变量添加（可添加javabean）" class="headerlink" title="流程变量添加（可添加javabean）"></a>流程变量添加（可添加javabean）</h2>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2017/06/22/Activiti流程框架上手/">Activiti流程框架上手</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">Felix</a></p>
+        <p><span>Created:</span>2017-06-22, 17:12:42</p>
+        <p><span>Updated:</span>2017-06-23, 08:48:19</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2017/06/22/Activiti流程框架上手/" title="Activiti流程框架上手">http://yoursite.com/2017/06/22/Activiti流程框架上手/</a>
+            <span class="copy-path" data-clipboard-text="From http://yoursite.com/2017/06/22/Activiti流程框架上手/　　By Felix" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/06/21/UEditor样式被过滤解决/">
+                    UEditor样式被过滤解决
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Activiti介绍"><span class="toc-number">1.</span> <span class="toc-text">Activiti介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#工作流引擎ProcessEngine"><span class="toc-number">1.1.</span> <span class="toc-text">工作流引擎ProcessEngine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BPMN2-0"><span class="toc-number">1.2.</span> <span class="toc-text">BPMN2.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关数据库"><span class="toc-number">1.3.</span> <span class="toc-text">相关数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件"><span class="toc-number">1.4.</span> <span class="toc-text">配置文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#流程定义语言"><span class="toc-number">2.</span> <span class="toc-text">流程定义语言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#流程-process"><span class="toc-number">2.1.</span> <span class="toc-text">流程(process)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#顺序流-sequenceFlow"><span class="toc-number">2.2.</span> <span class="toc-text">顺序流(sequenceFlow )</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#请假流程快速实现（测试）"><span class="toc-number">3.</span> <span class="toc-text">请假流程快速实现（测试）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#建立maven工程引入依赖"><span class="toc-number">3.1.</span> <span class="toc-text">建立maven工程引入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署流程定义"><span class="toc-number">3.2.</span> <span class="toc-text">部署流程定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询流程定义的相关信息"><span class="toc-number">3.3.</span> <span class="toc-text">查询流程定义的相关信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除流程定义"><span class="toc-number">3.4.</span> <span class="toc-text">删除流程定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询出流程图片（用来显示流程图片）"><span class="toc-number">3.5.</span> <span class="toc-text">查询出流程图片（用来显示流程图片）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始流程"><span class="toc-number">3.6.</span> <span class="toc-text">开始流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询待办任务"><span class="toc-number">3.7.</span> <span class="toc-text">查询待办任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可领取任务查询和领取"><span class="toc-number">3.8.</span> <span class="toc-text">可领取任务查询和领取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#办理任务"><span class="toc-number">3.9.</span> <span class="toc-text">办理任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程变量添加（可添加javabean）"><span class="toc-number">3.10.</span> <span class="toc-text">流程变量添加（可添加javabean）</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Activiti流程框架上手　| 菜鸟Java成长之路　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/06/22/Activiti流程框架上手/" data-title="Activiti流程框架上手" data-url="http://yoursite.com/2017/06/22/Activiti流程框架上手/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"http://cjianfeng.duoshuo.com"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+            // Add comment count
+            $(function(){ 
+                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=http://cjianfeng.duoshuo.com&threads=2017/06/22/Activiti流程框架上手/&callback=?";
+                $.getJSON(jsonUrl, function(result){
+                    $.each(result.response, function(i, field){
+                        var value = field.comments;
+                        if (value > 0) {
+                            $(".count-comment").text(value);
+                            return;
+                        }
+                    })
+                })
+            })
+        
+    </script>
+    
+    <aside class="comment-bar">
+        <a href="javascript:void(0);">
+            <i class="fa fa-commenting-o animated infinite pulse"></i>
+            <i class="fa fa-spinner fa-pulse"></i>
+            <span class="count-comment"></span>
+        </a>
+    </aside>
+    <script>
+        var $commentBar = $("#comments aside.comment-bar");
+        var load$hide = function(){
+            $commentBar.find("a > i").toggle();
+            loadComment();
+            $commentBar.fadeOut(800);
+        }
+        $commentBar.click(function(){
+            load$hide();
+        })
+        $commentBar.children("a").hover(function(){
+            load$hide();
+        })
+        if (window.location.hash === "#comments") {
+            load$hide();
+        }
+    </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/06/21/UEditor样式被过滤解决/" title="Next: UEditor样式被过滤解决">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/06/22/Activiti流程框架上手/">Activiti流程框架上手</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/21/UEditor样式被过滤解决/">UEditor样式被过滤解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/20/webmagic爬虫使用/">webmagic爬虫使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/14/Ueditor使用/">Ueditor使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/02/各种历史版本下载/">各种历史版本下载</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/26/判断ip是否合法/">判断ip是否合法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/16/nginx-ssl配置https/">nginx+ssl配置https</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/多机部署hexo博客/">多机部署hexo博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/Linux上部署多个Tomcat/">Linux上部署多个Tomcat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/nginx负载均衡配置/">nginx负载均衡配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/BootStrap-fileinput插件的使用/">BootStrap fileinput插件的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/DWR使用教程/">DWR使用教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/程序是怎么跑起来的读书笔记/">程序是怎么跑起来的读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/mysql和Oracle实现分页/">mysql和Oracle实现分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/有关异常捕获的一题面试题/">有关异常捕获的一题面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/JQuery、EasyUI和Bootstrap区别/">JQuery、EasyUI和Bootstrap区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/05/过滤器filter/">过滤器filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java中的网络编程/">Java中的网络编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/03/MongoDB数据库/">MongoDB数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/RESTful架构/">RESTful架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/四大域对象和JSP九大隐式对象/">四大域对象和JSP九大隐式对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/JDBC编码/">JDBC编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/HTTP协议/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/网络基础知识/">网络基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/《剑指offer》笔记/">《剑指offer》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/Java面试题总结-中/">Java面试题总结(中)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/18/XML数据解析/">XML数据解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/16/Java面试题总结-上/">Java面试题总结(上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/设计模式之工厂方法模式/">设计模式之工厂方法模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/设计模式/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/设计模式之代理模式/">设计模式之代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/《深入理解JVM》笔记/">《深入理解JVM》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/设计模式之策略模式/">设计模式之策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/UML学习笔记/">UML学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/设计模式之单例模式/">设计模式之单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java基础复习/">java基础复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/设计模式之观察者模式/">设计模式之观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/finally执行顺序面试题/">finally执行顺序面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/Linux总结/">Linux总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/用Hexo和GitHub-Pages搭建博客问题总结/">用Hexo和GitHub Pages搭建博客问题总结</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Felix
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"cjianfeng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+  </div>
+</body>
+</html>
